@@ -24,7 +24,9 @@ local cfg = {
   fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
   hint_enable = false, -- virtual hint enable
   hint_prefix = "🐼 ",  -- Panda for parameter
-  hint_scheme = "String",
+  -- hint_scheme = "String",
+  hint_scheme = "LspSignatureActiveParameter",
+  -- hi_parameter = "SignatureActiveParameter", -- how your parameter will be highlight
   hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
   max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
   -- to view the hiding contents
@@ -33,10 +35,10 @@ local cfg = {
     border = "rounded"   -- double, rounded, single, shadow, none
   },
 
-  always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
+  always_trigger = true, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
 
   -- auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
-  auto_close_after = 0, -- autoclose signature float win after x sec, disabled if nil.
+  auto_close_after = 1, -- autoclose signature float win after x sec, disabled if nil.
   extra_trigger_chars = {}, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
   zindex = 200, -- by default it will be on top of all floating windows, set to <= 50 send it to bottom
 
@@ -47,7 +49,8 @@ local cfg = {
   shadow_blend = 36, -- if you using shadow as border use this set the opacity
   shadow_guibg = 'Black', -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
   timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
-  toggle_key = '<C-q>' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+  -- toggle_key = '<C-q>' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+  toggle_key = '<C-x>' -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 }
 
 -- recommended:

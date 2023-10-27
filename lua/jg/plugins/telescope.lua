@@ -65,6 +65,7 @@
 -- telescope.load_extension("harpoon")
 
 
+local trouble = require("trouble.providers.telescope")
 
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
@@ -80,27 +81,33 @@ telescope.setup {
 
     -- prompt_prefix = " ",
     prompt_prefix = "> ",
+    history = {
+      path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+      limit = 100,
+    },
     selection_caret = " ",
     initial_mode = "insert",
-    path_display = { "smart" },
+    -- file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = {},
+    -- path_display = { "smart" },
     -- path_display = { "tail" },
     -- path_display = { shorten = { len = 5, exclude = { -1 } } },
     -- path_display = { shorten = { len = 3, exclude = { -1 } } },
-    -- path_display = { truncate = 50 },
+    path_display = { truncate = 5 },
     wrap_results = false,
     vimgrep_arguments = {
       "rg",
-      "--color=never",
+      -- "--color=never",
       "--no-heading",
       "--with-filename",
       "--line-number",
       "--column",
-      "--smart-case",
+      "--smart-case"
     },
     layout_strategy = 'horizontal',
     sorting_strategy = "ascending",
     layout_config = {
-      horizontal = { width = 0.95, height = 0.8, preview_width = 0.45 },
+      horizontal = { width = 0.97, height = 0.9, preview_width = 0.45 },
       vertical = { width = 0.99, height = 0.99 },
       center = { width = 0.99, height = 0.99 },
       bottom_pane = { width = 0.99, height = 0.99 },
@@ -155,7 +162,8 @@ telescope.setup {
         ["<CR>"] = actions.select_default,
         ["<C-x>"] = actions.select_horizontal,
         ["<C-Enter>"] = actions.select_vertical,
-        ["<C-t>"] = actions.select_tab,
+        -- ["<C-t>"] = actions.select_tab,
+        ["<C-t>"] = trouble.open_with_trouble,
         -- ["<C-t>"] = trouble.open_with_trouble,
 
         ["<C-u>"] = actions.preview_scrolling_up,
@@ -167,8 +175,8 @@ telescope.setup {
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-l>"] = actions.complete_tag,
+        ["<C-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        -- ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
         ["<C-a>"] = actions.git_create_branch,
       },
@@ -179,8 +187,8 @@ telescope.setup {
         ["<C-x>"] = actions.select_horizontal,
         -- ["<C-v>"] = actions.select_vertical,
         ["<C-Enter>"] = actions.select_vertical,
-        ["<C-t>"] = actions.select_tab,
-        -- ["<C-t>"] = trouble.open_with_trouble,
+        -- ["<C-t>"] = actions.select_tab,
+        ["<C-t>"] = trouble.open_with_trouble,
 
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -192,6 +200,10 @@ telescope.setup {
         ["H"] = actions.move_to_top,
         ["M"] = actions.move_to_middle,
         ["L"] = actions.move_to_bottom,
+        ["<BS>"] = "delete_buffer",
+
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
 
         ["<Down>"] = actions.move_selection_next,
         ["<Up>"] = actions.move_selection_previous,
@@ -226,13 +238,13 @@ telescope.setup {
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-      -- the default case_mode is "smart_case"
-    },
+    -- fzf = {
+    --   fuzzy = true,                    -- false will only do exact matching
+    --   override_generic_sorter = true,  -- override the generic sorter
+    --   override_file_sorter = true,     -- override the file sorter
+    --   case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+    --   -- the default case_mode is "smart_case"
+    -- },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
         prompt_prefix = "> ",
@@ -245,9 +257,9 @@ telescope.setup {
         i = {
           ["<C-l>"] = actions_live_grep_args.quote_prompt(),
           ["<C-k>"] = actions.move_selection_previous,
-          ["<C-l>g"] = actions_live_grep_args.quote_prompt({ postfix = ' --iglob ' }),
-          ["<C-l>t"] = actions_live_grep_args.quote_prompt({ postfix = ' -t' }),
-        }
+          ["<C-i>"] = actions_live_grep_args.quote_prompt({ postfix = ' --iglob ' }),
+          ["<C-f>"] = actions_live_grep_args.quote_prompt({ postfix = ' -t' }),
+        },
       }
     },
     arecibo = {
@@ -256,6 +268,13 @@ telescope.setup {
       ["show_http_headers"] = false,
       ["show_domain_icons"] = false,
     },
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = { "png", "webp", "jpg", "jpeg", "pdf", "svg" },
+      -- find command (defaults to `fd`)
+      -- find_cmd = "rg"
+    },
     -- fzy_native = {
     --   override_generic_sorter = true,
     --   override_file_sorter = true,
@@ -263,6 +282,7 @@ telescope.setup {
     bookmarks = {
       -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
       selected_browser = 'chrome',
+      profile_name = 'MAR',
 
       -- Either provide a shell command to open the URL
       url_open_command = 'open',
@@ -285,6 +305,9 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('harpoon')
 telescope.load_extension('ui-select')
+telescope.load_extension('bookmarks')
+telescope.load_extension('media_files')
+-- telescope.load_extension('node_modules')
 -- telescope.load_extension('projects')
 -- telescope.load_extension('node_modules')
 -- telescope.load_extension('arecibo')

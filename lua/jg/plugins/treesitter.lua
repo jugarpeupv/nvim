@@ -9,6 +9,7 @@ treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
+    additional_vim_regex_highlighting = false
 	},
 	-- enable indentation
 	indent = { enable = true },
@@ -24,26 +25,35 @@ treesitter.setup({
 		"html",
 		"css",
 		"markdown",
+    "markdown_inline",
 		"svelte",
 		"graphql",
 		"bash",
 		"lua",
 		"vim",
 		"dockerfile",
-		"gitignore",
+		"gitignore"
 	},
 	-- auto install above language parsers
 	auto_install = true,
 	rainbow = {
 		enable = true,
 		disable = { "html" },
-		extended_mode = true,
-		max_file_lines = nil,
+    -- query = 'rainbow-parens',
+    -- strategy = require('ts-rainbow').strategy.global
+		-- extended_mode = true,
+		-- max_file_lines = nil,
 		colors = {
 			-- vscode
 			"#DCDCAA",
 			"#569CD6",
 			"#9CDCFE",
+
+
+      -- catpuccin
+      -- "#C6A0F6",
+      -- "#8AADF4",
+      -- "#F0C6C6",
 
 			-- tokyo
 			-- "#7aa2f7",
