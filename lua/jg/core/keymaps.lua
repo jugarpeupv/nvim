@@ -146,7 +146,7 @@ keymap("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<
 keymap(
   "n",
   "<Leader>.",
-  "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = true })<cr>",
+  "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
   opts
 )
 -- keymap("n", "<Leader>pc", "<cmd>Telescope colorscheme<cr>", opts)
@@ -430,10 +430,10 @@ end
 vim.keymap.set('n', '<leader>la', '<CMD>Lab code run<CR>')
 vim.keymap.set('n', '<leader>ls', '<CMD>Lab code stop<CR>')
 
-local ng = require("ng");
-vim.keymap.set("n", "<leader>at", ng.goto_template_for_component, opts)
-vim.keymap.set("n", "<leader>ac", ng.goto_component_with_template_file, opts)
-vim.keymap.set("n", "<leader>aT", ng.get_template_tcb, opts)
+-- local ng = require("ng");
+-- vim.keymap.set("n", "<leader>at", ng.goto_template_for_component, opts)
+-- vim.keymap.set("n", "<leader>ac", ng.goto_component_with_template_file, opts)
+-- vim.keymap.set("n", "<leader>aT", ng.get_template_tcb, opts)
 
 
 -- comments the current line, or a number of lines 5gcc

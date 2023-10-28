@@ -20,7 +20,7 @@ require("catppuccin").setup({
       -- yellow = "#89ddff",
       yellow = "#2ac3de",
       green = "#F2CDCD",
-      red = "#89ddff",
+      -- red = "#89ddff",
       maroon = "#CBA6F7",
       --
       --
@@ -315,8 +315,11 @@ vim.cmd([[highlight WarningMsg guifg=#F2CDCD]])
 vim.cmd([[highlight GitConflictAncestor guibg=#303446]])
 vim.cmd([[highlight GitConflictAncestorLabel guibg=#45475A]])
 
-vim.g.VM_Mono_hl = 'Visual'
-vim.g.VM_Mono = 'Visual'
+-- vim.g.VM_Mono_hl = 'Visual'
+-- vim.g.VM_Mono = 'Visual'
+-- vim.g.VM_Extend = 'Visual'
+-- vim.cmd([[highlight! VM_Mono guibg=#004b72]])
+-- vim.cmd([[highlight! VM_Extend guibg=#004b72]])
 
 -- unused variable highlight
 -- vim.cmd([[highlight DiagnosticUnnecessary ]])

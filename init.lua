@@ -1,21 +1,36 @@
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+
 -- Example for configuring Neovim to load user-installed installed Lua rocks:
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
+vim.loader.enable()
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 require("jg.plugins-setup")
-require("jg.core.options")
 require("jg.core.keymaps")
 require("jg.plugins.devicons")
-require("jg.plugins.nvim-tree")
 require("jg.core.autocommands")
+require("jg.plugins.nvim-tree")
+require("jg.core.options")
+require("jg.plugins.ctrlsf-config")
 require("jg.plugins.comment-string-config")
--- require('jg.plugins.notify-config')
---[[ require("jg.plugins.comment") ]]
 require("jg.plugins.lualine")
 require("jg.plugins.telescope")
 require("jg.plugins.nvim-cmp")
 require("jg.plugins.lsp.mason")
--- require("jg.plugins.lsp.lspsaga")
 require("jg.plugins.lsp.lspconfig")
 require("jg.plugins.lsp.mason-dap")
 require("jg.plugins.lsp.null-ls")
@@ -23,27 +38,20 @@ require("jg.plugins.autopairs")
 require("jg.plugins.treesitter")
 require("jg.plugins.gitsigns")
 require("jg.plugins.treesitter-context")
-require("jg.plugins.lab")
+-- require("jg.plugins.lab")
 require("jg.plugins.diffview-config")
 require("jg.plugins.bufferline-config")
 require("jg.plugins.json-path")
 require("jg.plugins.devcontainers")
 require("jg.plugins.tmux-navigator")
-require("jg.plugins.indent-line")
 require("jg.plugins.signature")
--- require("jg.plugins.neogit")
--- require("jg.plugins.neoai")
 require("jg.plugins.text-objects")
 require("jg.plugins.toggle-term")
--- require("jg.plugins.dressing")
--- require("jg.plugins.bqf-config")
+require("jg.plugins.bqf-config")
 require('jg.plugins.barbecue-config')
 require('jg.plugins.oil-config')
--- require('jg.plugins.sniprun-config')
--- require('jg.plugins.image-config')
+require('jg.plugins.image-config')
 require('jg.plugins.scrollbar-config')
 require("jg.plugins.catpuccin")
--- require('jg.plugins.noice-config')
 require("jg.plugins.colorizer")
 -- require("jg.plugins.vscode")
--- require("jg.plugins.nord-color")

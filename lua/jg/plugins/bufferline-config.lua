@@ -5,11 +5,11 @@ end
 
 bufferline.setup({
   options = {
-    numbers = "none",                  -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-    close_command = "Bdelete! %d",     -- can be a string | function, see "Mouse actions"
+    numbers = "none",                    -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    close_command = "Bdelete! %d",       -- can be a string | function, see "Mouse actions"
     right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-    left_mouse_command = "buffer %d",  -- can be a string | function, see "Mouse actions"
-    middle_mouse_command = nil,        -- can be a string | function, see "Mouse actions"
+    left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+    middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
@@ -51,14 +51,25 @@ bufferline.setup({
     --   -- end
     -- end,
 
-    -- name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
-    --     -- if vim.bo[buf.bufnr].filetype == "" then
-    --     --   return '󰔉'
-    --     -- end
-    --     return '󰔉'
-    --   -- if buf.name.match('') then
-    --   --   return '󰔉'
-    --   -- end
+    name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+        if vim.bo[buf.bufnr].filetype == "" then
+          return ''
+        end
+        -- return '󰔉'
+      -- if buf.name.match('') then
+      --   return '󰔉'
+      -- end
+    end,
+
+    -- name_formatter = function(buf)
+    --   local name = "[No NameD2]"
+    --   if buf.path and #buf.path > 0 then
+    --     name = vim.fn.fnamemodify(buf.path, ":t")
+    --     name = vim.fn.isdirectory() and name .. "/" or name
+    --     if buf.name_formatter and type(buf.name_formatter) == "function" then
+    --       name = buf.name_formatter({ name = name, path = buf.path, bufnr = buf.id }) or name
+    --     end
+    --   end
     -- end,
 
 
@@ -69,7 +80,7 @@ bufferline.setup({
     --   return vim.fn.fnamemodify(buf.path, ':.')
     -- end,
     max_name_length = 100,
-    max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
+    max_prefix_length = 30,   -- prefix used when a buffer is de-duplicated
     tab_size = 21,
     diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
