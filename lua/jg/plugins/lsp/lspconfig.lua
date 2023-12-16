@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)          -- see definition and make edits in window
   -- keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
   keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)           -- see available code actions
-  keymap.set("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
   keymap.set("n", "gR", "<cmd>lua require('telescope.builtin').lsp_references({ include_declaration = false })<CR>", opts)
   -- keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
@@ -47,7 +47,7 @@ local on_attach = function(client, bufnr)
   -- keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   -- keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
   keymap.set("n", "<Leader>re", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-  keymap.set("n", "<leader>lo", "<cmd>Lspsaga outline<CR>", opts)
+  keymap.set("n", "<leader>ot", "<cmd>Lspsaga outline<CR>", opts)
 
   -- keymap.set("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
   keymap.set("n", "gl", '<cmd>lua vim.diagnostic.open_float()<CR>', opts) -- show  diagnostics for line
@@ -55,18 +55,24 @@ local on_attach = function(client, bufnr)
   -- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
   keymap.set("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
   keymap.set("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
-  keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                    -- show documentation for what is under cursor
-  keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)              -- show documentation for what is under cursor
-  keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)               -- see outline on right hand side
+  -- keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                    -- show documentation for what is under cursor
+  keymap.set({ 'n' }, 'gh', function()
+    require('lsp_signature').toggle_float_win()
+  end, opts)
+  keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)       -- show documentation for what is under cursor
+  -- keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)              -- show documentation for what is under cursor
+  keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then
     -- local ih = require("inlay-hints")
     -- ih.on_attach(client, bufnr)
+    keymap.set("n", "<Leader>rf", ":TypescriptRenameFile<cr>", opts)
     keymap.set("n", "<Leader>ia", ":TypescriptAddMissingImports<cr>", opts)
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")      -- rename file and update imports
-    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
-    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")    -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")             -- rename file and update imports
+    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>")        -- organize imports (not in youtube nvim video)
+    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")           -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "gd", "<cmd>TypescriptGoToSourceDefinition<CR>", opts) -- see definition and make edits in window
     -- require("lsp-inlayhints").on_attach(client, bufnr)
   end
 end
@@ -127,9 +133,11 @@ lspconfig["html"].setup({
 -- configure typescript server with plugin
 typescript.setup({
   server = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    -- root_dir = root_pattern("tsconfig.base.json", "package.json", "jsconfig.json", ".git"),
+    -- capabilities = capabilities,
+    -- on_attach = on_attach,
+    -- root_dir = root_pattern("tsconfig.base.json", "package.json", "jsconfig.json", ".git", "tsconfig.json"),
+    -- root_dir = root_pattern("tsconfig.base.json", "package.json", ".git"),
+    -- root_dir = root_pattern("tsconfig.base.json", ".git"),
     root_dir = root_pattern("tsconfig.base.json", ".git"),
     settings = {
       javascript = {
@@ -173,9 +181,9 @@ lspconfig["pyright"].setup({
 
 -- configure tailwindcss server
 lspconfig["tailwindcss"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-  root_dir = root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts' )
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_dir = root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts')
 })
 
 lspconfig["angularls"].setup({
@@ -205,20 +213,28 @@ lspconfig["eslint"].setup {
   capabilities = capabilities,
 }
 
-lspconfig["yamlls"].setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    yaml = {
-      schemas = require('schemastore').yaml.schemas(),
-    },
-  },
-}
+-- lspconfig["yamlls"].setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     yaml = {
+--       schemaStore = {
+--         -- You must disable built-in schemaStore support if you want to use
+--         -- this plugin and its advanced options like `ignore`.
+--         enable = false,
+--         -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+--         url = "",
+--       },
+--       schemas = require('schemastore').yaml.schemas(),
+--     },
+--   },
+-- }
 
 lspconfig["jsonls"].setup {
   filetypes = { "json", "jsonc" },
   on_attach = on_attach,
-  capabilities = capabilities_json_ls,
+  -- capabilities = capabilities_json_ls,
+  capabilities = capabilities,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas {
@@ -229,6 +245,10 @@ lspconfig["jsonls"].setup {
         --     name = 'project.json',
         --     url = 'https://github.com/nrwl/nx/blob/master/packages/nx/schemas/project-schema.json',
         --   }
+        -- }
+        -- ignore = {
+        --   -- 'catalog-info.yaml',
+        --   -- 'mkdocs.yml'
         -- }
       },
       validate = { enable = true },
@@ -256,14 +276,25 @@ lspconfig["docker_compose_language_service"].setup {
   capabilities = capabilities,
 }
 
-require 'lspconfig'.docker_compose_language_service.setup {}
-
-lspconfig["marksman"].setup {
+require 'lspconfig'.docker_compose_language_service.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
--- require'lspconfig'.nxls.setup{}
+require 'lspconfig'.cssmodules_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+-- lspconfig["marksman"].setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
+
+require'lspconfig'.nxls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
 
 -- configure lua server (with special settings)

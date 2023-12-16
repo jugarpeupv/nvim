@@ -79,10 +79,10 @@ local diagnostics = {
   sources = { "nvim_lsp" },
   sections = { "error", "warn", "info", "hint" },
   diagnostics_color = {
-    error = "DiagnosticError",
-    warn = "DiagnosticWarn",
-    info = "DiagnosticInfo",
-    hint = "DiagnosticHint",
+    error = "DiagnosticVirtualTextErrorLine",
+    warn = "DiagnosticVirtualTextWarnLine",
+    info = "DiagnosticVirtualTextInfoLine",
+    hint = "DiagnosticVirtualTextHintLine",
   },
   colored = false,
   update_in_insert = true,
@@ -171,7 +171,7 @@ require("lualine").setup({
       -- branch,
       { 'mode', separator = { left = '', right = '' } },
       filename,
-      diagnostics
+      -- diagnostics
       -- { 'mode', separator = { left = '' }, right_padding = 2 },
       -- { 'mode', separator = { left = '', right = '' } },
       -- { 'mode', separator = { left = '', right = '' } },

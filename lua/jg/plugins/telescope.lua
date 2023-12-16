@@ -1,72 +1,5 @@
--- -- import telescope plugin safely
--- local telescope_setup, telescope = pcall(require, "telescope")
--- if not telescope_setup then
--- 	return
--- end
---
--- -- import telescope actions safely
--- local actions_setup, actions = pcall(require, "telescope.actions")
--- if not actions_setup then
--- 	return
--- end
---
--- local actions_live_grep_args = require("telescope-live-grep-args.actions")
---
--- -- configure telescope
--- telescope.setup({
--- 	-- configure custom mappings
--- 	defaults = {
--- 		prompt_prefix = "> ",
--- 		selection_caret = " ",
--- 		path_display = { "smart" },
--- 		wrap_results = false,
--- 		vimgrep_arguments = {
--- 			"rg",
--- 			"--color=never",
--- 			"--no-heading",
--- 			"--with-filename",
--- 			"--line-number",
--- 			"--column",
--- 			"--smart-case",
--- 		},
--- 		mappings = {
--- 			i = {
--- 				["<C-k>"] = actions.move_selection_previous, -- move to prev result
--- 				["<C-j>"] = actions.move_selection_next, -- move to next result
--- 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
--- 			},
--- 		},
--- 		layout_strategy = "horizontal",
--- 		sorting_strategy = "ascending",
--- 		layout_config = {
--- 			horizontal = { width = 0.95, height = 0.8, preview_width = 0.45 },
--- 			vertical = { width = 0.99, height = 0.99 },
--- 			center = { width = 0.99, height = 0.99 },
--- 			bottom_pane = { width = 0.99, height = 0.99 },
--- 			prompt_position = "top",
--- 		},
--- 	},
--- 	extensions = {
--- 		live_grep_args = {
--- 			auto_quoting = false,
--- 			mappings = {
--- 				i = {
--- 					["<C-l>"] = actions_live_grep_args.quote_prompt(),
--- 					["<C-k>"] = actions.move_selection_previous,
--- 					["<C-l>g"] = actions_live_grep_args.quote_prompt({ postfix = " --iglob " }),
--- 					["<C-l>t"] = actions_live_grep_args.quote_prompt({ postfix = " -t" }),
--- 				},
--- 			},
--- 		},
--- 	},
--- })
---
--- telescope.load_extension("fzf")
--- telescope.load_extension("harpoon")
-
-
 local trouble = require("trouble.providers.telescope")
--- local egrep_actions = require "telescope._extensions.egrepify.actions"
+local egrep_actions = require "telescope._extensions.egrepify.actions"
 
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
@@ -75,7 +8,6 @@ end
 
 local actions = require "telescope.actions"
 local actions_live_grep_args = require("telescope-live-grep-args.actions");
-
 
 telescope.setup {
   defaults = {
@@ -246,43 +178,43 @@ telescope.setup {
     --   case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
     --   -- the default case_mode is "smart_case"
     -- },
-    -- egrepify = {
-    --   -- intersect tokens in prompt ala "str1.*str2" that ONLY matches
-    --   -- if str1 and str2 are consecutively in line with anything in between (wildcard)
-    --   AND = true,                   -- default
-    --   permutations = false,         -- opt-in to imply AND & match all permutations of prompt tokens
-    --   lnum = true,                  -- default, not required
-    --   lnum_hl = "EgrepifyLnum",     -- default, not required, links to `Constant`
-    --   col = false,                  -- default, not required
-    --   col_hl = "EgrepifyCol",       -- default, not required, links to `Constant`
-    --   title = true,                 -- default, not required, show filename as title rather than inline
-    --   filename_hl = "EgrepifyFile", -- default, not required, links to `Title`
-    --   -- suffix = long line, see screenshot
-    --   -- EXAMPLE ON HOW TO ADD PREFIX!
-    --   prefixes = {
-    --     -- ADDED ! to invert matches
-    --     -- example prompt: ! sorter
-    --     -- matches all lines that do not comprise sorter
-    --     -- rg --invert-match -- sorter
-    --     ["!"] = {
-    --       flag = "invert-match",
-    --     },
-    --     -- HOW TO OPT OUT OF PREFIX
-    --     -- ^ is not a default prefix and safe example
-    --     ["^"] = false
-    --   },
-    --   -- default mappings
-    --   mappings = {
-    --     i = {
-    --       -- toggle prefixes, prefixes is default
-    --       ["<C-z>"] = egrep_actions.toggle_prefixes,
-    --       -- toggle AND, AND is default, AND matches tokens and any chars in between
-    --       ["<C-a>"] = egrep_actions.toggle_and,
-    --       -- toggle permutations, permutations of tokens is opt-in
-    --       ["<C-r>"] = egrep_actions.toggle_permutations,
-    --     },
-    --   },
-    -- },
+    egrepify = {
+      -- intersect tokens in prompt ala "str1.*str2" that ONLY matches
+      -- if str1 and str2 are consecutively in line with anything in between (wildcard)
+      AND = true,                   -- default
+      permutations = false,         -- opt-in to imply AND & match all permutations of prompt tokens
+      lnum = true,                  -- default, not required
+      lnum_hl = "EgrepifyLnum",     -- default, not required, links to `Constant`
+      col = false,                  -- default, not required
+      col_hl = "EgrepifyCol",       -- default, not required, links to `Constant`
+      title = true,                 -- default, not required, show filename as title rather than inline
+      filename_hl = "EgrepifyFile", -- default, not required, links to `Title`
+      -- suffix = long line, see screenshot
+      -- EXAMPLE ON HOW TO ADD PREFIX!
+      prefixes = {
+        -- ADDED ! to invert matches
+        -- example prompt: ! sorter
+        -- matches all lines that do not comprise sorter
+        -- rg --invert-match -- sorter
+        ["!"] = {
+          flag = "invert-match",
+        },
+        -- HOW TO OPT OUT OF PREFIX
+        -- ^ is not a default prefix and safe example
+        ["^"] = false
+      },
+      -- default mappings
+      mappings = {
+        i = {
+          -- toggle prefixes, prefixes is default
+          ["<C-z>"] = egrep_actions.toggle_prefixes,
+          -- toggle AND, AND is default, AND matches tokens and any chars in between
+          ["<C-a>"] = egrep_actions.toggle_and,
+          -- toggle permutations, permutations of tokens is opt-in
+          ["<C-r>"] = egrep_actions.toggle_permutations,
+        },
+      },
+    },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
         prompt_prefix = "> ",
@@ -344,8 +276,8 @@ telescope.load_extension('fzf')
 telescope.load_extension('harpoon')
 telescope.load_extension('ui-select')
 telescope.load_extension('bookmarks')
-telescope.load_extension('media_files')
--- telescope.load_extension('egrepify')
+-- telescope.load_extension('media_files')
+telescope.load_extension('egrepify')
 -- telescope.load_extension('node_modules')
 -- telescope.load_extension('projects')
 -- telescope.load_extension('node_modules')
@@ -354,3 +286,4 @@ telescope.load_extension('media_files')
 -- require('telescope').load_extension('fzy_native')
 -- require('telescope').load_extension('gh')
 -- require("telescope").load_extension("media_files")
+

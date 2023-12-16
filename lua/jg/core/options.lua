@@ -1,7 +1,7 @@
 local opt = vim.opt -- for conciseness
 
 -- line numbers
-opt.relativenumber = true -- show relative line numbers
+opt.relativenumber = false -- show relative line numbers
 opt.number = true         -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
@@ -76,6 +76,7 @@ opt.splitright = true     -- split vertical window to the right
 opt.splitbelow = true     -- split horizontal window to the bottom
 
 opt.iskeyword:append("-") -- consider string-string as whole word
+opt.laststatus = 3
 -- opt.winbar ="%=%m %f"
 
 -- vim.cmd[[set diffopt+=linematch:60]]
@@ -93,6 +94,7 @@ vim.cmd [[set foldlevelstart=20]]
 
 
 vim.cmd [[set noshowmode]]
+vim.cmd [[let g:markdown_folding=1]]
 -- vim.cmd[[set shada+=r/mnt/exdisk]]
 
 
@@ -106,4 +108,4 @@ opt.listchars:append("trail: ")
 
 vim.cmd [[let g:copilot_filetypes = { '*': v:false, 'typescript': v:true, 'ts': v:true, 'html': v:true, 'TelescopePrompt': v:false }]]
 
-vim.cmd[[let g:TerminusInsertCursorShape=1]]
+vim.cmd [[let g:TerminusInsertCursorShape=1]]

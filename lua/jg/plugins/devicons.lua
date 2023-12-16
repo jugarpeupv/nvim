@@ -32,6 +32,31 @@ local options = {
       color = "#9CDCFE",
       name = "Dockerfile"
     },
+    groovy = {
+      icon = "",
+      name = "groovyfile"
+    },
+    [".npmrc"] = {
+      icon = "",
+      color = "#F38BA8",
+      name = "npmrc1"
+    },
+    ["md"] = {
+      icon = "",
+      color = "#9CDCFE",
+      name = "Markdown2"
+    },
+    json = {
+      icon = "",
+      name = "json",
+      color = "#F9E2AF"
+    },
+    js = {
+      icon = "",
+      name = "javascript",
+      color = "#F9E2AF"
+    },
+
     --[[ json = {
       icon = "",
       name = "json",
@@ -81,7 +106,8 @@ local options = {
       -- icon = "󰈤",
       -- icon = "🀄️",
       -- icon = "",
-      icon = "🀀",
+      -- icon = "🀀",
+      icon = "",
       -- icon = "",
       -- icon = "📄",
       -- color = "#73daca",
@@ -105,10 +131,11 @@ local options = {
   override_by_filename = {
     [".gitignore"] = {
       icon = "",
-      color = "#f1502f",
+      color = "#F38BA8",
       name = "Gitignore"
     },
     [".dockerignore"] = { icon = "", color = "#9CDCFE", name = "DockerfileIgnore" },
+    -- ["Dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile2" },
     ["app.routes.ts"] = { icon = "󰑪", color = '#73daca', name = 'AngularRoutes' },
     ["webpack.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfig" },
     ["webpack.prod.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigProd" },
@@ -117,11 +144,12 @@ local options = {
     ["*.package.json"] = { icon = "", color = "#73daca", name = "PackageJson2" },
     ["*package.json"] = { icon = "", color = "#73daca", name = "PackageJson3" },
     ["package-lock.json"] = { icon = "", color = "#73daca", name = "PackageLockJson" },
+    ["pnpm-lock.yaml"] = { icon = "", color = "#F9E2AF", name = "pnpmLockYaml" },
     -- ["*Jenkins*"] = { icon = "", color = 'black', name = "jenkinsfile" },
     -- ["jenkinsfileci"] = { icon = "", name = "Jenkins3"},
     -- ["jenkinsfilecd"] = { icon = "", name = "Jenkins4"},
-    ["jenkinsfileci"] = { icon = "", name = "Jenkins3"},
-    ["jenkinsfilecd"] = { icon = "", name = "Jenkins4"},
+    ["jenkinsfileci"] = { icon = "", name = "Jenkins3" },
+    ["jenkinsfilecd"] = { icon = "", name = "Jenkins4" },
 
     -- [".nxignore"] = { icon = "🐋", color = "blue", name = "nxignore"},
     -- ["nx.json"] = { icon = "🐋", name = "nxjson"},
@@ -129,19 +157,24 @@ local options = {
     -- [".nxignore"] = { icon = "󱢺 ", color = "#9CDCFE", name = "nxignore"},
     -- ["nx.json"] = { icon = "󱢺 ", color = "#9CDCFE", name = "nxjson"},
 
-    [".nxignore"] = { icon = "󰝆", color = "#9CDCFE", name = "nxignore"},
-    ["nx.json"] = { icon = "󰝆", color = "#9CDCFE", name = "nxjson"},
+    -- ["sonar-project.properties"] = { icon = "󰐷", color = "#5E2C84", name = "sonarproperties"},
+    ["sonar-project.properties"] = { icon = "󰐷", color = "#CBA6F7", name = "sonarproperties" },
+    -- [".nxignore"] = { icon = "󰝆", color = "#7C7F93", name = "nxignore"},
+    -- ["nx.json"] = { icon = "󰝆", color = "#9CDCFE", name = "nxjson"},
+    ["nx.json"] = { icon = "󰰔", color = "#9CDCFE", name = "nxjson" },
+    [".nxignore"] = { icon = "󰰔", color = "#7C7F93", name = "nxignore" },
 
-    [".eslintignore"] = { icon = "󰱺", color = "#7C7F93", name = "eslintignore"},
-    [".eslintrc.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson"},
-    [".eslint-report.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintreportjson"},
+
+    [".eslintignore"] = { icon = "󰱺", color = "#7C7F93", name = "eslintignore" },
+    [".eslintrc.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
+    [".eslint-report.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintreportjson" },
 
     --[[ [".prettierignore"] = { icon = "󰫽", color = "#7C7F93", name = "prettierignore"}, ]]
-    [".prettierignore"] = { icon = "󰰚", color = "#7C7F93", name = "prettierignore"},
+    [".prettierignore"] = { icon = "󰰚", color = "#7C7F93", name = "prettierignore" },
 
 
     --[[ [".prettierrc"] = { icon = "󰫽", color = "#0D8874", name = "prettierrc"}, ]]
-    [".prettierrc"] = { icon = "󰰚", color = "#73daca", name = "prettierrc"},
+    [".prettierrc"] = { icon = "󰰚", color = "#73daca", name = "prettierrc" },
 
 
     --[[ ["project.json"] = { icon = "", color = '#9CDCFE', name = 'ProjectJson' }, ]]
@@ -158,11 +191,11 @@ local options = {
       color = "#73daca",
       name = "Log"
     },
-    ["md"] = {
-      icon = "",
-      color = "#9CDCFE",
-      name = "Markdown"
-    },
+    -- ["md"] = {
+    --   icon = "",
+    --   color = "#9CDCFE",
+    --   name = "Markdown"
+    -- },
     ["module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule1" },
     ["*.module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule2" },
     [".module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule" },
@@ -187,6 +220,13 @@ local options = {
     ["*.directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
     [".directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
     [".stories.ts"] = { icon = "s", color = 'red', name = "Storie1" },
+
+    ["stories.ts"] = { icon = "s", color = 'red', name = "Storie2" },
+
+    -- ["d.ts"] = { icon = "󰛦", color = '#107DC7', name = "dtypescript" },
+
+
+    ["d.ts"] = { icon = "󰛦", color = '#89b4fb', name = "dtypescript" },
 
 
     -- [".editorconfig"] = { icon = "", color = '#89b4fa', name = "Editorconfig"},

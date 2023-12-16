@@ -5,11 +5,12 @@ vim.g.ctrlsf_auto_close = {
   normal = 0,
   compact = 0
 }
+vim.g.ctrlsf_position = 'left_local'
 vim.g.ctrlsf_mapping = {
   open    = { "<CR>", "o" },
   openb   = "O",
-  split   = "<C-O>",
-  vsplit  = "<C-V>",
+  split   = "<C-X>",
+  vsplit  = { "<C-V>", "gd" },
   tab     = "t",
   tabb    = "T",
   popen   = "p",

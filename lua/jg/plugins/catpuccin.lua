@@ -7,8 +7,10 @@ require("catppuccin").setup({
       surface1 = "#666666",
       surface2 = "#a3a7bc",
       surface3 = "#a3a7bc",
-      --[[ green = "#a1dfcf", ]]
-      -- yellow = "#2ac3de",
+
+      yellow = "#2ac3de",
+      green = "#F2CDCD",
+      maroon = "#CBA6F7",
 
       --
       -- yellow = "#F2CDCD",
@@ -16,12 +18,13 @@ require("catppuccin").setup({
       -- red = "#89ddff",
       -- maroon = "#CBA6F7",
       --
+      --[[ green = "#a1dfcf", ]]
+      -- yellow = "#2ac3de",
 
       -- yellow = "#89ddff",
-      yellow = "#2ac3de",
-      green = "#F2CDCD",
+      -- yellow = "#0db9d7",
       -- red = "#89ddff",
-      maroon = "#CBA6F7",
+      -- maroon = "#F38BA8",
       --
       --
       -- yellow = "#0db9d7",
@@ -48,6 +51,7 @@ require("catppuccin").setup({
     ts_rainbow2 = true,
     -- ts_rainbow2 = false,
     lsp_trouble = true,
+    neotree = true,
     lsp_saga = true,
     mason = true,
     dap = true,
@@ -95,6 +99,9 @@ vim.cmd.colorscheme "catppuccin"
 
 vim.cmd([[highlight StatusLine guibg=#292e42]])
 vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
+
+vim.cmd [[highlight NeoTreeFileStatsHeader guifg=#3b4261]]
+vim.cmd [[highlight NeoTreeFileStats guifg=#3b4261]]
 -- vim.cmd([[highlight CursorLine guibg=#35394A]])
 -- vim.cmd([[highlight CursorLine guibg=#3B4252]])
 -- vim.cmd([[highlight CursorLine guibg=none gui=none]])
@@ -108,7 +115,7 @@ vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
 vim.cmd([[highlight CursorLine guibg=#3b4261]])
 vim.cmd([[highlight NvimTreeCursorLine guibg=#3b4261]])
 
-vim.cmd([[highlight LineNR guifg=#3b4251]])
+vim.cmd([[highlight LineNR guifg=#3b4261]])
 vim.cmd([[highlight CursorLineNR guifg=#737aa2]])
 
 vim.cmd([[highlight IndentBlanklineChar guifg=#3b4251]])
@@ -121,6 +128,10 @@ vim.cmd([[highlight @ibl.scope.char.1 guifg=#737aa2]])
 vim.cmd([[highlight @ibl.scope.underline.1 guisp=#737aa2]])
 
 
+
+vim.cmd([[highlight HarpoonBorder guifg=#394b70]])
+
+
 -- vim.cmd([[highlight TSRainbowRed guifg=#8AADF4]])
 -- vim.cmd([[highlight TSRainbowYellow guifg=#C6A0F6]])
 -- vim.cmd([[highlight TSRainbowBlue guifg=#F0C6C6]])
@@ -128,7 +139,6 @@ vim.cmd([[highlight @ibl.scope.underline.1 guisp=#737aa2]])
 -- vim.cmd([[highlight TSRainbowGreen guifg=#C6A0F6]])
 -- vim.cmd([[highlight TSRainbowViolet guifg=#F0C6C6]])
 -- vim.cmd([[highlight TSRainbowCyan guifg=#8AADF4]])
-
 
 vim.cmd([[highlight TSRainbowRed guifg=#74C7EC]])
 vim.cmd([[highlight TSRainbowYellow guifg=#C6A0F6]])
@@ -237,11 +247,23 @@ vim.cmd([[highlight BufferLineTabSeparator gui=none guifg=#13182e]])
 vim.cmd([[highlight BufferLineTabSeparatorSelected gui=none guifg=#13182e]])
 vim.cmd([[highlight BufferLineTabSelected gui=none guibg=#394b70]])
 
+
+vim.cmd([[highlight InclineNormal  guibg=#292e42]])
+-- vim.cmd([[highlight InclineNormal  guibg=#3b4261]])
+vim.cmd([[highlight InclineNormalNC  guibg=#292e42 guifg=#7C7F93]])
+-- vim.cmd([[highlight InclineNormalNC  guibg=#292e42 guifg=#7C7F93]])
+vim.cmd([[highlight Winbar guifg=#bbc2e0]])
+vim.cmd([[highlight WinbarNC guifg=#7C7F93]])
+
+-- vim.cmd([[highlight InclineNormal  guibg=#394b70]])
+-- vim.cmd([[highlight InclineNormalNC  guibg=#394b70 guifg=#666666]])
+
 vim.cmd([[highlight TreesitterContextLineNumber guibg=#292e42 guifg=#737aa2]])
 vim.cmd([[highlight TreesitterContext guifg=none guibg=none]])
 
 
 -- vim.cmd([[highlight NvimTreeWinSeparator guifg=#292e42]])
+vim.cmd([[ hi WinSeparator guifg=#292e42 ]])
 vim.cmd([[highlight NvimTreeFolderArrowClosed guifg=#89B4FA]])
 vim.cmd([[highlight NvimTreeFolderArrowOpen guifg=#89B4FA]])
 vim.cmd([[highlight NvimTreeWinSeparator guifg=#292e42]])
@@ -278,6 +300,7 @@ vim.cmd([[hi TreesitterContextBottom guifg=none gui=none]])
 -- vim.cmd([[hi @property.scss guifg=#89ddff]])
 -- vim.cmd([[hi @property.class.scss guifg=#89ddff]])
 vim.cmd([[hi @property.class.scss guifg=#CBA6F7]])
+-- vim.cmd([[hi @parameter guifg=#B4BEFE]])
 
 
 vim.cmd([[highlight CmpItemKindText gui=bold,italic]])
@@ -322,7 +345,8 @@ vim.cmd([[highlight GitConflictAncestorLabel guibg=#45475A]])
 -- vim.cmd([[highlight! VM_Extend guibg=#004b72]])
 
 -- unused variable highlight
--- vim.cmd([[highlight DiagnosticUnnecessary ]])
+-- vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087 gui=undercurl ]])
+vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087]])
 
 
 -- vim.cmd([[highlight ScrollbarCursor  ctermfg=0 guifg=#cdd6f4]])
@@ -368,19 +392,59 @@ vim.cmd([[highlight FloatBorder  guifg=#394b70]])
 vim.cmd([[highlight SagaBorder  guifg=#394b70]])
 vim.cmd([[highlight @variable.builtin guifg=#89ddff]])
 
+vim.cmd([[highlight ctrlsfMatch guifg=#F2CDCD guibg=none]])
+
+
+vim.cmd([[highlight @text.uri gui=none]])
+
+vim.cmd([[highlight QuickFixLine guibg=#264F78]])
+
+vim.cmd([[highlight TabLine guibg=none]])
+vim.cmd([[highlight TabLineSel guibg=none]])
+
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+-- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
+
+vim.api.nvim_set_hl(0, "DapUIPlayPauseNC", { link = 'DapUIPlayPause' })
+vim.api.nvim_set_hl(0, "DapUIRestartNC", { link = 'DapUIRestart' })
+vim.api.nvim_set_hl(0, "DapUIStopNC", { link = 'DapUIStop' })
+vim.api.nvim_set_hl(0, "DapUIStepOverNC", { link = 'DapUIStepOver' })
+vim.api.nvim_set_hl(0, "DapUIStepIntoNC", { link = 'DapUIStepInto' })
+vim.api.nvim_set_hl(0, "DapUIStepBackNC", { link = 'DapUIStepBack' })
+vim.api.nvim_set_hl(0, "DapUIStepOutNC", { link = 'DapUIStepOut' })
+
+
+
 -- vim.cmd([[highlight LspInlayHint guifg=#264F78]])
 
 
 -- vim.cmd([[highlight DiagnosticVirtualTextWarn guifg=#DCDCAA guibg=none]])
 -- vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#0db9d7 guibg=none]])
 -- vim.cmd([[highlight DiagnosticVirtualTextError guifg=#db4b4b]])
+-- vim.cmd([[highlight DiagnosticVirtualTextHint guibg=#233745]])
 vim.cmd([[highlight DiagnosticVirtualTextWarn guifg=#DCDCAA guibg=#233745]])
 vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#0db9d7 guibg=#192b38]])
--- vim.cmd([[highlight DiagnosticVirtualTextHint guibg=#233745]])
 vim.cmd([[highlight DiagnosticVirtualTextError guifg=#db4b4b guibg=#362c3d]])
 vim.cmd([[highlight DiagnosticVirtualTextHint guifg=#89DCEB guibg=#233745]])
+
+vim.cmd([[hi EndOfBuffer guifg=#737aa2]])
 -- vim.cmd([[highlight DiagnosticVirtualTextHint guifg=#568FBF guibg=#233745]])
 
+
+vim.cmd([[highlight DiagnosticVirtualTextWarnLine guifg=#DCDCAA guibg=#292e42]])
+vim.cmd([[highlight DiagnosticVirtualTextInfoLine guifg=#0db9d7 guibg=#292e42]])
+vim.cmd([[highlight DiagnosticVirtualTextErrorLine guifg=#db4b4b guibg=#292e42]])
+vim.cmd([[highlight DiagnosticVirtualTextHintLine guifg=#89DCEB guibg=#292e42]])
+
+
+vim.cmd([[hi DiagnosticUnderlineHint gui=undercurl]])
+vim.cmd([[hi barbecue_modified guifg=#bbc2e0]])
+-- vim.cmd([[hi Keyword gui=italic]])
 
 -- vim.cmd([[highlight ScrollbarCursorHandle guifg=#3B4252 gui=none guibg=#03142a]])
 -- vim.cmd([[highlight ScrollbarCursorHandle guifg=#7C7F93 guibg=#a3a7bc]])
@@ -465,3 +529,23 @@ vim.cmd([[highlight DiagnosticVirtualTextHint guifg=#89DCEB guibg=#233745]])
 --   },
 -- }
 --
+
+vim.cmd [[
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Visual'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+]]
+
+vim.cmd [[let g:fzf_checkout_view_mode = 'inline']]
+vim.cmd [[let g:fzf_checkout_git_options = "--format='%(color:#c0caf5)%(refname:short)'"]]

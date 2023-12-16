@@ -119,7 +119,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'a',     api.fs.create,                         opts('Create'))
   -- vim.keymap.set('n', 'bmv',   api.marks.bulk.move,                   opts('Move Bookmarked'))
   vim.keymap.set('n', 'B',     api.tree.toggle_no_buffer_filter,      opts('Toggle No Buffer'))
-  vim.keymap.set('n', 'c',     api.fs.copy.node,                      opts('Copy'))
+  vim.keymap.set('n', 'yy',     api.fs.copy.node,                      opts('Copy'))
   vim.keymap.set('n', 'C',     api.tree.toggle_git_clean_filter,      opts('Toggle Git Clean'))
   vim.keymap.set('n', '[c',    api.node.navigate.git.prev,            opts('Prev Git'))
   vim.keymap.set('n', ']c',    api.node.navigate.git.next,            opts('Next Git'))
@@ -150,7 +150,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'U',     api.tree.toggle_custom_filter,         opts('Toggle Hidden'))
   vim.keymap.set('n', 'W',     api.tree.collapse_all,                 opts('Collapse'))
   vim.keymap.set('n', 'x',     api.fs.cut,                            opts('Cut'))
-  vim.keymap.set('n', 'y',     api.fs.copy.filename,                  opts('Copy Name'))
+  vim.keymap.set('n', 'c',     api.fs.copy.filename,                  opts('Copy Name'))
   vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
   vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
   vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
@@ -181,10 +181,10 @@ end
 nvim_tree.setup({
   -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
-  disable_netrw = true,
+  disable_netrw = false,
   hijack_cursor = true,
   hijack_netrw = true,
-  hijack_unnamed_buffer_when_opening = true,
+  hijack_unnamed_buffer_when_opening = false,
   sort_by = "name",
   update_cwd = false,
   respect_buf_cwd = false,
@@ -235,12 +235,13 @@ nvim_tree.setup({
       glyphs = {
         -- default = circle,
         -- default = "〣",
-        -- default = "",
+        default = "",
+        -- default = "",
         -- default = "",
         -- default = "",
         -- default = "",
         -- default = "🀪",
-        default = "🀀",
+        -- default = "🀀",
         -- default = "",
         -- default = "🀅",
         -- default = "📰",

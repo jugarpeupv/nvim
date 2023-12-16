@@ -9,8 +9,8 @@ local keymap = vim.api.nvim_set_keymap
 -- keymap("", "<Space>", "<Nop>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +5<CR>", opts)
-keymap("n", "<C-Down>", ":resize -5<CR>", opts)
+-- keymap("n", "<C-Up>", ":resize +5<CR>", opts)
+-- keymap("n", "<C-Down>", ":resize -5<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
 
@@ -34,6 +34,7 @@ keymap("n", "<leader>pu", "<cmd>pu<cr>", opts)
 
 -- Cmd modifiers
 vim.cmd([[map <M-g> gcc]])
+vim.cmd([[inoremap <C-r> <C-r>*]])
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false, width = 0.8 })<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, require('telescope.themes').get_dropdown{previewer = false, width = 0.8 }})<cr>", opts)
 keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
@@ -59,9 +60,14 @@ keymap("t", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_unt
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-keymap("n", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
-keymap("i", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
-keymap("t", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("n", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("i", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
+-- keymap("t", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
+
+keymap("n", "<M-j>", "<cmd>Neotree toggle<cr>", opts)
+keymap("i", "<M-j>", "<cmd>Neotree toggle<cr>", opts)
+keymap("t", "<M-j>", "<cmd>Neotree toggle<cr>", opts)
+
 keymap("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
@@ -78,7 +84,10 @@ keymap("n", "<BS>", "<C-^>", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("n", "<Leader>q", "<cmd>BDelete this<CR>", opts)
 keymap("n", "<Leader>n", "<cmd>nohlsearch<CR>", opts)
-keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
+-- keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
+keymap("n", "<Leader>d", ":Neotree reveal<cr>", opts)
+keymap("n", "<Leader>D", ":Neotree reveal_file=% position=float<cr>", opts)
+-- keymap("n", "<Leader>d", ":Neotree reveal_file=% position=float<cr>", opts)
 -- keymap("n", "<Leader>d", ":NvimTreeFocus<cr>", opts)
 keymap(
   "n",
@@ -100,7 +109,7 @@ keymap(
   opts
 )
 keymap("n", "<leader>tr", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<leader>nm", "<cmd>Telescope node_modules list<cr>", opts)
+keymap("n", "<leader>tm", "<cmd>Telescope node_modules list<cr>", opts)
 -- keymap("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 -- keymap("n", "<Leader>fi", "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", opts)
 keymap("n", "<Leader>ps",
@@ -143,13 +152,15 @@ keymap("n", "<Leader>gS", "<cmd>G stash<cr>", opts)
 keymap("n", "<Leader>gO", "<cmd>G stash pop<cr>", opts)
 keymap("n", "<Leader>gs", "<cmd>Telescope git_stash<cr>", opts)
 keymap("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>", opts)
+keymap('n', '<leader>gt','<cmd>GTags<CR>', opts)
+
 keymap(
   "n",
   "<Leader>.",
   "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
   opts
 )
--- keymap("n", "<Leader>pc", "<cmd>Telescope colorscheme<cr>", opts)
+keymap("n", "<Leader>co", "<cmd>Telescope colorscheme<cr>", opts)
 keymap("n", "<Leader>po", "<cmd>PeekOpen<cr>", opts)
 keymap("n", "<Leader>pc", "<cmd>PeekClose<cr>", opts)
 keymap("n", "<Leader>ht", "<cmd>Telescope help_tags<cr>", opts)
@@ -196,16 +207,16 @@ keymap("n", "<Leader>ru", "<cmd>TypescriptRemoveUnused<cr>", opts)
 keymap("n", "<Leader>oi", "<cmd>TypescriptOrganizeImports<cr>", opts)
 
 -- Replace
-vim.cmd([[nnoremap <Leader>rr :%s///gc<Left><Left><Left>]])
+vim.cmd([[nnoremap <Leader>rr :%s///gc<Left><Left><Left><Left>]])
 vim.cmd([[xnoremap <Leader>rr :s///gc<Left><Left><Left>]])
 vim.cmd([[nnoremap <Leader>sw /\<\><Left><Left>]])
 
 vim.cmd(
-  [[nnoremap <Leader>rq :cfdo %s///g \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
+  [[nnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
 )
 
 vim.cmd(
-  [[xnoremap <Leader>rq :cfdo %s///g \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
+  [[xnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
 )
 
 
@@ -215,6 +226,7 @@ vim.cmd(
 keymap("v", "<Leader>gv", "<cmd>'<,'>DiffviewFileHistory<cr>", opts)
 keymap("n", "<Leader>gv", "<cmd>DiffviewFileHistory %<cr>", opts)
 keymap("n", "<Leader>gP", "<cmd>Git! push<cr>", opts)
+keymap("n", "<Leader>gf", "<cmd>Git! fetch --all -v<cr>", opts)
 keymap("n", "<Leader>gp", "<cmd>Git! pull<cr>", opts)
 -- keymap("n", "<Leader>gc", "<cmd>Git commit<cr>", opts)
 keymap("n", "<Leader>go", "<cmd>:!git-open<cr>", opts)
@@ -255,7 +267,7 @@ vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]]
 vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 
 -- Vifm
-keymap("n", "<leader>vi", "<cmd>Vifm<cr>", opts)
+keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)
 
 -- BrowserSearch
 -- keymap("n", "<leader>br", ":BrowserSearch", opts)
@@ -265,7 +277,9 @@ keymap("n", "<leader>vi", "<cmd>Vifm<cr>", opts)
 
 
 -- DAP
-vim.keymap.set('n', '<leader>ee', function() require "dap".toggle_breakpoint() end)
+-- vim.keymap.set('n', '<leader>ee', function() require "dap".toggle_breakpoint() end)
+keymap("n", "<leader>ee", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
+keymap("n", "<leader>ca", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
 vim.keymap.set('n', '<leader>en', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- vim.keymap.set('n', '<Leader>hh', function() require"dap".step_out() end)
 vim.keymap.set('n', "<Leader>kk", function() require "dap".step_into() end)
@@ -286,7 +300,7 @@ vim.keymap.set('n', '<leader>ek', ':lua require"dap".up()<CR>zz')
 vim.keymap.set('n', '<leader>ej', ':lua require"dap".down()<CR>zz')
 vim.keymap.set('n', '<leader>er', ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
 -- vim.keymap.set('n', '<leader>ee', function() require"dap".set_exception_breakpoints({"all"}) end)
--- vim.keymap.set('n', '<leader>lo', "<cmd> lua require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { ['pwa-node'] = { 'typescript' } })<cr>", opts)
+vim.keymap.set('n', '<leader>lo', "<cmd> lua require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { ['pwa-node'] = { 'typescript' }, ['node2'] = { 'typescript' }, ['node'] = { 'typescript' } })<cr>", opts)
 
 
 -- The Primeagean
@@ -344,24 +358,24 @@ vim.keymap.set('n', '<leader>ll', '<CMD>DiffviewFileHistory --range=HEAD<CR>')
 vim.keymap.set('n', '<leader>l5', '<CMD>DiffviewFileHistory --range=HEAD~50..HEAD<CR>')
 vim.keymap.set('n', '<leader>l0', '<CMD>DiffviewFileHistory --range=HEAD~10..HEAD<CR>')
 
-vim.cmd [[nnoremap q <Nop>]]
+-- vim.cmd [[nnoremap q <Nop>]]
 vim.cmd [[tnoremap <C-n> <C-\><C-n>]]
 
-vim.keymap.set("n", "<leader>th", "<cmd>sp|term<cr>i",
-  { silent = true, noremap = true }
+-- vim.keymap.set("n", "<leader>th", "<cmd>sp|term<cr>i",
+--   { silent = true, noremap = true }
+-- )
+
+-- vim.keymap.set("n", "<leader>tv", "<cmd>vsp|term<cr>i",
+--   { silent = true, noremap = true }
+-- )
+
+vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>",
+  {silent = true, noremap = true}
 )
 
-vim.keymap.set("n", "<leader>tv", "<cmd>vsp|term<cr>i",
-  { silent = true, noremap = true }
+vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>",
+  {silent = true, noremap = true}
 )
-
--- vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>",
---   {silent = true, noremap = true}
--- )
---
--- vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>",
---   {silent = true, noremap = true}
--- )
 
 
 vim.cmd [[:tnoremap <C-Up> <C-\><C-N>:resize +5<cr>]]
@@ -377,23 +391,24 @@ vim.cmd [[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]]
 -- vim.cmd[[:tnoremap <C-k> <C-\><C-N><C-w>k]]
 -- vim.cmd[[:tnoremap <C-l> <C-\><C-N><C-w>l]]
 
-function _G.set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  -- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  -- vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-  vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
-  vim.keymap.set('t', '<C-o>', [[<C-\><C-n><C-o>]], opts)
-end
+-- function _G.set_terminal_keymaps()
+--   local opts = { buffer = 0 }
+--   -- vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+--   -- vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+--   vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+--   vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+--   vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+--   vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+--   vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
+--   vim.keymap.set('t', '<C-o>', [[<C-\><C-n><C-o>]], opts)
+-- end
 
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+-- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
+-- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 
 keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
+keymap("n", "<Leader>pi", "<cmd>PasteImg<cr>", opts)
 
 vim.keymap.set('n', 'cc', '<Plug>(git-conflict-ours)')
 vim.keymap.set('n', 'ci', '<Plug>(git-conflict-theirs)')
@@ -423,8 +438,6 @@ end
 -- keymap("n", "<YourKey3>", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
 
 
--- vim.cmd[[let g:VM_maps["Add Cursor Up"] = 'C-Up']]
--- vim.cmd[[let g:VM_maps["Add Cursor Down"] = 'C-Down']]
 
 -- lab
 vim.keymap.set('n', '<leader>la', '<CMD>Lab code run<CR>')
@@ -446,3 +459,22 @@ vim.keymap.set("n", "gca", require("SingleComment").ToggleCommentAhead, {})
 vim.keymap.set("n", "gcA", require("SingleComment").CommentAhead, {})
 -- comment a block, and removes the innermost block comment in normal mode
 vim.keymap.set({ "n", "v" }, "gcb", require("SingleComment").BlockComment)
+
+
+
+-- Ctrlsf.nvim
+vim.keymap.set('n', '<leader>sf', '<Plug>CtrlSFCwordPath')
+vim.keymap.set('n', '<leader>so', '<CMD>CtrlSFToggle<CR>')
+
+vim.cmd([[nmap <Leader>tn :tabnew %<CR>]])
+vim.cmd([[nmap <Leader>tt :tabclose<CR>]])
+
+
+vim.keymap.set('n', '<leader>tO', require('jg.plugins.telescope-custom.telescope').curr_buf, {})
+
+
+-- Winshift.nvim
+vim.api.nvim_set_keymap("n", "<Leader>sh", "<cmd>WinShift<cr>", opts)
+
+-- vim.cmd[[let g:VM_maps["Add Cursor Up"] = 'C-Up']]
+-- vim.cmd[[let g:VM_maps["Add Cursor Down"] = 'C-Down']]

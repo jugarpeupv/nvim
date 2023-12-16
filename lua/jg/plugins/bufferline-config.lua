@@ -51,15 +51,24 @@ bufferline.setup({
     --   -- end
     -- end,
 
-    name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
-        if vim.bo[buf.bufnr].filetype == "" then
-          return ''
-        end
-        -- return '󰔉'
-      -- if buf.name.match('') then
-      --   return '󰔉'
-      -- end
-    end,
+    -- name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+
+    --   -- if buf.name:match('__CtrlSF__') then
+    --   --   return 'Search and Replace'
+    --   -- end
+
+    --   if buf.name.match('[No Name]') then
+    --     -- return vim.fn.fnamemodify(buf.name, ':t:r')
+    --     return 'hi'
+    --   end
+    --     -- if vim.bo[buf.bufnr].filetype == "" then
+    --     --   return ''
+    --     -- end
+    --     -- return '󰔉'
+    --   -- if buf.name.match('') then
+    --   --   return '󰔉'
+    --   -- end
+    -- end,
 
     -- name_formatter = function(buf)
     --   local name = "[No NameD2]"
@@ -119,7 +128,7 @@ bufferline.setup({
         text = "",
         text_align = "center",
         separator = true,
-      },
+      }
     },
     -- get_element_icon = function(element)
     --   -- element consists of {filetype: string, path: string, extension: string, directory: string}
@@ -137,7 +146,7 @@ bufferline.setup({
     show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
-    show_tab_indicators = false,
+    show_tab_indicators = true,
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }

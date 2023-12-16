@@ -116,6 +116,7 @@ require("diffview").setup({
     view_opened = function(view)
       -- require("diffview.actions").toggle_files()
       local utils = require("jg.core.utils");
+      require("barbecue.ui").toggle(false)
       -- vim.cmd [[set nocursorline]]
       -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
       -- the right.
@@ -141,6 +142,9 @@ require("diffview").setup({
       view.emitter:on("post_layout", post_layout)
       post_layout()
     end,
+    view_closed = function ()
+      require("barbecue.ui").toggle(true)
+    end
   },         -- See ':h diffview-config-hooks'
   keymaps = {
     disable_defaults = true, -- Disable the default keymaps
