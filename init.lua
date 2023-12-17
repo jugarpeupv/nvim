@@ -1,5 +1,6 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 -- Example for configuring Neovim to load user-installed installed Lua rocks:
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
@@ -19,7 +20,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("jg.plugins-setup")
+
+require("lazy").setup("plugins")
+
 require("jg.core.autocommands")
 require("jg.core.keymaps")
 require("jg.plugins.devicons")
