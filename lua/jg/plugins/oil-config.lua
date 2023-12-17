@@ -28,9 +28,9 @@ require("oil").setup({
   -- Restore window options to previous values when leaving an oil buffer
   restore_win_options = true,
   -- Skip the confirmation popup for simple operations
-  skip_confirm_for_simple_edits = false,
+  skip_confirm_for_simple_edits = true,
   -- Deleted files will be removed with the `trash-put` command.
-  delete_to_trash = false,
+  delete_to_trash = true,
   -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
   prompt_save_on_select_new_entry = true,
   -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
@@ -52,13 +52,13 @@ require("oil").setup({
     ["_"] = "actions.open_cwd",
     ["`"] = "actions.cd",
     ["~"] = "actions.tcd",
-    ["g."] = "actions.toggle_hidden",
+    ["H"] = "actions.toggle_hidden",
   },
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = false,
   view_options = {
     -- Show files and directories that start with "."
-    show_hidden = false,
+    show_hidden = true,
     -- This function defines what is considered a "hidden" file
     is_hidden_file = function(name, bufnr)
       return vim.startswith(name, ".")
@@ -76,7 +76,7 @@ require("oil").setup({
     max_height = 0,
     border = "rounded",
     win_options = {
-      winblend = 10,
+      winblend = 0,
     },
   },
   -- Configuration for the actions floating preview window

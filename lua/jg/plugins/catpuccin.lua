@@ -100,8 +100,12 @@ vim.cmd.colorscheme "catppuccin"
 vim.cmd([[highlight StatusLine guibg=#292e42]])
 vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
 
-vim.cmd [[highlight NeoTreeFileStatsHeader guifg=#3b4261]]
-vim.cmd [[highlight NeoTreeFileStats guifg=#3b4261]]
+-- vim.cmd [[highlight NeoTreeFileStatsHeader guifg=#3b4261]]
+-- vim.cmd [[highlight NeoTreeFileStats guifg=#3b4261]]
+vim.cmd[[highlight NvimTreeGitDirty guifg=#f2cdcd]]
+vim.cmd[[highlight NvimTreeGitStaged guifg=#8ee2cf]]
+vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
+
 -- vim.cmd([[highlight CursorLine guibg=#35394A]])
 -- vim.cmd([[highlight CursorLine guibg=#3B4252]])
 -- vim.cmd([[highlight CursorLine guibg=none gui=none]])

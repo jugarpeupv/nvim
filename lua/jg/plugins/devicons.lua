@@ -56,6 +56,18 @@ local options = {
       name = "javascript",
       color = "#F9E2AF"
     },
+    txt = {
+      icon = "󰈚",
+      name = "txtname",
+      -- color = "#F9E2AF"
+      color = "#8ee2cf"
+    },
+    toml = {
+      icon = "",
+      name = "toml",
+      -- color = "#F9E2AF"
+      color = "#737aa2"
+    },
 
     --[[ json = {
       icon = "",
