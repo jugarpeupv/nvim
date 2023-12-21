@@ -233,8 +233,8 @@ lspconfig["eslint"].setup {
 lspconfig["jsonls"].setup {
   filetypes = { "json", "jsonc" },
   on_attach = on_attach,
-  -- capabilities = capabilities_json_ls,
-  capabilities = capabilities,
+  capabilities = capabilities_json_ls,
+  -- capabilities = capabilities,
   settings = {
     json = {
       schemas = require('schemastore').json.schemas {

@@ -8,9 +8,27 @@ require("catppuccin").setup({
       surface2 = "#a3a7bc",
       surface3 = "#a3a7bc",
 
+      -- yellow = "#74C7EC",
+      -- yellow = "#0db9d7",
       yellow = "#2ac3de",
+      -- yellow = "#2ADED7",
+      -- yellow = "#41a6b5",
+      -- yellow = "#8ee2cf",
       green = "#F2CDCD",
-      maroon = "#CBA6F7",
+      -- red = "#ff007c",
+      -- maroon = "#F38BA8",
+      maroon = "#FAB387",
+      -- maroon = "#CA9EE6"
+      -- maroon = "#EBA0AC",
+      -- maroon = "#F5C2E7",
+      -- maroon = "#FD90E0"
+      -- maroon = "#B4BEFE",
+      -- maroon = "#ff007c",
+      -- maroon = "#BAC2DE",
+      -- maroon = "#89DCEB",
+      -- maroon = "#8ee2cf",
+      -- maroon = "#74C7EC"
+      -- maroon = "#CBA6F7",
 
       --
       -- yellow = "#F2CDCD",
@@ -102,8 +120,11 @@ vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
 
 -- vim.cmd [[highlight NeoTreeFileStatsHeader guifg=#3b4261]]
 -- vim.cmd [[highlight NeoTreeFileStats guifg=#3b4261]]
+-- #6C7086
 vim.cmd[[highlight NvimTreeGitDirty guifg=#f2cdcd]]
+-- vim.cmd[[highlight NvimTreeGitDirty guifg=#F9E2AF]]
 vim.cmd[[highlight NvimTreeGitStaged guifg=#8ee2cf]]
+vim.cmd[[highlight NvimTreeGitNew guifg=#89ddff]]
 vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
 
 -- vim.cmd([[highlight CursorLine guibg=#35394A]])
@@ -428,11 +449,11 @@ vim.api.nvim_set_hl(0, "DapUIStepOutNC", { link = 'DapUIStepOut' })
 
 
 -- vim.cmd([[highlight DiagnosticVirtualTextWarn guifg=#DCDCAA guibg=none]])
--- vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#0db9d7 guibg=none]])
+-- vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#2ac3de guibg=none]])
 -- vim.cmd([[highlight DiagnosticVirtualTextError guifg=#db4b4b]])
 -- vim.cmd([[highlight DiagnosticVirtualTextHint guibg=#233745]])
 vim.cmd([[highlight DiagnosticVirtualTextWarn guifg=#DCDCAA guibg=#233745]])
-vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#0db9d7 guibg=#192b38]])
+vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#2ac3de guibg=#192b38]])
 vim.cmd([[highlight DiagnosticVirtualTextError guifg=#db4b4b guibg=#362c3d]])
 vim.cmd([[highlight DiagnosticVirtualTextHint guifg=#89DCEB guibg=#233745]])
 
@@ -441,7 +462,7 @@ vim.cmd([[hi EndOfBuffer guifg=#737aa2]])
 
 
 vim.cmd([[highlight DiagnosticVirtualTextWarnLine guifg=#DCDCAA guibg=#292e42]])
-vim.cmd([[highlight DiagnosticVirtualTextInfoLine guifg=#0db9d7 guibg=#292e42]])
+vim.cmd([[highlight DiagnosticVirtualTextInfoLine guifg=#2ac3de guibg=#292e42]])
 vim.cmd([[highlight DiagnosticVirtualTextErrorLine guifg=#db4b4b guibg=#292e42]])
 vim.cmd([[highlight DiagnosticVirtualTextHintLine guifg=#89DCEB guibg=#292e42]])
 

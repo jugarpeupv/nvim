@@ -362,21 +362,21 @@ vim.keymap.set('n', '<leader>l0', '<CMD>DiffviewFileHistory --range=HEAD~10..HEA
 -- vim.cmd [[nnoremap q <Nop>]]
 vim.cmd [[tnoremap <C-n> <C-\><C-n>]]
 
--- vim.keymap.set("n", "<leader>th", "<cmd>sp|term<cr>i",
---   { silent = true, noremap = true }
--- )
-
--- vim.keymap.set("n", "<leader>tv", "<cmd>vsp|term<cr>i",
---   { silent = true, noremap = true }
--- )
-
-vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>",
-  {silent = true, noremap = true}
+vim.keymap.set("n", "<leader>th", "<cmd>sp|term<cr>i",
+  { silent = true, noremap = true }
 )
 
-vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>",
-  {silent = true, noremap = true}
+vim.keymap.set("n", "<leader>tv", "<cmd>vsp|term<cr>i",
+  { silent = true, noremap = true }
 )
+
+-- vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>",
+--   {silent = true, noremap = true}
+-- )
+
+-- vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>",
+--   {silent = true, noremap = true}
+-- )
 
 
 vim.cmd [[:tnoremap <C-Up> <C-\><C-N>:resize +5<cr>]]
@@ -387,9 +387,9 @@ vim.cmd [[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]]
 -- vim.cmd[[:tnoremap <C-o> <C-\><C-N><C-o>]]
 
 
--- vim.cmd[[:tnoremap <C-h> <C-\><C-N><C-w>h]]
--- vim.cmd[[:tnoremap <C-j> <C-\><C-N><C-w>j]]
--- vim.cmd[[:tnoremap <C-k> <C-\><C-N><C-w>k]]
+vim.cmd[[:tnoremap <C-h> <C-\><C-N><C-w>h]]
+vim.cmd[[:tnoremap <C-j> <C-\><C-N><C-w>j]]
+vim.cmd[[:tnoremap <C-k> <C-\><C-N><C-w>k]]
 -- vim.cmd[[:tnoremap <C-l> <C-\><C-N><C-w>l]]
 
 -- function _G.set_terminal_keymaps()

@@ -75,7 +75,7 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true     -- split vertical window to the right
 opt.splitbelow = true     -- split horizontal window to the bottom
 
-opt.iskeyword:append("-") -- consider string-string as whole word
+-- opt.iskeyword:append("-") -- consider string-string as whole word
 opt.laststatus = 3
 -- opt.winbar ="%=%m %f"
 

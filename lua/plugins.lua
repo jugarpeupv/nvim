@@ -1,5 +1,5 @@
 return {
-  { "HiPhish/nvim-ts-rainbow2",                after = "nvim-treesitter", },
+  { "HiPhish/nvim-ts-rainbow2",                     after = "nvim-treesitter", },
   { "github/copilot.vim", },
   { 'tpope/vim-repeat', },
   { "nvim-treesitter/nvim-treesitter-context", },
@@ -47,8 +47,8 @@ return {
   { "petertriho/nvim-scrollbar" },
   { "kkharji/sqlite.lua" },
   { "nvim-telescope/telescope-smart-history.nvim" },
-  { 'dyng/ctrlsf.vim',        branch = "feature/add-devicon" },
-  { 'junegunn/fzf',           build = "./install --all", },
+  { 'dyng/ctrlsf.vim',                              branch = "feature/add-devicon" },
+  { 'junegunn/fzf',                                 build = "./install --all", },
   { 'junegunn/fzf.vim', },
   { 'sindrets/winshift.nvim', },
   { 'stsewd/fzf-checkout.vim', },
