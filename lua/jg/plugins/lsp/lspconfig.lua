@@ -68,10 +68,11 @@ local on_attach = function(client, bufnr)
   -- keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)              -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
-  if client.server_capabilities.inlayHintProvider then
-    -- vim.lsp.buf.inlay_hint(bufnr, true)
-    vim.lsp.inlay_hint.enable(bufnr, true)
-  end
+  -- version 10 of nvim
+  -- if client.server_capabilities.inlayHintProvider then
+  --   -- vim.lsp.buf.inlay_hint(bufnr, true)
+  --   vim.lsp.inlay_hint.enable(bufnr, true)
+  -- end
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then

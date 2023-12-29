@@ -122,6 +122,13 @@ vim.cmd.colorscheme "catppuccin"
 vim.cmd([[highlight StatusLine guibg=#292e42]])
 vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
 
+-- vim.cmd([[hi MatchParen guibg=#394b70]])
+vim.cmd([[hi IlluminatedWordText guibg=#394b70]])
+vim.cmd([[hi IlluminatedWordRead guibg=#394b70]])
+vim.cmd([[hi IlluminatedWordWrite guibg=#394b70]])
+vim.cmd([[hi illuminatedCurWord guibg=#394b70]])
+vim.cmd([[hi illuminatedWord guibg=#394b70]])
+
 -- vim.cmd [[highlight NeoTreeFileStatsHeader guifg=#3b4261]]
 -- vim.cmd [[highlight NeoTreeFileStats guifg=#3b4261]]
 -- #6C7086

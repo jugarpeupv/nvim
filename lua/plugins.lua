@@ -31,7 +31,7 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig",                        event = "VeryLazy" },
   { "jose-elias-alvarez/typescript.nvim",           event = "VeryLazy" },
-  { "nvimtools/none-ls.nvim",              event = "VeryLazy" },
+  { "nvimtools/none-ls.nvim",                       event = "VeryLazy" },
   { "onsails/lspkind.nvim",                         event = "VeryLazy" },
   { "jayp0521/mason-null-ls.nvim",                  event = "VeryLazy" },
   { "mfussenegger/nvim-dap",                        event = "VeryLazy" },

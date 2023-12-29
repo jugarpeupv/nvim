@@ -214,7 +214,7 @@ keymap("n", "<Leader>ru", "<cmd>TypescriptRemoveUnused<cr>", opts)
 keymap("n", "<Leader>oi", "<cmd>TypescriptOrganizeImports<cr>", opts)
 
 -- Replace
-vim.cmd([[nnoremap <Leader>rr :%s///gc<Left><Left><Left><Left>]])
+vim.cmd([[nnoremap <Leader>rr :%s///gc<Left><Left><Left>]])
 vim.cmd([[xnoremap <Leader>rr :s///gc<Left><Left><Left>]])
 vim.cmd([[nnoremap <Leader>sw /\<\><Left><Left>]])
 
