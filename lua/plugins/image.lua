@@ -1,6 +1,7 @@
 return {
   '3rd/image.nvim',
   rocks = { "magick" },
+  event = "VeryLazy",
   config = function()
     -- default config
     require("image").setup({

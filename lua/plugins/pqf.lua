@@ -1,14 +1,16 @@
-return {
-  'yorickpeterse/nvim-pqf',
-  config = function()
-    require('pqf').setup({
-      signs = {
-        error = '',
-        warning = '',
-        info = '',
-        hint = "󰠠",
-      },
-      show_multiple_lines = false
-    })
-  end
-}
+return {}
+-- return {
+--   'yorickpeterse/nvim-pqf',
+--   event = "VeryLazy",
+--   config = function()
+--     require('pqf').setup({
+--       signs = {
+--         error = '',
+--         warning = '',
+--         info = '',
+--         hint = "󰠠",
+--       },
+--       show_multiple_lines = false
+--     })
+--   end
+-- }

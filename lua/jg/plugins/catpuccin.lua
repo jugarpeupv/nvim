@@ -11,6 +11,7 @@ require("catppuccin").setup({
       -- yellow = "#74C7EC",
       -- yellow = "#0db9d7",
       yellow = "#2ac3de",
+
       -- yellow = "#2ADED7",
       -- yellow = "#41a6b5",
       -- yellow = "#8ee2cf",
@@ -18,6 +19,7 @@ require("catppuccin").setup({
       -- red = "#ff007c",
       -- maroon = "#F38BA8",
       maroon = "#FAB387",
+      -- maroon = "#8ee2cf",
       -- maroon = "#CA9EE6"
       -- maroon = "#EBA0AC",
       -- maroon = "#F5C2E7",
@@ -61,6 +63,8 @@ require("catppuccin").setup({
     },
   },
   integrations = {
+    neotest = true,
+    markdown = true,
     cmp = true,
     hop = true,
     gitsigns = true,
@@ -97,7 +101,7 @@ require("catppuccin").setup({
   no_italic = false, -- Force no italic
   no_bold = false,   -- Force no bold
   styles = {
-    comments = {},
+    comments = { "italic" },
     conditionals = {},
     loops = {},
     functions = {},
@@ -124,8 +128,25 @@ vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
 vim.cmd[[highlight NvimTreeGitDirty guifg=#f2cdcd]]
 -- vim.cmd[[highlight NvimTreeGitDirty guifg=#F9E2AF]]
 vim.cmd[[highlight NvimTreeGitStaged guifg=#8ee2cf]]
+vim.cmd[[highlight NvimTreeExecFile gui=none guifg=#F38BA8]]
 vim.cmd[[highlight NvimTreeGitNew guifg=#89ddff]]
+vim.cmd[[highlight NvimTreeRootFolder gui=none]]
 vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
+
+-- vim.cmd([[hi @text.title.1.markdown  guifg=#F9E2AF]])
+vim.cmd([[hi @text.title.2.markdown  guifg=#89ddff]])
+vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])
+-- vim.cmd([[hi @text.title.1.markdown  guifg=#89ddff]])
+-- vim.cmd([[hi @text.title.2.markdown  guifg=#89B4FA]])
+-- vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])
+-- vim.cmd([[hi @text.title.3.markdown  guifg=#f2cdcd]])
+vim.cmd([[hi Ignore guifg=#394b70]])
+
+vim.cmd[[hi NeotestPassed guifg=#8ee2cf]]
+
+-- vim.cmd[[highlight EgrepifyFile gui=none guifg=#F38BA8]]
+vim.cmd[[highlight EgrepifyFile gui=none guifg=#f2cdcd]]
+vim.cmd[[highlight EgrepifyLnum gui=none guifg=#CDD6F4]]
 
 -- vim.cmd([[highlight CursorLine guibg=#35394A]])
 -- vim.cmd([[highlight CursorLine guibg=#3B4252]])
@@ -206,7 +227,7 @@ vim.cmd([[highlight DiffviewFilePanelCounter guifg=#89B4FA]])
 -- vim.cmd([[highlight DiffviewFilePanelSelected guifg=#f2cdcd]])
 vim.cmd([[highlight DiffviewFilePanelSelected guifg=none]])
 -- vim.cmd([[highlight TelescopeSelection guibg=#f2cdcd guifg = none]])
-vim.cmd([[highlight TelescopeSelection guibg=#394b70 guifg = none]])
+vim.cmd([[highlight TelescopeSelection guibg=#394b70 guifg = none gui=none]])
 -- vim.cmd([[highlight TelescopeMatching guibg=none guifg = #18a2fe]])
 vim.cmd([[highlight TelescopePreviewLine guibg=#394b70 gui = none]])
 -- vim.cmd([[highlight TelescopePreviewLine guibg=#004b72 gui = none]])
@@ -222,6 +243,7 @@ vim.cmd([[highlight TelescopePreviewLine guibg=#394b70 gui = none]])
 
 vim.cmd([[highlight! CmpPmenu guibg=none]])
 vim.cmd([[highlight! CmpPmenuBorder guifg=#394b70]])
+vim.cmd([[highlight! PmenuSel guibg=#394b70]])
 
 --- -------------------- COMMON
 
@@ -328,14 +350,14 @@ vim.cmd([[hi @property.class.scss guifg=#CBA6F7]])
 -- vim.cmd([[hi @parameter guifg=#B4BEFE]])
 
 
-vim.cmd([[highlight CmpItemKindText gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindVariable gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindMethod gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindSnippet gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindField gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindKeyword gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindFunction gui=bold,italic]])
-vim.cmd([[highlight CmpItemKindClass gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindText gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindVariable gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindMethod gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindSnippet gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindField gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindKeyword gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindFunction gui=bold,italic]])
+-- vim.cmd([[highlight CmpItemKindClass gui=bold,italic]])
 
 vim.cmd([[highlight @lsp.type.type guifg=#2ac3de]])
 vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
@@ -422,7 +444,7 @@ vim.cmd([[highlight ctrlsfMatch guifg=#F2CDCD guibg=none]])
 
 vim.cmd([[highlight @text.uri gui=none]])
 
-vim.cmd([[highlight QuickFixLine guibg=#264F78]])
+vim.cmd([[highlight QuickFixLine gui=none guibg=#264F78]])
 
 vim.cmd([[highlight TabLine guibg=none]])
 vim.cmd([[highlight TabLineSel guibg=none]])

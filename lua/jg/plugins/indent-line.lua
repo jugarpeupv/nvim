@@ -26,12 +26,17 @@ require("ibl").setup {
   indent = {
     char = "▏",
     -- tab_char = ">"
-    tab_char = ""
+    tab_char = "",
+    repeat_linebreak = true,
     -- tab_char = "┋"
     -- tab_char = { "a", "b", "c" },
     -- char = "┋"
   },
   whitespace = { remove_blankline_trail = false },
+  exclude = {
+    filetypes = { "dashboard" },
+    buftypes = { "terminal" },
+  }
 }
 
 -- vim.opt.list = true

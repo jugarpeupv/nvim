@@ -1,21 +1,21 @@
 local trouble = require("trouble.providers.telescope")
-local egrep_actions = require "telescope._extensions.egrepify.actions"
+local egrep_actions = require("telescope._extensions.egrepify.actions")
 
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
-local actions_live_grep_args = require("telescope-live-grep-args.actions");
+local actions = require("telescope.actions")
+local actions_live_grep_args = require("telescope-live-grep-args.actions")
 
-telescope.setup {
+telescope.setup({
   defaults = {
 
     -- prompt_prefix = " ",
     prompt_prefix = "> ",
     history = {
-      path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+      path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
       limit = 100,
     },
     selection_caret = " ",
@@ -26,6 +26,7 @@ telescope.setup {
     -- path_display = { "tail" },
     -- path_display = { shorten = { len = 5, exclude = { -1 } } },
     -- path_display = { shorten = { len = 3, exclude = { -1 } } },
+    -- path_display = { "hidden" },
     path_display = { truncate = 5 },
     wrap_results = false,
     vimgrep_arguments = {
@@ -35,9 +36,9 @@ telescope.setup {
       "--with-filename",
       "--line-number",
       "--column",
-      "--smart-case"
+      "--smart-case",
     },
-    layout_strategy = 'horizontal',
+    layout_strategy = "horizontal",
     sorting_strategy = "ascending",
     layout_config = {
       horizontal = { width = 0.97, height = 0.9, preview_width = 0.45 },
@@ -181,13 +182,13 @@ telescope.setup {
     egrepify = {
       -- intersect tokens in prompt ala "str1.*str2" that ONLY matches
       -- if str1 and str2 are consecutively in line with anything in between (wildcard)
-      AND = true,                   -- default
-      permutations = false,         -- opt-in to imply AND & match all permutations of prompt tokens
-      lnum = true,                  -- default, not required
-      lnum_hl = "EgrepifyLnum",     -- default, not required, links to `Constant`
-      col = false,                  -- default, not required
-      col_hl = "EgrepifyCol",       -- default, not required, links to `Constant`
-      title = true,                 -- default, not required, show filename as title rather than inline
+      AND = true,                -- default
+      permutations = false,      -- opt-in to imply AND & match all permutations of prompt tokens
+      lnum = false,              -- default, not required
+      lnum_hl = "EgrepifyLnum",  -- default, not required, links to `Constant`
+      col = false,               -- default, not required
+      col_hl = "EgrepifyCol",    -- default, not required, links to `Constant`
+      title = true,              -- default, not required, show filename as title rather than inline
       filename_hl = "EgrepifyFile", -- default, not required, links to `Title`
       -- suffix = long line, see screenshot
       -- EXAMPLE ON HOW TO ADD PREFIX!
@@ -196,12 +197,50 @@ telescope.setup {
         -- example prompt: ! sorter
         -- matches all lines that do not comprise sorter
         -- rg --invert-match -- sorter
+        -- DEFAULTS
+        -- filter for file suffixes
+        -- example prompt: #lua,md $MY_PROMPT
+        -- searches with ripgrep prompt $MY_PROMPT in files with extensions lua and md
+        -- i.e. rg --glob="*.{lua,md}" -- $MY_PROMPT
+        ["#"] = {
+          -- #$REMAINDER
+          -- # is caught prefix
+          -- `input` becomes $REMAINDER
+          -- in the above example #lua,md -> input: lua,md
+          flag = "glob",
+          cb = function(input)
+            return string.format([[*.{%s}]], input)
+          end,
+        },
+        -- filter for (partial) folder names
+        -- example prompt: >conf $MY_PROMPT
+        -- searches with ripgrep prompt $MY_PROMPT in paths that have "conf" in folder
+        -- i.e. rg --glob="**/conf*/**" -- $MY_PROMPT
+        [">"] = {
+          flag = "glob",
+          cb = function(input)
+            return string.format([[**/{%s}*/**]], input)
+          end,
+        },
+        -- filter for (partial) file names
+        -- example prompt: &egrep $MY_PROMPT
+        -- searches with ripgrep prompt $MY_PROMPT in paths that have "egrep" in file name
+        -- i.e. rg --glob="*egrep*" -- $MY_PROMPT
+        ["&"] = {
+          flag = "glob",
+          cb = function(input)
+            return string.format([[*{%s}*]], input)
+          end,
+        },
+        ["?"] = {
+          flag = "no-ignore",
+        },
         ["!"] = {
           flag = "invert-match",
         },
         -- HOW TO OPT OUT OF PREFIX
         -- ^ is not a default prefix and safe example
-        ["^"] = false
+        ["^"] = false,
       },
       -- default mappings
       mappings = {
@@ -216,10 +255,10 @@ telescope.setup {
       },
     },
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown {
+      require("telescope.themes").get_dropdown({
         prompt_prefix = "> ",
         initial_mode = "normal",
-      },
+      }),
     },
     live_grep_args = {
       auto_quoting = false,
@@ -227,14 +266,14 @@ telescope.setup {
         i = {
           ["<C-l>"] = actions_live_grep_args.quote_prompt(),
           ["<C-k>"] = actions.move_selection_previous,
-          ["<C-i>"] = actions_live_grep_args.quote_prompt({ postfix = ' --iglob ' }),
-          ["<C-f>"] = actions_live_grep_args.quote_prompt({ postfix = ' -t' }),
+          ["<C-i>"] = actions_live_grep_args.quote_prompt({ postfix = " --iglob " }),
+          ["<C-f>"] = actions_live_grep_args.quote_prompt({ postfix = " -t" }),
         },
-      }
+      },
     },
     arecibo = {
-      ["selected_engine"]   = 'google',
-      ["url_open_command"]  = 'xdg-open',
+      ["selected_engine"] = "google",
+      ["url_open_command"] = "xdg-open",
       ["show_http_headers"] = false,
       ["show_domain_icons"] = false,
     },
@@ -251,11 +290,11 @@ telescope.setup {
     -- },
     bookmarks = {
       -- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
-      selected_browser = 'chrome',
-      profile_name = 'MAR',
+      selected_browser = "chrome",
+      profile_name = "MAR",
 
       -- Either provide a shell command to open the URL
-      url_open_command = 'open',
+      url_open_command = "open",
 
       -- Or provide the plugin name which is already installed
       -- Available: 'vim_external', 'open_browser'
@@ -267,17 +306,17 @@ telescope.setup {
       -- Provide a custom profile name for Firefox
       firefox_profile_name = nil,
     },
-  }
-}
+  },
+})
 
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
-telescope.load_extension('fzf')
-telescope.load_extension('harpoon')
-telescope.load_extension('ui-select')
-telescope.load_extension('bookmarks')
+telescope.load_extension("fzf")
+telescope.load_extension("harpoon")
+telescope.load_extension("ui-select")
+telescope.load_extension("bookmarks")
 -- telescope.load_extension('media_files')
-telescope.load_extension('egrepify')
+telescope.load_extension("egrepify")
 -- telescope.load_extension('node_modules')
 -- telescope.load_extension('projects')
 -- telescope.load_extension('node_modules')
@@ -286,4 +325,3 @@ telescope.load_extension('egrepify')
 -- require('telescope').load_extension('fzy_native')
 -- require('telescope').load_extension('gh')
 -- require("telescope").load_extension("media_files")
-

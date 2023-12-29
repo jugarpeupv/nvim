@@ -1,7 +1,7 @@
 local opt = vim.opt -- for conciseness
 
 -- line numbers
-opt.relativenumber = false -- show relative line numbers
+opt.relativenumber = true -- show relative line numbers
 opt.number = true         -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
@@ -9,10 +9,11 @@ opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2    -- 2 spaces for indent width
 opt.expandtab = true  -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
+opt.shortmess:append("I")
 
 -- line wrapping
 -- opt.wrap = true -- disable line wrapping
-opt.wrap = false -- disable line wrapping
+opt.wrap = true -- disable line wrapping
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
@@ -40,7 +41,7 @@ opt.hidden = true
 opt.formatoptions = opt.formatoptions - "c" - "r" - "o"
 opt.diffopt = { "iwhiteall", "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "followwrap" }
 opt.pumblend = 0
-opt.pumheight = 7
+opt.pumheight = 10
 vim.cmd([[set fillchars+=diff:╱]])
 vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
@@ -48,14 +49,13 @@ vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
 vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
 
-vim.cmd [[set breakindent]]
+vim.cmd([[set breakindent]])
 
 -- ListChars
-vim.cmd [[set showbreak=↪\]]
+vim.cmd([[set showbreak=↪\]])
 
 vim.o.ls = 0
 -- vim.o.ch = 0
-
 
 -- appearance
 
@@ -75,7 +75,7 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true     -- split vertical window to the right
 opt.splitbelow = true     -- split horizontal window to the bottom
 
--- opt.iskeyword:append("-") -- consider string-string as whole word
+opt.iskeyword:append("-") -- consider string-string as whole word
 opt.laststatus = 3
 -- opt.winbar ="%=%m %f"
 
@@ -84,19 +84,17 @@ opt.laststatus = 3
 opt.winblend = 0
 
 -- Folding
-vim.cmd [[set foldmethod=indent]]
-vim.cmd [[set foldnestmax=10]]
-vim.cmd [[set nofoldenable]]
-vim.cmd [[set foldlevelstart=20]]
+vim.cmd([[set foldmethod=indent]])
+vim.cmd([[set foldnestmax=10]])
+vim.cmd([[set nofoldenable]])
+vim.cmd([[set foldlevelstart=20]])
 
 -- vim.cmd([[let &t_Cs = "\e[4:3m]"]])
 -- vim.cmd([[let &t_Ce = "\e[4:0m]"]])
 
-
-vim.cmd [[set noshowmode]]
-vim.cmd [[let g:markdown_folding=1]]
+vim.cmd([[set noshowmode]])
+vim.cmd([[let g:markdown_folding=1]])
 -- vim.cmd[[set shada+=r/mnt/exdisk]]
-
 
 opt.list = true
 -- opt.listchars:append("space:⋅")
@@ -106,6 +104,4 @@ opt.listchars:append("trail: ")
 -- vim.cmd[[set statusline+=%#Container#%{g:currentContainer}]]
 -- vim.cmd([[hi Container guifg=#BADA55 guibg=Black]])
 
-vim.cmd [[let g:copilot_filetypes = { '*': v:false, 'typescript': v:true, 'ts': v:true, 'html': v:true, 'TelescopePrompt': v:false }]]
-
-vim.cmd [[let g:TerminusInsertCursorShape=1]]
+vim.cmd([[let g:TerminusInsertCursorShape=1]])

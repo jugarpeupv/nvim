@@ -30,16 +30,21 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   -- set keybinds
-  keymap.set("n", "gi", "<cmd>Lspsaga finder<CR>", opts)                        -- show definition, references
+  keymap.set("n", "gi", "<cmd>Lspsaga finder<CR>", opts)                       -- show definition, references
   -- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
   keymap.set("n", "<leader>gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-  keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)               -- see definition and make edits in window
-  keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)          -- see definition and make edits in window
+  keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)              -- see definition and make edits in window
+  keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)         -- see definition and make edits in window
   -- keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-  keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)           -- see available code actions
+  keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)          -- see available code actions
   keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
-  keymap.set("n", "gR", "<cmd>lua require('telescope.builtin').lsp_references({ include_declaration = false })<CR>", opts)
+  keymap.set(
+    "n",
+    "gR",
+    "<cmd>lua require('telescope.builtin').lsp_references({ include_declaration = false })<CR>",
+    opts
+  )
   -- keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
   keymap.set("n", "<leader>fo", "<cmd>lua vim.lsp.buf.format({ async = true})<cr>", opts)
   keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -50,18 +55,23 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "<leader>ot", "<cmd>Lspsaga outline<CR>", opts)
 
   -- keymap.set("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-  keymap.set("n", "gl", '<cmd>lua vim.diagnostic.open_float()<CR>', opts) -- show  diagnostics for line
+  keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- show  diagnostics for line
   keymap.set("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
   -- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
   keymap.set("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
   keymap.set("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
   -- keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                    -- show documentation for what is under cursor
-  keymap.set({ 'n' }, 'gh', function()
-    require('lsp_signature').toggle_float_win()
+  keymap.set({ "n" }, "gh", function()
+    require("lsp_signature").toggle_float_win()
   end, opts)
-  keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)       -- show documentation for what is under cursor
+  keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)      -- show documentation for what is under cursor
   -- keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)              -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
+
+  if client.server_capabilities.inlayHintProvider then
+    -- vim.lsp.buf.inlay_hint(bufnr, true)
+    vim.lsp.inlay_hint.enable(bufnr, true)
+  end
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then
@@ -69,9 +79,9 @@ local on_attach = function(client, bufnr)
     -- ih.on_attach(client, bufnr)
     keymap.set("n", "<Leader>rf", ":TypescriptRenameFile<cr>", opts)
     keymap.set("n", "<Leader>ia", ":TypescriptAddMissingImports<cr>", opts)
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")             -- rename file and update imports
-    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>")        -- organize imports (not in youtube nvim video)
-    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")           -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")           -- rename file and update imports
+    keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>")      -- organize imports (not in youtube nvim video)
+    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")         -- remove unused variables (not in youtube nvim video)
     keymap.set("n", "gd", "<cmd>TypescriptGoToSourceDefinition<CR>", opts) -- see definition and make edits in window
     -- require("lsp-inlayhints").on_attach(client, bufnr)
   end
@@ -87,7 +97,6 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
-
 
 local signs_diag = {
   { name = "DiagnosticSignError", text = "" },
@@ -121,8 +130,6 @@ local config = {
 }
 
 vim.diagnostic.config(config)
-
-
 
 -- configure html server
 lspconfig["html"].setup({
@@ -162,8 +169,7 @@ typescript.setup({
           includeInlayVariableTypeHints = false,
         },
       },
-    }
-
+    },
   },
 })
 
@@ -173,17 +179,16 @@ lspconfig["cssls"].setup({
   on_attach = on_attach,
 })
 
-lspconfig["pyright"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
+-- lspconfig["pyright"].setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
 -- configure tailwindcss server
 lspconfig["tailwindcss"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts')
+  root_dir = root_pattern("tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "postcss.config.ts"),
 })
 
 lspconfig["angularls"].setup({
@@ -199,19 +204,18 @@ lspconfig["groovyls"].setup({
   cmd = { "java", "-jar", "/Users/jgarcia/.config/groovy-language-server/build/libs/groovy-language-server-all.jar" },
 })
 
-lspconfig['bashls'].setup {
+lspconfig["bashls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
 local capabilities_json_ls = vim.lsp.protocol.make_client_capabilities()
 capabilities_json_ls.textDocument.completion.completionItem.snippetSupport = true
 
-
-lspconfig["eslint"].setup {
+lspconfig["eslint"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
 -- lspconfig["yamlls"].setup {
 --   on_attach = on_attach,
@@ -230,14 +234,14 @@ lspconfig["eslint"].setup {
 --   },
 -- }
 
-lspconfig["jsonls"].setup {
+lspconfig["jsonls"].setup({
   filetypes = { "json", "jsonc" },
   on_attach = on_attach,
-  capabilities = capabilities_json_ls,
-  -- capabilities = capabilities,
+  -- capabilities = capabilities_json_ls,
+  capabilities = capabilities,
   settings = {
     json = {
-      schemas = require('schemastore').json.schemas {
+      schemas = require("schemastore").json.schemas({
         -- extra = {
         --   {
         --     description = 'My custom JSON schema',
@@ -250,52 +254,58 @@ lspconfig["jsonls"].setup {
         --   -- 'catalog-info.yaml',
         --   -- 'mkdocs.yml'
         -- }
-      },
+      }),
       validate = { enable = true },
-    }
-  }
-}
+    },
+  },
+})
 
-lspconfig["rust_analyzer"].setup {
+lspconfig["rust_analyzer"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
-    ['rust-analyzer'] = {
+    ["rust-analyzer"] = {
       diagnostics = {
-        enable = false,
-      }
-    }
-  }
-}
+        enable = true,
+      },
+    },
+  },
+})
 
-lspconfig["dockerls"].setup {
+lspconfig["dockerls"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
-lspconfig["docker_compose_language_service"].setup {
+require("lspconfig").docker_compose_language_service.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
 
-require 'lspconfig'.docker_compose_language_service.setup {
+require("lspconfig").cssmodules_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
-
-require 'lspconfig'.cssmodules_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+})
 
 -- lspconfig["marksman"].setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,
 -- }
 
-require'lspconfig'.nxls.setup({
+require("lspconfig").nxls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
+-- require("lspconfig").emmet_language_server.setup({
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
+
+require("lspconfig").emmet_ls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
@@ -305,7 +315,7 @@ lspconfig["lua_ls"].setup({
     Lua = {
       -- make the language server recognize "vim" global
       diagnostics = {
-        globals = { "vim", "jit", "bit", "Config" }
+        globals = { "vim", "jit", "bit", "Config" },
       },
       workspace = {
         -- make language server aware of runtime files

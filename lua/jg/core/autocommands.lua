@@ -94,13 +94,13 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 
 
 -- Neovim version 10
--- function get_client(event)
+-- local function get_client(event)
 --   local client_id = event.data.client_id
 --   local client = vim.lsp.get_client_by_id(client_id)
---
+
 --   return client
 -- end
---
+
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --   callback = function(ev)
 --     local client = get_client(ev)
@@ -108,8 +108,7 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 --       return
 --     end
 --     if client.server_capabilities.inlayHintProvider then
---       -- vim.lsp.buf.inlay_hint(0, nil)
---       vim.lsp.inlay_hint(0, nil)
+--       vim.lsp.inlay_hint.enable(0, true)
 --     end
 --   end
 -- })
@@ -123,6 +122,12 @@ vim.cmd([[
 vim.cmd([[
   augroup WrapMarkdownAu
   autocmd! FileType markdown set wrap
+  augroup END
+]])
+
+vim.cmd([[
+  augroup WrapTelescopePreview
+  autocmd! FileType TelescopePreview set wrap
   augroup END
 ]])
 

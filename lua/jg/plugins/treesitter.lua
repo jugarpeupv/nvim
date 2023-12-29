@@ -30,14 +30,15 @@ treesitter.setup({
     "css",
     "markdown",
     "markdown_inline",
-    "svelte",
-    "graphql",
+    -- "svelte",
+    -- "graphql",
     "bash",
     "lua",
     "vim",
     "dockerfile",
     "gitignore",
-    "dap_repl"
+    "dap_repl",
+    "regex"
   },
   -- auto install above language parsers
   auto_install = true,

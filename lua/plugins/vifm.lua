@@ -1,1 +1,1 @@
-return { "vifm/vifm.vim", }
+return { "vifm/vifm.vim", event = "VeryLazy" }

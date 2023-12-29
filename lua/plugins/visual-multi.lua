@@ -1,5 +1,6 @@
 return {
   'mg979/vim-visual-multi',
+  event = "VeryLazy",
   config = function()
     vim.cmd([[highlight! VM_Mono guibg=#004b72]])
     vim.cmd([[highlight! VM_Extend guibg=#004b72]])

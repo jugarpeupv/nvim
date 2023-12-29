@@ -329,7 +329,8 @@ nvim_tree.setup({
           -- untracked = "★",
           untracked = "?",
           -- deleted = "",
-          deleted = "✗",
+          -- deleted = "✗",
+          deleted = "",
           -- ignored = "◌",
           -- ignored = " "
           ignored   = " ",
@@ -375,8 +376,8 @@ nvim_tree.setup({
   },
   filesystem_watchers = {
     enable = false,
-    debounce_delay = 50,
-    ignore_dirs = {},
+    debounce_delay = 100,
+    ignore_dirs = { "node_modules" },
   },
   actions = {
     use_system_clipboard = true,
