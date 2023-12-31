@@ -4,6 +4,7 @@ return {
     -- "antoinemadec/FixCursorHold.nvim",
     "nvim-neotest/neotest-jest",
   },
+  event = "VeryLazy",
 
   config = function()
     require("neotest").setup({

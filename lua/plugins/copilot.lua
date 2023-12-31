@@ -1,5 +1,6 @@
 return {
   "github/copilot.vim",
+  event = "VeryLazy",
   config = function()
     vim.cmd(
       [[let g:copilot_filetypes = { '*': v:false, 'typescript': v:true, 'ts': v:true, 'html': v:true, 'TelescopePrompt': v:false, 'sagarename': v:false }]]

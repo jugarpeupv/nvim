@@ -1,6 +1,7 @@
 -- return {}
 return {
   "RRethy/vim-illuminate",
+  event = "VeryLazy",
   config = function()
     -- default configuration
     require("illuminate").configure({
@@ -66,5 +67,5 @@ return {
       -- case_insensitive_regex: sets regex case sensitivity
       case_insensitive_regex = false,
     })
-  end
+  end,
 }

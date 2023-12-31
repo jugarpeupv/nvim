@@ -2,6 +2,7 @@ return {}
   -- return {
   --   "nvim-neo-tree/neo-tree.nvim",
   --   branch = "v3.x",
+  --   event = "VeryLazy",
   --   dependencies = {
   --     "nvim-lua/plenary.nvim",
   --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -22,9 +23,9 @@ return {}
   --     require("neo-tree").setup({
   --       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
   --       popup_border_style = "rounded",
-  --       enable_git_status = false,
+  --       enable_git_status = true,
   --       enable_diagnostics = true,
-  --       enable_normal_mode_for_inputs = false,                             -- Enable normal mode for input dialogs.
+  --       enable_normal_mode_for_inputs = true,                             -- Enable normal mode for input dialogs.
   --       open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
   --       sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
   --       sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
@@ -37,7 +38,7 @@ return {}
   --       --   end , -- this sorts files and directories descendantly
   --       default_component_configs = {
   --         container = {
-  --           enable_character_fade = false
+  --           enable_character_fade = true 
   --         },
   --         indent = {
   --           indent_size = 2,
@@ -65,9 +66,9 @@ return {}
   --           highlight = "NeoTreeFileIcon"
   --         },
   --         modified = {
-  --           -- symbol = "[+]",
+  --           symbol = "[+]",
   --           -- highlight = "NeoTreeModified",
-  --           symbol = "!",
+  --           -- symbol = "!",
   --           highlight = "NeoTreeModified",
   --         },
   --         name = {
@@ -75,27 +76,27 @@ return {}
   --           use_git_status_colors = true,
   --           highlight = "NeoTreeFileName",
   --         },
-  --         git_status = {
-  --           symbols = {
-  --             -- Change type
-  --             -- added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-  --             -- modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-  --             added     = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
-  --             modified  = "!", -- or "", but this is redundant info if you use git_status_colors on the name
-  --             deleted   = "✖", -- this can only be used in the git_status source
-  --             renamed   = "󰁕", -- this can only be used in the git_status source
-  --             -- Status type
-  --             untracked = "",
-  --             ignored   = "",
-  --             -- unstaged  = "󰄱",
-  --             -- staged    = "",
-  --             unstaged  = "",
-  --             staged    = "",
-  --             -- unstaged  = "!",
-  --             -- staged    = "+",
-  --             conflict  = "",
-  --           }
-  --         },
+  --         -- git_status = {
+  --         --   symbols = {
+  --         --     -- Change type
+  --         --     -- added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+  --         --     -- modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+  --         --     added     = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
+  --         --     modified  = "!", -- or "", but this is redundant info if you use git_status_colors on the name
+  --         --     deleted   = "✖", -- this can only be used in the git_status source
+  --         --     renamed   = "󰁕", -- this can only be used in the git_status source
+  --         --     -- Status type
+  --         --     untracked = "",
+  --         --     ignored   = "",
+  --         --     -- unstaged  = "󰄱",
+  --         --     -- staged    = "",
+  --         --     unstaged  = "",
+  --         --     staged    = "",
+  --         --     -- unstaged  = "!",
+  --         --     -- staged    = "+",
+  --         --     conflict  = "",
+  --         --   }
+  --         -- },
   --         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
   --         file_size = {
   --           enabled = true,
