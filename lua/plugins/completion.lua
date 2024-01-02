@@ -1,17 +1,16 @@
+-- return {}
 return {
-  { "hrsh7th/cmp-nvim-lua", event = "VeryLazy" },
-  { "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
-  { "hrsh7th/cmp-buffer",   event = "VeryLazy" },
-  { "hrsh7th/cmp-path",     event = "VeryLazy" },
+  { "hrsh7th/cmp-nvim-lua",  },
+  { "hrsh7th/cmp-nvim-lsp",  },
+  { "hrsh7th/cmp-buffer",    },
+  { "hrsh7th/cmp-path",      },
   {
     "L3MON4D3/LuaSnip",
-    event = "VeryLazy",
     dependencies = { "saadparwaiz1/cmp_luasnip" },
   },
-  { "rafamadriz/friendly-snippets", event = "VeryLazy" },
+  { "rafamadriz/friendly-snippets",  },
   {
     "hrsh7th/nvim-cmp",
-    event = "VeryLazy",
     config = function()
       -- import nvim-cmp plugin safely
       local cmp_status, cmp = pcall(require, "cmp")
@@ -137,10 +136,10 @@ return {
               nvim_lua = "[Lua]",
               latex_symbols = "[Latex]",
             },
-            before = function(entry, vim_item)
-              vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
-              return vim_item
-            end,
+            -- before = function(entry, vim_item)
+            --   vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+            --   return vim_item
+            -- end,
           }),
           -- format = function (entry, vim_item)
           --   vim_item.kind = lspkind.presets.default[vim_item.kind]

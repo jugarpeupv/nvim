@@ -88,7 +88,7 @@ vim.cmd([[
 -- https://www.reddit.com/r/neovim/comments/14bcfmb/nonzero_exit_code/
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
   callback = function()
-    vim.cmd("sleep 50m")
+    vim.cmd("sleep 10m")
   end,
 })
 

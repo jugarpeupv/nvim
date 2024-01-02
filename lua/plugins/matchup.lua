@@ -1,1 +1,2 @@
-return { "andymass/vim-matchup", event = "VeryLazy" }
+-- return {}
+return { "andymass/vim-matchup" }

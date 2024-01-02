@@ -1,8 +1,9 @@
 return {
   "catppuccin/nvim",
   -- dependencies = { "mg979/vim-visual-multi" },
-  priority = 2000,
-  -- event = "VeryLazy",
+  priority = 1000,
+
+  -- 
   config = function()
     require("catppuccin").setup({
       flavour = "mocha", -- latte, frappe, macchiato, or mocha
@@ -143,6 +144,7 @@ return {
     vim.cmd [[highlight NvimTreeGitStaged guifg=#8ee2cf]]
     vim.cmd [[highlight NvimTreeExecFile gui=none guifg=#F38BA8]]
     vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#737aa2]]
+    -- vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#EFF1F5]]
     vim.cmd [[highlight NvimTreeGitNew guifg=#89ddff]]
     vim.cmd [[highlight NvimTreeRootFolder gui=none]]
     vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
@@ -159,7 +161,8 @@ return {
     vim.cmd [[hi NeotestPassed guifg=#8ee2cf]]
 
     -- vim.cmd[[highlight EgrepifyFile gui=none guifg=#F38BA8]]
-    vim.cmd [[highlight EgrepifyFile gui=none guifg=#f2cdcd]]
+    vim.cmd [[highlight EgrepifyFile gui=none guifg=#FAB387]]
+    -- vim.cmd [[highlight EgrepifyFile gui=none guifg=#f2cdcd]]
     vim.cmd [[highlight EgrepifyLnum gui=none guifg=#CDD6F4]]
 
     -- vim.cmd([[highlight CursorLine guibg=#35394A]])
@@ -186,6 +189,9 @@ return {
     vim.cmd([[highlight @ibl.whitespace.char.1 guifg=#3b4251]])
     vim.cmd([[highlight @ibl.scope.char.1 guifg=#737aa2]])
     vim.cmd([[highlight @ibl.scope.underline.1 guisp=#737aa2]])
+
+    vim.cmd([[highlight IblIndent guifg=#3b4251]])
+    vim.cmd([[highlight IblScope guifg=#737aa2]])
 
 
 

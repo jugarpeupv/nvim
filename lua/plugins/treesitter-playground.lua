@@ -1,4 +1,4 @@
+-- return {}
 return {
-  "nvim-treesitter/playground",
-  event = "VeryLazy",
+  "nvim-treesitter/playground"
 }

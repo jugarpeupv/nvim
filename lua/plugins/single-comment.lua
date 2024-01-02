@@ -1,7 +1,6 @@
 return {
   "lucastavaresa/SingleComment.nvim",
   -- keybindings = { { { "n", "v" }, "gcc" }, { "n", "gca" } },
-  event = "VeryLazy",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "JoosepAlviste/nvim-ts-context-commentstring",

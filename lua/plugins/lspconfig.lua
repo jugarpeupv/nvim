@@ -1,6 +1,6 @@
+-- return {}
 return {
   "neovim/nvim-lspconfig",
-  event = "VeryLazy",
   config = function()
     -- import lspconfig plugin safely
     local lspconfig_status, lspconfig = pcall(require, "lspconfig")

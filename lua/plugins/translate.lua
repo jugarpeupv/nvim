@@ -1,3 +1,4 @@
+-- return {}
 return {
   "uga-rosa/translate.nvim",
   event = "VeryLazy",

@@ -1,3 +1,4 @@
+-- return {}
 return {
   'dhruvmanila/browser-bookmarks.nvim',
   version = '*',

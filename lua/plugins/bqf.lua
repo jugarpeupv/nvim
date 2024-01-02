@@ -15,7 +15,7 @@ return {
       auto_enable = true,
       auto_resize_height = true, -- highly recommended enable
       preview = {
-        border = "",
+        border = "single",
         buf_label = true,
         delay_syntax = 10,
         should_preview_cb = function()

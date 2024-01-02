@@ -1,6 +1,7 @@
+-- return {}
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  
   config = function()
     local colors = {
       blue = "#9CDCFE",

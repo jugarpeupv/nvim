@@ -1,7 +1,7 @@
+-- return {}
 return {
   "folke/trouble.nvim",
   dependencies = "nvim-tree/nvim-web-devicons",
-  event = "VeryLazy",
   config = function()
     require("trouble").setup {
       position = "right", -- position of the list can be: bottom, top, left, right

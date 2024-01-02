@@ -1,3 +1,4 @@
+-- return {}
 return {
   'toppair/peek.nvim',
   event = "VeryLazy",

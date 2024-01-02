@@ -132,9 +132,9 @@ local telescope = require("telescope")
 
 -- keymap("n", "<Leader>fl", "<cmd>lua require('telescope.builtin').live_grep({ group_by = 'filename', disable_devicons = true })<CR>", opts);
 
-vim.keymap.set({ "n", "v" }, "<Leader>ff", "<cmd>Telescope egrepify<cr>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>Telescope egrepify<cr>", opts)
 
-vim.keymap.set({ "n", "v" }, "<Leader>fr", function()
+vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
 	telescope.extensions.live_grep_args.live_grep_raw({
 		-- group_by = "filename",
 		-- disable_devicons = true,
@@ -431,8 +431,6 @@ vim.keymap.set("n", "Cn", "<Plug>(git-conflict-next-conflict)")
 local actions = require("diffview.actions")
 
 vim.keymap.set("n", "-", actions.toggle_stage_entry)
-
-vim.keymap.set("n", "<leader><leader>j", [[<cmd>lua require("jenkinsfile_linter").validate()<CR>]])
 
 if vim.lsp.inlay_hint then
 	vim.keymap.set("n", "<leader>ih", function()

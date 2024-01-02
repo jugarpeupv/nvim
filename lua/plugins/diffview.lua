@@ -1,6 +1,7 @@
+-- return {}
 return {
   "sindrets/diffview.nvim",
-  event = "VeryLazy",
+  
   config = function()
     -- Lua
     local actions = require("diffview.actions")
@@ -142,6 +143,7 @@ return {
               },
             })
           end
+          vim.cmd("hi DiffviewDiffAddAsDelete guifg=none")
 
           view.emitter:on("post_layout", post_layout)
           post_layout()

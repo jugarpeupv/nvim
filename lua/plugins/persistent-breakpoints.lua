@@ -1,3 +1,4 @@
+-- return {}
 return {
   'Weissle/persistent-breakpoints.nvim',
   event = "VeryLazy",

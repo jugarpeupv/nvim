@@ -9,7 +9,7 @@ opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
 opt.shiftwidth = 2    -- 2 spaces for indent width
 opt.expandtab = true  -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
-opt.shortmess:append("I")
+-- opt.shortmess:append("I") -- remove :intro
 
 -- line wrapping
 -- opt.wrap = true -- disable line wrapping
@@ -84,16 +84,16 @@ opt.laststatus = 3
 opt.winblend = 0
 
 -- Folding
--- vim.cmd([[set foldmethod=indent]])
--- vim.cmd([[set nofoldenable]])
+vim.cmd([[set foldmethod=indent]])
+vim.cmd([[set nofoldenable]])
+vim.cmd([[set foldlevelstart=20]])
+vim.cmd([[set foldnestmax=10]])
+
 -- vim.cmd([[set foldnestmax=10]])
 -- vim.cmd([[set foldlevelstart=20]])
-
-vim.cmd([[set foldnestmax=10]])
-vim.cmd([[set foldlevelstart=20]])
-vim.cmd([[set foldmethod=expr]])
-vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
-vim.cmd([[set nofoldenable]])
+-- vim.cmd([[set foldmethod=expr]])
+-- vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
+-- vim.cmd([[set nofoldenable]])
 
 -- vim.cmd([[let &t_Cs = "\e[4:3m]"]])
 -- vim.cmd([[let &t_Ce = "\e[4:0m]"]])

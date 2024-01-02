@@ -1,5 +1,5 @@
-return
-{
+-- return {}
+return {
   "norcalli/nvim-colorizer.lua",
   event = "VeryLazy",
   config = function()

@@ -11,10 +11,11 @@
 --   },
 -- }
 
+-- return {}
 return {
   "jugarpe/barbecue.nvim",
   name = "barbecue",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   -- version = "*",
   dependencies = {
     "SmiteshP/nvim-navic",
