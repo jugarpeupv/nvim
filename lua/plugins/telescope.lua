@@ -192,13 +192,13 @@ return {
         --   extension_config_key = value,
         -- }
         -- please take a look at the readme of the extension you want to configure
-        -- fzf = {
-        --   fuzzy = true,                    -- false will only do exact matching
-        --   override_generic_sorter = true,  -- override the generic sorter
-        --   override_file_sorter = true,     -- override the file sorter
-        --   case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-        --   -- the default case_mode is "smart_case"
-        -- },
+        fzf = {
+          fuzzy = true,                    -- false will only do exact matching
+          override_generic_sorter = true,  -- override the generic sorter
+          override_file_sorter = true,     -- override the file sorter
+          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        },
         -- egrepify = {
         --   -- intersect tokens in prompt ala "str1.*str2" that ONLY matches
         --   -- if str1 and str2 are consecutively in line with anything in between (wildcard)
@@ -331,10 +331,10 @@ return {
 
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
-    -- telescope.load_extension("fzf")
-    -- telescope.load_extension("harpoon")
-    -- telescope.load_extension("ui-select")
-    -- telescope.load_extension("bookmarks")
+    telescope.load_extension("fzf")
+    telescope.load_extension("harpoon")
+    telescope.load_extension("ui-select")
+    telescope.load_extension("bookmarks")
     -- telescope.load_extension('media_files')
     -- telescope.load_extension("egrepify")
     -- telescope.load_extension('node_modules')
