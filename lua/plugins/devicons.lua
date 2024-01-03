@@ -35,7 +35,7 @@ return {
 				dockerfile = {
 					icon = "",
 					color = "#9CDCFE",
-					name = "Dockerfile",
+					name = "Dockerfile4",
 				},
 				groovy = {
 					icon = "",
@@ -152,7 +152,8 @@ return {
 					name = "Gitignore",
 				},
 				[".dockerignore"] = { icon = "", color = "#9CDCFE", name = "DockerfileIgnore" },
-				-- ["Dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile2" },
+				["Dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile2" },
+				["dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile5" },
 				["app.routes.ts"] = { icon = "󰑪", color = "#73daca", name = "AngularRoutes" },
 				["webpack.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfig" },
 				["webpack.prod.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigProd" },
@@ -193,6 +194,7 @@ return {
 
 				--[[ ["project.json"] = { icon = "", color = '#9CDCFE', name = 'ProjectJson' }, ]]
 				["project.json"] = { icon = "", color = "#9CDCFE", name = "ProjectJson" },
+				["tsconfig.json"] = { icon = "", color = "#F9E2AF", name = "TsConfigJson" },
 			},
 			-- same as `override` but specifically for overrides by extension
 			-- takes effect when `strict` is true

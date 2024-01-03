@@ -490,6 +490,10 @@ vim.api.nvim_set_keymap("n", "<Leader>no", "<cmd> lua require('neotest').output.
 
 vim.api.nvim_set_keymap("n", "<Leader>nr", "<cmd>Neotest run<cr>", opts)
 
+vim.api.nvim_set_keymap("n", "<Leader>gn", "<cmd> lua require('illuminate').goto_next_reference()<cr>", opts)
+
+vim.api.nvim_set_keymap("n", "<Leader>gp", "<cmd> lua require('illuminate').goto_prev_reference()<cr>", opts)
+
 -- vim.api.nvim_set_keymap("n", "<leader>nw", "<cmd>lua require('neotest').run.run({ jestCommand = 'nx test mar-nx --watch=true ' })<cr>", {})
 
 -- vim.cmd[[let g:VM_maps["Add Cursor Up"] = 'C-Up']]

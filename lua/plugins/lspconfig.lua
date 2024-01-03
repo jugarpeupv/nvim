@@ -212,6 +212,9 @@ return {
     lspconfig["groovyls"].setup({
       on_attach = on_attach,
       capabilities = capabilities,
+      handlers = {
+        ["textDocument/publishDiagnostics"] = function() end,
+      },
       cmd = {
         "java",
         "-jar",

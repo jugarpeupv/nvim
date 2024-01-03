@@ -105,7 +105,10 @@ return {
       },
       show_dirname = true,
       show_basename = true,
-
+      symbols = {
+        modified = "●",
+        -- modified = "[!]",
+      },
       theme = {
         -- this highlight is used to override other highlights
         -- you can take advantage of its `bg` and set a background throughout your winbar
@@ -115,7 +118,7 @@ return {
         -- these highlights correspond to symbols table from config
         ellipsis = { fg = "#737aa2" },
         separator = { fg = "#737aa2" },
-        modified = { fg = "#737aa2" },
+        modified = { fg = "#3b4261" },
 
         -- these highlights represent the _text_ of three main parts of barbecue
         dirname = { fg = "#737aa2" },
