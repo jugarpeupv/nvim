@@ -5,6 +5,7 @@
 return {
   -- "griwes/telescope.nvim",
   -- branch = "group-by",
+  event = "VeryLazy",
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
 
@@ -35,10 +36,10 @@ return {
         file_ignore_patterns = {},
         -- path_display = { "smart" },
         -- path_display = { "tail" },
-        path_display = { shorten = { len = 5, exclude = { -1 } } },
+        -- path_display = { shorten = { len = 5, exclude = { -1 } } },
         -- path_display = { shorten = { len = 3, exclude = { -1 } } },
         -- path_display = { "hidden" },
-        -- path_display = { truncate = 5 },
+        path_display = { truncate = 5 },
         wrap_results = false,
         vimgrep_arguments = {
           "rg",

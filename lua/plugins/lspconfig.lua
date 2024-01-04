@@ -1,5 +1,6 @@
 -- return {}
 return {
+  event = "VeryLazy",
   "neovim/nvim-lspconfig",
   config = function()
     -- import lspconfig plugin safely

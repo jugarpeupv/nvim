@@ -1,7 +1,6 @@
 -- return {}
 return {
   "nvim-lualine/lualine.nvim",
-  
   config = function()
     local colors = {
       blue = "#9CDCFE",

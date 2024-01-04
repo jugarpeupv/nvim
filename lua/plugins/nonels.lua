@@ -12,12 +12,7 @@ return {
 
     local lSsources = {
       null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.prettier.with({
-        condition = function(utils)
-          return utils.root_has_file({ ".prettierrc", ".prettierignore"})
-
-        end,
-      }),
+      null_ls.builtins.formatting.prettier,
       -- null_ls.builtins.formatting.prettierd.with({
       --   condition = function(utils)
       --     return utils.root_has_file({ ".prettierrc", ".prettierignore"})
@@ -31,7 +26,7 @@ return {
 
       --   end,
       -- }),
-      null_ls.builtins.completion.spell,
+      -- null_ls.builtins.completion.spell,
       -- null_ls.builtins.code_actions.eslint,
       -- null_ls.builtins.formatting.prettier.with({
       --   filetypes = {

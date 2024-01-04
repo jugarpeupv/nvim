@@ -1,10 +1,9 @@
 -- return {}
 return {
-  { "jayp0521/mason-null-ls.nvim",        },
-  { "williamboman/mason-lspconfig.nvim",  },
+  { "jayp0521/mason-null-ls.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
   {
     "williamboman/mason.nvim",
-    
     config = function()
       -- import mason plugin safely
       local mason_status, mason = pcall(require, "mason")
