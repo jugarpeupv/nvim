@@ -136,6 +136,7 @@ vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>Telescope egrepify<cr>", opts)
 
 vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
 	telescope.extensions.live_grep_args.live_grep_raw({
+    disable_coordinates = true,
 		-- group_by = "filename",
 		-- disable_devicons = true,
 		vimgrep_arguments = {
@@ -187,7 +188,7 @@ keymap("n", "<Leader>pc", "<cmd>PeekClose<cr>", opts)
 keymap("n", "<Leader>ht", "<cmd>Telescope help_tags<cr>", opts)
 keymap("n", "<Leader>mp", "<cmd>Telescope man_pages<cr>", opts)
 -- keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>", opts)
-keymap("n", "<Leader>of", "<cmd>Telescope oldfiles<cr>", opts)
+keymap("n", "<Leader>of", "<cmd>Telescope oldfiles only_cwd=true<cr>", opts)
 keymap("n", "<Leader>rg", "<cmd>Telescope registers<cr>", opts)
 keymap("n", "<Leader>ke", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<Leader>cm", "<cmd>Telescope commands<cr>", opts)
@@ -255,23 +256,6 @@ keymap("n", "<leader>cp", "<cmd>JsonPath<CR>", opts)
 -- Reformat file
 keymap("n", "<leader>cr", ":e ++ff=dos<CR> | :set ff=unix<CR>", opts)
 
--- Hlslens
-vim.api.nvim_set_keymap(
-	"n",
-	"n",
-	[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-	opts
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"N",
-	[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-	opts
-)
-vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
-vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
-vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
-vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 
 -- Vifm
 keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)

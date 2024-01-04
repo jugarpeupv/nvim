@@ -36,9 +36,9 @@ return {
         -- path_display = { "smart" },
         -- path_display = { "tail" },
         -- path_display = { shorten = { len = 5, exclude = { -1 } } },
-        -- path_display = { shorten = { len = 3, exclude = { -1 } } },
+        path_display = { shorten = { len = 3, exclude = { -1 } } },
         -- path_display = { "hidden" },
-        path_display = { truncate = 5 },
+        -- path_display = { truncate = 5 },
         wrap_results = false,
         vimgrep_arguments = {
           "rg",
@@ -53,7 +53,7 @@ return {
         sorting_strategy = "ascending",
         layout_config = {
           horizontal = { width = 0.97, height = 0.9, preview_width = 0.45 },
-          vertical = { width = 0.99, height = 0.99 },
+          vertical = { width = 0.99, height = 0.9 },
           center = { width = 0.99, height = 0.99 },
           bottom_pane = { width = 0.99, height = 0.99 },
           prompt_position = "top",
@@ -193,10 +193,10 @@ return {
         -- }
         -- please take a look at the readme of the extension you want to configure
         fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+          fuzzy = true,              -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case",  -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
         },
         -- egrepify = {
@@ -281,6 +281,11 @@ return {
           }),
         },
         live_grep_args = {
+          -- layout_strategy = "vertical",
+          -- theme = require("telescope.themes").get_dropdown({
+          --   -- layout_config = { width = 0.90, height = 0.40},
+          --   prompt_prefix = "> ",
+          -- }),
           auto_quoting = false,
           mappings = {
             i = {

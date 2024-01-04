@@ -25,14 +25,14 @@ return {
       --   end,
       -- }),
       -- null_ls.builtins.formatting.eslint,
-      null_ls.builtins.diagnostics.eslint.with({
-        condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.json", ".eslintignore" })
+      -- null_ls.builtins.diagnostics.eslint.with({
+      --   condition = function(utils)
+      --     return utils.root_has_file({ ".eslintrc.json", ".eslintignore" })
 
-        end,
-      }),
+      --   end,
+      -- }),
       null_ls.builtins.completion.spell,
-      null_ls.builtins.code_actions.eslint,
+      -- null_ls.builtins.code_actions.eslint,
       -- null_ls.builtins.formatting.prettier.with({
       --   filetypes = {
       --     "javascript",

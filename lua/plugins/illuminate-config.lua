@@ -19,6 +19,7 @@ return {
       filetype_overrides = {},
       -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
       filetypes_denylist = {
+        "harpoon",
         "DiffviewFiles",
         "gitcommmit",
         "copilot",
@@ -57,7 +58,7 @@ return {
       -- If nil, vim-illuminate will be disabled for large files.
       large_file_overrides = nil,
       -- min_count_to_highlight: minimum number of matches required to perform highlighting
-      min_count_to_highlight = 1,
+      min_count_to_highlight = 2,
       -- should_enable: a callback that overrides all other settings to
       -- enable/disable illumination. This will be called a lot so don't do
       -- anything expensive in it.

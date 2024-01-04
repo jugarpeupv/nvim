@@ -149,6 +149,9 @@ return {
     vim.cmd [[highlight NvimTreeRootFolder gui=none]]
     vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
 
+    vim.cmd("hi HlSearchNear guifg=#181826 guibg=#F38BA8")
+    vim.cmd("hi HlSearchLensNear guifg=#181826 guibg=#F38BA8")
+
     -- vim.cmd([[hi @text.title.1.markdown  guifg=#F9E2AF]])
     vim.cmd([[hi @text.title.2.markdown  guifg=#89ddff]])
     vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])
@@ -358,7 +361,8 @@ return {
     -- vim.cmd([[hi DiffviewFilePanelFileName guifg=#B4BEFE]])
     vim.cmd([[hi DiffviewFilePanelFileName guifg=#c0caf5]])
     vim.cmd([[hi @label guifg=#B4BEFE]])
-    vim.cmd([[hi @tag guifg=#B4BEFE]])
+    -- vim.cmd([[hi @tag guifg=#B4BEFE]])
+    vim.cmd([[hi @tag.attribute guifg=#B4BEFE]])
     vim.cmd([[hi Error guifg=#F38BA8]])
     vim.cmd([[hi ErrorMsg guifg=#F38BA8]])
     -- vim.cmd([[hi @property guifg=#CDD6F4]])

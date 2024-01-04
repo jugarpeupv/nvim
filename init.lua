@@ -6,6 +6,7 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
+require("jg.core.options")
 vim.loader.enable()
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -19,9 +20,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
-
-require("jg.core.options")
 require("lazy").setup("plugins")
 require("jg.core.keymaps")
 require("jg.core.autocommands")
