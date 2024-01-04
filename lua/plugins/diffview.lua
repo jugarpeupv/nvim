@@ -167,6 +167,7 @@ return {
           ["g<C-x>"]     = actions.cycle_layout,              -- Cycle through available layouts.
           ["[x"]         = actions.prev_conflict,             -- In the merge_tool: jump to the previous conflict
           ["]x"]         = actions.next_conflict,             -- In the merge_tool: jump to the next conflict
+          ["X"]          = actions.restore_entry,      -- Restore entry to the state on the left side.
           ["<leader>ck"] = actions.prev_conflict,             -- In the merge_tool: jump to the previous conflict
           ["<leader>cj"] = actions.next_conflict,             -- In the merge_tool: jump to the next conflict
           ["<leader>co"] = actions.conflict_choose("ours"),   -- Choose the OURS version of a conflict

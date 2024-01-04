@@ -482,3 +482,6 @@ vim.api.nvim_set_keymap("n", "<Leader>gp", "<cmd> lua require('illuminate').goto
 
 -- vim.cmd[[let g:VM_maps["Add Cursor Up"] = 'C-Up']]
 -- vim.cmd[[let g:VM_maps["Add Cursor Down"] = 'C-Down']]
+
+vim.cmd([[nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>]])
+vim.cmd([[nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>]])
