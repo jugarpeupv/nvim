@@ -37,26 +37,26 @@ vim.cmd [[
 
 -- local wr_group = vim.api.nvim_create_augroup('WinResize', { clear = true })
 
-local function open_nvim_tree(data)
-  -- buffer is a directory
-  local directory = vim.fn.isdirectory(data.file) == 1
+-- local function open_nvim_tree(data)
+--   -- buffer is a directory
+--   local directory = vim.fn.isdirectory(data.file) == 1
 
-  if not directory then
-    return
-  end
+--   if not directory then
+--     return
+--   end
 
-  -- create a new, empty buffer
-  vim.cmd.enew()
+--   -- create a new, empty buffer
+--   vim.cmd.enew()
 
-  -- wipe the directory buffer
-  vim.cmd.bw(data.buf)
+--   -- wipe the directory buffer
+--   vim.cmd.bw(data.buf)
 
-  -- change to the directory
-  vim.cmd.cd(data.file)
+--   -- change to the directory
+--   vim.cmd.cd(data.file)
 
-  -- open the tree
-  require("nvim-tree.api").tree.open()
-end
+--   -- open the tree
+--   require("nvim-tree.api").tree.open()
+-- end
 
 -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
@@ -69,10 +69,10 @@ vim.cmd([[
   autocmd! BufNewFile,BufRead *.json setfiletype jsonc
 
   autocmd! BufNewFile,BufRead *json setfiletype jsonc
-  autocmd! BufNewFile,BufRead infra/project.json setfiletype jsonc
-  autocmd! BufNewFile,BufRead project.json setfiletype jsonc
-  autocmd! BufNewFile,BufRead *project.json* setfiletype jsonc
-  autocmd! BufNewFile,BufRead *project.json setfiletype jsonc
+  " autocmd! BufNewFile,BufRead infra/project.json setfiletype jsonc
+  " autocmd! BufNewFile,BufRead project.json setfiletype jsonc
+  " autocmd! BufNewFile,BufRead *project.json* setfiletype jsonc
+  " autocmd! BufNewFile,BufRead *project.json setfiletype jsonc
   autocmd! BufNewFile,BufRead .eslintrc.json setlocal filetype=jsonc
   autocmd! BufNewFile,BufRead .jshintrc setlocal filetype=jsonc
   autocmd! BufNewFile,BufRead .mocharc.json setlocal filetype=jsonc
@@ -89,7 +89,7 @@ vim.cmd([[
 -- https://www.reddit.com/r/neovim/comments/14bcfmb/nonzero_exit_code/
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
   callback = function()
-    vim.cmd("sleep 10m")
+    vim.cmd("sleep 5m")
   end,
 })
 

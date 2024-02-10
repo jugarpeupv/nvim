@@ -1,7 +1,6 @@
 -- return {}
 return {
   "sindrets/diffview.nvim",
-  
   config = function()
     -- Lua
     local actions = require("diffview.actions")
@@ -55,7 +54,7 @@ return {
         },
       },
       file_panel = {
-        listing_style = "list",            -- One of 'list' or 'tree'
+        listing_style = "tree",            -- One of 'list' or 'tree'
         tree_options = {                   -- Only applies when listing_style is 'tree'
           flatten_dirs = true,             -- Flatten dirs that only contain one single dir
           folder_statuses = "only_folded", -- One of 'never', 'only_folded' or 'always'.
@@ -164,7 +163,7 @@ return {
           ["<C-w>gf"]    = actions.goto_file_tab,             -- Open the file in a new tabpage
           ["<leader>d"]  = actions.focus_files,               -- Bring focus to the file panel
           ["<leader>b"]  = actions.toggle_files,              -- Toggle the file panel.
-          ["g<C-x>"]     = actions.cycle_layout,              -- Cycle through available layouts.
+          ["<BS>"]          = actions.cycle_layout,
           ["[x"]         = actions.prev_conflict,             -- In the merge_tool: jump to the previous conflict
           ["]x"]         = actions.next_conflict,             -- In the merge_tool: jump to the next conflict
           ["X"]          = actions.restore_entry,      -- Restore entry to the state on the left side.
@@ -196,7 +195,6 @@ return {
           ["<up>"]          = actions.prev_entry,
           ["h"]             = actions.prev_entry,
           ["<cr>"]          = actions.select_entry, -- Open the diff for the selected entry.
-          ["<BS>"]          = actions.select_entry,
           ["o"]             = actions.select_entry,
           ["<2-LeftMouse>"] = actions.select_entry,
           ["-"]             = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
@@ -217,7 +215,7 @@ return {
           ["R"]             = actions.refresh_files,       -- Update stats and entries in the file list.
           ["<leader>e"]     = actions.focus_files,
           ["<leader>b"]     = actions.toggle_files,
-          ["g<C-x>"]        = actions.cycle_layout,
+          ["<BS>"]          = actions.cycle_layout,
           ["[x"]            = actions.prev_conflict,
           ["]x"]            = actions.next_conflict,
         },
@@ -244,7 +242,7 @@ return {
           ["<C-w>gf"]       = actions.goto_file_tab,
           ["<leader>e"]     = actions.focus_files,
           ["<leader>b"]     = actions.toggle_files,
-          ["g<C-x>"]        = actions.cycle_layout,
+          ["<BS>"]          = actions.cycle_layout,
         },
         option_panel = {
           ["<tab>"] = actions.select_entry,

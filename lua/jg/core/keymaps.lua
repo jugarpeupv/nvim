@@ -76,6 +76,13 @@ keymap("t", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
 -- keymap("i", "<M-j>", "<cmd>Neotree toggle<cr>", opts)
 -- keymap("t", "<M-j>", "<cmd>Neotree toggle<cr>", opts)
 
+keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
+-- keymap("n", "<Leader>d", ":Neotree reveal<cr>", opts)
+-- keymap("n", "<Leader>d", ":Neotree focus position=left<cr>", opts)
+-- keymap("n", "<Leader>D", ":Neotree reveal position=float<cr>", opts)
+-- keymap("n", "<Leader>d", ":Neotree reveal_file=% position=float<cr>", opts)
+-- keymap("n", "<Leader>d", ":NvimTreeFocus<cr>", opts)
+
 keymap("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
@@ -91,13 +98,7 @@ keymap("n", "<M-k>", "<cmd>cprev<cr>", opts)
 keymap("n", "<BS>", "<C-^>", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("n", "<Leader>q", "<cmd>BDelete this<CR>", opts)
-keymap("n", "<Leader>n", "<cmd>nohlsearch<CR>", opts)
-keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
--- keymap("n", "<Leader>d", ":Neotree reveal<cr>", opts)
--- keymap("n", "<Leader>d", ":Neotree focus position=left<cr>", opts)
--- keymap("n", "<Leader>D", ":Neotree reveal position=float<cr>", opts)
--- keymap("n", "<Leader>d", ":Neotree reveal_file=% position=float<cr>", opts)
--- keymap("n", "<Leader>d", ":NvimTreeFocus<cr>", opts)
+keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
 keymap(
 	"n",
 	"<Leader>fi",
@@ -132,11 +133,11 @@ local telescope = require("telescope")
 
 -- keymap("n", "<Leader>fl", "<cmd>lua require('telescope.builtin').live_grep({ group_by = 'filename', disable_devicons = true })<CR>", opts);
 
-vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>Telescope egrepify<cr>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>ff", "<cmd>Telescope egrepify<cr>", opts)
 
-vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
+vim.keymap.set({ "n", "v" }, "<Leader>fr", function()
 	telescope.extensions.live_grep_args.live_grep_raw({
-    disable_coordinates = true,
+		disable_coordinates = true,
 		-- group_by = "filename",
 		-- disable_devicons = true,
 		vimgrep_arguments = {
@@ -158,11 +159,22 @@ vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
 	})
 end)
 
-keymap(
-	"n",
-	"<Leader>ss",
-	"<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
-	opts
+-- keymap(
+-- 	"n",
+-- 	"<Leader>ss",
+-- 	"<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
+-- 	opts
+-- )
+-- keymap("n",
+--   "<Leader>ss",
+--   "<cmd>Telescope live_grep search_dirs={'%:p'} vimgrep_arguments=rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings<cr>",
+--   opts
+-- )
+
+keymap("n",
+  "<Leader>ss",
+  "<cmd>BLines<cr>",
+  opts
 )
 keymap("n", "gv", "<cmd>vsp | lua vim.lsp.buf.definition()<cr>", opts)
 keymap("n", "<Leader>pp", "<cmd>Telescope projects<CR>", opts)
@@ -207,6 +219,7 @@ keymap("n", "<Leader>sr", "<cmd>%SnipRun<cr>", opts)
 
 -- Git blame
 keymap("n", "<Leader>bl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", opts)
+keymap("n", "<Leader>bh", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", opts)
 keymap("n", "<Leader>bt", "<cmd>GitBlameToggle<cr>", opts)
 keymap("n", "<Leader>bf", "<cmd>GitBlameOpenCommitURL<cr>", opts)
 
@@ -405,12 +418,12 @@ vim.cmd([[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]])
 keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
 keymap("n", "<Leader>pi", "<cmd>PasteImg<cr>", opts)
 
-vim.keymap.set("n", "Cc", "<Plug>(git-conflict-ours)")
-vim.keymap.set("n", "Ci", "<Plug>(git-conflict-theirs)")
-vim.keymap.set("n", "Cb", "<Plug>(git-conflict-both)")
-vim.keymap.set("n", "C0", "<Plug>(git-conflict-none)")
-vim.keymap.set("n", "Cp", "<Plug>(git-conflict-prev-conflict)")
-vim.keymap.set("n", "Cn", "<Plug>(git-conflict-next-conflict)")
+vim.keymap.set("n", "cc", "<Plug>(git-conflict-ours)")
+vim.keymap.set("n", "ci", "<Plug>(git-conflict-theirs)")
+vim.keymap.set("n", "cb", "<Plug>(git-conflict-both)")
+vim.keymap.set("n", "cn", "<Plug>(git-conflict-none)")
+vim.keymap.set("n", "ck", "<Plug>(git-conflict-prev-conflict)")
+vim.keymap.set("n", "cj", "<Plug>(git-conflict-next-conflict)")
 
 local actions = require("diffview.actions")
 
@@ -472,6 +485,8 @@ vim.api.nvim_set_keymap("n", "<Leader>sh", "<cmd>WinShift<cr>", opts)
 
 vim.api.nvim_set_keymap("n", "<Leader>no", "<cmd> lua require('neotest').output.open({enter = true})<cr>", opts)
 
+vim.api.nvim_set_keymap("n", "<Leader>nu", "<cmd>lua require('neotest').output_panel.toggle()<cr>", opts)
+
 vim.api.nvim_set_keymap("n", "<Leader>nr", "<cmd>Neotest run<cr>", opts)
 
 vim.api.nvim_set_keymap("n", "gn", "<cmd> lua require('illuminate').goto_next_reference()<cr>", opts)
@@ -485,3 +500,14 @@ vim.api.nvim_set_keymap("n", "gN", "<cmd> lua require('illuminate').goto_prev_re
 
 vim.cmd([[nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>]])
 vim.cmd([[nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>]])
+
+vim.keymap.set('i', '<Tab>', function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  end
+end, { desc = "Super Tab" })
+
+-- vim.cmd([[nnoremap / /\v]])
+-- vim.cmd([[nnoremap ? ?\v]])

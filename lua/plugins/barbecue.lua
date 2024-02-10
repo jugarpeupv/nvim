@@ -15,6 +15,7 @@
 return {
   "jugarpe/barbecue.nvim",
   name = "barbecue",
+  branch = "feature/preserveIconOnBufferModified",
   -- event = "VeryLazy",
   -- version = "*",
   dependencies = {
@@ -81,7 +82,7 @@ return {
       --   return label
       -- end,
       exclude_filetypes = {
-        "netrw",
+        -- "netrw",
         "toggleterm",
         "NvimTree",
         "Diff",

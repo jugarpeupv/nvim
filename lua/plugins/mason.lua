@@ -1,5 +1,7 @@
 -- return {}
 return {
+  -- { "jayp0521/mason-null-ls.nvim", event = "VeryLazy" },
+  -- { "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
   { "jayp0521/mason-null-ls.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -34,6 +36,8 @@ return {
           "cssls",
           "tailwindcss",
           "lua_ls",
+          "angularls",
+          "cssmodules_ls"
         },
         -- auto-install configured servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed

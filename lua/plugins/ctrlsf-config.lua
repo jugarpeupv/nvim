@@ -2,11 +2,11 @@ return { }
 -- return {
 --   "dyng/ctrlsf.vim",
 --   branch = "feature/add-devicon",
---   
 --   config = function()
 --     vim.g.ctrlsf_context = "-C 0"
 --     vim.g.ctrlsf_populate_qflist = 1
---     vim.g.ctrlsf_auto_preview = 1
+--     vim.g.ctrlsf_auto_preview = 0
+--     -- vim.g.ctrlsf_fold_result = 1
 --     vim.g.ctrlsf_auto_close = {
 --       normal = 0,
 --       compact = 0,

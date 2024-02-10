@@ -18,7 +18,7 @@ opt.wrap = true -- disable line wrapping
 -- search settings
 opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true  -- if you include mixed case in your search, assumes you want case-sensitive
-opt.ea = true
+opt.ea = true -- equal always, windows same size
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
@@ -54,7 +54,7 @@ vim.cmd([[set breakindent]])
 -- ListChars
 vim.cmd([[set showbreak=↪\]])
 
-vim.o.ls = 0
+-- vim.o.ls = 0
 -- vim.o.ch = 0
 
 -- appearance
@@ -111,3 +111,5 @@ opt.listchars:append("trail: ")
 -- vim.cmd([[hi Container guifg=#BADA55 guibg=Black]])
 
 vim.cmd([[let g:TerminusInsertCursorShape=1]])
+
+-- vim.wo.foldtext = 'v:lua.vim.treesitter.foldtext()'

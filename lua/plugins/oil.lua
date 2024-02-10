@@ -1,7 +1,7 @@
 return {}
 -- return {
 --   "stevearc/oil.nvim",
---   event = "VeryLazy",
+--   -- event = "VeryLazy",
 --   config = function()
 --     require("oil").setup({
 --       -- Id is automatically added at the beginning, and name at the end

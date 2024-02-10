@@ -130,7 +130,9 @@ return {
           -- icon = "🀄️",
           -- icon = "",
           -- icon = "🀀",
-          icon = "",
+          -- icon = "",
+          icon = "",
+          -- icon = "",
           -- icon = "",
           -- icon = "📄",
           -- color = "#73daca",
@@ -174,6 +176,8 @@ return {
         -- ["jenkinsfilecd"] = { icon = "", name = "Jenkins4"},
         ["jenkinsfileci"] = { icon = "", name = "Jenkins3" },
         ["jenkinsfilecd"] = { icon = "", name = "Jenkins4" },
+        ["JenkinsfileCD"] = { icon = "", name = "Jenkins5" },
+        ["JenkinsfileCI"] = { icon = "", name = "Jenkins7" },
 
         -- [".nxignore"] = { icon = "🐋", color = "blue", name = "nxignore"},
         -- ["nx.json"] = { icon = "🐋", name = "nxjson"},
@@ -190,6 +194,7 @@ return {
 
         [".eslintignore"] = { icon = "󰱺", color = "#7C7F93", name = "eslintignore" },
         [".eslintrc.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
+        [".eslintrc.base.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
         [".eslint-report.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintreportjson" },
 
         --[[ [".prettierignore"] = { icon = "󰫽", color = "#7C7F93", name = "prettierignore"}, ]]
@@ -200,7 +205,14 @@ return {
 
         --[[ ["project.json"] = { icon = "", color = '#9CDCFE', name = 'ProjectJson' }, ]]
         ["project.json"] = { icon = "", color = "#9CDCFE", name = "ProjectJson" },
-        ["tsconfig.json"] = { icon = "", color = "#F9E2AF", name = "TsConfigJson" },
+        -- ["tsconfig.json"] = { icon = "", color = "#F9E2AF", name = "TsConfigJson" },
+
+        ["tsconfig.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile2' },
+        ["tsconfig.editor.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile2' },
+        ["tsconfig.base.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile2' },
+        ["tsconfig.app.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile1' },
+        ["tsconfig.lib.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile1' },
+        ["tsconfig.spec.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile1' },
       },
       -- same as `override` but specifically for overrides by extension
       -- takes effect when `strict` is true
@@ -230,9 +242,6 @@ return {
         ["*angular.json"] = { icon = "󰚿", color = "#f38ba8", name = "AngularJson" },
         ["*.angular.json"] = { icon = "󰚿", color = "#f38ba8", name = "AngularJson" },
         [".angular.json"] = { icon = "󰚿", color = "#f38ba8", name = "AngularJson" },
-        -- ["*.d.ts"] = { icon = "󰛦", color = '#18a2fe', name = 'TSDeclarationfile' },
-        -- [".d.ts"] = { icon = "󰛦", color = '#18a2fe', name = 'TSDeclarationfile' },
-        -- ["d.ts"] = { icon = "󰛦", color = '#8CAAEE', name = 'TSDeclarationfile' },
 
         ["directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
         ["*.directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
@@ -242,8 +251,7 @@ return {
         ["stories.ts"] = { icon = "s", color = "red", name = "Storie2" },
 
         -- ["d.ts"] = { icon = "󰛦", color = '#107DC7', name = "dtypescript" },
-
-        ["d.ts"] = { icon = "󰛦", color = "#89b4fb", name = "dtypescript" },
+        -- ["d.ts"] = { icon = "󰛦", color = "#89b4fb", name = "dtypescript" },
 
         -- [".editorconfig"] = { icon = "", color = '#89b4fa', name = "Editorconfig"},
       },

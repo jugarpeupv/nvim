@@ -3,7 +3,7 @@ return {
   -- dependencies = { "mg979/vim-visual-multi" },
   priority = 1000,
 
-  -- 
+  --
   config = function()
     require("catppuccin").setup({
       flavour = "mocha", -- latte, frappe, macchiato, or mocha
@@ -18,8 +18,9 @@ return {
           -- yellow = "#74C7EC",
           -- yellow = "#0db9d7",
           yellow = "#2ac3de",
+          -- yellow = "#74C7EC",
+          -- yellow = "#37d3dc",
 
-          -- yellow = "#2ADED7",
           -- yellow = "#41a6b5",
           -- yellow = "#8ee2cf",
           green = "#F2CDCD",
@@ -74,7 +75,7 @@ return {
         markdown = true,
         cmp = true,
         hop = true,
-        gitsigns = true,
+        gitsigns = false,
         harpoon = true,
         telescope = true,
         ts_rainbow2 = true,
@@ -95,7 +96,7 @@ return {
         semantic_tokens = true,
         treesitter_context = true,
         illuminate = true,
-        gitgutter = true
+        gitgutter = true,
       },
       show_end_of_buffer = true, -- show the '~' characters after the end of buffers
       -- term_colors = true,
@@ -106,7 +107,7 @@ return {
         percentage = 0.15,
       },
       no_italic = false, -- Force no italic
-      no_bold = false, -- Force no bold
+      no_bold = true, -- Force no bold
       styles = {
         comments = { "italic" },
         conditionals = {},
@@ -124,10 +125,10 @@ return {
     })
 
     -- setup must be called before loading
-    vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme("catppuccin")
 
     vim.cmd([[highlight StatusLine guibg=#292e42]])
-    vim.cmd [[highlight NvimTreeStatusLineNC guibg=none]]
+    vim.cmd([[highlight NvimTreeStatusLineNC guibg=none]])
 
     -- vim.cmd([[hi MatchParen guibg=#394b70]])
     vim.cmd([[hi IlluminatedWordText guibg=#394b70]])
@@ -136,17 +137,22 @@ return {
     vim.cmd([[hi illuminatedCurWord guibg=#394b70]])
     vim.cmd([[hi illuminatedWord guibg=#394b70]])
 
-    -- vim.cmd [[highlight NeoTreeFileStatsHeader guifg=#3b4261]]
-    -- vim.cmd [[highlight NeoTreeFileStats guifg=#3b4261]]
-    -- #6C7086
-    vim.cmd [[highlight NvimTreeGitDirty guifg=#f2cdcd]]
-    -- vim.cmd[[highlight NvimTreeGitDirty guifg=#F9E2AF]]
-    vim.cmd [[highlight NvimTreeGitStaged guifg=#8ee2cf]]
-    vim.cmd [[highlight NvimTreeExecFile gui=none guifg=#F38BA8]]
-    vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#737aa2]]
+    vim.cmd([[highlight NeoTreeRootName gui=none]])
+    vim.cmd([[highlight NeoTreeFileStatsHeader guifg=#3b4261]])
+    vim.cmd([[highlight NeoTreeFileStats guifg=#3b4261]])
+    -- #6C7087
+    -- vim.cmd [[highlight NvimTreeGitDirty guifg=#f2cdcd]]
+    vim.cmd([[highlight NvimTreeGitDirty guifg=#F9E2AF]])
+    vim.cmd([[highlight NvimTreeGitStaged guifg=#8ee2cf]])
+    vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F38BA8]])
+    vim.cmd([[highlight NvimTreeModifiedFile gui=none guifg=#737aa2]])
     -- vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#EFF1F5]]
-    vim.cmd [[highlight NvimTreeGitNew guifg=#89ddff]]
-    vim.cmd [[highlight NvimTreeRootFolder gui=none]]
+    vim.cmd([[highlight NvimTreeGitNew guifg=#89ddff]])
+    vim.cmd([[highlight NvimTreeRootFolder gui=none]])
+
+    vim.cmd([[hi Folded guibg=#1f2335 guifg=#737aa2]])
+    -- vim.cmd([[highlight LspInlayHint guibg=#1f2335]])
+
     vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
 
     vim.cmd("hi HlSearchNear guifg=#181826 guibg=#F38BA8")
@@ -161,12 +167,12 @@ return {
     -- vim.cmd([[hi @text.title.3.markdown  guifg=#f2cdcd]])
     vim.cmd([[hi Ignore guifg=#394b70]])
 
-    vim.cmd [[hi NeotestPassed guifg=#8ee2cf]]
+    vim.cmd([[hi NeotestPassed guifg=#8ee2cf]])
 
     -- vim.cmd[[highlight EgrepifyFile gui=none guifg=#F38BA8]]
-    vim.cmd [[highlight EgrepifyFile gui=none guifg=#FAB387]]
-    -- vim.cmd [[highlight EgrepifyFile gui=none guifg=#f2cdcd]]
-    vim.cmd [[highlight EgrepifyLnum gui=none guifg=#CDD6F4]]
+    -- vim.cmd [[highlight EgrepifyFile gui=none guifg=#FAB387]]
+    vim.cmd([[highlight EgrepifyFile gui=none guifg=#f2cdcd]])
+    vim.cmd([[highlight EgrepifyLnum gui=none guifg=#737aa2]])
 
     -- vim.cmd([[highlight CursorLine guibg=#35394A]])
     -- vim.cmd([[highlight CursorLine guibg=#3B4252]])
@@ -196,10 +202,7 @@ return {
     vim.cmd([[highlight IblIndent guifg=#3b4251]])
     vim.cmd([[highlight IblScope guifg=#737aa2]])
 
-
-
     vim.cmd([[highlight HarpoonBorder guifg=#394b70]])
-
 
     -- vim.cmd([[highlight TSRainbowRed guifg=#8AADF4]])
     -- vim.cmd([[highlight TSRainbowYellow guifg=#C6A0F6]])
@@ -216,7 +219,6 @@ return {
     vim.cmd([[highlight TSRainbowGreen guifg=#C6A0F6]])
     vim.cmd([[highlight TSRainbowViolet guifg=#89B4FA]])
     vim.cmd([[highlight TSRainbowCyan guifg=#74C7EC]])
-
 
     -- vim.cmd([[highlight DiagnosticUnderlineWarn gui=undercurl]])
     -- vim.cmd([[highlight DiagnosticUnderlineHint gui=undercurl]])
@@ -235,7 +237,6 @@ return {
     vim.cmd([[highlight DiagnosticUnderlineInfo gui=undercurl guisp=#89B4FA]])
     vim.cmd([[highlight DiagnosticUnderlineError gui=undercurl guisp=#f38bad]])
 
-
     -- vim.cmd([[highlight DiagnosticUnderlineWarn gui=none]])
     -- vim.cmd([[highlight DiagnosticUnderlineHint gui=none]])
     -- vim.cmd([[highlight DiagnosticUnderlineInfo gui=none]])
@@ -243,7 +244,7 @@ return {
 
     -- vim.cmd([[highlight DiffviewFilePanelCounter guifg=#CBA6F7]])
 
-    vim.cmd [[hi DiffviewFilePanelRootPath guifg=#B4BEFE]]
+    vim.cmd([[hi DiffviewFilePanelRootPath guifg=#B4BEFE]])
     -- vim.cmd([[highlight DiffviewFilePanelTitle guifg=#CBA6F7]])
     vim.cmd([[highlight DiffviewFilePanelTitle guifg=#B4BEFE]])
     vim.cmd([[highlight DiffviewFilePanelCounter guifg=#89B4FA]])
@@ -258,11 +259,7 @@ return {
     -- vim.cmd([[highlight TelescopeSelection guibg=#004b72 guifg = none]])
     -- vim.cmd([[highlight TelescopeSelection guibg=#004b72]])
 
-
-
     -- vim.cmd[[hi NvimTreeNormal guifg=#B4BEFE]]
-
-
 
     vim.cmd([[highlight! CmpPmenu guibg=none]])
     vim.cmd([[highlight! CmpPmenuBorder guifg=#394b70]])
@@ -277,7 +274,6 @@ return {
     -- vim.cmd([[highlight DiffDelete gui=none guifg=#011528 guibg=#3F2D3D]])
     vim.cmd([[highlight DiffviewDiffAddAsDelete guibg=#3f2d3d gui=none guifg=none]])
     vim.cmd([[highlight DiffviewDiffDelete gui=none guifg=#3B4252 guibg=none]])
-
 
     -- fugitive
     vim.cmd([[highlight diffAdded gui=none guifg=none guibg=#103235]])
@@ -317,7 +313,6 @@ return {
     vim.cmd([[highlight BufferLineTabSeparatorSelected gui=none guifg=#13182e]])
     vim.cmd([[highlight BufferLineTabSelected gui=none guibg=#394b70]])
 
-
     vim.cmd([[highlight InclineNormal  guibg=#292e42]])
     -- vim.cmd([[highlight InclineNormal  guibg=#3b4261]])
     vim.cmd([[highlight InclineNormalNC  guibg=#292e42 guifg=#7C7F93]])
@@ -331,13 +326,13 @@ return {
     vim.cmd([[highlight TreesitterContextLineNumber guibg=#292e42 guifg=#737aa2]])
     vim.cmd([[highlight TreesitterContext guifg=none guibg=none]])
 
-
     -- vim.cmd([[highlight NvimTreeWinSeparator guifg=#292e42]])
     vim.cmd([[ hi WinSeparator guifg=#292e42 ]])
+    vim.cmd([[hi NvimTreeFolderIcon guifg=#89B4FA]])
     vim.cmd([[highlight NvimTreeFolderArrowClosed guifg=#89B4FA]])
     vim.cmd([[highlight NvimTreeFolderArrowOpen guifg=#89B4FA]])
     vim.cmd([[highlight NvimTreeWinSeparator guifg=#292e42]])
-    vim.cmd([[highlight NvimTreeIndentMarker guifg=#3b4251]])
+    vim.cmd([[highlight NvimTreeIndentMarker guifg=#292e42]])
     vim.cmd([[highlight BufferLineOffsetSeparator guifg=#292e42]])
     vim.cmd([[highlight TelescopeBorder guifg=#394b70]])
 
@@ -353,6 +348,7 @@ return {
     -- vim.cmd([[highlight Normal guibg=none blend=0]])
     -- vim.cmd([[highlight NormalNC guibg=none blend=0]])
     -- vim.cmd([[highlight NormalSB guibg=none blend=0]])
+    vim.cmd([[hi TroublePreview guibg=#264F78 guifg=none]])
 
     vim.cmd([[highlight DiagnosticHint guifg=#89DCEB]])
     vim.cmd([[highlight DiagnosticFloatingHint guifg=#89DCEB]])
@@ -373,7 +369,6 @@ return {
     vim.cmd([[hi @property.class.scss guifg=#CBA6F7]])
     -- vim.cmd([[hi @parameter guifg=#B4BEFE]])
 
-
     -- vim.cmd([[highlight CmpItemKindText gui=bold,italic]])
     -- vim.cmd([[highlight CmpItemKindVariable gui=bold,italic]])
     -- vim.cmd([[highlight CmpItemKindMethod gui=bold,italic]])
@@ -391,8 +386,7 @@ return {
     -- vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
     -- vim.cmd([[highlight @attribute.typescript guifg=#89ddff]])
 
-
-    vim.cmd([[highlight @lsp.type.parameter.dockerfile guifg=#B4BEFE]])
+    -- vim.cmd([[highlight @lsp.type.parameter.dockerfile guifg=#B4BEFE]])
 
     -- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
 
@@ -401,10 +395,8 @@ return {
     vim.cmd([[highlight LspSignatureActiveParameter gui=none guifg=none guibg=#264F78]])
     vim.cmd([[highlight SignatureActiveParameter gui=none guifg=none guibg=#264F78]])
 
-
     -- vim.cmd([[highlight WarningMsg guifg=#f38bad]])
     vim.cmd([[highlight WarningMsg guifg=#F2CDCD]])
-
 
     vim.cmd([[highlight GitConflictAncestor guibg=#303446]])
     vim.cmd([[highlight GitConflictAncestorLabel guibg=#45475A]])
@@ -419,16 +411,13 @@ return {
     -- vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087 gui=undercurl ]])
     vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087]])
 
-
     -- vim.cmd([[highlight ScrollbarCursor  ctermfg=0 guifg=#cdd6f4]])
     -- vim.cmd([[highlight ScrollbarCursorHandle  ctermfg=0 guifg=#cdd6f4 guibg=#3b4252 blend=0]])
     -- vim.cmd([[highlight ScrollbarCursorHandle guifg=#3b4261 guibg=#3b4261]])
 
-
-
     -- good
-    vim.cmd([[highlight ScrollbarCursorHandle guifg=#7C7F93 guibg=#3b4252]])
-    vim.cmd([[highlight ScrollbarHandle  guibg=none blend=0]])
+    vim.cmd([[highlight ScrollbarCursorHandle guifg=none guibg=#3b4252]])
+    vim.cmd([[highlight ScrollbarHandle  guibg=none blend=100]])
     vim.cmd([[highlight ScrollbarWarnHandle  ctermfg=0 guifg=#F9E2AF guibg=none blend=0]])
     vim.cmd([[highlight ScrollbarWarn   ctermfg=0 guifg=#F9E2AF]])
     vim.cmd([[highlight ScrollbarError  ctermfg=0 guifg=#f38ba8]])
@@ -448,10 +437,10 @@ return {
     vim.cmd([[highlight ScrollbarGitAdd  ctermfg=0 guifg=#f2cdcd]])
     vim.cmd([[highlight ScrollbarGitAddHandle  ctermfg=0 guifg=#f2cdcd guibg=none blend=0]])
 
-
     vim.cmd([[highlight Constant gui=none cterm=none guibg=none blend=0]])
     vim.cmd([[highlight Title gui=none cterm=none guibg=none blend=0]])
     vim.cmd([[highlight NonText gui=none cterm=none guibg=none blend=0]])
+
     -- vim.cmd([[highlight NoiceLspProgressTitle guibg=none blend=0]])
     -- vim.cmd([[highlight NoiceLspProgressClient guibg=none blend=0]])
     -- vim.cmd([[highlight NoiceLspProgressSpinner guibg=none blend=0]])
@@ -461,10 +450,10 @@ return {
 
     vim.cmd([[highlight FloatBorder  guifg=#394b70]])
     vim.cmd([[highlight SagaBorder  guifg=#394b70]])
+    vim.cmd([[highlight SagaTitle  guifg=#394b70]])
     vim.cmd([[highlight @variable.builtin guifg=#89ddff]])
 
-    vim.cmd([[highlight ctrlsfMatch guifg=#F2CDCD guibg=none]])
-
+    vim.cmd([[highlight ctrlsfMatch guifg=#F2CDCD guibg=#394b70]])
 
     vim.cmd([[highlight @text.uri gui=none]])
 
@@ -481,18 +470,13 @@ return {
     -- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
     -- vim.api.nvim_set_hl(0, "LspSignatureActiveParameter", { link = "Search" })
 
-    vim.api.nvim_set_hl(0, "DapUIPlayPauseNC", { link = 'DapUIPlayPause' })
-    vim.api.nvim_set_hl(0, "DapUIRestartNC", { link = 'DapUIRestart' })
-    vim.api.nvim_set_hl(0, "DapUIStopNC", { link = 'DapUIStop' })
-    vim.api.nvim_set_hl(0, "DapUIStepOverNC", { link = 'DapUIStepOver' })
-    vim.api.nvim_set_hl(0, "DapUIStepIntoNC", { link = 'DapUIStepInto' })
-    vim.api.nvim_set_hl(0, "DapUIStepBackNC", { link = 'DapUIStepBack' })
-    vim.api.nvim_set_hl(0, "DapUIStepOutNC", { link = 'DapUIStepOut' })
-
-
-
-    -- vim.cmd([[highlight LspInlayHint guifg=#264F78]])
-
+    vim.api.nvim_set_hl(0, "DapUIPlayPauseNC", { link = "DapUIPlayPause" })
+    vim.api.nvim_set_hl(0, "DapUIRestartNC", { link = "DapUIRestart" })
+    vim.api.nvim_set_hl(0, "DapUIStopNC", { link = "DapUIStop" })
+    vim.api.nvim_set_hl(0, "DapUIStepOverNC", { link = "DapUIStepOver" })
+    vim.api.nvim_set_hl(0, "DapUIStepIntoNC", { link = "DapUIStepInto" })
+    vim.api.nvim_set_hl(0, "DapUIStepBackNC", { link = "DapUIStepBack" })
+    vim.api.nvim_set_hl(0, "DapUIStepOutNC", { link = "DapUIStepOut" })
 
     -- vim.cmd([[highlight DiagnosticVirtualTextWarn guifg=#DCDCAA guibg=none]])
     -- vim.cmd([[highlight DiagnosticVirtualTextInfo guifg=#2ac3de guibg=none]])
@@ -506,12 +490,10 @@ return {
     vim.cmd([[hi EndOfBuffer guifg=#737aa2]])
     -- vim.cmd([[highlight DiagnosticVirtualTextHint guifg=#568FBF guibg=#233745]])
 
-
     vim.cmd([[highlight DiagnosticVirtualTextWarnLine guifg=#DCDCAA guibg=#292e42]])
     vim.cmd([[highlight DiagnosticVirtualTextInfoLine guifg=#2ac3de guibg=#292e42]])
     vim.cmd([[highlight DiagnosticVirtualTextErrorLine guifg=#db4b4b guibg=#292e42]])
     vim.cmd([[highlight DiagnosticVirtualTextHintLine guifg=#89DCEB guibg=#292e42]])
-
 
     vim.cmd([[hi DiagnosticUnderlineHint gui=undercurl]])
     vim.cmd([[hi barbecue_modified guifg=#bbc2e0]])
@@ -557,8 +539,6 @@ return {
     -- mantle	#E6E9EF	#292C3C	#1E2030	#181825	Darker bg
     -- crust	#DCE0E8	#232634	#181926	#11111B	Darkest bg
 
-
-
     -- Tokyo night
 
     -- M.default = {
@@ -601,14 +581,14 @@ return {
     -- }
     --
 
-    vim.cmd [[
+    vim.cmd([[
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Visual'],
   \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
+  \ 'hl':      ['fg', 'TelescopeMatching'],
+  \ 'fg+':     ['fg', 'Normal', 'Normal', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal', 'Normal'],
+  \ 'hl+':     ['fg', 'TelescopeMatching'],
   \ 'info':    ['fg', 'PreProc'],
   \ 'border':  ['fg', 'Ignore'],
   \ 'prompt':  ['fg', 'Conditional'],
@@ -616,9 +596,31 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-]]
+]])
 
-    vim.cmd [[let g:fzf_checkout_view_mode = 'inline']]
-    vim.cmd [[let g:fzf_checkout_git_options = "--format='%(color:#c0caf5)%(refname:short)'"]]
-  end
+    --     vim.cmd [[
+    -- let g:fzf_colors =
+    -- \ { 'fg':      ['fg', 'Visual'],
+    --   \ 'bg':      ['bg', 'Normal'],
+    --   \ 'hl':      ['fg', 'TelescopeMatching'],
+    --   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    --   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    --   \ 'hl+':     ['fg', 'TelescopeMatching'],
+    --   \ 'info':    ['fg', 'PreProc'],
+    --   \ 'border':  ['fg', 'Ignore'],
+    --   \ 'prompt':  ['fg', 'Conditional'],
+    --   \ 'pointer': ['fg', 'Exception'],
+    --   \ 'marker':  ['fg', 'Keyword'],
+    --   \ 'spinner': ['fg', 'Label'],
+    --   \ 'header':  ['fg', 'Comment'] }
+    -- ]]
+
+    vim.cmd([[let g:fzf_checkout_view_mode = 'inline']])
+    vim.cmd([[let g:fzf_checkout_git_options = "--format='%(color:#c0caf5)%(refname:short)'"]])
+    vim.cmd([[let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-q': 'fill_quickfix'}]])
+  end,
 }

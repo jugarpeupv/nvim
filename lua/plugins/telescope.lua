@@ -5,13 +5,13 @@
 return {
   -- "griwes/telescope.nvim",
   -- branch = "group-by",
-  event = "VeryLazy",
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
 
+  event = "VeryLazy",
   config = function()
     local trouble = require("trouble.providers.telescope")
-    -- local egrep_actions = require("telescope._extensions.egrepify.actions")
+    local egrep_actions = require("telescope._extensions.egrepify.actions")
 
     local status_ok, telescope = pcall(require, "telescope")
     if not status_ok then
@@ -54,7 +54,7 @@ return {
         sorting_strategy = "ascending",
         layout_config = {
           horizontal = { width = 0.97, height = 0.9, preview_width = 0.45 },
-          vertical = { width = 0.99, height = 0.9 },
+          vertical = { width = 0.90, height = 0.99, preview_height = 0.35 },
           center = { width = 0.99, height = 0.99 },
           bottom_pane = { width = 0.99, height = 0.99 },
           prompt_position = "top",
@@ -186,6 +186,13 @@ return {
         -- find_files = {
         --   theme = "dropdown",
         -- }
+        live_grep = {
+          layout_strategy = "vertical",
+          path_display = { 'hidden' }
+        },
+        git_branches = {
+          layout_strategy = "vertical",
+        },
       },
       extensions = {
         -- Your extension configuration goes here:
@@ -193,88 +200,116 @@ return {
         --   extension_config_key = value,
         -- }
         -- please take a look at the readme of the extension you want to configure
-        fzf = {
-          fuzzy = true,              -- false will only do exact matching
-          override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case",  -- or "ignore_case" or "respect_case"
-          -- the default case_mode is "smart_case"
+        ["zf-native"] = {
+          -- options for sorting file-like items
+          file = {
+            -- override default telescope file sorter
+            enable = true,
+
+            -- highlight matching text in results
+            highlight_results = true,
+
+            -- enable zf filename match priority
+            match_filename = true,
+          },
+
+          -- options for sorting all other items
+          generic = {
+            -- override default telescope generic item sorter
+            enable = true,
+
+            -- highlight matching text in results
+            highlight_results = true,
+
+            -- disable zf filename match priority
+            match_filename = true,
+          },
         },
-        -- egrepify = {
-        --   -- intersect tokens in prompt ala "str1.*str2" that ONLY matches
-        --   -- if str1 and str2 are consecutively in line with anything in between (wildcard)
-        --   AND = true,              -- default
-        --   permutations = false,    -- opt-in to imply AND & match all permutations of prompt tokens
-        --   lnum = false,            -- default, not required
-        --   lnum_hl = "EgrepifyLnum", -- default, not required, links to `Constant`
-        --   col = false,             -- default, not required
-        --   col_hl = "EgrepifyCol",  -- default, not required, links to `Constant`
-        --   title = true,            -- default, not required, show filename as title rather than inline
-        --   filename_hl = "EgrepifyFile", -- default, not required, links to `Title`
-        --   -- suffix = long line, see screenshot
-        --   -- EXAMPLE ON HOW TO ADD PREFIX!
-        --   prefixes = {
-        --     -- ADDED ! to invert matches
-        --     -- example prompt: ! sorter
-        --     -- matches all lines that do not comprise sorter
-        --     -- rg --invert-match -- sorter
-        --     -- DEFAULTS
-        --     -- filter for file suffixes
-        --     -- example prompt: #lua,md $MY_PROMPT
-        --     -- searches with ripgrep prompt $MY_PROMPT in files with extensions lua and md
-        --     -- i.e. rg --glob="*.{lua,md}" -- $MY_PROMPT
-        --     ["#"] = {
-        --       -- #$REMAINDER
-        --       -- # is caught prefix
-        --       -- `input` becomes $REMAINDER
-        --       -- in the above example #lua,md -> input: lua,md
-        --       flag = "glob",
-        --       cb = function(input)
-        --         return string.format([[*.{%s}]], input)
-        --       end,
-        --     },
-        --     -- filter for (partial) folder names
-        --     -- example prompt: >conf $MY_PROMPT
-        --     -- searches with ripgrep prompt $MY_PROMPT in paths that have "conf" in folder
-        --     -- i.e. rg --glob="**/conf*/**" -- $MY_PROMPT
-        --     [">"] = {
-        --       flag = "glob",
-        --       cb = function(input)
-        --         return string.format([[**/{%s}*/**]], input)
-        --       end,
-        --     },
-        --     -- filter for (partial) file names
-        --     -- example prompt: &egrep $MY_PROMPT
-        --     -- searches with ripgrep prompt $MY_PROMPT in paths that have "egrep" in file name
-        --     -- i.e. rg --glob="*egrep*" -- $MY_PROMPT
-        --     ["&"] = {
-        --       flag = "glob",
-        --       cb = function(input)
-        --         return string.format([[*{%s}*]], input)
-        --       end,
-        --     },
-        --     ["?"] = {
-        --       flag = "no-ignore",
-        --     },
-        --     ["!"] = {
-        --       flag = "invert-match",
-        --     },
-        --     -- HOW TO OPT OUT OF PREFIX
-        --     -- ^ is not a default prefix and safe example
-        --     ["^"] = false,
-        --   },
-        --   -- default mappings
-        --   mappings = {
-        --     i = {
-        --       -- toggle prefixes, prefixes is default
-        --       ["<C-z>"] = egrep_actions.toggle_prefixes,
-        --       -- toggle AND, AND is default, AND matches tokens and any chars in between
-        --       ["<C-a>"] = egrep_actions.toggle_and,
-        --       -- toggle permutations, permutations of tokens is opt-in
-        --       ["<C-r>"] = egrep_actions.toggle_permutations,
-        --     },
-        --   },
+        -- fzf = {
+        --   fuzzy = true,              -- false will only do exact matching
+        --   override_generic_sorter = true, -- override the generic sorter
+        --   override_file_sorter = true, -- override the file sorter
+        --   case_mode = "smart_case",  -- or "ignore_case" or "respect_case"
+        --   -- the default case_mode is "smart_case"
         -- },
+        egrepify = {
+          -- intersect tokens in prompt ala "str1.*str2" that ONLY matches
+          -- if str1 and str2 are consecutively in line with anything in between (wildcard)
+          AND = true,                   -- default
+          permutations = false,         -- opt-in to imply AND & match all permutations of prompt tokens
+          lnum = true,                 -- default, not required
+          lnum_hl = "EgrepifyLnum",     -- default, not required, links to `Constant`
+          col = false,                  -- default, not required
+          col_hl = "EgrepifyCol",       -- default, not required, links to `Constant`
+          title = true,                 -- default, not required, show filename as title rather than inline
+          filename_hl = "EgrepifyFile", -- default, not required, links to `Title`
+          -- suffix = long line, see screenshot
+          -- EXAMPLE ON HOW TO ADD PREFIX!
+          prefixes = {
+            -- ADDED ! to invert matches
+            -- example prompt: ! sorter
+            -- matches all lines that do not comprise sorter
+            -- rg --invert-match -- sorter
+            -- DEFAULTS
+            -- filter for file suffixes
+            -- example prompt: #lua,md $MY_PROMPT
+            -- searches with ripgrep prompt $MY_PROMPT in files with extensions lua and md
+            -- i.e. rg --glob="*.{lua,md}" -- $MY_PROMPT
+            ["#"] = {
+              -- #$REMAINDER
+              -- # is caught prefix
+              -- `input` becomes $REMAINDER
+              -- in the above example #lua,md -> input: lua,md
+              flag = "glob",
+              cb = function(input)
+                return string.format([[*.{%s}]], input)
+              end,
+            },
+            -- filter for (partial) folder names
+            -- example prompt: >conf $MY_PROMPT
+            -- searches with ripgrep prompt $MY_PROMPT in paths that have "conf" in folder
+            -- i.e. rg --glob="**/conf*/**" -- $MY_PROMPT
+            [">"] = {
+              flag = "glob",
+              cb = function(input)
+                return string.format([[**/**{%s}**/**]], input)
+              end,
+            },
+            -- filter for (partial) file names
+            -- example prompt: &egrep $MY_PROMPT
+            -- searches with ripgrep prompt $MY_PROMPT in paths that have "egrep" in file name
+            -- i.e. rg --glob="*egrep*" -- $MY_PROMPT
+            ["&"] = {
+              flag = "glob",
+              cb = function(input)
+                return string.format([[*{%s}*]], input)
+              end,
+            },
+            ["?"] = {
+              flag = "no-ignore",
+            },
+            ["%"] = {
+              flag = "word-regexp",
+            },
+            ["!"] = {
+              flag = "invert-match",
+            },
+            -- HOW TO OPT OUT OF PREFIX
+            -- ^ is not a default prefix and safe example
+            ["^"] = false,
+          },
+          -- default mappings
+          mappings = {
+            i = {
+              -- toggle prefixes, prefixes is default
+              ["<C-z>"] = egrep_actions.toggle_prefixes,
+              -- toggle AND, AND is default, AND matches tokens and any chars in between
+              ["<C-a>"] = egrep_actions.toggle_and,
+              -- toggle permutations, permutations of tokens is opt-in
+              ["<C-r>"] = egrep_actions.toggle_permutations,
+            },
+          },
+        },
         ["ui-select"] = {
           require("telescope.themes").get_dropdown({
             prompt_prefix = "> ",
@@ -282,10 +317,22 @@ return {
           }),
         },
         live_grep_args = {
+          path_display = { "smart" },
           -- layout_strategy = "vertical",
+          -- theme = "dropdown",
+          -- prompt_position = "bottom",
+          -- layout_config = { horizontal = { width = 0.97, height = 0.9, preview_width = 0.40 } },
+
           -- theme = require("telescope.themes").get_dropdown({
-          --   -- layout_config = { width = 0.90, height = 0.40},
+          --   layout_config = { width = 0.90, height = 0.40 },
           --   prompt_prefix = "> ",
+          --   prompt_position = "bottom",
+          --   -- results_height = 40,
+          -- }),
+          -- theme = require("telescope.themes").get_dropdown({
+          --   layout_config = { width = 0.90, height = 0.40 },
+          --   prompt_prefix = "> ",
+          --   prompt_position = "bottom"
           -- }),
           auto_quoting = false,
           mappings = {
@@ -337,8 +384,9 @@ return {
 
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
-    telescope.load_extension("fzf")
+    -- telescope.load_extension("fzf")
     telescope.load_extension("harpoon")
+    telescope.load_extension("zf-native")
     telescope.load_extension("ui-select")
     telescope.load_extension("bookmarks")
     -- telescope.load_extension('media_files')

@@ -1,6 +1,8 @@
+-- return {}
 return {
   "nvim-tree/nvim-tree.lua",
   priority = 1,
+  -- commit = "5e4475d8bf7a3646164e01d9b65ef68369b17e3c",
   config = function()
     local status_ok, nvim_tree = pcall(require, "nvim-tree")
     if not status_ok then
@@ -45,30 +47,42 @@ return {
         if #marks == 0 then
           table.insert(marks, api.tree.get_node_under_cursor())
         end
-        vim.ui.input({ prompt = string.format("Trash %s files? [y/n] ", #marks) }, function(input)
-          if input == "y" then
-            for _, node in ipairs(marks) do
-              api.fs.trash(node)
-            end
-            api.marks.clear()
-            api.tree.reload()
-          end
-        end)
+        -- vim.ui.input({ prompt = string.format("Trash %s files? [y/n] ", #marks) }, function(input)
+        --   if input == "y" then
+        --     for _, node in ipairs(marks) do
+        --       api.fs.trash(node)
+        --     end
+        --     api.marks.clear()
+        --     api.tree.reload()
+        --   end
+        -- end)
+
+        for _, node in ipairs(marks) do
+          api.fs.trash(node)
+        end
+        api.marks.clear()
+        api.tree.reload()
       end
       local mark_remove = function()
         local marks = api.marks.list()
         if #marks == 0 then
           table.insert(marks, api.tree.get_node_under_cursor())
         end
-        vim.ui.input({ prompt = string.format("Remove/Delete %s files? [y/n] ", #marks) }, function(input)
-          if input == "y" then
-            for _, node in ipairs(marks) do
-              api.fs.remove(node)
-            end
-            api.marks.clear()
-            api.tree.reload()
-          end
-        end)
+        -- vim.ui.input({ prompt = string.format("Remove/Delete %s files? [y/n] ", #marks) }, function(input)
+        --   if input == "y" then
+        --     for _, node in ipairs(marks) do
+        --       api.fs.remove(node)
+        --     end
+        --     api.marks.clear()
+        --     api.tree.reload()
+        --   end
+        -- end)
+
+        for _, node in ipairs(marks) do
+          api.fs.remove(node)
+        end
+        api.marks.clear()
+        api.tree.reload()
       end
 
       local mark_copy = function()
@@ -108,7 +122,7 @@ return {
       -- Default mappings. Feel free to modify or remove as you wish.
       --
       -- BEGIN_DEFAULT_ON_ATTACH
-      vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
+      vim.keymap.set("n", "<C-p>", api.tree.change_root_to_node, opts("CD"))
       vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
       vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
       vim.keymap.set("n", "<C-t>", api.node.open.tab, opts("Open: New Tab"))
@@ -191,9 +205,15 @@ return {
 
     -- setup with all defaults
     nvim_tree.setup({
+      ui = {
+        confirm = {
+          trash = false,
+          remove = true,
+        },
+      },
       -- BEGIN_DEFAULT_OPTS
       auto_reload_on_write = true,
-      disable_netrw = false,
+      disable_netrw = true,
       hijack_cursor = true,
       hijack_netrw = true,
       hijack_unnamed_buffer_when_opening = false,
@@ -287,7 +307,9 @@ return {
           glyphs = {
             -- default = circle,
             -- default = "〣",
-            default = "",
+            -- default = "",
+            -- default = "",
+            default = "",
             modified = "[!]",
             -- modified = "",
             -- default = "",
@@ -317,8 +339,10 @@ return {
               default = "",
               open = "",
               -- open = "",
-              empty = "",
-              empty_open = "",
+              empty = "󱞞",
+              empty_open = "󱞞",
+              -- empty = "",
+              -- empty_open = "",
               -- empty = "",
               -- empty_open = "",
               -- empty = "",
@@ -338,8 +362,19 @@ return {
               -- unstaged = "M",
               -- unstaged = "",
               -- unstaged = "󱈸",
-              unstaged = "󰐾 ",
-              staged = "󰐾 ",
+              -- unstaged = "󰐾 ",
+              -- staged = "󰐾 ",
+              -- staged = "",
+              -- staged = ""
+              -- staged = "",
+              -- unstaged = "",
+              staged = "+",
+              unstaged = "!",
+              -- unstaged = "󰀨 ",
+              -- staged = "󰀨 ",
+              -- staged = "󰐗 ",
+              -- staged = "󱇭 ",
+              -- staged = "   󰧞 󰺕 󰐾  󰻂           󰗖     "
               -- staged = "󱤧 ",
               -- unstaged = "!",
               -- staged = "+",
@@ -352,7 +387,8 @@ return {
               -- unmerged = "",
               unmerged = " ",
               -- untracked = "★",
-              untracked = "",
+              -- untracked = "",
+              untracked = "?",
               -- deleted = "",
               -- deleted = "✗",
               deleted = "󰧧",
@@ -410,7 +446,7 @@ return {
         cygwin_support = false,
       },
       filesystem_watchers = {
-        enable = true,
+        enable = false,
         debounce_delay = 30,
         ignore_dirs = { "node_modules" },
       },
@@ -433,10 +469,6 @@ return {
           },
         },
       },
-      trash = {
-        cmd = "trash",
-        require_confirm = true,
-      },
       log = {
         enable = false,
         truncate = false,
@@ -449,5 +481,7 @@ return {
         },
       },
     }) -- END_DEFAULT_OPTS
+
+    vim.cmd([[hi NvimTreeFolderIcon guifg=#89B4FA]])
   end,
 }

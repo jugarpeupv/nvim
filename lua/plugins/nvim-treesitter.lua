@@ -73,7 +73,7 @@ return {
         "luadoc",
         "vim",
         "dockerfile",
-        "dap_repl",
+        -- "dap_repl",
         "regex",
       },
       -- auto install above language parsers

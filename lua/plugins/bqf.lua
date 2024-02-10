@@ -4,7 +4,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("bqf").setup({
-      magic_window = false,
+      magic_window = true,
       func_map = {},
       filter = {
         fzf = {
@@ -18,9 +18,9 @@ return {
         border = "single",
         buf_label = true,
         delay_syntax = 10,
-        should_preview_cb = function()
-          return true
-        end,
+        -- should_preview_cb = function()
+        --   return false
+        -- end,
         show_title = true,
         win_height = 0,
         win_vheight = 0,

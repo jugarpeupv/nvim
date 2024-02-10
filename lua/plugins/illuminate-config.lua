@@ -9,7 +9,7 @@ return {
       providers = {
         "lsp",
         "treesitter",
-        "regex",
+        -- "regex",
       },
       -- delay: delay in milliseconds
       delay = 100,
@@ -19,6 +19,7 @@ return {
       filetype_overrides = {},
       -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
       filetypes_denylist = {
+        "qf",
         "harpoon",
         "DiffviewFiles",
         "gitcommmit",
@@ -30,6 +31,7 @@ return {
         "dirbuf",
         "dirvish",
         "fugitive",
+        "neo-tree"
       },
       -- filetypes_allowlist: filetypes to illuminate, this is overridden by filetypes_denylist
       -- You must set filetypes_denylist = {} to override the defaults to allow filetypes_allowlist to take effect

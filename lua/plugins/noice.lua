@@ -3,10 +3,10 @@ return {
   "folke/noice.nvim",
   opts = {
     cmdline = {
-      enabled = false
+      enabled = false,
     },
     messages = {
-      enabled = false
+      enabled = false, -- enables the Noice messages UI
     },
     popupmenu = {
       enabled = false

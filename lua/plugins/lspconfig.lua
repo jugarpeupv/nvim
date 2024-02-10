@@ -23,6 +23,51 @@ return {
 
     local root_pattern = require("lspconfig.util").root_pattern
 
+    local calculate_angularls_root_dir = function()
+      local function read_file(file_path)
+        local file = io.open(file_path, "r")
+        if not file then
+          return nil
+        end
+
+        local content = file:read("*a")
+        file:close()
+
+        return content
+      end
+
+      -- Function to check if a specific dependency is present in the package.json file
+      local function has_dependency(package_json_content, dependency_name)
+        local package_data = vim.json.decode(package_json_content)
+        local dependencies = package_data.dependencies
+
+        return dependencies and dependencies[dependency_name] ~= nil
+      end
+
+      -- Example usage
+      local package_json_path = "package.json"
+      if pcall(read_file, package_json_path) then
+        local package_json_content = read_file(package_json_path)
+
+        if package_json_content then
+          local dependency_name = "@angular/core"
+          local hasAngularCore = has_dependency(package_json_content, dependency_name)
+          -- print('hasAngularCore:', hasAngularCore);
+          -- print(hasAngularCore);
+
+          if hasAngularCore then
+            return root_pattern("angular.json", "nx.json", "project.json")
+          else
+            return root_pattern("inventado")
+          end
+        else
+          return root_pattern("inventado")
+        end
+      else
+        return root_pattern('inventado')
+      end
+    end
+
     local keymap = vim.keymap -- for conciseness
 
     -- local navic = require("nvim-navic")
@@ -35,12 +80,12 @@ return {
       local opts = { noremap = true, silent = true, buffer = bufnr }
 
       -- set keybinds
-      keymap.set("n", "gi", "<cmd>Lspsaga finder<CR>", opts)                     -- show definition, references
+      keymap.set("n", "gI", "<cmd>Lspsaga finder<CR>", opts)                     -- show definition, references
       -- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-      keymap.set("n", "<leader>gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-      keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)            -- see definition and make edits in window
+      keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+      keymap.set("n", "<leader>gD", "<cmd>Lspsaga peek_definition<CR>", opts)            -- see definition and make edits in window
       keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)       -- see definition and make edits in window
-      -- keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
+      keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
       keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)        -- see available code actions
       keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
@@ -147,12 +192,12 @@ return {
     -- configure typescript server with plugin
     typescript.setup({
       server = {
-        -- capabilities = capabilities,
-        -- on_attach = on_attach,
+        capabilities = capabilities,
+        on_attach = on_attach,
         -- root_dir = root_pattern("tsconfig.base.json", "package.json", "jsconfig.json", ".git", "tsconfig.json"),
         -- root_dir = root_pattern("tsconfig.base.json", "package.json", ".git"),
         -- root_dir = root_pattern("tsconfig.base.json", ".git"),
-        root_dir = root_pattern("tsconfig.base.json", ".git"),
+        root_dir = root_pattern( "tsconfig.json","tsconfig.base.json"),
         settings = {
           javascript = {
             inlayHints = {
@@ -207,7 +252,8 @@ return {
       on_attach = on_attach,
       capabilities = capabilities,
       -- root_dir = root_pattern("angular.json", "project.json"),
-      root_dir = root_pattern("angular.json", "nx.json"),
+      -- root_dir = root_pattern("angular.json", "nx.json"),
+      root_dir = calculate_angularls_root_dir(),
     })
 
     lspconfig["groovyls"].setup({
@@ -313,10 +359,10 @@ return {
       capabilities = capabilities,
     })
 
-    require("lspconfig").cssmodules_ls.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
+    -- require("lspconfig").cssmodules_ls.setup({
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- })
 
     -- lspconfig["marksman"].setup {
     --   on_attach = on_attach,
