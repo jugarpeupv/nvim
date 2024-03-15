@@ -115,7 +115,7 @@ keymap(
 keymap(
 	"n",
 	"<Leader>bu",
-	"<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = false, show_all_buffers = false })<cr>",
+	"<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false })<cr>",
 	opts
 )
 keymap("n", "<leader>tr", "<cmd>Telescope resume<cr>", opts)
@@ -180,7 +180,7 @@ keymap("n", "gv", "<cmd>vsp | lua vim.lsp.buf.definition()<cr>", opts)
 keymap("n", "<Leader>pp", "<cmd>Telescope projects<CR>", opts)
 
 -- Telescope
-keymap("n", "<Leader>gg", "<cmd>Telescope git_status<cr>", opts)
+-- keymap("n", "<Leader>gg", "<cmd>Telescope git_status<cr>", opts)
 keymap("n", "<Leader>ga", "<cmd>G add .<cr>", opts)
 keymap("n", "<Leader>gS", "<cmd>G stash<cr>", opts)
 keymap("n", "<Leader>gO", "<cmd>G stash pop<cr>", opts)
@@ -511,3 +511,7 @@ end, { desc = "Super Tab" })
 
 -- vim.cmd([[nnoremap / /\v]])
 -- vim.cmd([[nnoremap ? ?\v]])
+
+vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle)
+vim.keymap.set('n', '<leader>us', vim.cmd.UndotreeShow)
+vim.keymap.set('n', '<leader>js', vim.cmd.Neogen)

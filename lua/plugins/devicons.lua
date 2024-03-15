@@ -46,6 +46,17 @@ return {
           color = "#F38BA8",
           name = "npmrc1",
         },
+        ["out"] = {
+          icon = "",
+          color = "#F38BA8",
+          cterm_color = "124",
+          name = "Out",
+        },
+        ["csv"] = {
+          icon = "",
+          color = "#9CDCFE",
+          name = "Csv",
+        },
         ["md"] = {
           icon = "",
           color = "#9CDCFE",

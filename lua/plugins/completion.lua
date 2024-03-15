@@ -2,7 +2,7 @@
 return {
   { "hrsh7th/cmp-nvim-lua" },
   { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer" },
+  -- { "hrsh7th/cmp-buffer" },
   -- { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/cmp-path" },
   {
@@ -89,7 +89,7 @@ return {
           { name = "luasnip" }, -- snippets
           { name = "path" }, -- file system paths
           -- { name = "buffer", keyword_length = 5, max_item_count = 5 },
-          { name = "buffer" },
+          -- { name = "buffer" },
           -- { name = 'markdown-link' },
         }),
         sorting = {
@@ -132,7 +132,7 @@ return {
             mode = "symbol_text",
             menu = {
               nvim_lsp = "[LSP]",
-              buffer = "[Buffer]",
+              -- buffer = "[Buffer]",
               luasnip = "[LuaSnip]",
               nvim_lua = "[Lua]",
               latex_symbols = "[Latex]",

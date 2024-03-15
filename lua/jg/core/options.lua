@@ -84,7 +84,8 @@ opt.laststatus = 3
 opt.winblend = 0
 
 -- Folding
-vim.cmd([[set foldmethod=indent]])
+vim.cmd([[set foldmethod=syntax]])
+-- vim.cmd([[set foldmethod=indent]])
 vim.cmd([[set nofoldenable]])
 vim.cmd([[set foldlevelstart=20]])
 vim.cmd([[set foldnestmax=10]])

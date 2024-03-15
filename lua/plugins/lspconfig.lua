@@ -52,6 +52,8 @@ return {
         if package_json_content then
           local dependency_name = "@angular/core"
           local hasAngularCore = has_dependency(package_json_content, dependency_name)
+          -- print('hi:', hi)
+          -- local hasAngularCore, err = pcall(has_dependency, package_json_content, dependency_name)
           -- print('hasAngularCore:', hasAngularCore);
           -- print(hasAngularCore);
 
@@ -64,7 +66,7 @@ return {
           return root_pattern("inventado")
         end
       else
-        return root_pattern('inventado')
+        return root_pattern("inventado")
       end
     end
 
@@ -80,22 +82,22 @@ return {
       local opts = { noremap = true, silent = true, buffer = bufnr }
 
       -- set keybinds
-      keymap.set("n", "gI", "<cmd>Lspsaga finder<CR>", opts)                     -- show definition, references
+      keymap.set("n", "gI", "<cmd>Lspsaga finder<CR>", opts)                -- show definition, references
       -- keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
       keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-      keymap.set("n", "<leader>gD", "<cmd>Lspsaga peek_definition<CR>", opts)            -- see definition and make edits in window
-      keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)       -- see definition and make edits in window
+      keymap.set("n", "<leader>gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
+      keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)  -- see definition and make edits in window
       keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-      keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)        -- see available code actions
+      keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)   -- see available code actions
       keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
-      keymap.set(
-        "n",
-        "gR",
-        "<cmd>lua require('telescope.builtin').lsp_references({ include_declaration = false })<CR>",
-        opts
-      )
-      -- keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
+      -- keymap.set(
+      --   "n",
+      --   "gR",
+      --   "<cmd>lua require('telescope.builtin').lsp_references({ include_declaration = false })<CR>",
+      --   opts
+      -- )
+      keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
       keymap.set("n", "<leader>fo", "<cmd>lua vim.lsp.buf.format({ async = true})<cr>", opts)
       keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       -- keymap.set("n", "<Leader>re", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -197,7 +199,8 @@ return {
         -- root_dir = root_pattern("tsconfig.base.json", "package.json", "jsconfig.json", ".git", "tsconfig.json"),
         -- root_dir = root_pattern("tsconfig.base.json", "package.json", ".git"),
         -- root_dir = root_pattern("tsconfig.base.json", ".git"),
-        root_dir = root_pattern( "tsconfig.json","tsconfig.base.json"),
+        -- root_dir = root_pattern("tsconfig.json","tsconfig.base.json", ".git"),
+        root_dir = root_pattern("tsconfig.base.json", "package.json", "jsconfig.json", ".git"),
         settings = {
           javascript = {
             inlayHints = {
@@ -347,6 +350,11 @@ return {
           },
         },
       },
+    })
+
+    lspconfig["jdtls"].setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
     })
 
     lspconfig["dockerls"].setup({

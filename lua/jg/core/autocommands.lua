@@ -121,6 +121,18 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
+  augroup FoldMethodSyntaxOnJson
+  autocmd! FileType json setlocal foldmethod=syntax
+  augroup END
+]])
+
+vim.cmd([[
+  augroup FoldMethodSyntaxOnJsonc
+  autocmd! FileType jsonc setlocal foldmethod=syntax
+  augroup END
+]])
+
+vim.cmd([[
   augroup WrapMarkdownAu
   autocmd! FileType markdown set wrap
   augroup END

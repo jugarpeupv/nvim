@@ -23,5 +23,8 @@ return {
         current = "DiffAdd",
       },
     })
+
+    vim.cmd([[hi GitConflictIncoming gui=none]])
+    vim.cmd([[hi GitConflictCurrent gui=none]])
   end,
 }

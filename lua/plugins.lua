@@ -21,9 +21,20 @@ return {
   { "kkharji/sqlite.lua",                           event = "VeryLazy" },
   { "nvim-telescope/telescope-smart-history.nvim",  event = "VeryLazy" },
   { "stsewd/fzf-checkout.vim",                      event = "VeryLazy" },
+  { 'mfussenegger/nvim-jdtls' },
+  -- { 'Mofiqul/vscode.nvim' },
   {
     "ckipp01/nvim-jenkinsfile-linter",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
   },
+  -- {
+  --   "jiaoshijie/undotree",
+  --   dependencies = "nvim-lua/plenary.nvim",
+  --   config = true,
+  --   keys = { -- load the plugin only when using it's keybinding:
+  --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
+  --   },
+  -- },
+  { 'mbbill/undotree', event = "VeryLazy" },
 }

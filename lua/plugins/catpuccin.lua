@@ -5,6 +5,7 @@ return {
 
   --
   config = function()
+
     require("catppuccin").setup({
       flavour = "mocha", -- latte, frappe, macchiato, or mocha
       transparent_background = true,
@@ -18,6 +19,11 @@ return {
           -- yellow = "#74C7EC",
           -- yellow = "#0db9d7",
           yellow = "#2ac3de",
+          -- yellow = "#F5C2E7",
+          -- yellow = "#89ddff",
+          -- yellow = "#90dcd1",
+          -- yellow = "#94E2D5",
+          -- yellow = "#179299",
           -- yellow = "#74C7EC",
           -- yellow = "#37d3dc",
 
@@ -107,10 +113,10 @@ return {
         percentage = 0.15,
       },
       no_italic = false, -- Force no italic
-      no_bold = true, -- Force no bold
+      no_bold = false, -- Force no bold
       styles = {
-        comments = { "italic" },
-        conditionals = {},
+        comments = {},
+        conditionals = { "bold" },
         loops = {},
         functions = {},
         keywords = {},
@@ -144,7 +150,8 @@ return {
     -- vim.cmd [[highlight NvimTreeGitDirty guifg=#f2cdcd]]
     vim.cmd([[highlight NvimTreeGitDirty guifg=#F9E2AF]])
     vim.cmd([[highlight NvimTreeGitStaged guifg=#8ee2cf]])
-    vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F38BA8]])
+    vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F5C2E7]])
+    -- vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F38BA8]])
     vim.cmd([[highlight NvimTreeModifiedFile gui=none guifg=#737aa2]])
     -- vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#EFF1F5]]
     vim.cmd([[highlight NvimTreeGitNew guifg=#89ddff]])
@@ -158,9 +165,10 @@ return {
     vim.cmd("hi HlSearchNear guifg=#181826 guibg=#F38BA8")
     vim.cmd("hi HlSearchLensNear guifg=#181826 guibg=#F38BA8")
 
-    -- vim.cmd([[hi @text.title.1.markdown  guifg=#F9E2AF]])
-    vim.cmd([[hi @text.title.2.markdown  guifg=#89ddff]])
-    vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])
+    -- vim.cmd([[hi @markup.heading.1.marker  guifg=#F5C2E7]])
+    -- vim.cmd([[hi @markup.heading.1.markdown  guifg=#F5C2E7]])
+    -- vim.cmd([[hi @markup.heading.2.markdown  guifg=#89ddff]])
+    -- vim.cmd([[hi @markup.heading.3.markdown  guifg=#CBA6F7]])
     -- vim.cmd([[hi @text.title.1.markdown  guifg=#89ddff]])
     -- vim.cmd([[hi @text.title.2.markdown  guifg=#89B4FA]])
     -- vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])
@@ -324,6 +332,7 @@ return {
     -- vim.cmd([[highlight InclineNormalNC  guibg=#394b70 guifg=#666666]])
 
     vim.cmd([[highlight TreesitterContextLineNumber guibg=#292e42 guifg=#737aa2]])
+    -- vim.cmd([[highlight TreesitterContextLineNumber guibg=#394b70 guifg=#737aa2]])
     vim.cmd([[highlight TreesitterContext guifg=none guibg=none]])
 
     -- vim.cmd([[highlight NvimTreeWinSeparator guifg=#292e42]])
@@ -409,7 +418,11 @@ return {
 
     -- unused variable highlight
     -- vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087 gui=undercurl ]])
-    vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087]])
+    -- vim.cmd([[highlight DiagnosticUnnecessary guifg=#6c7087]])
+
+    vim.cmd([[highlight DiagnosticUnnecessary guifg=#747ebd]])
+    vim.cmd([[highlight CopilotSuggestion gui=none]])
+    -- vim.cmd([[highlight Comment guifg=#747ebd]])
 
     -- vim.cmd([[highlight ScrollbarCursor  ctermfg=0 guifg=#cdd6f4]])
     -- vim.cmd([[highlight ScrollbarCursorHandle  ctermfg=0 guifg=#cdd6f4 guibg=#3b4252 blend=0]])
@@ -436,6 +449,12 @@ return {
     vim.cmd([[highlight ScrollbarInfoHandle  ctermfg=0 guifg=#89dceb guibg=none blend=0]])
     vim.cmd([[highlight ScrollbarGitAdd  ctermfg=0 guifg=#f2cdcd]])
     vim.cmd([[highlight ScrollbarGitAddHandle  ctermfg=0 guifg=#f2cdcd guibg=none blend=0]])
+
+
+    vim.cmd([[highlight Keyword  gui=bold]])
+    vim.cmd([[highlight @keyword.return  gui=bold]])
+    vim.cmd([[highlight @keyword.operator  gui=bold]])
+    vim.cmd([[highlight @keyword.exception  gui=bold guifg=#F5C2E7]])
 
     vim.cmd([[highlight Constant gui=none cterm=none guibg=none blend=0]])
     vim.cmd([[highlight Title gui=none cterm=none guibg=none blend=0]])
