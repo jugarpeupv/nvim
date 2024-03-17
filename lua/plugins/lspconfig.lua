@@ -269,6 +269,7 @@ return {
         "java",
         "-jar",
         "/Users/jgarcia/.config/groovy-language-server/build/libs/groovy-language-server-all.jar",
+        -- "~/.local/share/nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar",
       },
     })
 
@@ -377,10 +378,10 @@ return {
     --   capabilities = capabilities,
     -- }
 
-    require("lspconfig").nxls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    -- require("lspconfig").nxls.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    -- })
 
     -- require("lspconfig").emmet_language_server.setup({
     --   capabilities = capabilities,

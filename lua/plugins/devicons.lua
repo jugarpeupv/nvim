@@ -213,6 +213,7 @@ return {
 
         --[[ [".prettierrc"] = { icon = "󰫽", color = "#0D8874", name = "prettierrc"}, ]]
         [".prettierrc"] = { icon = "󰰚", color = "#73daca", name = "prettierrc" },
+        -- [".prettierrc"] = { icon = "", color = "#73daca", name = "prettierrc" },
 
         --[[ ["project.json"] = { icon = "", color = '#9CDCFE', name = 'ProjectJson' }, ]]
         ["project.json"] = { icon = "", color = "#9CDCFE", name = "ProjectJson" },

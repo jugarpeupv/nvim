@@ -365,9 +365,10 @@ return {
     vim.cmd([[highlight Visual gui=none cterm=none guibg=#264F78]])
     -- vim.cmd([[hi DiffviewFilePanelFileName guifg=#B4BEFE]])
     vim.cmd([[hi DiffviewFilePanelFileName guifg=#c0caf5]])
-    vim.cmd([[hi @label guifg=#B4BEFE]])
-    -- vim.cmd([[hi @tag guifg=#B4BEFE]])
+    vim.cmd([[hi @tag guifg=#F5C2E7]])
     vim.cmd([[hi @tag.attribute guifg=#B4BEFE]])
+    -- vim.cmd([[hi @tag guifg=#B4BEFE]])
+    -- vim.cmd([[hi @label guifg=#B4BEFE]])
     vim.cmd([[hi Error guifg=#F38BA8]])
     vim.cmd([[hi ErrorMsg guifg=#F38BA8]])
     -- vim.cmd([[hi @property guifg=#CDD6F4]])
@@ -451,7 +452,8 @@ return {
     vim.cmd([[highlight ScrollbarGitAddHandle  ctermfg=0 guifg=#f2cdcd guibg=none blend=0]])
 
 
-    vim.cmd([[highlight Keyword  gui=bold]])
+    -- vim.cmd([[highlight Keyword  gui=bold]])
+    -- vim.cmd([[highlight Include  gui=bold]])
     vim.cmd([[highlight @keyword.return  gui=bold]])
     vim.cmd([[highlight @keyword.operator  gui=bold]])
     vim.cmd([[highlight @keyword.exception  gui=bold guifg=#F5C2E7]])
