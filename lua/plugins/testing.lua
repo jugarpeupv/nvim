@@ -8,8 +8,9 @@ return {
     vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
     -- vim.cmd("let test#strategy = 'vimux'")
     vim.cmd("let test#strategy = 'neovim_sticky'")
-    vim.cmd("let g:test#javascript#runner = 'jest'")
-    vim.cmd("let g:VimuxHeight = '40'")
+    -- vim.cmd("let g:test#javascript#runner = 'jest'")
+    vim.cmd("let g:test#javascript#runner = 'nx'")
+    vim.cmd("let g:VimuxHeight = '35'")
   end
 }
 
