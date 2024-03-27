@@ -50,6 +50,10 @@ return {
     null_ls.setup({
       debug = false,
       sources = lSsources,
+      should_attach = function(bufnr)
+        local attach = vim.api.nvim_buf_get_option(bufnr, "filetype") ~= "yaml"
+        return attach
+      end,
     })
   end,
 }

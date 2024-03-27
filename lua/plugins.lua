@@ -21,13 +21,25 @@ return {
   { "kkharji/sqlite.lua",                           event = "VeryLazy" },
   { "nvim-telescope/telescope-smart-history.nvim",  event = "VeryLazy" },
   { "stsewd/fzf-checkout.vim",                      event = "VeryLazy" },
-  { 'mfussenegger/nvim-jdtls' },
+  { "mfussenegger/nvim-jdtls" },
   -- { 'Mofiqul/vscode.nvim' },
   {
     "ckipp01/nvim-jenkinsfile-linter",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
   },
+  -- {
+  --   "f-person/git-blame.nvim",
+  --   config = function()
+  --     require("gitblame").setup({
+  --       --Note how the `gitblame_` prefix is omitted in `setup`
+  --       enabled = false,
+  --     })
+  --     -- vim.g.gitblame_schedule_event = "CursorHold"
+  --     -- vim.g.gitblame_clear_event = "CursorHoldI"
+  --     vim.g.gitblame_highlight_group = "CursorLine"
+  --   end,
+  -- },
   -- {
   --   "jiaoshijie/undotree",
   --   dependencies = "nvim-lua/plenary.nvim",
@@ -36,5 +48,14 @@ return {
   --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
   --   },
   -- },
-  { 'mbbill/undotree', event = "VeryLazy" },
+  { "mbbill/undotree", event = "VeryLazy" },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   build = "cd app && yarn install",
+  --   init = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  --   ft = { "markdown" },
+  -- },
 }

@@ -5,7 +5,6 @@ return {
 
   --
   config = function()
-
     require("catppuccin").setup({
       flavour = "mocha", -- latte, frappe, macchiato, or mocha
       transparent_background = true,
@@ -19,7 +18,9 @@ return {
           -- yellow = "#74C7EC",
           -- yellow = "#0db9d7",
           yellow = "#2ac3de",
+          -- yellow = "#F38BA8",
           -- yellow = "#F5C2E7",
+          -- yellow = "#74C7EC",
           -- yellow = "#89ddff",
           -- yellow = "#90dcd1",
           -- yellow = "#94E2D5",
@@ -29,6 +30,7 @@ return {
 
           -- yellow = "#41a6b5",
           -- yellow = "#8ee2cf",
+          -- green = "#8ee2cf",
           green = "#F2CDCD",
           -- red = "#ff007c",
           -- maroon = "#F38BA8",
@@ -117,7 +119,7 @@ return {
       styles = {
         comments = {},
         conditionals = { "bold" },
-        loops = {},
+        loops = { "bold" },
         functions = {},
         keywords = {},
         strings = {},
@@ -142,6 +144,7 @@ return {
     vim.cmd([[hi IlluminatedWordWrite guibg=#394b70]])
     vim.cmd([[hi illuminatedCurWord guibg=#394b70]])
     vim.cmd([[hi illuminatedWord guibg=#394b70]])
+    -- vim.cmd([[hi Boolean guifg=#F5C2E7]])
 
     vim.cmd([[highlight NeoTreeRootName gui=none]])
     vim.cmd([[highlight NeoTreeFileStatsHeader guifg=#3b4261]])
@@ -373,6 +376,7 @@ return {
     vim.cmd([[hi ErrorMsg guifg=#F38BA8]])
     -- vim.cmd([[hi @property guifg=#CDD6F4]])
     vim.cmd([[hi TreesitterContextBottom guifg=none gui=none]])
+    vim.cmd([[hi GitSignsCurrentLineBlame guifg=black]])
 
     -- vim.cmd([[hi @property.scss guifg=#89ddff]])
     -- vim.cmd([[hi @property.class.scss guifg=#89ddff]])
@@ -450,7 +454,6 @@ return {
     vim.cmd([[highlight ScrollbarInfoHandle  ctermfg=0 guifg=#89dceb guibg=none blend=0]])
     vim.cmd([[highlight ScrollbarGitAdd  ctermfg=0 guifg=#f2cdcd]])
     vim.cmd([[highlight ScrollbarGitAddHandle  ctermfg=0 guifg=#f2cdcd guibg=none blend=0]])
-
 
     -- vim.cmd([[highlight Keyword  gui=bold]])
     -- vim.cmd([[highlight Include  gui=bold]])

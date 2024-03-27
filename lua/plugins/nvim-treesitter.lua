@@ -36,6 +36,7 @@ return {
         additional_vim_regex_highlighting = true,
       },
       sync_install = true,
+      -- ignore_install = { "yaml" },
       ignore_install = {},
       modules = {},
       -- enable indentation

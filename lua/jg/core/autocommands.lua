@@ -168,7 +168,7 @@ vim.api.nvim_create_autocmd('filetype', {
       { remap = true, buffer = true })
 
     -- Paste files
-    vim.keymap.set('n', 'gp',
+    vim.keymap.set('n', 'bgp',
       function()
         local api = require 'nvim-tree.api'
         local source_paths = {}

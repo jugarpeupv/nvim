@@ -165,14 +165,14 @@ end)
 -- 	"<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
 -- 	opts
 -- )
--- keymap("n",
---   "<Leader>ss",
---   "<cmd>Telescope live_grep search_dirs={'%:p'} vimgrep_arguments=rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings<cr>",
---   opts
--- )
-
 keymap("n",
   "<Leader>ss",
+  "<cmd>Telescope live_grep search_dirs={'%:p'} vimgrep_arguments=rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings<cr>",
+  opts
+)
+
+keymap("n",
+  "<Leader>sn",
   "<cmd>BLines<cr>",
   opts
 )
@@ -220,7 +220,7 @@ keymap("n", "<Leader>sr", "<cmd>%SnipRun<cr>", opts)
 -- Git blame
 keymap("n", "<Leader>bl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", opts)
 keymap("n", "<Leader>bh", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", opts)
-keymap("n", "<Leader>bt", "<cmd>GitBlameToggle<cr>", opts)
+keymap("n", "<Leader>bt", "<cmd>Gitsigns toggle_current_line_blame<cr>", opts)
 keymap("n", "<Leader>bf", "<cmd>GitBlameOpenCommitURL<cr>", opts)
 
 -- TS
@@ -285,12 +285,12 @@ keymap("n", "<leader>ee", "<cmd>lua require('persistent-breakpoints.api').toggle
 keymap("n", "<leader>ca", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
 vim.keymap.set("n", "<leader>en", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- vim.keymap.set('n', '<Leader>hh', function() require"dap".step_out() end)
-vim.keymap.set("n", "<Leader>kk", function()
-	require("dap").step_into()
-end)
-vim.keymap.set("n", "<Leader>jj", function()
-	require("dap").step_over()
-end)
+-- vim.keymap.set("n", "<Leader>kk", function()
+-- 	require("dap").step_into()
+-- end)
+-- vim.keymap.set("n", "<Leader>jj", function()
+-- 	require("dap").step_over()
+-- end)
 vim.keymap.set("n", "<Leader>G", function()
 	require("dap").continue()
 end)
@@ -483,11 +483,11 @@ vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
 -- Winshift.nvim
 vim.api.nvim_set_keymap("n", "<Leader>sh", "<cmd>WinShift<cr>", opts)
 
-vim.api.nvim_set_keymap("n", "<Leader>no", "<cmd> lua require('neotest').output.open({enter = true})<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<Leader>no", "<cmd> lua require('neotest').output.open({enter = true})<cr>", opts)
 
-vim.api.nvim_set_keymap("n", "<Leader>nu", "<cmd>lua require('neotest').output_panel.toggle()<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<Leader>nu", "<cmd>lua require('neotest').output_panel.toggle()<cr>", opts)
 
-vim.api.nvim_set_keymap("n", "<Leader>nr", "<cmd>Neotest run<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<Leader>nr", "<cmd>Neotest run<cr>", opts)
 
 vim.api.nvim_set_keymap("n", "gn", "<cmd> lua require('illuminate').goto_next_reference()<cr>", opts)
 
@@ -515,3 +515,8 @@ end, { desc = "Super Tab" })
 vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>us', vim.cmd.UndotreeShow)
 vim.keymap.set('n', '<leader>js', vim.cmd.Neogen)
+
+vim.cmd[[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DIR<CR>]]
+
+vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
+vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)

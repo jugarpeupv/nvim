@@ -1,4 +1,18 @@
-return {}
+-- return {}
+
+return {
+ 'vim-test/vim-test',
+  dependencies = { 'preservim/vimux' },
+  config = function ()
+    vim.keymap.set('n', '<leader>te', ':TestNearest<CR>')
+    vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
+    -- vim.cmd("let test#strategy = 'vimux'")
+    vim.cmd("let test#strategy = 'neovim_sticky'")
+    vim.cmd("let g:test#javascript#runner = 'jest'")
+    vim.cmd("let g:VimuxHeight = '40'")
+  end
+}
+
 -- return {
 --   { "jugarpeupv/neotest-jest", dev = true },
 --   { "nvim-neotest/neotest",

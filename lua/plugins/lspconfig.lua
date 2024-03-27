@@ -254,6 +254,7 @@ return {
     lspconfig["angularls"].setup({
       on_attach = on_attach,
       capabilities = capabilities,
+      filetypes = { "typescript", "angular.html", "html", "typescriptreact", "typescript.tsx" },
       -- root_dir = root_pattern("angular.json", "project.json"),
       -- root_dir = root_pattern("angular.json", "nx.json"),
       root_dir = calculate_angularls_root_dir(),
@@ -314,6 +315,16 @@ return {
     --     },
     --   },
     -- }
+
+    require("lspconfig").yamlls.setup({
+      settings = {
+        yaml = {
+          schemas = {
+            ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          },
+        },
+      },
+    })
 
     lspconfig["jsonls"].setup({
       filetypes = { "json", "jsonc" },

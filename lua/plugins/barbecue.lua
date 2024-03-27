@@ -36,6 +36,7 @@ return {
       attach_navic = true,
       show_navic = true,
       show_modified = true,
+      -- create_autocmd = false,
       lead_custom_section = function(bufnr, _)
         local icons = {
           -- Error = '',
