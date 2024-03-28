@@ -323,7 +323,7 @@ return {
             -- default = "📰",
             -- default = "",
             -- default = "🗃",
-            symlink = " ",
+            symlink = "",
             folder = {
               -- arrow_closed = "",
               -- arrow_closed = "",

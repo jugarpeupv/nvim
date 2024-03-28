@@ -14,16 +14,16 @@ vim.api.nvim_create_autocmd("BufRead", {
 vim.cmd [[
   augroup _general_settings
   autocmd!
-  autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
+  " autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
   autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
-  autocmd BufWinEnter * :set formatoptions-=cro
-  autocmd FileType qf set nobuflisted
+  " autocmd BufWinEnter * :set formatoptions-=cro
+  " autocmd FileType qf set nobuflisted
   augroup end
 
-  augroup _auto_resize
-  autocmd!
-  autocmd VimResized * tabdo wincmd =
-  augroup end
+  " augroup _auto_resize
+  " autocmd!
+  " autocmd VimResized * tabdo wincmd =
+  " augroup end
 ]]
 
 vim.cmd [[autocmd BufRead,BufNewFile */node_modules/* lua vim.diagnostic.disable(0)]]
@@ -60,38 +60,38 @@ vim.cmd [[
 
 -- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
-vim.cmd([[
-  augroup jsoncFtdetect
-  autocmd!
-  autocmd! BufNewFile,BufRead *.cjsn setfiletype jsonc
-  autocmd! BufNewFile,BufRead *.cjson setfiletype jsonc
-  autocmd! BufNewFile,BufRead *.jsonc setfiletype jsonc
-  autocmd! BufNewFile,BufRead *.json setfiletype jsonc
+-- vim.cmd([[
+--   augroup jsoncFtdetect
+--   autocmd!
+--   autocmd! BufNewFile,BufRead *.cjsn setfiletype jsonc
+--   autocmd! BufNewFile,BufRead *.cjson setfiletype jsonc
+--   autocmd! BufNewFile,BufRead *.jsonc setfiletype jsonc
+--   autocmd! BufNewFile,BufRead *.json setfiletype jsonc
 
-  autocmd! BufNewFile,BufRead *json setfiletype jsonc
-  " autocmd! BufNewFile,BufRead infra/project.json setfiletype jsonc
-  " autocmd! BufNewFile,BufRead project.json setfiletype jsonc
-  " autocmd! BufNewFile,BufRead *project.json* setfiletype jsonc
-  " autocmd! BufNewFile,BufRead *project.json setfiletype jsonc
-  autocmd! BufNewFile,BufRead .eslintrc.json setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead .jshintrc setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead .mocharc.json setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead .mocharc.jsonc setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead coffeelint.json setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
-  autocmd! BufNewFile,BufRead */waybar/config setlocal filetype=jsonc
-  augroup end
-]])
+--   autocmd! BufNewFile,BufRead *json setfiletype jsonc
+--   " autocmd! BufNewFile,BufRead infra/project.json setfiletype jsonc
+--   " autocmd! BufNewFile,BufRead project.json setfiletype jsonc
+--   " autocmd! BufNewFile,BufRead *project.json* setfiletype jsonc
+--   " autocmd! BufNewFile,BufRead *project.json setfiletype jsonc
+--   autocmd! BufNewFile,BufRead .eslintrc.json setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead .jshintrc setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead .mocharc.json setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead .mocharc.jsonc setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead coc-settings.json setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead coffeelint.json setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
+--   autocmd! BufNewFile,BufRead */waybar/config setlocal filetype=jsonc
+--   augroup end
+-- ]])
 
 
 -- It seems to be a bug with libuv
 -- https://www.reddit.com/r/neovim/comments/14bcfmb/nonzero_exit_code/
-vim.api.nvim_create_autocmd({ "VimLeave" }, {
-  callback = function()
-    vim.cmd("sleep 5m")
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimLeave" }, {
+--   callback = function()
+--     vim.cmd("sleep 5m")
+--   end,
+-- })
 
 
 -- Neovim version 10
@@ -114,23 +114,23 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 --   end
 -- })
 
-vim.cmd([[
-  augroup JsonToJsonc
-  autocmd! FileType json set filetype=jsonc
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup JsonToJsonc
+--   autocmd! FileType json set filetype=jsonc
+--   augroup END
+-- ]])
 
-vim.cmd([[
-  augroup FoldMethodSyntaxOnJson
-  autocmd! FileType json setlocal foldmethod=syntax
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup FoldMethodSyntaxOnJson
+--   autocmd! FileType json setlocal foldmethod=syntax
+--   augroup END
+-- ]])
 
-vim.cmd([[
-  augroup FoldMethodSyntaxOnJsonc
-  autocmd! FileType jsonc setlocal foldmethod=syntax
-  augroup END
-]])
+-- vim.cmd([[
+--   augroup FoldMethodSyntaxOnJsonc
+--   autocmd! FileType jsonc setlocal foldmethod=syntax
+--   augroup END
+-- ]])
 
 vim.cmd([[
   augroup WrapMarkdownAu
@@ -147,6 +147,7 @@ vim.cmd([[
 vim.api.nvim_create_autocmd('filetype', {
   pattern = 'NvimTree',
   desc = 'Mappings for NvimTree',
+  group = vim.api.nvim_create_augroup("NvimTreeBulkCommands", { clear = true }),
   callback = function()
     -- Yank marked files
     vim.keymap.set('n', 'bgy',
@@ -187,4 +188,20 @@ vim.api.nvim_create_autocmd('filetype', {
       end,
       { remap = true, buffer = true })
   end
+})
+
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'yml',
+  group = vim.api.nvim_create_augroup("YmlSyntaxOff", { clear = true }),
+  callback = function()
+    vim.cmd("set syntax=OFF")
+  end,
+})
+
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'yaml',
+  group = vim.api.nvim_create_augroup("YamlSyntaxOff", { clear = true }),
+  callback = function()
+    vim.cmd("set syntax=OFF")
+  end,
 })

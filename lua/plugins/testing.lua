@@ -2,6 +2,7 @@
 
 return {
  'vim-test/vim-test',
+  event = "VeryLazy",
   dependencies = { 'preservim/vimux' },
   config = function ()
     vim.keymap.set('n', '<leader>te', ':TestNearest<CR>')

@@ -25,7 +25,7 @@ return {
   -- { 'Mofiqul/vscode.nvim' },
   {
     "ckipp01/nvim-jenkinsfile-linter",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    -- dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
   },
   -- {

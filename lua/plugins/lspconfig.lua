@@ -384,10 +384,15 @@ return {
     --   capabilities = capabilities,
     -- })
 
-    -- lspconfig["marksman"].setup {
+    -- require'lspconfig'.markdown_oxide.setup{
     --   on_attach = on_attach,
     --   capabilities = capabilities,
     -- }
+
+    lspconfig["marksman"].setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
 
     -- require("lspconfig").nxls.setup({
     --   capabilities = capabilities,
