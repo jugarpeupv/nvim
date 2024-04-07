@@ -1,18 +1,24 @@
 -- return {}
 
 return {
- 'vim-test/vim-test',
-  event = "VeryLazy",
-  dependencies = { 'preservim/vimux' },
-  config = function ()
-    vim.keymap.set('n', '<leader>te', ':TestNearest<CR>')
-    vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
-    -- vim.cmd("let test#strategy = 'vimux'")
-    vim.cmd("let test#strategy = 'neovim_sticky'")
-    -- vim.cmd("let g:test#javascript#runner = 'jest'")
-    vim.cmd("let g:test#javascript#runner = 'nx'")
-    vim.cmd("let g:VimuxHeight = '35'")
-  end
+  {
+    event = "VeryLazy",
+    "preservim/vimux",
+  },
+  {
+    "vim-test/vim-test",
+    event = "VeryLazy",
+    -- dependencies = { 'preservim/vimux' },
+    config = function()
+      vim.keymap.set("n", "<leader>te", ":TestNearest<CR>")
+      vim.keymap.set("n", "<leader>tf", ":TestFile<CR>")
+      -- vim.cmd("let test#strategy = 'vimux'")
+      vim.cmd("let test#strategy = 'neovim_sticky'")
+      -- vim.cmd("let g:test#javascript#runner = 'jest'")
+      vim.cmd("let g:test#javascript#runner = 'nx'")
+      vim.cmd("let g:VimuxHeight = '35'")
+    end,
+  },
 }
 
 -- return {

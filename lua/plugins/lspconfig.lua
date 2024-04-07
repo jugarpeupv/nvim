@@ -327,10 +327,11 @@ return {
     })
 
     lspconfig["jsonls"].setup({
-      filetypes = { "json", "jsonc" },
+      -- filetypes = { "json", "jsonc" },
       on_attach = on_attach,
-      -- capabilities = capabilities_json_ls,
-      capabilities = capabilities,
+      capabilities = capabilities_json_ls,
+      -- capabilities = capabilities,
+      filetypes = { "json", "jsonc", "json5" },
       settings = {
         json = {
           schemas = require("schemastore").json.schemas({
@@ -364,10 +365,10 @@ return {
       },
     })
 
-    lspconfig["jdtls"].setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
+    -- lspconfig["jdtls"].setup({
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- })
 
     lspconfig["dockerls"].setup({
       on_attach = on_attach,
@@ -389,10 +390,10 @@ return {
     --   capabilities = capabilities,
     -- }
 
-    lspconfig["marksman"].setup {
+    lspconfig["marksman"].setup({
       on_attach = on_attach,
       capabilities = capabilities,
-    }
+    })
 
     -- require("lspconfig").nxls.setup({
     --   capabilities = capabilities,

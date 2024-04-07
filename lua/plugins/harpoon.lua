@@ -42,7 +42,7 @@ return {
     -- keymap("n", "<Leader>9", "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", opts)
 
     vim.keymap.set("n", "<leader>aa", function()
-      harpoon:list():append()
+      harpoon:list():add()
     end)
 
     vim.keymap.set("n", "<Leader>ha", "<cmd>Telescope harpoon marks<cr>")

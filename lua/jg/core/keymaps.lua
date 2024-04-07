@@ -520,3 +520,5 @@ vim.cmd[[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DI
 
 vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
 vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
+
+vim.keymap.set("n", "<leader>ov", ":split term://%:p:h//zsh<cr>", opts)

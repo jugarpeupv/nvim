@@ -205,3 +205,14 @@ vim.api.nvim_create_autocmd('filetype', {
     vim.cmd("set syntax=OFF")
   end,
 })
+
+-- vim.api.nvim_create_autocmd('BufRead', {
+--   pattern = '*.json',
+--   group = vim.api.nvim_create_augroup("jsonSyntaxOff", { clear = true }),
+--   callback = function()
+--     print('hi')
+--     vim.cmd("set filetype=jsonc")
+--   end,
+-- })
+
+vim.cmd[[au! BufRead,BufNewFile *.json set filetype=jsonc]]

@@ -48,7 +48,15 @@ return {
   --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
   --   },
   -- },
-  { "mbbill/undotree", event = "VeryLazy" },
+  { "mbbill/undotree",    event = "VeryLazy" },
+  { "neoclide/jsonc.vim", event = "VeryLazy" },
+  {
+    "barrett-ruth/live-server.nvim",
+    build = "pnpm add -g live-server",
+    cmd = { "LiveServerStart", "LiveServerStop" },
+    event = "VeryLazy",
+    config = true,
+  },
   -- {
   --   "iamcco/markdown-preview.nvim",
   --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

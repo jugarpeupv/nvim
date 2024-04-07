@@ -18,8 +18,10 @@ return {
           -- yellow = "#74C7EC",
           -- yellow = "#0db9d7",
           yellow = "#2ac3de",
+          -- yellow = "#F9E2AF",
           -- yellow = "#F38BA8",
           -- yellow = "#F5C2E7",
+          -- yellow = "#A6E3A1",
           -- yellow = "#74C7EC",
           -- yellow = "#89ddff",
           -- yellow = "#90dcd1",
@@ -125,7 +127,7 @@ return {
         strings = {},
         variables = {},
         numbers = {},
-        booleans = {},
+        booleans = { "bold" },
         properties = {},
         types = {},
         operators = {},
@@ -334,7 +336,8 @@ return {
     -- vim.cmd([[highlight InclineNormal  guibg=#394b70]])
     -- vim.cmd([[highlight InclineNormalNC  guibg=#394b70 guifg=#666666]])
 
-    vim.cmd([[highlight TreesitterContextLineNumber guibg=#292e42 guifg=#737aa2]])
+    -- vim.cmd([[highlight TreesitterContextLineNumber guibg=#292e42 guifg=#737aa2]])
+    vim.cmd([[highlight TreesitterContextLineNumber guibg=#0F2745 guifg=#737aa2]])
     -- vim.cmd([[highlight TreesitterContextLineNumber guibg=#394b70 guifg=#737aa2]])
     vim.cmd([[highlight TreesitterContext guifg=none guibg=none]])
 
@@ -395,6 +398,10 @@ return {
     vim.cmd([[highlight @lsp.type.type guifg=#2ac3de]])
     vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
     vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
+    
+    -- vim.cmd([[highlight @lsp.type.type guifg=#F5C2E7]])
+    -- vim.cmd([[highlight @lsp.type.interface guifg=#F5C2E7]])
+    -- vim.cmd([[highlight @attribute.typescript guifg=#F5C2E7]])
 
     -- vim.cmd([[highlight @lsp.type.type guifg=#89ddff]])
     -- vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
@@ -457,6 +464,7 @@ return {
 
     -- vim.cmd([[highlight Keyword  gui=bold]])
     -- vim.cmd([[highlight Include  gui=bold]])
+    vim.cmd([[highlight @keyword  gui=bold guifg=#CBA6F7]])
     vim.cmd([[highlight @keyword.return  gui=bold]])
     vim.cmd([[highlight @keyword.operator  gui=bold]])
     vim.cmd([[highlight @keyword.exception  gui=bold guifg=#F5C2E7]])

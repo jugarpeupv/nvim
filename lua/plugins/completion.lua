@@ -98,8 +98,8 @@ return {
         sorting = {
           comparators = {
             cmp.config.compare.exact,
-            cmp.config.compare.offset,
-            -- cmp.config.compare.score,
+            -- cmp.config.compare.offset,
+            cmp.config.compare.score,
             cmp.config.compare.recently_used,
             -- require("cmp-under-comparator").under,
             -- function(entry1, entry2)
