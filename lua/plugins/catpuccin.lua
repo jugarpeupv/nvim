@@ -127,7 +127,7 @@ return {
         strings = {},
         variables = {},
         numbers = {},
-        booleans = { "bold" },
+        booleans = {},
         properties = {},
         types = {},
         operators = {},
@@ -170,10 +170,11 @@ return {
     vim.cmd("hi HlSearchNear guifg=#181826 guibg=#F38BA8")
     vim.cmd("hi HlSearchLensNear guifg=#181826 guibg=#F38BA8")
 
-    -- vim.cmd([[hi @markup.heading.1.marker  guifg=#F5C2E7]])
-    -- vim.cmd([[hi @markup.heading.1.markdown  guifg=#F5C2E7]])
-    -- vim.cmd([[hi @markup.heading.2.markdown  guifg=#89ddff]])
-    -- vim.cmd([[hi @markup.heading.3.markdown  guifg=#CBA6F7]])
+    vim.cmd([[hi @markup.heading.1.marker  guifg=#F5C2E7]])
+    vim.cmd([[hi @markup.heading.1.markdown  guifg=#F5C2E7]])
+    vim.cmd([[hi @markup.heading.2.markdown  guifg=#89ddff]])
+    vim.cmd([[hi @markup.heading.3.markdown  guifg=#F38BA8]])
+    vim.cmd([[hi @markup.heading.4.markdown  guifg=#F9E2AF]])
     -- vim.cmd([[hi @text.title.1.markdown  guifg=#89ddff]])
     -- vim.cmd([[hi @text.title.2.markdown  guifg=#89B4FA]])
     -- vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])
@@ -398,6 +399,8 @@ return {
     vim.cmd([[highlight @lsp.type.type guifg=#2ac3de]])
     vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
     vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
+
+    vim.cmd([[highlight @lsp.type.class.markdown guifg=#F5C2E7]])
     
     -- vim.cmd([[highlight @lsp.type.type guifg=#F5C2E7]])
     -- vim.cmd([[highlight @lsp.type.interface guifg=#F5C2E7]])

@@ -234,7 +234,7 @@ vim.cmd([[xnoremap <Leader>rr :s///gc<Left><Left><Left>]])
 vim.cmd([[nnoremap <Leader>sw /\<\><Left><Left>]])
 
 vim.cmd(
-	[[nnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
+	[[nnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
 )
 
 vim.cmd(
