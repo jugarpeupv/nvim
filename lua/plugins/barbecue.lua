@@ -12,11 +12,16 @@
 -- }
 
 -- return {}
+
+
+-- Dropbar.nvim is another alternative
+
+
 return {
   "jugarpe/barbecue.nvim",
   name = "barbecue",
   branch = "feature/preserveIconOnBufferModified",
-  -- event = "VeryLazy",
+  event = "VeryLazy",
   -- version = "*",
   dependencies = {
     "SmiteshP/nvim-navic",

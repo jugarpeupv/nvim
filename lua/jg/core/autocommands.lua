@@ -16,7 +16,7 @@ vim.cmd [[
   autocmd!
   " autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
   autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
-  " autocmd BufWinEnter * :set formatoptions-=cro
+  autocmd BufWinEnter * :set formatoptions-=cro
   " autocmd FileType qf set nobuflisted
   augroup end
 
@@ -87,11 +87,11 @@ vim.cmd [[
 
 -- It seems to be a bug with libuv
 -- https://www.reddit.com/r/neovim/comments/14bcfmb/nonzero_exit_code/
--- vim.api.nvim_create_autocmd({ "VimLeave" }, {
---   callback = function()
---     vim.cmd("sleep 5m")
---   end,
--- })
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+  callback = function()
+    vim.cmd("sleep 5m")
+  end,
+})
 
 
 -- Neovim version 10

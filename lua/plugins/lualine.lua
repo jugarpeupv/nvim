@@ -1,6 +1,7 @@
 -- return {}
 return {
   "nvim-lualine/lualine.nvim",
+  event = "VeryLazy",
   config = function()
     local colors = {
       blue = "#9CDCFE",
@@ -153,6 +154,7 @@ return {
         component_separators = { left = " ", right = " " },
         disabled_filetypes = {
           -- statusline = { "alpha", "dashboard", "NvimTree", "Outline", "Diffview", "diffview" },
+          -- 'NvimTree',
           statusline = { "alpha", "dashboard", "Outline", "Diffview", "diffview", "intro", "" },
           winbar = {
             "help",

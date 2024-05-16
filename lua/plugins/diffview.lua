@@ -1,6 +1,7 @@
 -- return {}
 return {
   "sindrets/diffview.nvim",
+  event = "VeryLazy",
   config = function()
     -- Lua
     local actions = require("diffview.actions")

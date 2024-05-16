@@ -1,15 +1,14 @@
 return {
-  { "HiPhish/nvim-ts-rainbow2",                     after = "nvim-treesitter" },
-  { "vim-scripts/ReplaceWithRegister" },
-  { "wellle/targets.vim" },
-  { "junegunn/fzf",                                 build = "./install --all" },
-  { "junegunn/fzf.vim" },
-  { "dfendr/clipboard-image.nvim" },
+  { "vim-scripts/ReplaceWithRegister",              event = "VeryLazy" },
+  { "wellle/targets.vim",                           event = "VeryLazy" },
+  { "junegunn/fzf",                                 build = "./install --all", event = "VeryLazy" },
+  { "junegunn/fzf.vim",                             event = "VeryLazy" },
+  { "dfendr/clipboard-image.nvim",                  event = "VeryLazy" },
   { "tpope/vim-repeat",                             event = "VeryLazy" },
   { "nvim-lua/plenary.nvim",                        event = "VeryLazy" },
   { "tpope/vim-surround",                           event = "VeryLazy" },
   { "nvim-tree/nvim-web-devicons",                  event = "VeryLazy" },
-  { "natecraddock/telescope-zf-native.nvim" },
+  { "natecraddock/telescope-zf-native.nvim",        event = "VeryLazy" },
   -- { "nvim-telescope/telescope-fzf-native.nvim",     build = "make",            event = "VeryLazy" },
   { "nvim-telescope/telescope-live-grep-args.nvim", event = "VeryLazy" },
   { "nvim-telescope/telescope-ui-select.nvim",      event = "VeryLazy" },
@@ -22,6 +21,17 @@ return {
   { "nvim-telescope/telescope-smart-history.nvim",  event = "VeryLazy" },
   { "stsewd/fzf-checkout.vim",                      event = "VeryLazy" },
   { "mfussenegger/nvim-jdtls" },
+  {
+    event = "VeryLazy",
+    "vzze/calculator.nvim",
+    config = function()
+      vim.api.nvim_create_user_command(
+        "Calculate",
+        'lua require("calculator").calculate()',
+        { ["range"] = 1, ["nargs"] = 0 }
+      )
+    end,
+  },
   -- { 'Mofiqul/vscode.nvim' },
   {
     "ckipp01/nvim-jenkinsfile-linter",
@@ -50,12 +60,23 @@ return {
   -- },
   { "mbbill/undotree",    event = "VeryLazy" },
   { "neoclide/jsonc.vim", event = "VeryLazy" },
+  -- { "pelodelfuego/vim-swoop" },
   {
     "barrett-ruth/live-server.nvim",
     build = "pnpm add -g live-server",
     cmd = { "LiveServerStart", "LiveServerStop" },
     event = "VeryLazy",
     config = true,
+  },
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
   },
   -- {
   --   "iamcco/markdown-preview.nvim",

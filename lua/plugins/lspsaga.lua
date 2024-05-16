@@ -2,6 +2,7 @@
 return {
   "nvimdev/lspsaga.nvim",
   after = "nvim-lspconfig",
+  event = "VeryLazy",
   config = function()
     require("lspsaga").setup({
       -- keybinds for navigation in lspsaga window

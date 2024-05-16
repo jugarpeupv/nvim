@@ -1,7 +1,7 @@
 -- return {}
 return {
   "windwp/nvim-autopairs",
-  -- event = "VeryLazy",
+  event = "VeryLazy",
   config = function()
     -- import nvim-autopairs safely
     local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")

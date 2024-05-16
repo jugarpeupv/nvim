@@ -5,6 +5,7 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 -- Example for configuring Neovim to load user-installed installed Lua rocks:
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
+-- vim.loader.enable()
 
 require("jg.core.options")
 vim.loader.enable()
@@ -25,6 +26,7 @@ require('lazy').setup('plugins', {
   ui = {
     backdrop = 100,
   },
+  -- lazy = true
 })
 require("jg.core.keymaps")
 require("jg.core.autocommands")

@@ -7,7 +7,6 @@ return {
   -- branch = "group-by",
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
-
   event = "VeryLazy",
   config = function()
     local trouble = require("trouble.providers.telescope")

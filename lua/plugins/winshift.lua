@@ -1,6 +1,7 @@
 -- return {}
 return {
   "sindrets/winshift.nvim",
+  event = "VeryLazy",
   config = function()
     require("winshift").setup({
       highlight_moving_win = true, -- Highlight the window being moved

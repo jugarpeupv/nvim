@@ -22,8 +22,8 @@ opt.ea = true -- equal always, windows same size
 
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
-opt.scrolloff = 8
-opt.sidescrolloff = 8
+opt.scrolloff = 4
+opt.sidescrolloff = 4
 opt.incsearch = true
 opt.showcmd = true
 opt.path:append({ "**" })
@@ -39,6 +39,7 @@ opt.swapfile = false
 opt.hidden = true
 
 opt.formatoptions = opt.formatoptions - "c" - "r" - "o"
+
 opt.diffopt = { "iwhiteall", "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "followwrap" }
 opt.pumblend = 0
 opt.pumheight = 10

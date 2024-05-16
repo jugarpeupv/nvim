@@ -2,7 +2,8 @@
 return {
   "0x100101/lab.nvim",
   build = "cd js && npm ci",
-  event = "WinEnter",
+  -- event = "WinEnter",
+  event = "VeryLazy",
   config = function()
     require("lab").setup({
       code_runner = {

@@ -88,7 +88,7 @@ return {
       keymap.set("n", "<leader>gD", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
       keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)  -- see definition and make edits in window
       keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-      keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)   -- see available code actions
+      -- keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)   -- see available code actions
       keymap.set("n", "gH", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
       -- keymap.set(
@@ -251,9 +251,36 @@ return {
       ),
     })
 
+    local ok, mason_registry = pcall(require, "mason-registry")
+    if not ok then
+      vim.notify("mason-registry could not be loaded")
+      return
+    end
+
+    local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
+
+    local angular_cmd = {
+      "ngserver",
+      "--stdio",
+      "--tsProbeLocations",
+      table.concat({
+        angularls_path,
+        vim.uv.cwd(),
+      }, ","),
+      "--ngProbeLocations",
+      table.concat({
+        angularls_path .. "/node_modules/@angular/language-server",
+        vim.uv.cwd(),
+      }, ","),
+    }
+
     lspconfig["angularls"].setup({
       on_attach = on_attach,
       capabilities = capabilities,
+      cmd = angular_cmd,
+      on_new_config = function(new_config, _)
+        new_config.cmd = angular_cmd
+      end,
       filetypes = { "typescript", "angular.html", "html", "typescriptreact", "typescript.tsx" },
       -- root_dir = root_pattern("angular.json", "project.json"),
       -- root_dir = root_pattern("angular.json", "nx.json"),

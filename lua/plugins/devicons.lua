@@ -72,6 +72,11 @@ return {
           name = "javascript",
           color = "#F9E2AF",
         },
+        ["cjs"] = {
+          icon = "",
+          color = "#F9E2AF",
+          name = "Cjs",
+        },
         txt = {
           icon = "󰈚",
           name = "txtname",
@@ -89,6 +94,18 @@ return {
           name = "zipp",
           -- color = "#F9E2AF"
           color = "#F9E2AF",
+        },
+
+        ["CODEOWNERS"] = { icon = "󱖨", color = "#73daca", name = "codeownersfile1" },
+
+        ["d.ts"] = {
+          -- icon = "",
+          icon = "󰛦",
+          -- color = "#F38BA8",
+          -- color = "#CBA6F7",
+          color = "#89B4FA",
+          -- cterm_color = "172",
+          name = "TypeScriptDeclaration",
         },
 
         --[[ json = {
@@ -182,6 +199,8 @@ return {
         ["*package.json"] = { icon = "", color = "#73daca", name = "PackageJson3" },
         ["package-lock.json"] = { icon = "", color = "#73daca", name = "PackageLockJson" },
         ["pnpm-lock.yaml"] = { icon = "", color = "#F9E2AF", name = "pnpmLockYaml" },
+        -- ["CODEOWNERS"] = { icon = "", color = "#F38BA8", name = "codeownersfile" },
+        ["codeowners"] = { icon = "󱖨", color = "#73daca", name = "codeownersfile2" },
         -- ["*Jenkins*"] = { icon = "", color = 'black', name = "jenkinsfile" },
         -- ["jenkinsfileci"] = { icon = "", name = "Jenkins3"},
         -- ["jenkinsfilecd"] = { icon = "", name = "Jenkins4"},
@@ -219,16 +238,22 @@ return {
         ["project.json"] = { icon = "", color = "#9CDCFE", name = "ProjectJson" },
         -- ["tsconfig.json"] = { icon = "", color = "#F9E2AF", name = "TsConfigJson" },
 
-        ["tsconfig.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile2' },
-        ["tsconfig.editor.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile2' },
-        ["tsconfig.base.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile2' },
-        ["tsconfig.app.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile1' },
-        ["tsconfig.lib.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile1' },
-        ["tsconfig.spec.json"] = { icon = "󰛦", color = '#9CDCFE', name = 'TSDeclarationfile1' },
+        ["tsconfig.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
+        ["tsconfig.editor.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
+        ["tsconfig.base.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
+        ["tsconfig.app.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
+        ["tsconfig.lib.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
+        ["tsconfig.spec.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
       },
       -- same as `override` but specifically for overrides by extension
       -- takes effect when `strict` is true
       override_by_extension = {
+        [".env"] = {
+          icon = "",
+          color = "#F9E2AF",
+          -- cterm_color = "227",
+          name = "Env",
+        },
         ["log"] = {
           icon = "",
           -- color = "#81e043",
@@ -261,6 +286,10 @@ return {
         [".stories.ts"] = { icon = "s", color = "red", name = "Storie1" },
 
         ["stories.ts"] = { icon = "s", color = "red", name = "Storie2" },
+
+        -- ["*codeowners"] = { icon = "", color = "#F38BA8", name = "codeownersfile" },
+
+        ["codeowners"] = { icon = "󱖨", color = "#73daca", name = "codeownersfile3" },
 
         -- ["d.ts"] = { icon = "󰛦", color = '#107DC7', name = "dtypescript" },
         -- ["d.ts"] = { icon = "󰛦", color = "#89b4fb", name = "dtypescript" },

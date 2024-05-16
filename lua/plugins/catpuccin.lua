@@ -3,6 +3,7 @@ return {
   -- dependencies = { "mg979/vim-visual-multi" },
   priority = 1000,
 
+  -- event = "VeryLazy",
   --
   config = function()
     require("catppuccin").setup({
@@ -88,7 +89,7 @@ return {
         gitsigns = false,
         harpoon = true,
         telescope = true,
-        ts_rainbow2 = true,
+        rainbow_delimiters = true,
         -- ts_rainbow2 = false,
         lsp_trouble = true,
         neotree = true,
@@ -173,7 +174,7 @@ return {
     vim.cmd([[hi @markup.heading.1.marker  guifg=#F5C2E7]])
     vim.cmd([[hi @markup.heading.1.markdown  guifg=#F5C2E7]])
     vim.cmd([[hi @markup.heading.2.markdown  guifg=#89ddff]])
-    vim.cmd([[hi @markup.heading.3.markdown  guifg=#F38BA8]])
+    vim.cmd([[hi @markup.heading.3.markdown  guifg=#94E2D5]])
     vim.cmd([[hi @markup.heading.4.markdown  guifg=#F9E2AF]])
     -- vim.cmd([[hi @text.title.1.markdown  guifg=#89ddff]])
     -- vim.cmd([[hi @text.title.2.markdown  guifg=#89B4FA]])

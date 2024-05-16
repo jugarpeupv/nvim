@@ -13,6 +13,12 @@ vim.cmd([[nnoremap q <Nop>]])
 -- Resize with arrows
 -- keymap("n", "<C-Up>", ":resize +5<CR>", opts)
 -- keymap("n", "<C-Down>", ":resize -5<CR>", opts)
+
+vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
+vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
+
+-- keymap("n", "<S-Left>", ":vertical resize -5<CR>", opts)
+-- keymap("n", "<S-Right>", ":vertical resize +5<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
 
@@ -282,7 +288,7 @@ keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)
 -- DAP
 -- vim.keymap.set('n', '<leader>ee', function() require "dap".toggle_breakpoint() end)
 keymap("n", "<leader>ee", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>ca", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
+keymap("n", "<leader>cb", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
 vim.keymap.set("n", "<leader>en", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- vim.keymap.set('n', '<Leader>hh', function() require"dap".step_out() end)
 -- vim.keymap.set("n", "<Leader>kk", function()
@@ -518,7 +524,9 @@ vim.keymap.set('n', '<leader>js', vim.cmd.Neogen)
 
 vim.cmd[[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DIR<CR>]]
 
-vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
-vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
 
-vim.keymap.set("n", "<leader>ov", ":split term://%:p:h//zsh<cr>", opts)
+vim.keymap.set("n", "<leader>tc", ":split term://%:p:h//zsh<cr>", opts)
+
+
+keymap("n", "<leader>ca", "<cmd>Calculate<cr>", opts)
+keymap("v", "<leader>ca", "<cmd>Calculate<cr>", opts)

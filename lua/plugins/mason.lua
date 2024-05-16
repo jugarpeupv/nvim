@@ -2,10 +2,14 @@
 return {
   -- { "jayp0521/mason-null-ls.nvim", event = "VeryLazy" },
   -- { "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
-  { "jayp0521/mason-null-ls.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
+  { "jayp0521/mason-null-ls.nvim",   event = "VeryLazy",
+ },
+  { "williamboman/mason-lspconfig.nvim",   event = "VeryLazy",
+ },
   {
     "williamboman/mason.nvim",
+
+  event = "VeryLazy",
     config = function()
       -- import mason plugin safely
       local mason_status, mason = pcall(require, "mason")

@@ -1,17 +1,19 @@
 -- return {}
 return {
-  { "hrsh7th/cmp-nvim-lua" },
-  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-nvim-lua", event = "VeryLazy" },
+  { "hrsh7th/cmp-nvim-lsp", event = "VeryLazy" },
   -- { "hrsh7th/cmp-buffer" },
   -- { "hrsh7th/cmp-cmdline" },
-  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-path",     event = "VeryLazy" },
   {
     "L3MON4D3/LuaSnip",
     dependencies = { "saadparwaiz1/cmp_luasnip" },
+    event = "VeryLazy",
   },
-  { "rafamadriz/friendly-snippets" },
+  { "rafamadriz/friendly-snippets", event = "VeryLazy" },
   {
     "hrsh7th/nvim-cmp",
+    event = "VeryLazy",
     config = function()
       -- import nvim-cmp plugin safely
       local cmp_status, cmp = pcall(require, "cmp")
