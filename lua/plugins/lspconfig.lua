@@ -124,7 +124,8 @@ return {
       -- version 10 of nvim
       -- if client.server_capabilities.inlayHintProvider then
       --   -- vim.lsp.buf.inlay_hint(bufnr, true)
-      --   vim.lsp.inlay_hint.enable(bufnr, true)
+      --   -- vim.lsp.inlay_hint.enable(bufnr, true)
+      --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       -- end
 
       -- typescript specific keymaps (e.g. rename file and update imports)

@@ -5,6 +5,7 @@
 return {
   -- "griwes/telescope.nvim",
   -- branch = "group-by",
+  -- commit = "6f6bb8065567b56c42e283b06e8a1c670c0092a1",
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   event = "VeryLazy",

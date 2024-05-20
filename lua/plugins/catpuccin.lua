@@ -164,7 +164,12 @@ return {
     vim.cmd([[highlight NvimTreeRootFolder gui=none]])
 
     vim.cmd([[hi Folded guibg=#1f2335 guifg=#737aa2]])
+
     -- vim.cmd([[highlight LspInlayHint guibg=#1f2335]])
+    -- vim.cmd([[hi LspInlayHint guifg=#5c5f79]])
+    -- vim.cmd([[hi LspInlayHint guifg=#4f7080]])
+    vim.cmd([[hi LspInlayHint guibg=#0F2745 guifg=#737aa2]])
+
 
     vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
 

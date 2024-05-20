@@ -95,6 +95,12 @@ keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
 
 -- Ctrls + shit modifiers
+
+-- # keymap("n", "<M-u>", "<cmd>trouble next<cr>", opts)
+-- # keymap("n", "<M-o>", "<cmd>trouble prev<cr>", opts)
+keymap("n", "<M-u>", "<cmd> lua require('trouble').next({skip_groups = true, jump = true})<cr>", opts)
+keymap("n", "<M-o>", "<cmd> lua require('trouble').previous({skip_groups = true, jump = true})<cr>", opts)
+
 keymap("n", "<M-e>", "<cmd>cnext<cr>", opts)
 keymap("n", "<M-k>", "<cmd>cprev<cr>", opts)
 -- keymap("n", "<M-l>", "<cmd>lnext<cr>", opts)
@@ -139,9 +145,9 @@ local telescope = require("telescope")
 
 -- keymap("n", "<Leader>fl", "<cmd>lua require('telescope.builtin').live_grep({ group_by = 'filename', disable_devicons = true })<CR>", opts);
 
-vim.keymap.set({ "n", "v" }, "<Leader>ff", "<cmd>Telescope egrepify<cr>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>Telescope egrepify<cr>", opts)
 
-vim.keymap.set({ "n", "v" }, "<Leader>fr", function()
+vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
 	telescope.extensions.live_grep_args.live_grep_raw({
 		disable_coordinates = true,
 		-- group_by = "filename",
@@ -435,15 +441,18 @@ local actions = require("diffview.actions")
 
 vim.keymap.set("n", "-", actions.toggle_stage_entry)
 
-if vim.lsp.inlay_hint then
-	vim.keymap.set("n", "<leader>ih", function()
-		if vim.lsp.inlay_hint.is_enabled(0) then
-			vim.lsp.inlay_hint.enable(0, false)
-		else
-			vim.lsp.inlay_hint.enable(0, true)
-		end
-	end, { desc = "Toggle Inlay Hints" })
-end
+-- if vim.lsp.inlay_hint then
+-- 	vim.keymap.set("n", "<leader>ih", function()
+-- 		if vim.lsp.inlay_hint.is_enabled(0) then
+-- 			vim.lsp.inlay_hint.enable(0, false)
+-- 		else
+-- 			vim.lsp.inlay_hint.enable(0, true)
+-- 		end
+-- 	end, { desc = "Toggle Inlay Hints" })
+-- end
+
+vim.keymap.set("n", "<leader>ih", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
+
 
 -- local opts = { noremap = true, silent = true }
 -- local keymap = vim.api.nvim_set_keymap

@@ -1,7 +1,7 @@
 -- return {}
 return {
   "folke/noice.nvim",
-  commit = "72f72d3271109ea37128681766de068b62947647",
+  -- commit = "72f72d3271109ea37128681766de068b62947647",
   event = "VeryLazy",
   opts = {
     cmdline = {
