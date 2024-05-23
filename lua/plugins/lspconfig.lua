@@ -122,11 +122,11 @@ return {
       keymap.set("n", "<leader>oo", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side
 
       -- version 10 of nvim
-      -- if client.server_capabilities.inlayHintProvider then
-      --   -- vim.lsp.buf.inlay_hint(bufnr, true)
-      --   -- vim.lsp.inlay_hint.enable(bufnr, true)
-      --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-      -- end
+      if client.server_capabilities.inlayHintProvider then
+        -- vim.lsp.buf.inlay_hint(bufnr, true)
+        -- vim.lsp.inlay_hint.enable(bufnr, true)
+        vim.lsp.inlay_hint.enable(true)
+      end
 
       -- typescript specific keymaps (e.g. rename file and update imports)
       if client.name == "tsserver" then
@@ -311,6 +311,44 @@ return {
     capabilities_json_ls.textDocument.completion.completionItem.snippetSupport = true
 
     lspconfig["eslint"].setup({
+      root_dir = function(filename)
+        if string.find(filename, "node_modules/") then
+          return nil
+        end
+        return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename)
+      end,
+      settings = {
+        codeAction = {
+          disableRuleComment = {
+            enable = true,
+            location = "separateLine",
+          },
+          showDocumentation = {
+            enable = true,
+          },
+        },
+        codeActionOnSave = {
+          enable = false,
+          mode = "all",
+        },
+        experimental = {
+          useFlatConfig = false,
+        },
+        format = true,
+        -- nodePath = "",
+        onIgnoredFiles = "off",
+        problems = {
+          shortenToSingleLine = false,
+        },
+        quiet = false,
+        rulesCustomizations = {},
+        run = "onType",
+        useESLintClass = false,
+        validate = "on",
+        workingDirectory = {
+          mode = "location",
+        },
+      },
       on_attach = on_attach,
       capabilities = capabilities,
       filetypes = {

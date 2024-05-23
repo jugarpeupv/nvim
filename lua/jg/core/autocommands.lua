@@ -87,11 +87,11 @@ vim.cmd [[
 
 -- It seems to be a bug with libuv
 -- https://www.reddit.com/r/neovim/comments/14bcfmb/nonzero_exit_code/
-vim.api.nvim_create_autocmd({ "VimLeave" }, {
-  callback = function()
-    vim.cmd("sleep 5m")
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimLeave" }, {
+--   callback = function()
+--     vim.cmd("sleep 5m")
+--   end,
+-- })
 
 
 -- Neovim version 10

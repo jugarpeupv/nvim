@@ -134,6 +134,10 @@ return {
           -- require("diffview.actions").toggle_files()
           local utils = require("jg.core.utils")
           require("barbecue.ui").toggle(false)
+
+          if (vim.lsp.inlay_hint.is_enabled()) then
+            vim.lsp.inlay_hint.enable(false)
+          end
           -- vim.cmd [[set nocursorline]]
           -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
           -- the right.

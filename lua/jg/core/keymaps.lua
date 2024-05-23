@@ -14,6 +14,12 @@ vim.cmd([[nnoremap q <Nop>]])
 -- keymap("n", "<C-Up>", ":resize +5<CR>", opts)
 -- keymap("n", "<C-Down>", ":resize -5<CR>", opts)
 
+-- vim.keymap.set("n", "<Leader>io", function() print('hi') end, opts)
+-- vim.keymap.set("n", "<D-l>", function() print('hi') end, opts)
+-- vim.keymap.set("n", "<M-l>", function() print('hi') end, opts)
+keymap("n", "<M-l>", ":NvimTreeFindFile<cr>", opts)
+keymap("n", "<T-l>", ":NvimTreeFindFile<cr>", opts)
+
 vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
 vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
 

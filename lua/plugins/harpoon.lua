@@ -65,6 +65,9 @@ return {
     vim.keymap.set("n", "<Leader>5", function()
       harpoon:list():select(5)
     end)
+    vim.keymap.set("n", "<Leader>6", function()
+      harpoon:list():select(6)
+    end)
 
     -- Toggle previous & next buffers stored within Harpoon list
     -- vim.keymap.set("n", "<C-k>", function() harpoon:list():prev() end)

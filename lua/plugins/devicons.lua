@@ -193,6 +193,9 @@ return {
         ["app.routes.ts"] = { icon = "󰑪", color = "#73daca", name = "AngularRoutes" },
         ["webpack.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfig" },
         ["webpack.prod.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigProd" },
+
+        ["webpack.config.ts"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigTS" },
+        ["webpack.prod.config.ts"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigProdTS" },
         ["package.json"] = { icon = "", color = "#73daca", name = "PackageJson" },
         [".package.json"] = { icon = "", color = "#73daca", name = "PackageJson1" },
         ["*.package.json"] = { icon = "", color = "#73daca", name = "PackageJson2" },
