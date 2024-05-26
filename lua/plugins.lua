@@ -12,7 +12,7 @@ return {
   -- { "nvim-telescope/telescope-fzf-native.nvim",     build = "make",            event = "VeryLazy" },
   { "nvim-telescope/telescope-live-grep-args.nvim", event = "VeryLazy" },
   { "nvim-telescope/telescope-ui-select.nvim",      event = "VeryLazy" },
-  { "jose-elias-alvarez/typescript.nvim",           event = "VeryLazy" },
+  -- { "jose-elias-alvarez/typescript.nvim",           event = "VeryLazy" },
   { "onsails/lspkind.nvim",                         event = "VeryLazy" },
   { "windwp/nvim-ts-autotag",                       after = "nvim-treesitter", event = "VeryLazy" },
   { "tpope/vim-fugitive",                           event = "VeryLazy" },

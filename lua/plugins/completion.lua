@@ -7,7 +7,7 @@ return {
   { "hrsh7th/cmp-path",     event = "VeryLazy" },
   {
     "L3MON4D3/LuaSnip",
-    dependencies = { "saadparwaiz1/cmp_luasnip" },
+    dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
     event = "VeryLazy",
   },
   { "rafamadriz/friendly-snippets", event = "VeryLazy" },
@@ -33,6 +33,10 @@ return {
         return
       end
 
+      luasnip.add_snippets("html", {
+        luasnip.parser.parse_snippet("testtest", "worksworks"),
+      })
+      luasnip.filetype_extend("myangular", { "html" })
       -- load vs-code like snippets from plugins (e.g. friendly-snippets)
       require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -54,12 +58,54 @@ return {
           ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          -- ["<C-y>"] = cmp.mapping(function()
+          --   if luasnip.jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   end
+          -- end, { "i", "s" }),
+          -- ["<C-i>"] = cmp.mapping(function()
+          --   if luasnip.expand_or_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   end
+          -- end, { "i", "s" }),
           ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
           ["<C-e>"] = cmp.mapping.abort(),   -- close completion window
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
           -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
           -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
           -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+          -- Overload tab to accept Copilot suggestions.
+          -- ["<Tab>"] = cmp.mapping(function(fallback)
+          --   local copilot = require("copilot.suggestion")
+          --   if cmp.visible() then
+          --     -- cmp.mapping.confirm({ select = false })
+          --     cmp.confirm({ select = true  })
+          --     -- cmp.
+          --     -- cmp.select_next_item()
+          --     -- cmp.select_next_item()
+          --   elseif copilot.is_visible() then
+          --     copilot.accept()
+          --   elseif luasnip.expand_or_locally_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+          -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+          --   local copilot = require("copilot.suggestion")
+          --   if copilot.is_visible() then
+          --     copilot.accept()
+          --   else
+          --     fallback()
+          --   end
+          --   -- if cmp.visible() then
+          --   --   cmp.select_prev_item()
+          --   -- elseif luasnip.expand_or_locally_jumpable(-1) then
+          --   --   luasnip.jump(-1)
+          --   -- else
+          --   --   fallback()
+          --   -- end
+          -- end, { "i", "s" }),
         }),
         -- window = {
         --   completion = cmp.config.window.bordered(),

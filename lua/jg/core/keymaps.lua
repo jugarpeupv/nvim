@@ -50,16 +50,16 @@ vim.cmd([[inoremap <C-r> <C-r>*]])
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false, width = 0.8 })<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, require('telescope.themes').get_dropdown{previewer = false, width = 0.8 }})<cr>", opts)
 keymap(
-	"n",
-	"<M-p>",
-	"<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
-	opts
+  "n",
+  "<M-p>",
+  "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
+  opts
 )
 keymap(
-	"t",
-	"<M-p>",
-	"<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
-	opts
+  "t",
+  "<M-p>",
+  "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
+  opts
 )
 -- keymap("t", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>", opts)
 
@@ -118,10 +118,10 @@ keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("n", "<Leader>q", "<cmd>BDelete this<CR>", opts)
 keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
 keymap(
-	"n",
-	"<Leader>fi",
-	"<cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true })<cr>",
-	opts
+  "n",
+  "<Leader>fi",
+  "<cmd>lua require('telescope.builtin').find_files({ hidden = true, no_ignore = true })<cr>",
+  opts
 )
 -- keymap("n", "<Leader>ps", "<cmd>lua require('telescope.builtin').grep_string()<CR>", opts)
 -- keymap(
@@ -131,20 +131,20 @@ keymap(
 -- 	opts
 -- )
 keymap(
-	"n",
-	"<Leader>bu",
-	"<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false })<cr>",
-	opts
+  "n",
+  "<Leader>bu",
+  "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false })<cr>",
+  opts
 )
 keymap("n", "<leader>tr", "<cmd>Telescope resume<cr>", opts)
 keymap("n", "<leader>tm", "<cmd>Telescope node_modules list<cr>", opts)
 -- keymap("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 -- keymap("n", "<Leader>fi", "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", opts)
 keymap(
-	"n",
-	"<Leader>fs",
-	"<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>",
-	opts
+  "n",
+  "<Leader>fs",
+  "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>",
+  opts
 )
 --
 local telescope = require("telescope")
@@ -154,27 +154,27 @@ local telescope = require("telescope")
 vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>Telescope egrepify<cr>", opts)
 
 vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
-	telescope.extensions.live_grep_args.live_grep_raw({
-		disable_coordinates = true,
-		-- group_by = "filename",
-		-- disable_devicons = true,
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-			"--with-filename",
-			"--line-number",
-			"--column",
-			"--hidden",
-			"--smart-case",
-			"--glob=!icarSDK.js",
-			"--glob=!package-lock.json",
-			"--glob=!**/.git/**",
-			-- "--ignore-case",
-			-- "--smart-case",
-			-- "--word-regexp"
-		},
-	})
+  telescope.extensions.live_grep_args.live_grep_raw({
+    disable_coordinates = true,
+    -- group_by = "filename",
+    -- disable_devicons = true,
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--hidden",
+      "--smart-case",
+      "--glob=!icarSDK.js",
+      "--glob=!package-lock.json",
+      "--glob=!**/.git/**",
+      -- "--ignore-case",
+      -- "--smart-case",
+      -- "--word-regexp"
+    },
+  })
 end)
 
 -- keymap(
@@ -183,17 +183,14 @@ end)
 -- 	"<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top<CR>",
 -- 	opts
 -- )
-keymap("n",
+keymap(
+  "n",
   "<Leader>ss",
   "<cmd>Telescope live_grep search_dirs={'%:p'} vimgrep_arguments=rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings<cr>",
   opts
 )
 
-keymap("n",
-  "<Leader>sn",
-  "<cmd>BLines<cr>",
-  opts
-)
+keymap("n", "<Leader>sn", "<cmd>BLines<cr>", opts)
 keymap("n", "gv", "<cmd>vsp | lua vim.lsp.buf.definition()<cr>", opts)
 keymap("n", "<Leader>pp", "<cmd>Telescope projects<CR>", opts)
 
@@ -207,10 +204,10 @@ keymap("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<
 keymap("n", "<leader>gt", "<cmd>GTags<CR>", opts)
 
 keymap(
-	"n",
-	"<Leader>.",
-	"<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
-	opts
+  "n",
+  "<Leader>.",
+  "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
+  opts
 )
 keymap("n", "<Leader>ce", "<cmd>Telescope colorscheme<cr>", opts)
 keymap("n", "<Leader>po", "<cmd>PeekOpen<cr>", opts)
@@ -242,9 +239,9 @@ keymap("n", "<Leader>bt", "<cmd>Gitsigns toggle_current_line_blame<cr>", opts)
 keymap("n", "<Leader>bf", "<cmd>GitBlameOpenCommitURL<cr>", opts)
 
 -- TS
-keymap("n", "<Leader>ia", "<cmd>TypescriptAddMissingImports<cr>", opts)
-keymap("n", "<Leader>ru", "<cmd>TypescriptRemoveUnused<cr>", opts)
-keymap("n", "<Leader>oi", "<cmd>TypescriptOrganizeImports<cr>", opts)
+-- keymap("n", "<Leader>ia", "<cmd>TypescriptAddMissingImports<cr>", opts)
+-- keymap("n", "<Leader>ru", "<cmd>TypescriptRemoveUnused<cr>", opts)
+-- keymap("n", "<Leader>oi", "<cmd>TypescriptOrganizeImports<cr>", opts)
 
 -- Replace
 vim.cmd([[nnoremap <Leader>rr :%s///gc<Left><Left><Left>]])
@@ -252,11 +249,11 @@ vim.cmd([[xnoremap <Leader>rr :s///gc<Left><Left><Left>]])
 vim.cmd([[nnoremap <Leader>sw /\<\><Left><Left>]])
 
 vim.cmd(
-	[[nnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
+  [[nnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
 )
 
 vim.cmd(
-	[[xnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
+  [[xnoremap <Leader>rq :cfdo %s///gc \| update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>]]
 )
 
 -- Vim Fugitive
@@ -287,7 +284,6 @@ keymap("n", "<leader>cp", "<cmd>JsonPath<CR>", opts)
 -- Reformat file
 keymap("n", "<leader>cr", ":e ++ff=dos<CR> | :set ff=unix<CR>", opts)
 
-
 -- Vifm
 keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)
 
@@ -310,42 +306,42 @@ vim.keymap.set("n", "<leader>en", ":lua require'dap'.set_breakpoint(vim.fn.input
 -- 	require("dap").step_over()
 -- end)
 vim.keymap.set("n", "<Leader>G", function()
-	require("dap").continue()
+  require("dap").continue()
 end)
 vim.keymap.set("n", "<leader>ec", function()
-	require("dap").run_to_cursor()
+  require("dap").run_to_cursor()
 end)
 vim.keymap.set("n", "<leader>et", function()
-	require("dap").terminate()
+  require("dap").terminate()
 end)
 vim.keymap.set("n", "<leader>eC", function()
-	require("dap").clear_breakpoints()
+  require("dap").clear_breakpoints()
 end)
 vim.keymap.set("n", "<leader>ea", function()
-	require("debughelper-config").attach()
+  require("debughelper-config").attach()
 end)
 vim.keymap.set("n", "<leader>eE", function()
-	require("debughelper-config").attachToRemote()
+  require("debughelper-config").attachToRemote()
 end)
 vim.keymap.set("n", "<leader>eJ", function()
-	require("debughelper-config").attachToPort8080()
+  require("debughelper-config").attachToPort8080()
 end)
 vim.keymap.set("n", "<leader>eh", function()
-	require("dap.ui.widgets").hover()
+  require("dap.ui.widgets").hover()
 end)
 vim.keymap.set("n", "<leader>es", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.scopes)
+  local widgets = require("dap.ui.widgets")
+  widgets.centered_float(widgets.scopes)
 end)
 vim.keymap.set("n", "<leader>ek", ':lua require"dap".up()<CR>zz')
 vim.keymap.set("n", "<leader>ej", ':lua require"dap".down()<CR>zz')
 vim.keymap.set("n", "<leader>er", ':lua require"dap".repl.toggle({}, "vsplit")<CR><C-w>l')
 -- vim.keymap.set('n', '<leader>ee', function() require"dap".set_exception_breakpoints({"all"}) end)
 vim.keymap.set(
-	"n",
-	"<leader>lo",
-	"<cmd> lua require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { ['pwa-node'] = { 'typescript' }, ['node2'] = { 'typescript' }, ['node'] = { 'typescript' } })<cr>",
-	opts
+  "n",
+  "<leader>lo",
+  "<cmd> lua require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { ['pwa-node'] = { 'typescript' }, ['node2'] = { 'typescript' }, ['node'] = { 'typescript' } })<cr>",
+  opts
 )
 
 -- The Primeagean
@@ -457,8 +453,9 @@ vim.keymap.set("n", "-", actions.toggle_stage_entry)
 -- 	end, { desc = "Toggle Inlay Hints" })
 -- end
 
-vim.keymap.set("n", "<leader>ih", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
-
+vim.keymap.set("n", "<leader>ih", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)
 
 -- local opts = { noremap = true, silent = true }
 -- local keymap = vim.api.nvim_set_keymap
@@ -522,7 +519,7 @@ vim.api.nvim_set_keymap("n", "gN", "<cmd> lua require('illuminate').goto_prev_re
 vim.cmd([[nnoremap * /\<<C-R>=expand('<cword>')<CR>\><CR>]])
 vim.cmd([[nnoremap # ?\<<C-R>=expand('<cword>')<CR>\><CR>]])
 
-vim.keymap.set('i', '<Tab>', function()
+vim.keymap.set("i", "<Tab>", function()
   if require("copilot.suggestion").is_visible() then
     require("copilot.suggestion").accept()
   else
@@ -533,15 +530,31 @@ end, { desc = "Super Tab" })
 -- vim.cmd([[nnoremap / /\v]])
 -- vim.cmd([[nnoremap ? ?\v]])
 
-vim.keymap.set('n', '<leader>uu', vim.cmd.UndotreeToggle)
-vim.keymap.set('n', '<leader>us', vim.cmd.UndotreeShow)
-vim.keymap.set('n', '<leader>js', vim.cmd.Neogen)
+vim.keymap.set("n", "<leader>uu", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>us", vim.cmd.UndotreeShow)
+vim.keymap.set("n", "<leader>js", vim.cmd.Neogen)
 
-vim.cmd[[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DIR<CR>]]
-
+vim.cmd([[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DIR<CR>]])
 
 vim.keymap.set("n", "<leader>tc", ":split term://%:p:h//zsh<cr>", opts)
 
-
 keymap("n", "<leader>ca", "<cmd>Calculate<cr>", opts)
 keymap("v", "<leader>ca", "<cmd>Calculate<cr>", opts)
+
+-- luaSnip
+
+vim.keymap.set({ "i", "s" }, "<C-e>", function()
+  local ls = require("luasnip")
+  if ls.jumpable(-1) then
+    ls.jump(-1)
+  end
+end, { silent = true })
+
+
+
+vim.keymap.set({ "i", "s" }, "<C-f>", function()
+  local ls = require("luasnip")
+  if ls.expand_or_jumpable() then
+    ls.expand_or_jump()
+  end
+end, { silent = true })
