@@ -11,6 +11,7 @@ return {
   event = "VeryLazy",
   config = function()
     local trouble = require("trouble.providers.telescope")
+    local trouble_sources = require("trouble.sources.telescope")
     local egrep_actions = require("telescope._extensions.egrepify.actions")
 
     local status_ok, telescope = pcall(require, "telescope")
@@ -109,7 +110,8 @@ return {
             ["<C-x>"] = actions.select_horizontal,
             ["<C-Enter>"] = actions.select_vertical,
             -- ["<C-t>"] = actions.select_tab,
-            ["<C-t>"] = trouble.open_with_trouble,
+            -- ["<C-t>"] = trouble.open_with_trouble,
+            ["<C-t>"] = trouble_sources.open,
             -- ["<C-t>"] = trouble.open_with_trouble,
 
             -- ["<C-u>"] = actions.preview_scrolling_up,
@@ -137,7 +139,8 @@ return {
             -- ["<C-v>"] = actions.select_vertical,
             ["<C-Enter>"] = actions.select_vertical,
             -- ["<C-t>"] = actions.select_tab,
-            ["<C-t>"] = trouble.open_with_trouble,
+            -- ["<C-t>"] = trouble.open_with_trouble,
+            ["<C-t>"] = trouble_sources.open,
 
             ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
             ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,

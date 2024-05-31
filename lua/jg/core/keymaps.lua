@@ -104,6 +104,11 @@ keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 
 -- # keymap("n", "<M-u>", "<cmd>trouble next<cr>", opts)
 -- # keymap("n", "<M-o>", "<cmd>trouble prev<cr>", opts)
+
+-- # keymap("n", "<M-u>", "<cmd>trouble next<cr>", opts)
+-- map shift+ctrl+n send_text all \x1b\x75
+-- # keymap("n", "<M-o>", "<cmd>trouble prev<cr>", opts)
+-- map shift+ctrl+p send_text all \x1b\x6f
 keymap("n", "<M-u>", "<cmd> lua require('trouble').next({skip_groups = true, jump = true})<cr>", opts)
 keymap("n", "<M-o>", "<cmd> lua require('trouble').previous({skip_groups = true, jump = true})<cr>", opts)
 
@@ -113,7 +118,8 @@ keymap("n", "<M-k>", "<cmd>cprev<cr>", opts)
 -- keymap("n", "<M-h>", "<cmd>lprev<cr>", opts)
 
 -- Utilities
-keymap("n", "<BS>", "<C-^>", opts)
+-- keymap("n", "<BS>", "<C-^>", opts)
+keymap("n", "<BS>", "<^>", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("n", "<Leader>q", "<cmd>BDelete this<CR>", opts)
 keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
@@ -295,6 +301,7 @@ keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)
 
 -- DAP
 -- vim.keymap.set('n', '<leader>ee', function() require "dap".toggle_breakpoint() end)
+keymap("n", "<leader>eo", "<cmd>lua require('dapui').toggle()<cr>", opts)
 keymap("n", "<leader>ee", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
 keymap("n", "<leader>cb", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
 vim.keymap.set("n", "<leader>en", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
@@ -314,9 +321,13 @@ end)
 vim.keymap.set("n", "<leader>et", function()
   require("dap").terminate()
 end)
-vim.keymap.set("n", "<leader>eC", function()
-  require("dap").clear_breakpoints()
-end)
+-- vim.keymap.set("n", "<leader>eC", function()
+--   require("dap").clear_breakpoints()
+-- end)
+
+-- vim.keymap.set("n", "<leader>eL", function()
+--   require("dap").list_breakpoints()
+-- end)
 vim.keymap.set("n", "<leader>ea", function()
   require("debughelper-config").attach()
 end)
