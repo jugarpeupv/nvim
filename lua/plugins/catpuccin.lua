@@ -371,6 +371,7 @@ return {
     -- vim.cmd([[highlight NormalNC guibg=none blend=0]])
     -- vim.cmd([[highlight NormalSB guibg=none blend=0]])
     vim.cmd([[hi TroublePreview guibg=#264F78 guifg=none]])
+    -- vim.cmd([[hi TroubleFileName guifg=#F5C2E7]])
 
     vim.cmd([[highlight DiagnosticHint guifg=#89DCEB]])
     vim.cmd([[highlight DiagnosticFloatingHint guifg=#89DCEB]])

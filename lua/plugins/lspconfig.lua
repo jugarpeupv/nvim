@@ -68,16 +68,15 @@ local on_attach = function(client, bufnr)
     -- keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")         -- remove unused variables (not in youtube nvim video)
     -- keymap.set("n", "gd", "<cmd>TypescriptGoToSourceDefinition<CR>", opts) -- see definition and make edits in window
 
-
     keymap.set("n", "<Leader>rf", ":TSToolsRenameFile<cr>", opts)
     keymap.set("n", "<Leader>ia", ":TSToolsAddMissingImports<cr>", opts)
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")           -- rename file and update imports
-    keymap.set("n", "<leader>oi", ":TSToolsOrganizeImports<CR>")      -- organize imports (not in youtube nvim video)
-    keymap.set("n", "<leader>si", ":TSToolsSortImports<CR>")      -- organize imports (not in youtube nvim video)
-    keymap.set("n", "<leader>ru", ":TSToolsRemoveUnusedImports<CR>")         -- remove unused variables (not in youtube nvim video)
-    keymap.set("n", "<leader>rU", ":TSToolsRemoveUnused<CR>")         -- remove unused variables (not in youtube nvim video)
-    keymap.set("n", "<leader>fR", ":TSToolsFileReferences<CR>")         -- remove unused variables (not in youtube nvim video)
-    keymap.set("n", "<leader>fa", ":TSToolsFixAll<CR>")         -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")     -- rename file and update imports
+    keymap.set("n", "<leader>oi", ":TSToolsOrganizeImports<CR>")   -- organize imports (not in youtube nvim video)
+    keymap.set("n", "<leader>si", ":TSToolsSortImports<CR>")       -- organize imports (not in youtube nvim video)
+    keymap.set("n", "<leader>ru", ":TSToolsRemoveUnusedImports<CR>") -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>rU", ":TSToolsRemoveUnused<CR>")      -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>fR", ":TSToolsFileReferences<CR>")    -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>fa", ":TSToolsFixAll<CR>")            -- remove unused variables (not in youtube nvim video)
     -- keymap.set("n", "gd", "<cmd>TSToolsGoToSourceDefinition<CR>", opts) -- see definition and make edits in window
 
     -- require("lsp-inlayhints").on_attach(client, bufnr)
@@ -133,6 +132,10 @@ return {
           tsserver_file_preferences = {
             includeInlayParameterNameHints = "all",
             includeCompletionsForModuleExports = true,
+            -- importModuleSpecifierPreference = "relative",
+            -- importModuleSpecifierEnding = "minimal",
+            importModuleSpecifierPreference = "relative",
+            importModuleSpecifierEnding = "minimal",
             quotePreference = "auto",
           },
           -- locale of all tsserver messages, supported locales you can find here:

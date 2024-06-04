@@ -11,8 +11,8 @@ return {
   event = "VeryLazy",
   config = function()
     local trouble = require("trouble.providers.telescope")
-    local trouble_sources = require("trouble.sources.telescope")
-    local egrep_actions = require("telescope._extensions.egrepify.actions")
+    local open_with_trouble = require("trouble.sources.telescope").open
+    -- local egrep_actions = require("telescope._extensions.egrepify.actions")
 
     local status_ok, telescope = pcall(require, "telescope")
     if not status_ok then
@@ -111,7 +111,7 @@ return {
             ["<C-Enter>"] = actions.select_vertical,
             -- ["<C-t>"] = actions.select_tab,
             -- ["<C-t>"] = trouble.open_with_trouble,
-            ["<C-t>"] = trouble_sources.open,
+            ["<C-t>"] = open_with_trouble,
             -- ["<C-t>"] = trouble.open_with_trouble,
 
             -- ["<C-u>"] = actions.preview_scrolling_up,
@@ -140,7 +140,7 @@ return {
             ["<C-Enter>"] = actions.select_vertical,
             -- ["<C-t>"] = actions.select_tab,
             -- ["<C-t>"] = trouble.open_with_trouble,
-            ["<C-t>"] = trouble_sources.open,
+            ["<C-t>"] = open_with_trouble,
 
             ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
             ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -305,11 +305,11 @@ return {
           mappings = {
             i = {
               -- toggle prefixes, prefixes is default
-              ["<C-z>"] = egrep_actions.toggle_prefixes,
-              -- toggle AND, AND is default, AND matches tokens and any chars in between
-              ["<C-a>"] = egrep_actions.toggle_and,
-              -- toggle permutations, permutations of tokens is opt-in
-              ["<C-r>"] = egrep_actions.toggle_permutations,
+              -- ["<C-z>"] = egrep_actions.toggle_prefixes,
+              -- -- toggle AND, AND is default, AND matches tokens and any chars in between
+              -- ["<C-a>"] = egrep_actions.toggle_and,
+              -- -- toggle permutations, permutations of tokens is opt-in
+              -- ["<C-r>"] = egrep_actions.toggle_permutations,
             },
           },
         },
