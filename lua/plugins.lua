@@ -61,23 +61,24 @@ return {
   { "mbbill/undotree",    event = "VeryLazy" },
   { "neoclide/jsonc.vim", event = "VeryLazy" },
   -- { "pelodelfuego/vim-swoop" },
-  {
-    "barrett-ruth/live-server.nvim",
-    build = "pnpm add -g live-server",
-    cmd = { "LiveServerStart", "LiveServerStop" },
-    event = "VeryLazy",
-    config = true,
-  },
   -- {
-  --   "antosha417/nvim-lsp-file-operations",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-tree/nvim-tree.lua",
-  --   },
-  --   config = function()
-  --     require("lsp-file-operations").setup()
-  --   end,
+  --   "barrett-ruth/live-server.nvim",
+  --   build = "pnpm add -g live-server",
+  --   cmd = { "LiveServerStart", "LiveServerStop" },
+  --   event = "VeryLazy",
+  --   config = true,
   -- },
+  {
+    "antosha417/nvim-lsp-file-operations",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
+  },
   -- {
   --   "iamcco/markdown-preview.nvim",
   --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
