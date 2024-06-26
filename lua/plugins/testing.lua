@@ -19,7 +19,7 @@ return {
       vim.cmd("let test#neovim_sticky#reopen_window = 1")
       -- vim.cmd("let g:test#javascript#runner = 'jest'")
       vim.cmd("let g:test#javascript#runner = 'nx'")
-      vim.cmd("let g:VimuxHeight = '35'")
+      vim.cmd("let g:VimuxHeight = '15'")
     end,
   },
 }

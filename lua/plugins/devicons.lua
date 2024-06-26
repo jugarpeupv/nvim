@@ -271,8 +271,11 @@ return {
         ["module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule1" },
         ["*.module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule2" },
         [".module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule" },
-        ["service.ts"] = { icon = "", color = "#d6d25a", name = "AngularService1" },
-        [".service.ts"] = { icon = "", color = "#d6d25a", name = "AngularService2" },
+        ["service.ts"] = { icon = "", color = "#F9E2AF", name = "AngularService1" },
+        [".service.ts"] = { icon = "", color = "#F9E2AF", name = "AngularService2" },
+
+
+        ["component.ts"] = { icon = "󰚿", color = "#89b4fa", name = "AngularComponent1" },
 
         ["routes.ts"] = { icon = "󰑪", color = "#73daca", name = "AngularRoutesFile" },
         [".routes.ts"] = { icon = "󰑪", color = "#73daca", name = "AngularRoutesFile" },
@@ -286,9 +289,9 @@ return {
         ["directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
         ["*.directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
         [".directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
-        [".stories.ts"] = { icon = "s", color = "red", name = "Storie1" },
+        [".stories.ts"] = { icon = "s", color = "#F38BA8", name = "Storie1" },
 
-        ["stories.ts"] = { icon = "s", color = "red", name = "Storie2" },
+        ["stories.ts"] = { icon = "s", color = "#F38BA8", name = "Storie2" },
 
         -- ["*codeowners"] = { icon = "", color = "#F38BA8", name = "codeownersfile" },
 

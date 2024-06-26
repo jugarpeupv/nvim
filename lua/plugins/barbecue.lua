@@ -13,9 +13,17 @@
 
 -- return {}
 
-
 -- Dropbar.nvim is another alternative
 
+-- return {}
+
+-- return {
+--   "Bekaboo/dropbar.nvim",
+--   -- optional, but required for fuzzy finder support
+--   dependencies = {
+--     "nvim-telescope/telescope-fzf-native.nvim",
+--   },
+-- }
 
 return {
   "jugarpe/barbecue.nvim",
@@ -38,8 +46,10 @@ return {
     end
 
     bb.setup({
-      attach_navic = true,
-      show_navic = true,
+      attach_navic = false,
+      show_navic = false,
+      -- attach_navic = true,
+      -- show_navic = true,
       show_modified = true,
       -- create_autocmd = false,
       lead_custom_section = function(bufnr, _)

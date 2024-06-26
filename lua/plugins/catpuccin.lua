@@ -84,9 +84,13 @@ return {
       integrations = {
         neotest = true,
         markdown = true,
+        dropbar = {
+          enabled = true,
+          color_mode = true, -- enable color for kind's texts, not just kind's icons
+        },
         cmp = true,
         hop = true,
-        gitsigns = false,
+        gitsigns = true,
         harpoon = true,
         telescope = true,
         rainbow_delimiters = true,
@@ -169,7 +173,6 @@ return {
     -- vim.cmd([[hi LspInlayHint guifg=#5c5f79]])
     -- vim.cmd([[hi LspInlayHint guifg=#4f7080]])
     vim.cmd([[hi LspInlayHint guibg=#0F2745 guifg=#737aa2]])
-
 
     vim.cmd([[hi NvimTreeBookmark guifg=#f2cdcd]])
 
@@ -364,7 +367,11 @@ return {
     vim.cmd([[hi DiagnosticError guifg=#F38BA8]])
     vim.cmd([[hi DiagnosticSignError guifg=#F38BA8]])
 
+    vim.cmd([[highlight GitSignsAdd guifg=#2ac3de]])
+    vim.cmd([[highlight GitSignsChange guifg=#F2CDCD]])
+    vim.cmd([[highlight GitSignsChangeInLine guifg=#F2CDCD]])
     vim.cmd([[highlight GitSignsDelete guifg=#F38BA8]])
+    -- vim.cmd([[hi GitSignsCurrentLineBlame guifg=black]])
 
     -- vim.cmd([[highlight NormalFloat guibg=none blend=0]])
     -- vim.cmd([[highlight Normal guibg=none blend=0]])
@@ -387,7 +394,6 @@ return {
     vim.cmd([[hi ErrorMsg guifg=#F38BA8]])
     -- vim.cmd([[hi @property guifg=#CDD6F4]])
     vim.cmd([[hi TreesitterContextBottom guifg=none gui=none]])
-    vim.cmd([[hi GitSignsCurrentLineBlame guifg=black]])
 
     -- vim.cmd([[hi @property.scss guifg=#89ddff]])
     -- vim.cmd([[hi @property.class.scss guifg=#89ddff]])
@@ -407,8 +413,12 @@ return {
     vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
     vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
 
+    -- vim.cmd([[highlight @lsp.type.type guifg=#74C7EC]])
+    -- vim.cmd([[highlight @lsp.type.interface guifg=#74C7EC]])
+    -- vim.cmd([[highlight @attribute.typescript guifg=#74C7EC]])
+
     vim.cmd([[highlight @lsp.type.class.markdown guifg=#F5C2E7]])
-    
+
     -- vim.cmd([[highlight @lsp.type.type guifg=#F5C2E7]])
     -- vim.cmd([[highlight @lsp.type.interface guifg=#F5C2E7]])
     -- vim.cmd([[highlight @attribute.typescript guifg=#F5C2E7]])

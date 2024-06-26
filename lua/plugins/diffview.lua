@@ -177,7 +177,8 @@ return {
           ["<C-w><C-f>"] = actions.goto_file_split,      -- Open the file in a new split
           ["<C-w>gf"] = actions.goto_file_tab,           -- Open the file in a new tabpage
           ["<leader>d"] = actions.focus_files,           -- Bring focus to the file panel
-          ["<leader>b"] = actions.toggle_files,          -- Toggle the file panel.
+          -- ["<leader>b"] = actions.toggle_files,          -- Toggle the file panel.
+          ["<M-k>"] = actions.toggle_files,          -- Toggle the file panel.
           ["<BS>"] = actions.cycle_layout,
           ["[x"] = actions.prev_conflict,                -- In the merge_tool: jump to the previous conflict
           ["]x"] = actions.next_conflict,                -- In the merge_tool: jump to the next conflict
@@ -231,7 +232,8 @@ return {
           ["f"] = actions.toggle_flatten_dirs, -- Flatten empty subdirectories in tree listing style.
           ["R"] = actions.refresh_files,  -- Update stats and entries in the file list.
           ["<leader>e"] = actions.focus_files,
-          ["<leader>b"] = actions.toggle_files,
+          -- ["<leader>b"] = actions.toggle_files,
+          ["<M-k>"] = actions.toggle_files,          -- Toggle the file panel.
           ["<BS>"] = actions.cycle_layout,
           ["[x"] = actions.prev_conflict,
           ["]x"] = actions.next_conflict,
@@ -258,7 +260,8 @@ return {
           ["<C-w><C-f>"] = actions.goto_file_split,
           ["<C-w>gf"] = actions.goto_file_tab,
           ["<leader>e"] = actions.focus_files,
-          ["<leader>b"] = actions.toggle_files,
+          -- ["<leader>b"] = actions.toggle_files,
+          ["<M-k>"] = actions.toggle_files,          -- Toggle the file panel.
           ["<BS>"] = actions.cycle_layout,
         },
         option_panel = {

@@ -131,14 +131,20 @@ return {
       require("lspconfig").vtsls.setup({
         settings = {
           typescript = {
+            preferences = {
+              -- other preferences...
+              importModuleSpecifier = "relative",
+              importModuleSpecifierEnding = "minimal",
+            },
             inlayHints = {
-      --           includeInlayEnumMemberValueHints = false,
-      --           includeInlayFunctionLikeReturnTypeHints = false,
-      --           includeInlayFunctionParameterTypeHints = true,
-      --           includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-      --           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-      --           includeInlayPropertyDeclarationTypeHints = false,
-      --           includeInlayVariableTypeHints = false,
+
+              --           includeInlayEnumMemberValueHints = false,
+              --           includeInlayFunctionLikeReturnTypeHints = false,
+              --           includeInlayFunctionParameterTypeHints = true,
+              --           includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+              --           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+              --           includeInlayPropertyDeclarationTypeHints = false,
+              --           includeInlayVariableTypeHints = false,
               parameterNames = { enabled = "all" },
               parameterTypes = { enabled = true },
               variableTypes = { enabled = true },

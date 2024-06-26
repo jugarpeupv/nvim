@@ -312,7 +312,7 @@ vim.keymap.set("n", "<leader>en", ":lua require'dap'.set_breakpoint(vim.fn.input
 -- vim.keymap.set("n", "<Leader>jj", function()
 -- 	require("dap").step_over()
 -- end)
-vim.keymap.set("n", "<Leader>G", function()
+vim.keymap.set("n", "<leader>G", function()
   require("dap").continue()
 end)
 vim.keymap.set("n", "<leader>ec", function()
@@ -443,7 +443,7 @@ vim.cmd([[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]])
 -- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
-keymap("n", "<Leader>pi", "<cmd>PasteImg<cr>", opts)
+-- keymap("n", "<Leader>pi", "<cmd>PasteImg<cr>", opts)
 
 vim.keymap.set("n", "cc", "<Plug>(git-conflict-ours)")
 vim.keymap.set("n", "ci", "<Plug>(git-conflict-theirs)")
@@ -451,6 +451,13 @@ vim.keymap.set("n", "cb", "<Plug>(git-conflict-both)")
 vim.keymap.set("n", "cn", "<Plug>(git-conflict-none)")
 vim.keymap.set("n", "ck", "<Plug>(git-conflict-prev-conflict)")
 vim.keymap.set("n", "cj", "<Plug>(git-conflict-next-conflict)")
+
+vim.keymap.set("v", "cc", "<Plug>(git-conflict-ours)")
+vim.keymap.set("v", "ci", "<Plug>(git-conflict-theirs)")
+vim.keymap.set("v", "cb", "<Plug>(git-conflict-both)")
+vim.keymap.set("v", "cn", "<Plug>(git-conflict-none)")
+vim.keymap.set("v", "ck", "<Plug>(git-conflict-prev-conflict)")
+vim.keymap.set("v", "cj", "<Plug>(git-conflict-next-conflict)")
 
 local actions = require("diffview.actions")
 

@@ -1,6 +1,7 @@
 -- return {}
 return {
   "akinsho/git-conflict.nvim",
+  -- "CWood-sdf/git-conflict.nvim",
   version = "*",
   event = "VeryLazy",
   config = function()

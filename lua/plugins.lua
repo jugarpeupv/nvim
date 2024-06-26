@@ -3,7 +3,7 @@ return {
   { "wellle/targets.vim",                           event = "VeryLazy" },
   { "junegunn/fzf",                                 build = "./install --all", event = "VeryLazy" },
   { "junegunn/fzf.vim",                             event = "VeryLazy" },
-  { "dfendr/clipboard-image.nvim",                  event = "VeryLazy" },
+  -- { "dfendr/clipboard-image.nvim",                  event = "VeryLazy" },
   { "tpope/vim-repeat",                             event = "VeryLazy" },
   { "nvim-lua/plenary.nvim",                        event = "VeryLazy" },
   { "tpope/vim-surround",                           event = "VeryLazy" },
@@ -20,7 +20,7 @@ return {
   { "kkharji/sqlite.lua",                           event = "VeryLazy" },
   { "nvim-telescope/telescope-smart-history.nvim",  event = "VeryLazy" },
   { "stsewd/fzf-checkout.vim",                      event = "VeryLazy" },
-  { "mfussenegger/nvim-jdtls" },
+  -- { "mfussenegger/nvim-jdtls" },
   {
     event = "VeryLazy",
     "vzze/calculator.nvim",
@@ -58,7 +58,12 @@ return {
   --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
   --   },
   -- },
-  { "mbbill/undotree",    event = "VeryLazy" },
+  { "mbbill/undotree",    event = "VeryLazy", config = function ()
+    -- vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+    vim.g.undotree_WindowLayout = 3
+    vim.keymap.set('n', '<leader>ux', vim.cmd.UndotreeToggle)
+    vim.keymap.set('n', '<leader>ud', vim.cmd.UndotreeShow)
+  end },
   { "neoclide/jsonc.vim", event = "VeryLazy" },
   -- { "pelodelfuego/vim-swoop" },
   -- {
