@@ -52,6 +52,12 @@ return {
           cterm_color = "124",
           name = "Out",
         },
+        zsh = {
+          icon = "",
+          color = "#9CDCFE",
+          cterm_color = "65",
+          name = "Zsh",
+        },
         ["csv"] = {
           icon = "",
           color = "#9CDCFE",
@@ -274,7 +280,6 @@ return {
         ["service.ts"] = { icon = "", color = "#F9E2AF", name = "AngularService1" },
         [".service.ts"] = { icon = "", color = "#F9E2AF", name = "AngularService2" },
 
-
         ["component.ts"] = { icon = "󰚿", color = "#89b4fa", name = "AngularComponent1" },
 
         ["routes.ts"] = { icon = "󰑪", color = "#73daca", name = "AngularRoutesFile" },
@@ -289,9 +294,16 @@ return {
         ["directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
         ["*.directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
         [".directive.ts"] = { icon = "", color = "#6f32a8", name = "AngularDirective" },
-        [".stories.ts"] = { icon = "s", color = "#F38BA8", name = "Storie1" },
+        -- [".stories.ts"] = { icon = "s", color = "#F38BA8", name = "Storie1" },
 
-        ["stories.ts"] = { icon = "s", color = "#F38BA8", name = "Storie2" },
+        -- ["stories.ts"] = { icon = "s", color = "#F38BA8", name = "Storie2" },
+
+        [".stories.ts"] = { icon = "", color = "#f55385", name = "Storie1" },
+
+        ["stories.ts"] = { icon = "", color = "#f55385", name = "Storie2" },
+
+        ["bun.lockb"] = { icon = "", color = "#F5C2E7", name = "bunlock" },
+        -- ["bun.lockb"] = { icon = "󰳯", color = "#F2CDCD", name = "bunlock" },
 
         -- ["*codeowners"] = { icon = "", color = "#F38BA8", name = "codeownersfile" },
 
@@ -300,7 +312,8 @@ return {
         -- ["d.ts"] = { icon = "󰛦", color = '#107DC7', name = "dtypescript" },
         -- ["d.ts"] = { icon = "󰛦", color = "#89b4fb", name = "dtypescript" },
 
-        -- [".editorconfig"] = { icon = "", color = '#89b4fa', name = "Editorconfig"},
+        [".editorconfig"] = { icon = "", color = "#c0caf5", name = "Editorconfig" },
+        ["drawio"] = { icon = "󰇟", color = "#F9E2AF", name = "drawio1" },
       },
     }
 

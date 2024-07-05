@@ -33,6 +33,9 @@ return {
       -- },
       highlight = {
         enable = true,
+        disable = function(lang, bufnr) -- Disable in large .json files
+          return lang == "json" and vim.api.nvim_buf_line_count(bufnr) > 10000
+        end,
         additional_vim_regex_highlighting = true,
       },
       sync_install = true,
@@ -74,6 +77,8 @@ return {
         "luadoc",
         "vim",
         "dockerfile",
+        "rust",
+        "cpp",
         -- "dap_repl",
         "regex",
       },

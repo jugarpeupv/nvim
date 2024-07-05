@@ -216,3 +216,15 @@ vim.api.nvim_create_autocmd('filetype', {
 -- })
 
 -- vim.cmd[[au! BufRead,BufNewFile *.json set filetype=jsonc]]
+
+-- vim.api.nvim_create_autocmd('BufWinEnter', {
+--   pattern = '*',
+--   group = vim.api.nvim_create_augroup("winbarGroupAu", { clear = true }),
+--   callback = function()
+--     if vim.bo.filetype == '' then
+--       return
+--     end
+--     vim.wo.winbar = "%{%v:lua.require'jg.custom.winbar'.eval()%}"
+--   end,
+-- })
+

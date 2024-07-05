@@ -102,6 +102,7 @@ return {
         -- virtual_text = { spacing = 4, prefix = "●" },
         -- virtual_text = { spacing = 4, prefix = "" },
         -- virtual_text = { spacing = 4, prefix = " " },
+        
         signs = {
           active = signs_diag,
         },
@@ -472,6 +473,20 @@ return {
       --     },
       --   },
       -- })
+
+      require("lspconfig").clangd.setup({
+        on_attach = on_attach,
+        capabilities = cmp_nvim_lsp.default_capabilities(),
+        cmd = {
+          "clangd",
+          "--offset-encoding=utf-16",
+        },
+      })
+
+      require("lspconfig").clangd.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
 
       require("lspconfig").lua_ls.setup({
         capabilities = capabilities,

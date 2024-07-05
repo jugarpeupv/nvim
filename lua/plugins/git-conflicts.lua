@@ -2,7 +2,8 @@
 return {
   "akinsho/git-conflict.nvim",
   -- "CWood-sdf/git-conflict.nvim",
-  version = "*",
+  -- version = "*",
+  branch = 'main',
   event = "VeryLazy",
   config = function()
     require("git-conflict").setup({

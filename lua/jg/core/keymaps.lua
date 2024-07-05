@@ -17,8 +17,8 @@ vim.cmd([[nnoremap q <Nop>]])
 -- vim.keymap.set("n", "<Leader>io", function() print('hi') end, opts)
 -- vim.keymap.set("n", "<D-l>", function() print('hi') end, opts)
 -- vim.keymap.set("n", "<M-l>", function() print('hi') end, opts)
+-- keymap("n", "<T-l>", ":NvimTreeFindFile<cr>", opts)
 keymap("n", "<M-l>", ":NvimTreeFindFile<cr>", opts)
-keymap("n", "<T-l>", ":NvimTreeFindFile<cr>", opts)
 
 vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
 vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
@@ -36,7 +36,7 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<C-p>", "za", opts)
 
 -- Paste
--- keymap("n", "p", "p=`]", opts) --autoindent
+keymap("n", "p", "p=`]", opts) --autoindent
 keymap("v", "p", '"_dP', opts)
 keymap("n", "d", '"_d', opts)
 keymap("v", "d", '"_d', opts)
@@ -49,18 +49,41 @@ vim.cmd([[map <M-g> gcc]])
 vim.cmd([[inoremap <C-r> <C-r>*]])
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false, width = 0.8 })<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, require('telescope.themes').get_dropdown{previewer = false, width = 0.8 }})<cr>", opts)
-keymap(
-  "n",
-  "<M-p>",
-  "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
-  opts
-)
-keymap(
-  "t",
-  "<M-p>",
-  "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
-  opts
-)
+-- keymap(
+--   "n",
+--   "<M-p>",
+--   "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
+--   opts
+-- )
+
+-- keymap(
+--   "t",
+--   "<M-p>",
+--   "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>",
+--   opts
+-- )
+
+vim.keymap.set("n", "<M-p>", function()
+  require("telescope.builtin").git_files({
+    show_untracked = true,
+    previewer = false,
+    -- git_command = '(git ls-files --exclude-standard | grep -vE "^$(git ls-files -d | paste -sd "|" -)$")',
+    -- git_command = { "git", "ls-files", "--exclude-standard", "|", "grep", "-vE", '"^$(git ls-files -d | paste -sd "|" -)$"'}
+    -- git_command = {"ls", "|", "git", "ls-files", "--exclude-standard" }
+    -- git_command = { "gitls" }
+  })
+end, opts)
+
+vim.keymap.set("t", "<M-p>", function()
+  require("telescope.builtin").git_files({
+    show_untracked = true,
+    previewer = false,
+    -- git_command = { "git", "ls-files", "--exclude-standard", "|", "grep", "-vE", '"^$(git ls-files -d | paste -sd "|" -)$"'}
+    -- git_command = { "git", "ls-files", "--exclude-standard"}
+    -- git_command = { "gitls" }
+  })
+end, opts)
+
 -- keymap("t", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>", opts)
 
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files({ hidden = true, previewer = false })<cr>", opts)
@@ -118,8 +141,9 @@ keymap("n", "<M-k>", "<cmd>cprev<cr>", opts)
 -- keymap("n", "<M-h>", "<cmd>lprev<cr>", opts)
 
 -- Utilities
--- keymap("n", "<BS>", "<C-^>", opts)
-keymap("n", "<BS>", "<^>", opts)
+keymap("n", "<BS>", "<C-^>", opts)
+-- keymap("n", "<BS>", "^", opts)
+keymap("o", "<BS>", "^", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("n", "<Leader>q", "<cmd>BDelete this<CR>", opts)
 keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
@@ -279,7 +303,7 @@ keymap("n", "<Leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 keymap("n", "<Leader>gl", "<cmd>G log<cr>", opts)
 
 -- ToggleLine
-vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>ToggleLine<cr>", opts)
+-- vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>ToggleLine<cr>", opts)
 
 -- Hop
 vim.api.nvim_set_keymap("n", "<Leader>w", "<cmd>lua require'hop'.hint_words()<cr>", opts)
@@ -377,12 +401,12 @@ vim.keymap.set("n", "<leader>rs", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left
 
 -- Trouble
 -- vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xw", "<cmd>Trouble diagnostics toggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>xd", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xq", "<cmd>Trouble qflist toggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>tl", "<cmd>Trouble loclist toggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>tq", "<cmd>Trouble qflist toggle<cr>", { silent = true, noremap = true })
 
-vim.keymap.set("n", "<leader>xs", "<cmd>Trouble symbols toggle<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle<cr>", { silent = true, noremap = true })
 -- vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
 --   { silent = true, noremap = true }
 -- )
@@ -511,9 +535,9 @@ vim.keymap.set("n", "<leader>so", "<CMD>CtrlSFToggle<CR>")
 vim.keymap.set("n", "<leader>ni", "<cmd>NerdIcons<cr>")
 
 vim.cmd([[nmap <Leader>tn :tabnew %<CR>]])
-vim.cmd([[nmap <Leader>tt :tabclose<CR>]])
+vim.cmd([[nmap <Leader>tc :tabclose<CR>]])
 
-vim.keymap.set("n", "<leader>tO", require("jg.custom.telescope").curr_buf, {})
+vim.keymap.set("n", "<leader>ta", require("jg.custom.telescope").curr_buf, {})
 
 vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
 -- keymap("n", '<leader>va', "<cmd>lua require('jenkinsfile_linter').validate()<cr>", opts)
@@ -556,7 +580,7 @@ vim.keymap.set("n", "<leader>js", vim.cmd.Neogen)
 
 vim.cmd([[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_DIR<CR>]])
 
-vim.keymap.set("n", "<leader>tc", ":split term://%:p:h//zsh<cr>", opts)
+vim.keymap.set("n", "<M-i>", ":split term://%:p:h//zsh<cr>", opts)
 
 keymap("n", "<leader>ca", "<cmd>Calculate<cr>", opts)
 keymap("v", "<leader>ca", "<cmd>Calculate<cr>", opts)
@@ -570,11 +594,13 @@ vim.keymap.set({ "i", "s" }, "<C-e>", function()
   end
 end, { silent = true })
 
-
-
 vim.keymap.set({ "i", "s" }, "<C-f>", function()
   local ls = require("luasnip")
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
   end
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>cl", function()
+  require("telescope").extensions.neoclip.default()
 end, { silent = true })
