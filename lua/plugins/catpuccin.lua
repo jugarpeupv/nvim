@@ -91,6 +91,7 @@ return {
           -- text = "#bbc2e0"
         },
       },
+      integrations = {},
       -- integrations = {
       --   neotest = true,
       --   markdown = true,

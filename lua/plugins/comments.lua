@@ -2,7 +2,8 @@
 return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   },
 
   {

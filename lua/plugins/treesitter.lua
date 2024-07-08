@@ -165,12 +165,14 @@ return {
     end,
   },
   {
-    event = "VeryLazy",
+    cmd = { "TSPlaygroundToggle" },
     "nvim-treesitter/playground",
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    -- event = "VeryLazy",
     config = function()
       require("treesitter-context").setup({
         enable = true,     -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -253,7 +255,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    -- event = "VeryLazy",
     after = "nvim-treesitter",
     -- dependencies = "nvim-treesitter/nvim-treesitter",
   },

@@ -191,7 +191,7 @@ keymap(
   "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false })<cr>",
   opts
 )
-keymap("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume<cr>", opts)
+keymap("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
 keymap("n", "<leader>tm", "<cmd>lua require('telescope.builtin').node_modules list<cr>", opts)
 -- keymap("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 -- keymap("n", "<Leader>fi", "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", opts)
@@ -485,10 +485,6 @@ vim.keymap.set("v", "cb", "<Plug>(git-conflict-both)")
 vim.keymap.set("v", "cn", "<Plug>(git-conflict-none)")
 vim.keymap.set("v", "ck", "<Plug>(git-conflict-prev-conflict)")
 vim.keymap.set("v", "cj", "<Plug>(git-conflict-next-conflict)")
-
-local actions = require("diffview.actions")
-
-vim.keymap.set("n", "-", actions.toggle_stage_entry)
 
 -- if vim.lsp.inlay_hint then
 -- 	vim.keymap.set("n", "<leader>ih", function()

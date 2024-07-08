@@ -18,7 +18,7 @@ return {
   -- cmd = { 'NvimTreeFindFile' },
 	-- event = "VeryLazy",
   -- event = "BufWinEnter",
-	-- priority = 1,
+	priority = 500,
 	-- commit = "5e4475d8bf7a3646164e01d9b65ef68369b17e3c",
 	config = function()
 		local apinvimtree = require("nvim-tree.api")
