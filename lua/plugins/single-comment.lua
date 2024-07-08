@@ -1,11 +1,12 @@
 return {
   "lucastavaresa/SingleComment.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   -- keybindings = { { { "n", "v" }, "gcc" }, { "n", "gca" } },
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "JoosepAlviste/nvim-ts-context-commentstring",
-  },
+  -- keys = { { { "n", "v" }, "gcc" }, { "n", "gca" } },
+  -- dependencies = {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   "JoosepAlviste/nvim-ts-context-commentstring",
+  -- },
   config = function()
     vim.keymap.set("n", "gcc", require("SingleComment").SingleComment, { expr = true })
     vim.keymap.set("v", "gcc", require("SingleComment").Comment, {})

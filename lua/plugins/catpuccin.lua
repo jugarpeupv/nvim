@@ -1,3 +1,4 @@
+-- return {},
 return {
   "catppuccin/nvim",
   -- dependencies = { "mg979/vim-visual-multi" },
@@ -16,9 +17,19 @@ return {
           surface2 = "#a3a7bc",
           surface3 = "#a3a7bc",
 
+          -- yellow = "#36C0D8",
+          -- yellow = "#89ddff",
+          green = "#F2CDCD",
+          maroon = "#FAB387",
+
+          yellow = "#2ac3de",
+          -- green = "#F2CDCD",
+          -- maroon = "#FAB387",
+
+
           -- yellow = "#74C7EC",
           -- yellow = "#0db9d7",
-          yellow = "#2ac3de",
+          -- yellow = "#90dcd1",
           -- yellow = "#F9E2AF",
           -- yellow = "#F38BA8",
           -- yellow = "#F5C2E7",
@@ -34,10 +45,8 @@ return {
           -- yellow = "#41a6b5",
           -- yellow = "#8ee2cf",
           -- green = "#8ee2cf",
-          green = "#F2CDCD",
           -- red = "#ff007c",
           -- maroon = "#F38BA8",
-          maroon = "#FAB387",
           -- maroon = "#8ee2cf",
           -- maroon = "#CA9EE6"
           -- maroon = "#EBA0AC",
@@ -414,9 +423,10 @@ return {
     vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
     vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
 
-    -- vim.cmd([[highlight @lsp.type.type guifg=#74C7EC]])
-    -- vim.cmd([[highlight @lsp.type.interface guifg=#74C7EC]])
-    -- vim.cmd([[highlight @attribute.typescript guifg=#74C7EC]])
+
+    -- vim.cmd([[highlight @lsp.type.type guifg=#89ddff]])
+    -- vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
+    -- vim.cmd([[highlight @attribute.typescript guifg=#89ddff]])
 
     vim.cmd([[highlight @lsp.type.class.markdown guifg=#F5C2E7]])
 

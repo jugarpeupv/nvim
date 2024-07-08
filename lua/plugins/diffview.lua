@@ -133,7 +133,7 @@ return {
         view_opened = function(view)
           -- require("diffview.actions").toggle_files()
           local utils = require("jg.core.utils")
-          require("barbecue.ui").toggle(false)
+          -- require("barbecue.ui").toggle(false)
 
           -- vim.lsp.inlay_hint.enable(false)
           -- vim.cmd [[set nocursorline]]
@@ -163,7 +163,7 @@ return {
           post_layout()
         end,
         view_closed = function()
-          require("barbecue.ui").toggle(true)
+          -- require("barbecue.ui").toggle(true)
         end,
       },                     -- See ':h diffview-config-hooks'
       keymaps = {

@@ -1,8 +1,11 @@
 -- return {}
 return {
 	"nvim-tree/nvim-tree.lua",
+  -- keys = { "<leader>d" },
+  -- cmd = { 'NvimTreeFindFile' },
 	-- event = "VeryLazy",
-	priority = 1,
+  -- event = "BufWinEnter",
+	-- priority = 1,
 	-- commit = "5e4475d8bf7a3646164e01d9b65ef68369b17e3c",
 	config = function()
 		local apinvimtree = require("nvim-tree.api")
@@ -226,8 +229,8 @@ return {
 			hijack_netrw = true,
 			hijack_unnamed_buffer_when_opening = true,
 			sort_by = "name",
-			update_cwd = false,
-			respect_buf_cwd = false,
+      sync_root_with_cwd = true,
+			respect_buf_cwd = true,
 			on_attach = on_attach,
 			live_filter = {
 				always_show_folders = false,
@@ -413,8 +416,7 @@ return {
 			},
 			update_focused_file = {
 				enable = false,
-				update_cwd = false,
-				ignore_list = {},
+        update_root = { enable = false },
 			},
 			system_open = {
 				cmd = "",

@@ -21,17 +21,17 @@ return {
   { "nvim-telescope/telescope-smart-history.nvim",  event = "VeryLazy" },
   { "stsewd/fzf-checkout.vim",                      event = "VeryLazy" },
   -- { "mfussenegger/nvim-jdtls" },
-  {
-    event = "VeryLazy",
-    "vzze/calculator.nvim",
-    config = function()
-      vim.api.nvim_create_user_command(
-        "Calculate",
-        'lua require("calculator").calculate()',
-        { ["range"] = 1, ["nargs"] = 0 }
-      )
-    end,
-  },
+  -- {
+  --   event = "VeryLazy",
+  --   "vzze/calculator.nvim",
+  --   config = function()
+  --     vim.api.nvim_create_user_command(
+  --       "Calculate",
+  --       'lua require("calculator").calculate()',
+  --       { ["range"] = 1, ["nargs"] = 0 }
+  --     )
+  --   end,
+  -- },
   -- { 'Mofiqul/vscode.nvim' },
   {
     "ckipp01/nvim-jenkinsfile-linter",
@@ -58,13 +58,18 @@ return {
   --     { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
   --   },
   -- },
-  { "mbbill/undotree",    event = "VeryLazy", config = function ()
-    -- vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
-    vim.g.undotree_WindowLayout = 3
-    vim.keymap.set('n', '<leader>ux', vim.cmd.UndotreeToggle)
-    vim.keymap.set('n', '<leader>ud', vim.cmd.UndotreeShow)
-  end },
-  { "neoclide/jsonc.vim", event = "VeryLazy" },
+  {
+    "mbbill/undotree",
+    -- cmd = { 'UndotreeShow', 'UndotreeToggle' },
+    event = "VeryLazy",
+    config = function()
+      -- vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+      vim.g.undotree_WindowLayout = 3
+      vim.keymap.set("n", "<leader>ux", vim.cmd.UndotreeToggle)
+      vim.keymap.set("n", "<leader>ud", vim.cmd.UndotreeShow)
+    end,
+  },
+  { "neoclide/jsonc.vim", ft = { 'json' } },
   -- { "pelodelfuego/vim-swoop" },
   -- {
   --   "barrett-ruth/live-server.nvim",
@@ -73,17 +78,29 @@ return {
   --   event = "VeryLazy",
   --   config = true,
   -- },
+  -- {
+  --   "antosha417/nvim-lsp-file-operations",
+  --   event = "VeryLazy",
+  --   -- dependencies = {
+  --   --   "nvim-lua/plenary.nvim",
+  --   --   "nvim-tree/nvim-tree.lua",
+  --   -- },
+  --   config = function()
+  --     require("lsp-file-operations").setup()
+  --   end,
+  -- },
   {
-    "antosha417/nvim-lsp-file-operations",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-tree.lua",
-    },
+    "saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
     config = function()
-      require("lsp-file-operations").setup()
+      require("crates").setup()
     end,
   },
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^4", -- Recommended
+  --   lazy = false, -- This plugin is already lazy
+  -- },
   -- {
   --   "iamcco/markdown-preview.nvim",
   --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

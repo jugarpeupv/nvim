@@ -1,7 +1,8 @@
 -- return {}
 return {
   "nvim-tree/nvim-web-devicons",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  lazy = true,
   config = function()
     local present, devicons = pcall(require, "nvim-web-devicons")
 
@@ -237,10 +238,10 @@ return {
         [".eslint-report.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintreportjson" },
 
         --[[ [".prettierignore"] = { icon = "󰫽", color = "#7C7F93", name = "prettierignore"}, ]]
-        [".prettierignore"] = { icon = "󰰚", color = "#7C7F93", name = "prettierignore" },
+        [".prettierignore"] = { icon = "", color = "#7C7F93", name = "prettierignore" },
 
         --[[ [".prettierrc"] = { icon = "󰫽", color = "#0D8874", name = "prettierrc"}, ]]
-        [".prettierrc"] = { icon = "󰰚", color = "#73daca", name = "prettierrc" },
+        [".prettierrc"] = { icon = "", color = "#73daca", name = "prettierrc" },
         -- [".prettierrc"] = { icon = "", color = "#73daca", name = "prettierrc" },
 
         --[[ ["project.json"] = { icon = "", color = '#9CDCFE', name = 'ProjectJson' }, ]]
@@ -259,9 +260,10 @@ return {
       override_by_extension = {
         [".env"] = {
           icon = "",
-          color = "#F9E2AF",
+          -- color = "#F9E2AF",
+          color = "#F2CDCD",
           -- cterm_color = "227",
-          name = "Env",
+          name = "Env2",
         },
         ["log"] = {
           icon = "",
