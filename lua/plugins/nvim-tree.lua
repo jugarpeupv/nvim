@@ -1,6 +1,19 @@
 -- return {}
 return {
-	"nvim-tree/nvim-tree.lua",
+  {
+    "antosha417/nvim-lsp-file-operations",
+    -- event = "VeryLazy",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
+    -- dependencies = {
+    --   "nvim-lua/plenary.nvim",
+    --   "nvim-tree/nvim-tree.lua",
+    -- },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
+  },
+  { "nvim-tree/nvim-tree.lua",
+  -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
   -- keys = { "<leader>d" },
   -- cmd = { 'NvimTreeFindFile' },
 	-- event = "VeryLazy",
@@ -494,4 +507,5 @@ return {
 
 		vim.cmd([[hi NvimTreeFolderIcon guifg=#89B4FA]])
 	end,
+  }
 }

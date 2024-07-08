@@ -3,9 +3,52 @@
 -- return { "griwes/telescope.nvim", branch = "group-by" }
 --
 return {
-  { "nvim-telescope/telescope-smart-history.nvim", event = "VeryLazy",  cmd = { "Telescope" } },
+  {
+    "dhruvmanila/browser-bookmarks.nvim",
+    version = "*",
+    cmd = { "Telescope" },
+    -- event = "VeryLazy",
+    -- dependencies = {
+    --   "kkharji/sqlite.lua",
+    --   "nvim-telescope/telescope.nvim",
+    -- },
+    config = function()
+      require("browser_bookmarks").setup({
+        selected_browser = "chrome",
+      })
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    event = "VeryLazy",
+    -- dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup({
+        auto_close = false,  -- auto close when there are no items
+        auto_open = false,   -- auto open when there are items
+        auto_preview = false, -- automatically open preview when on an item
+        auto_refresh = true, -- auto refresh when open
+        auto_jump = false,   -- auto jump to the item when there's only one
+        focus = false,       -- Focus the window when opened
+        restore = true,      -- restores the last location in the list when opening
+        follow = true,       -- Follow the current item
+        indent_guides = true, -- show indent guides
+        max_items = 200,     -- limit number of items that can be displayed per section
+        multiline = false,   -- render multi-line messages
+        pinned = false,      -- When pinned, the opened trouble window will be bound to the current buffer
+        warn_no_results = true, -- show a warning when there are no results
+        open_no_results = false, -- open the trouble window when there are no results
+        ---@type trouble.Window.opts
+        win = {
+          size = 60,     -- width of the list window
+          position = "right", -- position of the list can be: bottom, top, left, right
+        },               -- window options for the results window. Can be a split or a floating window.
+      })
+    end,
+  },
+  { "nvim-telescope/telescope-smart-history.nvim",  cmd = { "Telescope" } },
   -- { "nvim-telescope/telescope-harpoon.nvim",        cmd = { "Telescope" } },
-  { "nvim-telescope/telescope-fzf-native.nvim",     cmd = { "Telescope" } },
+  -- { "nvim-telescope/telescope-fzf-native.nvim",     cmd = { "Telescope" } },
   { "natecraddock/telescope-zf-native.nvim",        cmd = { "Telescope" } },
   -- { "nvim-telescope/telescope-fzf-native.nvim",     build = "make",            event = "VeryLazy" },
   { "nvim-telescope/telescope-live-grep-args.nvim", cmd = { "Telescope" } },
@@ -15,11 +58,12 @@ return {
   -- commit = "6f6bb8065567b56c42e283b06e8a1c670c0092a1",
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    cmd = { "Telescope" },
+    -- branch = "0.1.x",
+    tag = '0.1.8',
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = "Telescope",
     -- event = "VeryLazy",
     config = function()
-      local trouble = require("trouble.providers.telescope")
       local open_with_trouble = require("trouble.sources.telescope").open
       -- local egrep_actions = require("telescope._extensions.egrepify.actions")
 

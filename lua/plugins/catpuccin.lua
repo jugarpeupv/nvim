@@ -1,4 +1,5 @@
--- return {},
+-- return {}
+
 return {
   "catppuccin/nvim",
   -- dependencies = { "mg979/vim-visual-multi" },
@@ -90,41 +91,41 @@ return {
           -- text = "#bbc2e0"
         },
       },
-      integrations = {
-        neotest = true,
-        markdown = true,
-        dropbar = {
-          enabled = true,
-          color_mode = true, -- enable color for kind's texts, not just kind's icons
-        },
-        cmp = true,
-        hop = true,
-        gitsigns = true,
-        harpoon = true,
-        telescope = true,
-        rainbow_delimiters = true,
-        -- ts_rainbow2 = false,
-        lsp_trouble = true,
-        neotree = true,
-        lsp_saga = true,
-        mason = true,
-        dap = true,
-        -- native_lsp = true,
-        navic = {
-          enabled = false,
-          custom_bg = "NONE",
-        },
-        nvimtree = true,
-        treesitter = true,
-        neogit = true,
-        semantic_tokens = true,
-        treesitter_context = true,
-        illuminate = true,
-        gitgutter = true,
-      },
+      -- integrations = {
+      --   neotest = true,
+      --   markdown = true,
+      --   dropbar = {
+      --     enabled = true,
+      --     color_mode = true, -- enable color for kind's texts, not just kind's icons
+      --   },
+      --   cmp = true,
+      --   hop = true,
+      --   gitsigns = true,
+      --   harpoon = true,
+      --   telescope = true,
+      --   rainbow_delimiters = true,
+      --   -- ts_rainbow2 = false,
+      --   lsp_trouble = true,
+      --   neotree = true,
+      --   lsp_saga = true,
+      --   mason = true,
+      --   dap = true,
+      --   -- native_lsp = true,
+      --   navic = {
+      --     enabled = false,
+      --     custom_bg = "NONE",
+      --   },
+      --   nvimtree = true,
+      --   treesitter = true,
+      --   neogit = true,
+      --   semantic_tokens = true,
+      --   treesitter_context = true,
+      --   illuminate = true,
+      --   gitgutter = true,
+      -- },
       show_end_of_buffer = true, -- show the '~' characters after the end of buffers
       -- term_colors = true,
-      term_colors = false,
+      term_colors = true,
       dim_inactive = {
         enabled = false,
         shade = "dark",
@@ -193,6 +194,7 @@ return {
     vim.cmd([[hi @markup.heading.2.markdown  guifg=#89ddff]])
     vim.cmd([[hi @markup.heading.3.markdown  guifg=#94E2D5]])
     vim.cmd([[hi @markup.heading.4.markdown  guifg=#F9E2AF]])
+
     -- vim.cmd([[hi @text.title.1.markdown  guifg=#89ddff]])
     -- vim.cmd([[hi @text.title.2.markdown  guifg=#89B4FA]])
     -- vim.cmd([[hi @text.title.3.markdown  guifg=#CBA6F7]])

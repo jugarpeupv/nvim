@@ -103,6 +103,31 @@ end, opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
+
+
+keymap(
+  "n",
+  "<Leader>.",
+  "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
+  opts
+)
+keymap("n", "<Leader>ce", "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
+keymap("n", "<Leader>po", "<cmd>PeekOpen<cr>", opts)
+keymap("n", "<Leader>pc", "<cmd>PeekClose<cr>", opts)
+keymap("n", "<Leader>ht", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+keymap("n", "<Leader>mp", "<cmd>lua require('telescope.builtin').man_pages()<cr>", opts)
+-- keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>", opts)
+keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", opts)
+keymap("n", "<Leader>rg", "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
+keymap("n", "<Leader>ke", "<cmd>lua require('telescope.builtin').keymaps()<cr>", opts)
+keymap("n", "<Leader>cm", "<cmd>lua require('telescope.builtin').commands()<cr>", opts)
+keymap("n", "<Leader>td", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)
+keymap("n", "<Leader>bo", "<cmd>lua require('telescope.builtin').bookmarks()<cr>", opts)
+-- keymap("n", "<Leader>ma", "<cmd>Telescope vim_bookmarks<cr>", opts)
+keymap("n", "<Leader>sy", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
+keymap("n", "<Leader>lr", "<cmd>LspRestart<cr>", opts)
+
+
 keymap("n", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
 keymap("i", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
 keymap("t", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
@@ -166,8 +191,8 @@ keymap(
   "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false })<cr>",
   opts
 )
-keymap("n", "<leader>tr", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<leader>tm", "<cmd>Telescope node_modules list<cr>", opts)
+keymap("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume<cr>", opts)
+keymap("n", "<leader>tm", "<cmd>lua require('telescope.builtin').node_modules list<cr>", opts)
 -- keymap("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 -- keymap("n", "<Leader>fi", "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", opts)
 keymap(
@@ -177,14 +202,13 @@ keymap(
   opts
 )
 --
-local telescope = require("telescope")
 
 -- keymap("n", "<Leader>fl", "<cmd>lua require('telescope.builtin').live_grep({ group_by = 'filename', disable_devicons = true })<CR>", opts);
 
-vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>Telescope egrepify<cr>", opts)
+vim.keymap.set({ "n", "v" }, "<Leader>fr", "<cmd>lua require('telescope.builtin').egrepify<cr>", opts)
 
 vim.keymap.set({ "n", "v" }, "<Leader>ff", function()
-  telescope.extensions.live_grep_args.live_grep_raw({
+  require("telescope").extensions.live_grep_args.live_grep_raw({
     disable_coordinates = true,
     -- group_by = "filename",
     -- disable_devicons = true,
@@ -216,44 +240,23 @@ end)
 keymap(
   "n",
   "<Leader>ss",
-  "<cmd>Telescope live_grep search_dirs={'%:p'} vimgrep_arguments=rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings<cr>",
+  "<cmd>lua require('telescope.builtin').live_grep({ search_dirs={'%:p'}, vimgrep_arguments='rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings'})<cr>",
   opts
 )
 
 keymap("n", "<Leader>sn", "<cmd>BLines<cr>", opts)
 keymap("n", "gv", "<cmd>vsp | lua vim.lsp.buf.definition()<cr>", opts)
-keymap("n", "<Leader>pp", "<cmd>Telescope projects<CR>", opts)
+keymap("n", "<Leader>pp", "<cmd>lua require('telescope.builtin').projects()<CR>", opts)
 
 -- Telescope
 -- keymap("n", "<Leader>gg", "<cmd>Telescope git_status<cr>", opts)
 keymap("n", "<Leader>ga", "<cmd>G add .<cr>", opts)
 keymap("n", "<Leader>gS", "<cmd>G stash<cr>", opts)
 keymap("n", "<Leader>gO", "<cmd>G stash pop<cr>", opts)
-keymap("n", "<Leader>gs", "<cmd>Telescope git_stash<cr>", opts)
+keymap("n", "<Leader>gs", "<cmd>lua require('telescope.builtin').git_stash()<cr>", opts)
 keymap("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>", opts)
 keymap("n", "<leader>gt", "<cmd>GTags<CR>", opts)
 
-keymap(
-  "n",
-  "<Leader>.",
-  "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
-  opts
-)
-keymap("n", "<Leader>ce", "<cmd>Telescope colorscheme<cr>", opts)
-keymap("n", "<Leader>po", "<cmd>PeekOpen<cr>", opts)
-keymap("n", "<Leader>pc", "<cmd>PeekClose<cr>", opts)
-keymap("n", "<Leader>ht", "<cmd>Telescope help_tags<cr>", opts)
-keymap("n", "<Leader>mp", "<cmd>Telescope man_pages<cr>", opts)
--- keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>", opts)
-keymap("n", "<Leader>of", "<cmd>Telescope oldfiles only_cwd=true<cr>", opts)
-keymap("n", "<Leader>rg", "<cmd>Telescope registers<cr>", opts)
-keymap("n", "<Leader>ke", "<cmd>Telescope keymaps<cr>", opts)
-keymap("n", "<Leader>cm", "<cmd>Telescope commands<cr>", opts)
-keymap("n", "<Leader>td", "<cmd>Telescope diagnostics<cr>", opts)
-keymap("n", "<Leader>bo", "<cmd>Telescope bookmarks<cr>", opts)
--- keymap("n", "<Leader>ma", "<cmd>Telescope vim_bookmarks<cr>", opts)
-keymap("n", "<Leader>sy", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-keymap("n", "<Leader>lr", "<cmd>LspRestart<cr>", opts)
 
 -- Diffview
 keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", opts)
@@ -299,7 +302,7 @@ keymap("n", "<Leader>go", "<cmd>:!git-open<cr>", opts)
 keymap("n", "<Leader>np", "<cmd>:e ~/.npmrc<cr>", opts)
 keymap("n", "<Leader>aw", "<cmd>:e ~/.aws/config<cr>", opts)
 keymap("n", "<Leader>zh", "<cmd>:e ~/.zshrc<cr>", opts)
-keymap("n", "<Leader>gc", "<cmd>Telescope git_commits<cr>", opts)
+keymap("n", "<Leader>gc", "<cmd>lua require('telescope.builtin').git_commits()<cr>", opts)
 keymap("n", "<Leader>gl", "<cmd>G log<cr>", opts)
 
 -- ToggleLine

@@ -2,14 +2,11 @@
 return {
   -- { "jayp0521/mason-null-ls.nvim", event = "VeryLazy" },
   -- { "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
-  { "jayp0521/mason-null-ls.nvim",   event = "VeryLazy",
- },
-  { "williamboman/mason-lspconfig.nvim",   event = "VeryLazy",
- },
+  { "jayp0521/mason-null-ls.nvim",       cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" } },
+  { "williamboman/mason-lspconfig.nvim", cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" } },
   {
     "williamboman/mason.nvim",
-
-  event = "VeryLazy",
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     config = function()
       -- import mason plugin safely
       local mason_status, mason = pcall(require, "mason")
@@ -35,13 +32,14 @@ return {
       mason_lspconfig.setup({
         -- list of servers for mason to install
         ensure_installed = {
-          "tsserver",
+          "vtsls",
+          -- "tsserver",
           "html",
           "cssls",
           "tailwindcss",
           "lua_ls",
           "angularls",
-          "cssmodules_ls"
+          "cssmodules_ls",
         },
         -- auto-install configured servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed

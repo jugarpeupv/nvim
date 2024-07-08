@@ -1,20 +1,54 @@
 -- return {}
 return {
-  { "hrsh7th/cmp-nvim-lua", event = "InsertEnter" },
-  { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
-  -- { "hrsh7th/cmp-buffer" },
-  -- { "hrsh7th/cmp-cmdline" },
-  { "hrsh7th/cmp-path",     event = "InsertEnter" },
-  { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-  {
-    "L3MON4D3/LuaSnip",
-    event = "InsertEnter",
-    -- dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
-  },
-  { "rafamadriz/friendly-snippets", event = "InsertEnter" },
+  -- { "hrsh7th/cmp-nvim-lua", event = "InsertEnter" },
+  -- { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+  -- -- { "hrsh7th/cmp-buffer" },
+  -- -- { "hrsh7th/cmp-cmdline" },
+  -- { "hrsh7th/cmp-path",     event = "InsertEnter" },
+  -- { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
+  -- {
+  --   "L3MON4D3/LuaSnip",
+  --   event = "InsertEnter",
+  --   -- dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
+  -- },
+  -- { "rafamadriz/friendly-snippets", event = "InsertEnter" },
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+
+    dependencies = {
+      {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+      },
+
+      -- autopairing of (){}[] etc
+      {
+        "windwp/nvim-autopairs",
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+          require("nvim-autopairs").setup(opts)
+
+          -- setup cmp for autopairs
+          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+      },
+
+      -- cmp sources plugins
+      {
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+      },
+    },
     config = function()
       -- import nvim-cmp plugin safely
       local cmp_status, cmp = pcall(require, "cmp")
