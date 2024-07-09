@@ -1,13 +1,11 @@
 -- return {}
 return {
   {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-  },
-
-  {
     "lucastavaresa/SingleComment.nvim",
+    lazy = true,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring"
+    },
     -- event = "VeryLazy",
     -- keybindings = { { { "n", "v" }, "gcc" }, { "n", "gca" } },
     -- keys = { { { "n", "v" }, "gcc" }, { "n", "gca" } },

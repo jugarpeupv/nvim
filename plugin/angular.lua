@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- vim.treesitter.language.register("angular", "angular.html") -- Register the filetype with treesitter for the `angular` language/parser
     vim.treesitter.language.register("angular", "myangular") -- Register the filetype with treesitter for the `angular` language/parser
-
+    vim.cmd([[set commentstring=<!--%s-->]])
     -- local luasnip_status, luasnip = pcall(require, "luasnip")
     -- if not luasnip_status then
     --   return

@@ -3,7 +3,7 @@ return {
   {
     "yioneko/nvim-vtsls",
     event = { "BufReadPre", "BufNewFile" },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     config = function()
       require("vtsls").config({
         refactor_auto_rename = true,
@@ -15,7 +15,7 @@ return {
     -- event = "User FilePost",
     -- event = { "LspAttach" },
     event = { "BufReadPre", "BufNewFile" },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     "neovim/nvim-lspconfig",
     config = function()
       -- import lspconfig plugin safely
@@ -28,6 +28,7 @@ return {
       -- import cmp-nvim-lsp plugin safely
       local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       if not cmp_nvim_lsp_status then
+        print ("cmp_nvim_lsp could not be loaded")
         return
       end
 

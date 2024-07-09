@@ -104,7 +104,6 @@ end, opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 
-
 keymap(
   "n",
   "<Leader>.",
@@ -117,7 +116,7 @@ keymap("n", "<Leader>pc", "<cmd>PeekClose<cr>", opts)
 keymap("n", "<Leader>ht", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 keymap("n", "<Leader>mp", "<cmd>lua require('telescope.builtin').man_pages()<cr>", opts)
 -- keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles({ cwd_only = true })<cr>", opts)
-keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles()<cr>", opts)
+keymap("n", "<Leader>of", "<cmd>lua require('telescope.builtin').oldfiles({ only_cwd = true })<cr>", opts)
 keymap("n", "<Leader>rg", "<cmd>lua require('telescope.builtin').registers()<cr>", opts)
 keymap("n", "<Leader>ke", "<cmd>lua require('telescope.builtin').keymaps()<cr>", opts)
 keymap("n", "<Leader>cm", "<cmd>lua require('telescope.builtin').commands()<cr>", opts)
@@ -126,7 +125,6 @@ keymap("n", "<Leader>bo", "<cmd>lua require('telescope.builtin').bookmarks()<cr>
 -- keymap("n", "<Leader>ma", "<cmd>Telescope vim_bookmarks<cr>", opts)
 keymap("n", "<Leader>sy", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
 keymap("n", "<Leader>lr", "<cmd>LspRestart<cr>", opts)
-
 
 keymap("n", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
 keymap("i", "<M-j>", "<cmd>NvimTreeToggle<cr>", opts)
@@ -256,7 +254,6 @@ keymap("n", "<Leader>gO", "<cmd>G stash pop<cr>", opts)
 keymap("n", "<Leader>gs", "<cmd>lua require('telescope.builtin').git_stash()<cr>", opts)
 keymap("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>", opts)
 keymap("n", "<leader>gt", "<cmd>GTags<CR>", opts)
-
 
 -- Diffview
 keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", opts)

@@ -153,6 +153,7 @@ return {
     -- setup must be called before loading
     vim.cmd.colorscheme("catppuccin")
 
+    -- vim.cmd([[highlight StatusLine guifg=#c0caf5 guibg=#292e42]])
     vim.cmd([[highlight StatusLine guibg=#292e42]])
     vim.cmd([[highlight NvimTreeStatusLineNC guibg=none]])
 

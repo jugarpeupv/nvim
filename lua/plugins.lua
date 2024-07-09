@@ -1,5 +1,4 @@
 return {
-  { "vim-scripts/ReplaceWithRegister", keys = { { "gr", "n" } } },
   { "wellle/targets.vim",              event = { "BufReadPost", "BufNewFile" } },
   { "junegunn/fzf",                    build = "./install --all",              event = { "BufReadPost", "BufNewFile" } },
   { "junegunn/fzf.vim",                event = { "BufReadPost", "BufNewFile" } },

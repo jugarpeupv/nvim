@@ -13,9 +13,8 @@ return {
   -- },
   -- { "rafamadriz/friendly-snippets", event = "InsertEnter" },
   {
-    "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-
+    "hrsh7th/nvim-cmp",
     dependencies = {
       {
         -- snippet plugin
