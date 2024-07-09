@@ -70,7 +70,8 @@ return {
             name = "Markdown2",
           },
           json = {
-            icon = "",
+            -- icon = "",
+            icon = "󰘦",
             name = "json",
             color = "#F9E2AF",
           },
