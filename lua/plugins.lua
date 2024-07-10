@@ -1,7 +1,7 @@
 return {
   { "wellle/targets.vim",              event = { "BufReadPost", "BufNewFile" } },
-  { "junegunn/fzf",                    build = "./install --all",              event = { "BufReadPost", "BufNewFile" } },
-  { "junegunn/fzf.vim",                event = { "BufReadPost", "BufNewFile" } },
+  { "junegunn/fzf",                    build = "./install --all",              event = { "VeryLazy" } },
+  { "junegunn/fzf.vim",                event = { "VeryLazy" } },
   { "tpope/vim-repeat",                keys = { "." } },
   { "nvim-lua/plenary.nvim",           event = "VeryLazy" },
   { "tpope/vim-surround",              event = { "BufReadPost", "BufNewFile" } },
@@ -9,7 +9,7 @@ return {
   { "tpope/vim-fugitive",              event = { "VeryLazy" } },
   { "tpope/vim-dispatch",              event = { "BufReadPost", "BufNewFile" } },
   { "kkharji/sqlite.lua",              event = "VeryLazy" },
-  { "stsewd/fzf-checkout.vim",         event = { "BufReadPost", "BufNewFile" } },
+  { "stsewd/fzf-checkout.vim",         event = { "VeryLazy" } },
   {
     "ckipp01/nvim-jenkinsfile-linter",
     keys = { "<leader>va" }

@@ -141,10 +141,10 @@ keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
 -- keymap("n", "<Leader>d", ":Neotree reveal_file=% position=float<cr>", opts)
 -- keymap("n", "<Leader>d", ":NvimTreeFocus<cr>", opts)
 
-keymap("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
--- keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
--- keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
+-- keymap("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+-- keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
+keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
 
 -- Ctrls + shit modifiers
 
@@ -186,7 +186,7 @@ keymap(
 keymap(
   "n",
   "<Leader>bu",
-  "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false })<cr>",
+  "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false, only_cwd = true, sort_mru = true })<cr>",
   opts
 )
 keymap("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
@@ -514,15 +514,15 @@ vim.keymap.set("n", "<leader>ls", "<CMD>Lab code stop<CR>")
 -- vim.keymap.set("n", "<leader>aT", ng.get_template_tcb, opts)
 
 -- comments the current line, or a number of lines 5gcc
-vim.keymap.set("n", "gcc", require("SingleComment").SingleComment, { expr = true })
--- comments the selected lines
-vim.keymap.set("v", "gcc", require("SingleComment").Comment, {})
--- toggle a comment top/ahead of the current line
-vim.keymap.set("n", "gca", require("SingleComment").ToggleCommentAhead, {})
--- comments ahead of the current line
-vim.keymap.set("n", "gcA", require("SingleComment").CommentAhead, {})
--- comment a block, and removes the innermost block comment in normal mode
-vim.keymap.set({ "n", "v" }, "gcb", require("SingleComment").BlockComment)
+-- vim.keymap.set("n", "gcc", require("SingleComment").SingleComment, { expr = true })
+-- -- comments the selected lines
+-- vim.keymap.set("v", "gcc", require("SingleComment").Comment, {})
+-- -- toggle a comment top/ahead of the current line
+-- vim.keymap.set("n", "gca", require("SingleComment").ToggleCommentAhead, {})
+-- -- comments ahead of the current line
+-- vim.keymap.set("n", "gcA", require("SingleComment").CommentAhead, {})
+-- -- comment a block, and removes the innermost block comment in normal mode
+-- vim.keymap.set({ "n", "v" }, "gcb", require("SingleComment").BlockComment)
 
 -- Ctrlsf.nvim
 vim.keymap.set("n", "<leader>sf", "<Plug>CtrlSFCwordPath")
@@ -600,3 +600,12 @@ end, { silent = true })
 vim.keymap.set("n", "<leader>cl", function()
   require("telescope").extensions.neoclip.default()
 end, { silent = true })
+
+vim.keymap.set("n", "<leader>ti", function()
+  local image = require("image")
+  if image.is_enabled() then
+    image.disable()
+  else
+    image.enable()
+  end
+end, opts)

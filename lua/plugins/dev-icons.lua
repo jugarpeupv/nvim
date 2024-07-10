@@ -31,7 +31,8 @@ return {
           html = {
             icon = "",
             name = "html",
-            color = "#C24C38",
+            -- color = "#C24C38",
+            color = "#F38BA8",
           },
           dockerfile = {
             icon = "",
@@ -59,6 +60,11 @@ return {
             cterm_color = "65",
             name = "Zsh",
           },
+          ["scss"] = {
+            icon = "󰟬",
+            color = "#F38BA8",
+            name = "scss1",
+          },
           ["csv"] = {
             icon = "",
             color = "#9CDCFE",
@@ -73,7 +79,7 @@ return {
             -- icon = "",
             icon = "󰘦",
             name = "json",
-            color = "#F9E2AF",
+            color = "#9CDCFE",
           },
           js = {
             icon = "",
@@ -200,6 +206,9 @@ return {
           ["dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile5" },
           ["app.routes.ts"] = { icon = "󰑪", color = "#73daca", name = "AngularRoutes" },
           ["webpack.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfig" },
+          ["README.md"] = { icon = "", color = "#9CDCFE", name = "readmemd" },
+          [".gitignore"] = { icon = "󰊢", color = "#CA9EE6", name = "gitignore" },
+          ["readme.md"] = { icon = "", color = "#9CDCFE", name = "readmemd1" },
           ["webpack.prod.config.js"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigProd" },
 
           ["webpack.config.ts"] = { icon = "󰜫", color = "#9CDCFE", name = "WebpackConfigTS" },
@@ -210,6 +219,8 @@ return {
           ["*package.json"] = { icon = "", color = "#73daca", name = "PackageJson3" },
           ["package-lock.json"] = { icon = "", color = "#73daca", name = "PackageLockJson" },
           ["pnpm-lock.yaml"] = { icon = "", color = "#F9E2AF", name = "pnpmLockYaml" },
+
+          ["favicon.ico"] = { icon = "", color = "#F9E2AF", name = "faviconico" },
           -- ["CODEOWNERS"] = { icon = "", color = "#F38BA8", name = "codeownersfile" },
           ["codeowners"] = { icon = "󱖨", color = "#73daca", name = "codeownersfile2" },
           -- ["*Jenkins*"] = { icon = "", color = 'black', name = "jenkinsfile" },
@@ -277,9 +288,9 @@ return {
           --   color = "#9CDCFE",
           --   name = "Markdown"
           -- },
-          ["module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule1" },
-          ["*.module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule2" },
-          [".module.ts"] = { icon = "", color = "#C24C38", name = "AngularModule" },
+          ["module.ts"] = { icon = "", color = "#CBA6F7", name = "AngularModule1" },
+          ["*.module.ts"] = { icon = "", color = "#CBA6F7", name = "AngularModule2" },
+          [".module.ts"] = { icon = "", color = "#CBA6F7", name = "AngularModule" },
           ["service.ts"] = { icon = "", color = "#F9E2AF", name = "AngularService1" },
           [".service.ts"] = { icon = "", color = "#F9E2AF", name = "AngularService2" },
 

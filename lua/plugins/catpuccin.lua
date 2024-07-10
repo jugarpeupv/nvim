@@ -19,11 +19,11 @@ return {
           surface3 = "#a3a7bc",
 
           -- yellow = "#36C0D8",
-          -- yellow = "#89ddff",
+          yellow = "#89ddff",
           green = "#F2CDCD",
           maroon = "#FAB387",
 
-          yellow = "#2ac3de",
+          -- yellow = "#2ac3de",
           -- green = "#F2CDCD",
           -- maroon = "#FAB387",
 
@@ -423,14 +423,14 @@ return {
     -- vim.cmd([[highlight CmpItemKindFunction gui=bold,italic]])
     -- vim.cmd([[highlight CmpItemKindClass gui=bold,italic]])
 
-    vim.cmd([[highlight @lsp.type.type guifg=#2ac3de]])
-    vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
-    vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
+    -- vim.cmd([[highlight @lsp.type.type guifg=#2ac3de]])
+    -- vim.cmd([[highlight @lsp.type.interface guifg=#2ac3de]])
+    -- vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
 
 
-    -- vim.cmd([[highlight @lsp.type.type guifg=#89ddff]])
-    -- vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
-    -- vim.cmd([[highlight @attribute.typescript guifg=#89ddff]])
+    vim.cmd([[highlight @lsp.type.type guifg=#89ddff]])
+    vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
+    vim.cmd([[highlight @attribute.typescript guifg=#89ddff]])
 
     vim.cmd([[highlight @lsp.type.class.markdown guifg=#F5C2E7]])
 

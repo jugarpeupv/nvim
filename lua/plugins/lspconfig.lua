@@ -1,5 +1,10 @@
 -- return {}
 return {
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^4", -- Recommended
+  --   lazy = false, -- This plugin is already lazy
+  -- },
   {
     "yioneko/nvim-vtsls",
     event = { "BufReadPre", "BufNewFile" },
@@ -28,7 +33,7 @@ return {
       -- import cmp-nvim-lsp plugin safely
       local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       if not cmp_nvim_lsp_status then
-        print ("cmp_nvim_lsp could not be loaded")
+        print("cmp_nvim_lsp could not be loaded")
         return
       end
 

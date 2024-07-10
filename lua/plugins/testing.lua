@@ -7,9 +7,9 @@ return {
   },
   {
     "vim-test/vim-test",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     -- event = "BufReadPre",
-    cmd = { "TestNearest", "TestFile" },
+    -- cmd = { "TestNearest", "TestFile" },
     -- dependencies = { 'preservim/vimux' },
     config = function()
       vim.keymap.set("n", "<leader>te", ":TestNearest<CR>")

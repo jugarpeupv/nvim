@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     -- cmd = { "DiffviewOpen" },
     -- event = { "BufReadPost", "BufNewFile" },
-    -- event = { "WinEnter" },
+    -- keys = { { "<leader>gd", mode = "n" } },
     config = function()
       -- Lua
       local actions = require("diffview.actions")

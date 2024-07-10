@@ -223,3 +223,12 @@ vim.api.nvim_create_autocmd('filetype', {
 --   end,
 -- })
 
+
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufEnter' }, {
+  group = vim.api.nvim_create_augroup('set-png-ft', { clear = true }),
+  pattern = '*.png',
+  callback = function()
+    vim.cmd([[set filetype=png]])
+  end,
+})
