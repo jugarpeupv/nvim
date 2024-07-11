@@ -11,13 +11,13 @@ return {
   --   },
   --   config = true,
   -- },
-  {
-    event = {
-      "BufEnter *.test.[tj]s",
-      "BufEnter *.spec.[tj]s",
-    },
-    "preservim/vimux",
-  },
+  -- {
+  --   event = {
+  --     "BufEnter *.test.[tj]s",
+  --     "BufEnter *.spec.[tj]s",
+  --   },
+  --   "preservim/vimux",
+  -- },
   {
     "vim-test/vim-test",
     event = {
@@ -36,7 +36,24 @@ return {
       vim.cmd("let g:test#preserve_screen = 1")
       vim.cmd("let test#neovim_sticky#reopen_window = 1")
       -- vim.cmd("let g:test#javascript#runner = 'jest'")
-      vim.cmd("let g:test#javascript#runner = 'nx'")
+
+      local function file_exists(name)
+        local f = io.open(name, "r")
+        if f ~= nil then
+          io.close(f)
+          return true
+        else
+          return false
+        end
+      end
+
+
+      if file_exists("nx.json") then
+        vim.cmd("let g:test#javascript#runner = 'nx'")
+      end
+
+      -- vim.cmd("let g:test#javascript#runner = 'npm'")
+      -- vim.cmd("let g:test#javascript#runner = 'jest'")
       vim.cmd("let g:VimuxHeight = '15'")
     end,
   },

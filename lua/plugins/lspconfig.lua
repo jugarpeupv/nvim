@@ -6,20 +6,21 @@ return {
   --   lazy = false, -- This plugin is already lazy
   -- },
   {
-    "yioneko/nvim-vtsls",
-    event = { "BufReadPre", "BufNewFile" },
-    -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-    config = function()
-      require("vtsls").config({
-        refactor_auto_rename = true,
-      })
-    end,
-  },
-  {
     -- event = "VeryLazy",
     -- event = "User FilePost",
     -- event = { "LspAttach" },
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      {
+        "yioneko/nvim-vtsls",
+        -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+        config = function()
+          require("vtsls").config({
+            refactor_auto_rename = true,
+          })
+        end,
+      },
+    },
     -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     "neovim/nvim-lspconfig",
     config = function()
@@ -294,58 +295,58 @@ return {
       capabilities_json_ls.textDocument.completion.completionItem.snippetSupport = true
 
       lspconfig["eslint"].setup({
-        root_dir = function(filename)
-          if string.find(filename, "node_modules/") then
-            return nil
-          end
-          return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename)
-        end,
-        settings = {
-          codeAction = {
-            disableRuleComment = {
-              enable = true,
-              location = "separateLine",
-            },
-            showDocumentation = {
-              enable = true,
-            },
-          },
-          codeActionOnSave = {
-            enable = false,
-            mode = "all",
-          },
-          experimental = {
-            useFlatConfig = false,
-          },
-          format = true,
-          -- nodePath = "",
-          onIgnoredFiles = "off",
-          problems = {
-            shortenToSingleLine = false,
-          },
-          quiet = false,
-          rulesCustomizations = {},
-          run = "onType",
-          useESLintClass = false,
-          validate = "on",
-          workingDirectory = {
-            mode = "location",
-          },
-        },
+        -- root_dir = function(filename)
+        --   if string.find(filename, "node_modules/") then
+        --     return nil
+        --   end
+        --   return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename)
+        -- end,
+        -- settings = {
+        --   codeAction = {
+        --     disableRuleComment = {
+        --       enable = true,
+        --       location = "separateLine",
+        --     },
+        --     showDocumentation = {
+        --       enable = true,
+        --     },
+        --   },
+        --   codeActionOnSave = {
+        --     enable = false,
+        --     mode = "all",
+        --   },
+        --   experimental = {
+        --     useFlatConfig = false,
+        --   },
+        --   format = true,
+        --   -- nodePath = "",
+        --   onIgnoredFiles = "off",
+        --   problems = {
+        --     shortenToSingleLine = false,
+        --   },
+        --   quiet = false,
+        --   rulesCustomizations = {},
+        --   run = "onType",
+        --   useESLintClass = false,
+        --   validate = "on",
+        --   workingDirectory = {
+        --     mode = "location",
+        --   },
+        -- },
         on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = {
-          "javascript",
-          "html",
-          "javascriptreact",
-          "javascript.jsx",
-          "typescript",
-          "typescriptreact",
-          "typescript.tsx",
-          "vue",
-          "svelte",
-          "astro",
-        },
+        -- filetypes = {
+        --   "javascript",
+        --   "html",
+        --   "javascriptreact",
+        --   "javascript.jsx",
+        --   "typescript",
+        --   "typescriptreact",
+        --   "typescript.tsx",
+        --   "vue",
+        --   "svelte",
+        --   "astro",
+        -- },
       })
 
       -- lspconfig["yamlls"].setup {
