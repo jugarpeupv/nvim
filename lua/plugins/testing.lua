@@ -1,13 +1,29 @@
 -- return {}
 
 return {
+  -- {
+  --   "nhurlock/clownshow.nvim",
+  --   -- ft = { "typescript", "javascript" },
+  --   -- cmd = "JestWatch",
+  --   event = {
+  --     "BufEnter *.test.[tj]s",
+  --     "BufEnter *.spec.[tj]s",
+  --   },
+  --   config = true,
+  -- },
   {
-    event = "VeryLazy",
+    event = {
+      "BufEnter *.test.[tj]s",
+      "BufEnter *.spec.[tj]s",
+    },
     "preservim/vimux",
   },
   {
     "vim-test/vim-test",
-    event = "VeryLazy",
+    event = {
+      "BufEnter *.test.[tj]s",
+      "BufEnter *.spec.[tj]s",
+    },
     -- event = "BufReadPre",
     -- cmd = { "TestNearest", "TestFile" },
     -- dependencies = { 'preservim/vimux' },

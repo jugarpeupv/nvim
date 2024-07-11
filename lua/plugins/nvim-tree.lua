@@ -150,7 +150,7 @@ return {
         --
         -- BEGIN_DEFAULT_ON_ATTACH
         vim.keymap.set("n", "<C-p>", api.tree.change_root_to_node, opts("CD"))
-        vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
+        -- vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
         vim.keymap.set("n", "<C-r>", api.fs.rename_sub, opts("Rename: Omit Filename"))
         vim.keymap.set("n", "<C-t>", api.node.open.tab, opts("Open: New Tab"))
         vim.keymap.set("n", "<C-v>", api.node.open.vertical, opts("Open: Vertical Split"))
@@ -479,6 +479,15 @@ return {
         },
         actions = {
           use_system_clipboard = true,
+          file_popup = {
+            open_win_config = {
+              col = 1,
+              row = 1,
+              relative = "cursor",
+              border = "rounded",
+              style = "minimal",
+            },
+          },
           change_dir = {
             enable = true,
             global = true,

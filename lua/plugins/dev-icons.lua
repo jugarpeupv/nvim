@@ -226,10 +226,16 @@ return {
           -- ["*Jenkins*"] = { icon = "", color = 'black', name = "jenkinsfile" },
           -- ["jenkinsfileci"] = { icon = "", name = "Jenkins3"},
           -- ["jenkinsfilecd"] = { icon = "", name = "Jenkins4"},
-          ["jenkinsfileci"] = { icon = "", name = "Jenkins3" },
-          ["jenkinsfilecd"] = { icon = "", name = "Jenkins4" },
-          ["JenkinsfileCD"] = { icon = "", name = "Jenkins5" },
-          ["JenkinsfileCI"] = { icon = "", name = "Jenkins7" },
+          ["jenkinsfile"] = { icon = "", name = "Jenkins8", color = "#c0caf5" },
+          ["jenkinsfileci"] = { icon = "", name = "Jenkins3", color = "#c0caf5" },
+          ["jenkinsfilecd"] = { icon = "", name = "Jenkins4", color = "#c0caf5" },
+          ["JenkinsfileCD"] = { icon = "", name = "Jenkins5", color = "#c0caf5" },
+          ["JenkinsfileCI"] = { icon = "", name = "Jenkins7", color = "#c0caf5" },
+
+          ["jest.config.ts"] = { icon = "󰙨", name = "jenkinsconfig1", color = "#f38bad" },
+          ["jest.config.app.ts"] = { icon = "󰙨", name = "jenkinsconfigapp1", color = "#f38bad" },
+          ["jest.config.js"] = { icon = "󰙨", name = "jenkinsconfig2", color = "#f38bad" },
+          
 
           -- [".nxignore"] = { icon = "🐋", color = "blue", name = "nxignore"},
           -- ["nx.json"] = { icon = "🐋", name = "nxjson"},

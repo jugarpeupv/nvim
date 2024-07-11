@@ -10,9 +10,6 @@ vim.cmd([[nnoremap q <Nop>]])
 -- --Remap space as leader key
 -- keymap("", "<Space>", "<Nop>", opts)
 
--- Resize with arrows
--- keymap("n", "<C-Up>", ":resize +5<CR>", opts)
--- keymap("n", "<C-Down>", ":resize -5<CR>", opts)
 
 -- vim.keymap.set("n", "<Leader>io", function() print('hi') end, opts)
 -- vim.keymap.set("n", "<D-l>", function() print('hi') end, opts)
@@ -20,9 +17,12 @@ vim.cmd([[nnoremap q <Nop>]])
 -- keymap("n", "<T-l>", ":NvimTreeFindFile<cr>", opts)
 keymap("n", "<M-l>", ":NvimTreeFindFile<cr>", opts)
 
-vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
-vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
+-- vim.keymap.set("n", "<Leader>kk", ":resize +5<CR>", opts)
+-- vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
 
+-- Resize with arrows
+keymap("n", "<C-Up>", ":resize +3<CR>", opts)
+keymap("n", "<C-Down>", ":resize -3<CR>", opts)
 -- keymap("n", "<S-Left>", ":vertical resize -5<CR>", opts)
 -- keymap("n", "<S-Right>", ":vertical resize +5<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
@@ -186,7 +186,7 @@ keymap(
 keymap(
   "n",
   "<Leader>bu",
-  "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false, only_cwd = true, sort_mru = true })<cr>",
+  "<cmd>lua require('telescope.builtin').buffers({ ignore_current_buffer = true, show_all_buffers = false, sort_mru = true })<cr>",
   opts
 )
 keymap("n", "<leader>tr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
