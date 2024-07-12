@@ -10,7 +10,6 @@ vim.cmd([[nnoremap q <Nop>]])
 -- --Remap space as leader key
 -- keymap("", "<Space>", "<Nop>", opts)
 
-
 -- vim.keymap.set("n", "<Leader>io", function() print('hi') end, opts)
 -- vim.keymap.set("n", "<D-l>", function() print('hi') end, opts)
 -- vim.keymap.set("n", "<M-l>", function() print('hi') end, opts)
@@ -63,25 +62,36 @@ vim.cmd([[inoremap <C-r> <C-r>*]])
 --   opts
 -- )
 
-vim.keymap.set("n", "<M-p>", function()
-  require("telescope.builtin").git_files({
-    show_untracked = true,
-    previewer = false,
-    -- git_command = '(git ls-files --exclude-standard | grep -vE "^$(git ls-files -d | paste -sd "|" -)$")',
-    -- git_command = { "git", "ls-files", "--exclude-standard", "|", "grep", "-vE", '"^$(git ls-files -d | paste -sd "|" -)$"'}
-    -- git_command = {"ls", "|", "git", "ls-files", "--exclude-standard" }
-    -- git_command = { "gitls" }
+-- vim.keymap.set("n", "<M-p>", function()
+--   require("telescope.builtin").git_files({
+--     show_untracked = true,
+--     previewer = false,
+--     -- git_command = '(git ls-files --exclude-standard | grep -vE "^$(git ls-files -d | paste -sd "|" -)$")',
+--     -- git_command = { "git", "ls-files", "--exclude-standard", "|", "grep", "-vE", '"^$(git ls-files -d | paste -sd "|" -)$"'}
+--     git_command = {"git", "ls-files", "--exclude-standard" }
+--     -- git_command = { "gitls" }
+--   })
+-- end, opts)
+
+-- vim.keymap.set("t", "<M-p>", function()
+--   require("telescope.builtin").git_files({
+--     show_untracked = true,
+--     previewer = false,
+--     -- git_command = { "git", "ls-files", "--exclude-standard", "|", "grep", "-vE", '"^$(git ls-files -d | paste -sd "|" -)$"'}
+--     -- git_command = { "git", "ls-files", "--exclude-standard"}
+--     -- git_command = { "gitls" }
+--   })
+-- end, opts)
+
+vim.keymap.set({ "n", "t" }, "<M-p>", function()
+  require("telescope.builtin").find_files({
+    hidden = true,
+    find_command = { "rg", "--files", "--color", "never", "--glob=!.git" },
   })
 end, opts)
 
-vim.keymap.set("t", "<M-p>", function()
-  require("telescope.builtin").git_files({
-    show_untracked = true,
-    previewer = false,
-    -- git_command = { "git", "ls-files", "--exclude-standard", "|", "grep", "-vE", '"^$(git ls-files -d | paste -sd "|" -)$"'}
-    -- git_command = { "git", "ls-files", "--exclude-standard"}
-    -- git_command = { "gitls" }
-  })
+vim.keymap.set({ "n" }, "<leader>cr", function()
+  vim.cmd("cd " .. vim.fn.expand("%:p:h"))
 end, opts)
 
 -- keymap("t", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>", opts)
@@ -312,7 +322,7 @@ vim.api.nvim_set_keymap("n", "<Leader>w", "<cmd>lua require'hop'.hint_words()<cr
 keymap("n", "<leader>cp", "<cmd>JsonPath<CR>", opts)
 
 -- Reformat file
-keymap("n", "<leader>cr", ":e ++ff=dos<CR> | :set ff=unix<CR>", opts)
+keymap("n", "<leader>cw", ":e ++ff=dos<CR> | :set ff=unix<CR>", opts)
 
 -- Vifm
 keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)

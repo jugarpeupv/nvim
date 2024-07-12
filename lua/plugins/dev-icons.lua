@@ -266,19 +266,21 @@ return {
           ["project.json"] = { icon = "", color = "#9CDCFE", name = "ProjectJson" },
           -- ["tsconfig.json"] = { icon = "", color = "#F9E2AF", name = "TsConfigJson" },
 
-          ["tsconfig.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile2" },
-          
-          -- ["tsconfig.editor.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
-          -- ["tsconfig.base.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
-          -- ["tsconfig.app.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
-          -- ["tsconfig.lib.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
-          -- ["tsconfig.spec.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
+          -- ["tsconfig.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile2" },
 
-          ["tsconfig.editor.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile2" },
-          ["tsconfig.base.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile2" },
-          ["tsconfig.app.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile1" },
-          ["tsconfig.lib.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile1" },
-          ["tsconfig.spec.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile1" },
+          ["tsconfig.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
+          
+          ["tsconfig.editor.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
+          ["tsconfig.base.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile2" },
+          ["tsconfig.app.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
+          ["tsconfig.lib.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
+          ["tsconfig.spec.json"] = { icon = "󰛦", color = "#9CDCFE", name = "TSDeclarationfile1" },
+
+          -- ["tsconfig.editor.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile2" },
+          -- ["tsconfig.base.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile2" },
+          -- ["tsconfig.app.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile1" },
+          -- ["tsconfig.lib.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile1" },
+          -- ["tsconfig.spec.json"] = { icon = "󱃖", color = "#9CDCFE", name = "TSDeclarationfile1" },
         },
         -- same as `override` but specifically for overrides by extension
         -- takes effect when `strict` is true

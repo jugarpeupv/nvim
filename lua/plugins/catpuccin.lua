@@ -392,7 +392,8 @@ return {
     -- vim.cmd([[highlight NormalSB guibg=none blend=0]])
     vim.cmd([[hi TroublePreview guibg=#264F78 guifg=none]])
     -- vim.cmd([[hi TroubleFileName guifg=none guibg=#394b70 guifg=#B4BEFE]])
-    vim.cmd([[hi TroubleFileName guifg=none guibg=#1E1E2E guifg=#B4BEFE]])
+    -- vim.cmd([[hi TroubleFileName guifg=none guibg=#1E1E2E guifg=#B4BEFE]])
+    vim.cmd([[hi TroubleFileName guibg=#394b70 guifg=#0c0c0c]])
 
     vim.cmd([[highlight DiagnosticHint guifg=#89DCEB]])
     vim.cmd([[highlight DiagnosticFloatingHint guifg=#89DCEB]])

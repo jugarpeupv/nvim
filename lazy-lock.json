@@ -20,7 +20,7 @@
   "fzf-checkout.vim": { "branch": "master", "commit": "db0289a6c8e77b08a0150627733722fd07d5fa62" },
   "fzf.vim": { "branch": "master", "commit": "279e1ec068f526e985ee7e3f62a71f083bbe0196" },
   "git-conflict.nvim": { "branch": "main", "commit": "45cde6f0acf26d0e4b64acfa45349dd1da01e577" },
-  "gitsigns.nvim": { "branch": "main", "commit": "7178d1a430dcfff8a4c92d78b9e39e0297a779c0" },
+  "gitsigns.nvim": { "branch": "main", "commit": "e784e5a078f993f7218b8a857cb581d5b9ca42dc" },
   "harpoon": { "branch": "harpoon2", "commit": "0378a6c428a0bed6a2781d459d7943843f374bce" },
   "hop.nvim": { "branch": "v1", "commit": "75f73d3959a0df7ef3642fd5138acdb1ce50fdc8" },
   "icon-picker.nvim": { "branch": "master", "commit": "3ee9a0ea9feeef08ae35e40c8be6a2fa2c20f2d3" },
@@ -28,7 +28,7 @@
   "img-clip.nvim": { "branch": "main", "commit": "1924e20ab19afec9779109d083b6e5f8bee8fb17" },
   "indent-blankline.nvim": { "branch": "master", "commit": "65e20ab94a26d0e14acac5049b8641336819dfc7" },
   "jsonc.vim": { "branch": "master", "commit": "6fb92460f9e50505c9b93181a00f27d10c9b383f" },
-  "lazy.nvim": { "branch": "main", "commit": "d1de92dffab5a862332fdd1892889d362369c12f" },
+  "lazy.nvim": { "branch": "main", "commit": "1d451b4c2ce957da05e2123ce1a001804fc7ea96" },
   "lsp_signature.nvim": { "branch": "master", "commit": "a38da0a61c172bb59e34befc12efe48359884793" },
   "lspkind.nvim": { "branch": "master", "commit": "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf" },
   "lspsaga.nvim": { "branch": "main", "commit": "6f920cfabddb9b7de5a3a4d0b7cd4f0774ae23e2" },
@@ -60,7 +60,7 @@
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "b29da4a6061a88270e875b38367d82c04c856128" },
-  "schemastore.nvim": { "branch": "main", "commit": "46b3b7e58d00eea2e7d9dac186ab5379264dee52" },
+  "schemastore.nvim": { "branch": "main", "commit": "37274739232b6a888be7c6ca5f1a2d58510a9a84" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
   "targets.vim": { "branch": "master", "commit": "6325416da8f89992b005db3e4517aaef0242602e" },
@@ -79,6 +79,5 @@
   "vim-test": { "branch": "master", "commit": "34aab77f7a63f20a623df45684156915f6182a55" },
   "vim-tmux-navigator": { "branch": "master", "commit": "5b3c701686fb4e6629c100ed32e827edf8dad01e" },
   "vim-visual-multi": { "branch": "master", "commit": "38b0e8d94a5499ccc17d6159763d32c79f53417b" },
-  "vimux": { "branch": "master", "commit": "fa35410805b82ffabc29e3cb5cdf3ad0b8dc402d" },
   "winshift.nvim": { "branch": "main", "commit": "37468ed6f385dfb50402368669766504c0e15583" }
 }

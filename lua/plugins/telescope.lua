@@ -220,9 +220,9 @@ return {
               ["<CR>"] = actions.select_default,
               ["<C-x>"] = actions.select_horizontal,
               ["<C-Enter>"] = actions.select_vertical,
-              -- ["<C-t>"] = actions.select_tab,
+              ["<C-t>"] = actions.select_tab,
               -- ["<C-t>"] = trouble.open_with_trouble,
-              ["<C-t>"] = open_with_trouble,
+              ["<C-e>"] = open_with_trouble,
               -- ["<C-t>"] = trouble.open_with_trouble,
 
               -- ["<C-u>"] = actions.preview_scrolling_up,
@@ -249,9 +249,9 @@ return {
               ["<C-x>"] = actions.select_horizontal,
               -- ["<C-v>"] = actions.select_vertical,
               ["<C-Enter>"] = actions.select_vertical,
-              -- ["<C-t>"] = actions.select_tab,
+              ["<C-t>"] = actions.select_tab,
               -- ["<C-t>"] = trouble.open_with_trouble,
-              ["<C-t>"] = open_with_trouble,
+              ["<C-e>"] = open_with_trouble,
 
               ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
               ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
