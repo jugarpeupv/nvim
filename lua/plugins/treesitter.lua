@@ -116,9 +116,9 @@ return {
           }, -- table of hex strings
           -- termcolors = {} -- table of colour name strings
         },
-        -- matchup = {
-        --   enable = true,
-        -- },
+        matchup = {
+          enable = true,
+        },
         textobjects = {
           select = {
             enable = true,

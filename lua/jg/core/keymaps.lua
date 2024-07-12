@@ -545,7 +545,7 @@ vim.cmd([[nmap <Leader>tc :tabclose<CR>]])
 
 vim.keymap.set("n", "<leader>ta", require("jg.custom.telescope").curr_buf, {})
 
-vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
+-- vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
 -- keymap("n", '<leader>va', "<cmd>lua require('jenkinsfile_linter').validate()<cr>", opts)
 
 -- Winshift.nvim

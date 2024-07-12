@@ -2,7 +2,7 @@ return {
   {
     "sindrets/winshift.nvim",
     -- keys = { { "<leader>sh", mode = "n" } },
-    events = { "BufReadPost" },
+    event = { "BufReadPre", "BufReadPre" },
     config = function()
       require("winshift").setup({
         highlight_moving_win = true, -- Highlight the window being moved

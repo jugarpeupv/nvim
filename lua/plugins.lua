@@ -6,18 +6,23 @@ return {
   { "nvim-lua/plenary.nvim",           event = "VeryLazy" },
   { "tpope/vim-surround",              event = { "BufReadPost", "BufNewFile" } },
   { "windwp/nvim-ts-autotag",          after = "nvim-treesitter",              ft = "html" },
-  { "tpope/vim-fugitive",              event = { "VeryLazy" } },
+  { "tpope/vim-fugitive",              event = { "BufReadPost", "BufNewFile" } },
   { "tpope/vim-dispatch",              event = { "BufReadPost", "BufNewFile" } },
-  { "kkharji/sqlite.lua",              event = "VeryLazy" },
+  { "kkharji/sqlite.lua",              event = {  "BufReadPost", "BufNewFile"  } },
   { "stsewd/fzf-checkout.vim",         event = { "VeryLazy" } },
   {
     "ckipp01/nvim-jenkinsfile-linter",
-    keys = { "<leader>va" }
+    event = { "BufReadPost", "BufNewFile" },
+    keys = { "<leader>va" },
+    config = function()
+      vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
+    end
   },
   {
     "mbbill/undotree",
     -- cmd = { 'UndotreeShow', 'UndotreeToggle' },
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       -- vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
       vim.g.undotree_WindowLayout = 3
