@@ -20,7 +20,6 @@ return {
     -- event = "VeryLazy",
     -- event = "BufWinEnter",
     priority = 500,
-    -- commit = "5e4475d8bf7a3646164e01d9b65ef68369b17e3c",
     config = function()
       local apinvimtree = require("nvim-tree.api")
       require("nvim-tree.api").events.subscribe(apinvimtree.events.Event.TreeOpen, function()
@@ -167,7 +166,7 @@ return {
         vim.keymap.set("n", ".", api.node.run.cmd, opts("Run Command"))
         vim.keymap.set("n", "-", api.tree.change_root_to_parent, opts("Up"))
         vim.keymap.set("n", "a", api.fs.create, opts("Create"))
-        -- vim.keymap.set('n', '<C-c>', change_root_to_global_cwd, opts('Change Root To Global CWD'))
+        -- vim.keymap.set('n', '<leader>cr', change_root_to_global_cwd, opts('Change Root To Global CWD'))
         -- vim.keymap.set('n', 'bmv',   api.marks.bulk.move,                   opts('Move Bookmarked'))
         vim.keymap.set("n", "B", api.tree.toggle_no_buffer_filter, opts("Toggle No Buffer"))
         vim.keymap.set("n", "yy", api.fs.copy.node, opts("Copy"))
@@ -247,6 +246,11 @@ return {
         hijack_unnamed_buffer_when_opening = true,
         sort_by = "name",
         sync_root_with_cwd = true,
+        -- prefer_startup_root = true,
+        -- *nvim-tree.prefer_startup_root*
+        -- Prefer startup root directory when updating root directory of the tree.
+        -- Only relevant when `update_focused_file.update_root` is `true`
+        -- Type: `boolean`, Default: `false`
         respect_buf_cwd = true,
         on_attach = on_attach,
         live_filter = {

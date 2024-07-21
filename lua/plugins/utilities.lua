@@ -415,7 +415,8 @@ return {
   },
   {
     "AckslD/nvim-neoclip.lua",
-    keys = { "<leader>cl" },
+    event = { "BufReadPost", "BufNewFile" },
+    -- keys = { "<leader>cl" },
     -- dependencies = {
     --   { "kkharji/sqlite.lua", module = "sqlite" },
     --   -- you'll need at least one of these

@@ -90,8 +90,9 @@ vim.keymap.set({ "n", "t" }, "<M-p>", function()
   })
 end, opts)
 
-vim.keymap.set({ "n" }, "<leader>cr", function()
-  vim.cmd("cd " .. vim.fn.expand("%:p:h"))
+-- cd into dir of the current buffer
+vim.keymap.set({ "n" }, "<leader>cd", function()
+  vim.cmd("lcd " .. vim.fn.expand("%:p:h"))
 end, opts)
 
 -- keymap("t", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, previewer = false })<cr>", opts)
@@ -337,7 +338,7 @@ keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)
 -- vim.keymap.set('n', '<leader>ee', function() require "dap".toggle_breakpoint() end)
 keymap("n", "<leader>eo", "<cmd>lua require('dapui').toggle()<cr>", opts)
 keymap("n", "<leader>ee", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>cb", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
+keymap("n", "<leader>ca", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
 vim.keymap.set("n", "<leader>en", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- vim.keymap.set('n', '<Leader>hh', function() require"dap".step_out() end)
 -- vim.keymap.set("n", "<Leader>kk", function()
@@ -538,7 +539,7 @@ vim.keymap.set("n", "<leader>ls", "<CMD>Lab code stop<CR>")
 vim.keymap.set("n", "<leader>sf", "<Plug>CtrlSFCwordPath")
 vim.keymap.set("n", "<leader>so", "<CMD>CtrlSFToggle<CR>")
 
-vim.keymap.set("n", "<leader>ni", "<cmd>NerdIcons<cr>")
+-- vim.keymap.set("n", "<leader>ni", "<cmd>NerdIcons<cr>")
 
 vim.cmd([[nmap <Leader>tn :tabnew %<CR>]])
 vim.cmd([[nmap <Leader>tc :tabclose<CR>]])
@@ -588,8 +589,8 @@ vim.cmd([[nnoremap <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>Acd $VIM_D
 
 vim.keymap.set("n", "<M-i>", ":split term://%:p:h//zsh<cr>", opts)
 
-keymap("n", "<leader>ca", "<cmd>Calculate<cr>", opts)
-keymap("v", "<leader>ca", "<cmd>Calculate<cr>", opts)
+-- keymap("n", "<leader>ca", "<cmd>Calculate<cr>", opts)
+-- keymap("v", "<leader>ca", "<cmd>Calculate<cr>", opts)
 
 -- luaSnip
 

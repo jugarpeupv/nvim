@@ -2,7 +2,8 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     -- event = "VeryLazy",
-    event = { "BufReadPost", "BufNewFile" },
+    -- event = { "BufReadPost", "BufNewFile" },
+    priority = 800,
     config = function()
       local present, devicons = pcall(require, "nvim-web-devicons")
 
