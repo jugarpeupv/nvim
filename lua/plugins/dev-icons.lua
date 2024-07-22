@@ -92,6 +92,11 @@ return {
             color = "#F9E2AF",
             name = "Cjs",
           },
+          ["mjs"] = {
+            icon = "",
+            color = "#F9E2AF",
+            name = "mjs1",
+          },
           txt = {
             icon = "󰈚",
             name = "txtname",
@@ -122,51 +127,6 @@ return {
             -- cterm_color = "172",
             name = "TypeScriptDeclaration",
           },
-
-          --[[ json = {
-      icon = "",
-      name = "json",
-      color = "#DAE732"
-    }, ]]
-          -- js = {
-          --   icon = "",
-          --   name = "js",
-          --   -- color = "#DAE732"
-          --   color = "#B3BD36"
-          -- },
-          -- js = {
-          --   icon = "󰌞",
-          --   name = "js",
-          --   -- color = "#DAE732"
-          --   color = "#B3BD36"
-          -- },
-          -- ts = {
-          --    icon = "󰛦",
-          --    name = "ts",
-          --    color = "#18a2fe"
-          -- },
-          -- default_icon = {
-          --  -- icon = "🀪",
-          --   -- icon = "🀀",
-          --   icon = "🀅",
-          --  color = "grey",
-          --  name = "Default",
-          -- }
-          -- default_icon = {
-          --   icon = "🀀",
-          --   color = "white",
-          --   name = "Default",
-          -- },
-          -- default = {
-          --   -- icon = "󰙄",
-          --   -- icon = "󰈤",
-          --   -- icon = "🀄️",
-          --   -- icon = "",
-          --   icon = "📄",
-          --   -- color = "#73daca",
-          --   -- color = "grey",
-          --   name = "Default",
-          -- },
           default_icon = {
             -- icon = "󰙄",
             -- icon = "󰈤",
@@ -197,11 +157,6 @@ return {
         -- same as `override` but specifically for overrides by filename
         -- takes effect when `strict` is true
         override_by_filename = {
-          [".gitignore"] = {
-            icon = "",
-            color = "#F38BA8",
-            name = "Gitignore",
-          },
           [".dockerignore"] = { icon = "", color = "#9CDCFE", name = "DockerfileIgnore" },
           ["Dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile2" },
           ["dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile5" },
@@ -255,6 +210,8 @@ return {
           [".eslintrc.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
           [".eslintrc.base.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
           [".eslint-report.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintreportjson" },
+
+          ["commitlint.config.ts"] = { icon = "󰜘", color = "#CBA6F7", name = "commitlintconfig12" },
 
           --[[ [".prettierignore"] = { icon = "󰫽", color = "#7C7F93", name = "prettierignore"}, ]]
           [".prettierignore"] = { icon = "", color = "#7C7F93", name = "prettierignore" },

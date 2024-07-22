@@ -154,7 +154,9 @@ return {
     vim.cmd.colorscheme("catppuccin")
 
     -- vim.cmd([[highlight StatusLine guifg=#c0caf5 guibg=#292e42]])
-    vim.cmd([[highlight StatusLine guibg=#292e42]])
+
+    vim.cmd([[hi StatusLine guifg=#cdd6f5 guibg=#292e42]])
+    -- vim.cmd([[highlight StatusLine guibg=#292e42]])
     vim.cmd([[highlight NvimTreeStatusLineNC guibg=none]])
 
     vim.cmd([[hi MatchParen guibg=#394b70 gui=none cterm=none guifg=none]])
@@ -429,6 +431,7 @@ return {
     -- vim.cmd([[highlight @attribute.typescript guifg=#2ac3de]])
 
 
+
     vim.cmd([[highlight @lsp.type.type guifg=#89ddff]])
     vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
     vim.cmd([[highlight @attribute.typescript guifg=#89ddff]])
@@ -520,6 +523,7 @@ return {
     vim.cmd([[highlight SagaBorder  guifg=#394b70]])
     vim.cmd([[highlight SagaTitle  guifg=#394b70]])
     vim.cmd([[highlight @variable.builtin guifg=#89ddff]])
+    -- vim.cmd([[highlight @variable.builtin guifg=#F5C2E7]])
 
     vim.cmd([[highlight ctrlsfMatch guifg=#F2CDCD guibg=#394b70]])
 

@@ -6,6 +6,7 @@ return {
     -- event = { "BufReadPost", "BufNewFile" },
     -- keys = { { "<leader>gd", mode = "n" } },
     config = function()
+      -- vim.cmd([[hi StatusLine guifg=#cdd6f5 guibg=#292e42]])
       -- Lua
       local actions = require("diffview.actions")
 
@@ -274,6 +275,7 @@ return {
           },
         },
       })
+
     end,
   },
 }

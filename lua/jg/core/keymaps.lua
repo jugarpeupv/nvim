@@ -477,7 +477,8 @@ vim.cmd([[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]])
 -- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 -- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
+-- keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
+keymap("n", "<Leader>oa", "<cmd>Dirbuf<cr>", opts)
 -- keymap("n", "<Leader>pi", "<cmd>PasteImg<cr>", opts)
 
 vim.keymap.set("n", "cc", "<Plug>(git-conflict-ours)")
@@ -611,6 +612,8 @@ end, { silent = true })
 vim.keymap.set("n", "<leader>cl", function()
   require("telescope").extensions.neoclip.default()
 end, { silent = true })
+
+vim.keymap.set("n", "<leader>bb", vim.cmd.BufTermEnter)
 
 vim.keymap.set("n", "<leader>ti", function()
   local image = require("image")

@@ -1,6 +1,14 @@
 return {
+  {
+    "elihunter173/dirbuf.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    -- priority = 10000,
+    config = function()
+    end,
+  },
   -- {
   --   "stevearc/oil.nvim",
+  --   -- event = { "BufReadPost", "BufNewFile" },
   --   opts = {},
   --   -- Optional dependencies
   --   -- dependencies = { "echasnovski/mini.icons" },
@@ -20,7 +28,7 @@ return {
   --       },
   --       -- Buffer-local options to use for oil buffers
   --       buf_options = {
-  --         buflisted = false,
+  --         buflisted = true,
   --         -- bufhidden = "hide",
   --       },
   --       -- Window-local options to use for oil buffers
@@ -40,21 +48,24 @@ return {
   --       skip_confirm_for_simple_edits = true,
   --       -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
   --       -- (:help prompt_save_on_select_new_entry)
-  --       prompt_save_on_select_new_entry = true,
+  --       -- prompt_save_on_select_new_entry = true,
+  --       prompt_save_on_select_new_entry = false,
   --       -- Oil will automatically delete hidden buffers after this delay
   --       -- You can set the delay to false to disable cleanup entirely
   --       -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
-  --       -- cleanup_delay_ms = 2000,
-  --       cleanup_delay_ms = false,
+  --       cleanup_delay_ms = 2000,
+  --       -- cleanup_delay_ms = false,
   --       lsp_file_methods = {
   --         -- Time to wait for LSP file operations to complete before skipping
   --         timeout_ms = 1000,
   --         -- Set to true to autosave buffers that are updated with LSP willRenameFiles
   --         -- Set to "unmodified" to only save unmodified buffers
+  --         -- autosave_changes = true,
   --         autosave_changes = true,
   --       },
   --       -- Constrain the cursor to the editable parts of the oil buffer
   --       -- Set to `false` to disable, or "name" to keep it on the file names
+  --       -- constrain_cursor = "editable",
   --       constrain_cursor = "editable",
   --       -- Set to true to watch the filesystem for changes and reload oil
   --       watch_for_changes = true,
@@ -64,32 +75,32 @@ return {
   --       -- it will use the mapping at require("oil.actions").<name>
   --       -- Set to `false` to remove a keymap
   --       -- See :help oil-actions for a list of all available actions
-  --       keymaps = {
-  --         ["g?"] = "actions.show_help",
-  --         ["<CR>"] = "actions.select",
-  --         ["<C-s>"] = {
-  --           "actions.select",
-  --           opts = { vertical = true },
-  --           desc = "Open the entry in a vertical split",
-  --         },
-  --         ["<C-h>"] = {
-  --           "actions.select",
-  --           opts = { horizontal = true },
-  --           desc = "Open the entry in a horizontal split",
-  --         },
-  --         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
-  --         ["<C-p>"] = "actions.preview",
-  --         ["<C-c>"] = "actions.close",
-  --         ["<C-l>"] = "actions.refresh",
-  --         ["-"] = "actions.parent",
-  --         ["_"] = "actions.open_cwd",
-  --         ["`"] = "actions.cd",
-  --         ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
-  --         ["gs"] = "actions.change_sort",
-  --         ["gx"] = "actions.open_external",
-  --         ["g."] = "actions.toggle_hidden",
-  --         ["g\\"] = "actions.toggle_trash",
-  --       },
+  --       -- keymaps = {
+  --       --   ["g?"] = "actions.show_help",
+  --       --   ["<CR>"] = "actions.select",
+  --       --   ["<C-s>"] = {
+  --       --     "actions.select",
+  --       --     opts = { vertical = true },
+  --       --     desc = "Open the entry in a vertical split",
+  --       --   },
+  --       --   ["<C-h>"] = {
+  --       --     "actions.select",
+  --       --     opts = { horizontal = true },
+  --       --     desc = "Open the entry in a horizontal split",
+  --       --   },
+  --       --   ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
+  --       --   ["<C-p>"] = "actions.preview",
+  --       --   ["<C-c>"] = "actions.close",
+  --       --   ["<C-l>"] = "actions.refresh",
+  --       --   ["-"] = "actions.parent",
+  --       --   ["_"] = "actions.open_cwd",
+  --       --   ["`"] = "actions.cd",
+  --       --   ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
+  --       --   ["gs"] = "actions.change_sort",
+  --       --   ["gx"] = "actions.open_external",
+  --       --   ["g."] = "actions.toggle_hidden",
+  --       --   ["g\\"] = "actions.toggle_trash",
+  --       -- },
   --       -- Set to false to disable all of the above keymaps
   --       use_default_keymaps = true,
   --       view_options = {
@@ -118,18 +129,18 @@ return {
   --       -- Extra arguments to pass to SCP when moving/copying files over SSH
   --       extra_scp_args = {},
   --       -- EXPERIMENTAL support for performing file operations with git
-  --       git = {
-  --         -- Return true to automatically git add/mv/rm files
-  --         add = function(path)
-  --           return false
-  --         end,
-  --         mv = function(src_path, dest_path)
-  --           return false
-  --         end,
-  --         rm = function(path)
-  --           return false
-  --         end,
-  --       },
+  --       -- git = {
+  --       --   -- Return true to automatically git add/mv/rm files
+  --       --   add = function(path)
+  --       --     return false
+  --       --   end,
+  --       --   mv = function(src_path, dest_path)
+  --       --     return false
+  --       --   end,
+  --       --   rm = function(path)
+  --       --     return false
+  --       --   end,
+  --       -- },
   --       -- Configuration for the floating window in oil.open_float
   --       float = {
   --         -- Padding around the floating window
@@ -144,9 +155,9 @@ return {
   --         preview_split = "auto",
   --         -- This is the config that will be passed to nvim_open_win.
   --         -- Change values here to customize the layout
-  --         override = function(conf)
-  --           return conf
-  --         end,
+  --         -- override = function(conf)
+  --         --   return conf
+  --         -- end,
   --       },
   --       -- Configuration for the actions floating preview window
   --       preview = {
@@ -171,7 +182,7 @@ return {
   --           winblend = 0,
   --         },
   --         -- Whether the preview window is automatically updated when the cursor is moved
-  --         update_on_cursor_moved = true,
+  --         update_on_cursor_moved = false,
   --       },
   --       -- Configuration for the floating progress window
   --       progress = {
@@ -197,37 +208,5 @@ return {
   --       },
   --     })
   --   end,
-  -- },
-  -- {
-  --   "echasnovski/mini.icons",
-  --   opts = {},
-  --   lazy = true,
-  --   specs = {
-  --     { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
-  --   },
-  --   init = function()
-  --     package.preload["nvim-web-devicons"] = function()
-  --       require("mini.icons").mock_nvim_web_devicons()
-  --       return package.loaded["nvim-web-devicons"]
-  --     end
-  --   end,
-
-  --   config = function()
-  --     require("mini.icons").setup({
-  --       -- default = {
-  --       --   -- Override default glyph for "file" category (reuse highlight group)
-  --       --   file = { glyph = "󰈤" },
-  --       -- },
-  --       extension = {
-  --         -- Override highlight group (not necessary from 'mini.icons')
-  --         lua = { hl = "Special" },
-
-  --         -- Add icons for custom extension. This will also be used in
-  --         -- 'file' category for input like 'file.my.ext'.
-  --         -- ["config.js"] = { glyph = "󰜫", hl = "MiniIconsBlue" },
-  --         ["config.js"] = { glyph = "󰜫" },
-  --       },
-  --     })
-  --   end,
-  -- },
+  -- }
 }

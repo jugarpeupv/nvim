@@ -35,7 +35,7 @@ return {
         -- },
         highlight = {
           enable = true,
-          disable = function(lang, bufnr) -- Disable in large .json files
+          disable = function(lang, bufnr) -- Disable in large .json files like in package-lock.json
             return lang == "json" and vim.api.nvim_buf_line_count(bufnr) > 10000
           end,
           additional_vim_regex_highlighting = true,
