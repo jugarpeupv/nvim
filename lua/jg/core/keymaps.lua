@@ -614,6 +614,7 @@ vim.keymap.set("n", "<leader>cl", function()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>bb", vim.cmd.BufTermEnter)
+vim.keymap.set("n", "<leader>bn", vim.cmd.BufTermNext)
 
 vim.keymap.set("n", "<leader>ti", function()
   local image = require("image")
@@ -623,3 +624,12 @@ vim.keymap.set("n", "<leader>ti", function()
     image.enable()
   end
 end, opts)
+
+-- yanking to another register
+-- + is system clipboard
+-- vim.keymap.set({ "n", "x" }, "<leader>y", [["+y]]) -- copy to system clipboard
+-- vim.keymap.set({ "n", "x" }, "<leader>p", [["+p]]) -- paste from system clipboard
+
+-- using 0 register
+vim.keymap.set({ "n" }, "<leader><leader>", [["0yy]]) -- copy to 0 register
+vim.keymap.set({ "x" }, "<leader><leader>", [["0y]]) -- copy to 0 register

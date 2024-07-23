@@ -251,7 +251,7 @@ return {
         -- Prefer startup root directory when updating root directory of the tree.
         -- Only relevant when `update_focused_file.update_root` is `true`
         -- Type: `boolean`, Default: `false`
-        respect_buf_cwd = true,
+        respect_buf_cwd = false,
         on_attach = on_attach,
         live_filter = {
           always_show_folders = false,

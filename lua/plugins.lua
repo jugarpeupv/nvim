@@ -12,6 +12,7 @@ return {
   { "stsewd/fzf-checkout.vim", event = { "VeryLazy" } },
   {
     "boltlessengineer/bufterm.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("bufterm").setup()
     end,
