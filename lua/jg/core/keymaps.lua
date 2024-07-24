@@ -317,7 +317,7 @@ keymap("n", "<Leader>gl", "<cmd>G log<cr>", opts)
 -- vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>ToggleLine<cr>", opts)
 
 -- Hop
-vim.api.nvim_set_keymap("n", "<Leader>w", "<cmd>lua require'hop'.hint_words()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>lua require'hop'.hint_words()<cr>", opts)
 
 -- JsonPath
 keymap("n", "<leader>cp", "<cmd>JsonPath<CR>", opts)
