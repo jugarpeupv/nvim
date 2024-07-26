@@ -2,7 +2,8 @@ return {
   {
     "dyng/ctrlsf.vim",
     branch = "feature/add-devicon",
-    cmd = { "CtrlSFCwordPath", "CtrlSFToggle"  },
+    event = { "BufRead", "BufNewFile"},
+    -- cmd = { "CtrlSFCwordPath", "CtrlSFToggle"  },
     config = function()
       vim.g.ctrlsf_context = "-C 0"
       vim.g.ctrlsf_populate_qflist = 1
