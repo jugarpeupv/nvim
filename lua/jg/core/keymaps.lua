@@ -456,7 +456,7 @@ vim.cmd([[:tnoremap <C-Down> <C-\><C-N>:resize -5<cr>]])
 vim.cmd([[:tnoremap <C-Left> <C-\><C-N>:vertical resize -5<cr>]])
 vim.cmd([[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]])
 
--- vim.cmd[[:tnoremap <C-o> <C-\><C-N><C-o>]]
+vim.cmd[[:tnoremap <C-o> <C-\><C-N><C-o>]]
 
 -- vim.cmd[[:tnoremap <C-h> <C-\><C-N><C-w>h]]
 -- vim.cmd[[:tnoremap <C-j> <C-\><C-N><C-w>j]]

@@ -157,6 +157,11 @@ return {
         -- same as `override` but specifically for overrides by filename
         -- takes effect when `strict` is true
         override_by_filename = {
+          [".zshrc"] = {
+            icon = "",
+            color = "#7C7F93",
+            name = "zshrc",
+          },
           [".dockerignore"] = { icon = "", color = "#9CDCFE", name = "DockerfileIgnore" },
           ["Dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile2" },
           ["dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile5" },
