@@ -10,6 +10,8 @@ return {
       vim.g.VM_Extend = "Visual"
       vim.g.VM_Extend_hl = "Visual"
       vim.g.VM_Insert_hl = "Visual"
+      vim.cmd[[let g:VM_maps["Add Cursor Down"]             = '<C-Down>']]
+      vim.cmd[[let g:VM_maps["Add Cursor Up"]               = '<C-Up>']]
     end,
   },
 }

@@ -66,6 +66,12 @@ return {
             color = "#F38BA8",
             name = "scss1",
           },
+
+          ["xlsx"] = {
+            icon = "󰈛",
+            color = "#73daca",
+            name = "xlsx1",
+          },
           ["csv"] = {
             icon = "",
             color = "#9CDCFE",
@@ -196,6 +202,14 @@ return {
           ["jest.config.ts"] = { icon = "󰙨", name = "jenkinsconfig1", color = "#f38bad" },
           ["jest.config.app.ts"] = { icon = "󰙨", name = "jenkinsconfigapp1", color = "#f38bad" },
           ["jest.config.js"] = { icon = "󰙨", name = "jenkinsconfig2", color = "#f38bad" },
+
+          -- ["jest.config.ts"] = { icon = "󰤑", name = "jenkinsconfig1", color = "#f38bad" },
+          -- ["jest.config.app.ts"] = { icon = "󰤑", name = "jenkinsconfigapp1", color = "#f38bad" },
+          -- ["jest.config.js"] = { icon = "󰤑", name = "jenkinsconfig2", color = "#f38bad" },
+
+          -- ["jest.config.ts"] = { icon = "󰇉", name = "jenkinsconfig1", color = "#f38bad" },
+          -- ["jest.config.app.ts"] = { icon = "󰇉", name = "jenkinsconfigapp1", color = "#f38bad" },
+          -- ["jest.config.js"] = { icon = "󰇉", name = "jenkinsconfig2", color = "#f38bad" },
           
 
           -- [".nxignore"] = { icon = "🐋", color = "blue", name = "nxignore"},

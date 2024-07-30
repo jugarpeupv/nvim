@@ -86,7 +86,7 @@ vim.cmd([[inoremap <C-r> <C-r>*]])
 vim.keymap.set({ "n", "t" }, "<M-p>", function()
   require("telescope.builtin").find_files({
     hidden = true,
-    find_command = { "rg", "--files", "--color", "never", "--glob=!.git" },
+    find_command = { "rg", "--files", "--color", "never", "--glob=!.git", "--glob=!*__template__" },
   })
 end, opts)
 
