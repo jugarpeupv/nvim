@@ -45,7 +45,7 @@ keymap("n", "<leader>pu", "<cmd>pu<cr>", opts)
 
 -- Cmd modifiers
 vim.cmd([[map <M-g> gcc]])
-vim.cmd([[inoremap <C-r> <C-r>*]])
+-- vim.cmd([[inoremap <C-r> <C-r>*]])
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false, width = 0.8 })<cr>", opts)
 -- keymap("n", "<M-p>", "<cmd>lua require('telescope.builtin').git_files({ show_untracked = true, require('telescope.themes').get_dropdown{previewer = false, width = 0.8 }})<cr>", opts)
 -- keymap(

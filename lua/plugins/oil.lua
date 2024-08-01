@@ -2,6 +2,7 @@ return {
   {
     "elihunter173/dirbuf.nvim",
     event = { "BufReadPost", "BufNewFile" },
+    -- cmd = { "DirBuf" },
     -- priority = 10000,
     config = function()
     end,
