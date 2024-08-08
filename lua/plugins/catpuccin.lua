@@ -173,7 +173,9 @@ return {
             EgrepifyFile = { fg = "#f2cdcd" },
             EgrepifyLnum = { fg = "#737aa2" },
             CursorLine = { bg = "#3b4261" },
-            NvimTreeGitStagedIcon = { fg = "#8ee2cf" }
+            NvimTreeGitStagedIcon = { fg = "#8ee2cf" },
+            -- MatchupVirtualText = { fg = "#6C7086" }
+            MatchupVirtualText = { fg = "#6C7086" }
             -- LineNR = { guifg = "#3b4261" },
           }
         end,
@@ -317,7 +319,7 @@ return {
       vim.cmd([[highlight @lsp.type.interface guifg=#89ddff]])
       vim.cmd([[highlight @attribute.typescript guifg=#89ddff]])
       -- vim.cmd([[highlight @lsp.typemod.variable.defaultLibrary.typescript guifg=#89ddff]])
-      vim.cmd([[highlight @variable.builtin guifg=#89ddff]])
+      -- vim.cmd([[highlight @variable.builtin guifg=#89ddff]])
       vim.cmd([[highlight LspSignatureActiveParameter gui=none guifg=none guibg=#264F78]])
       vim.cmd([[highlight SignatureActiveParameter gui=none guifg=none guibg=#264F78]])
 

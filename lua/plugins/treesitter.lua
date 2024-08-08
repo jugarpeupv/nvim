@@ -117,8 +117,8 @@ return {
           -- termcolors = {} -- table of colour name strings
         },
         matchup = {
-          enable = false,
-          disable_virtual_text = true
+          enable = true,
+          disable_virtual_text = false
         },
         textobjects = {
           select = {
