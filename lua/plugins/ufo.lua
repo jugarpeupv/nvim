@@ -9,9 +9,9 @@ return {
       -- Folding
       -- vim.cmd([[set foldmethod=syntax]])
       -- vim.cmd([[set foldmethod=indent]])
-      vim.cmd([[set nofoldenable]])
-      vim.cmd([[set foldlevelstart=20]])
-      vim.cmd([[set foldnestmax=10]])
+      -- vim.cmd([[set nofoldenable]])
+      -- vim.cmd([[set foldlevelstart=20]])
+      -- vim.cmd([[set foldnestmax=10]])
 
       -- vim.cmd([[set foldnestmax=10]])
       -- vim.cmd([[set foldlevelstart=20]])
@@ -19,10 +19,10 @@ return {
       -- vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
       -- vim.cmd([[set nofoldenable]])
 
-      -- vim.o.foldcolumn = "1" -- '0' is not bad
-      -- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-      -- vim.o.foldlevelstart = 99
-      -- vim.o.foldenable = false
+      vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
 
       vim.keymap.set("n", "zR", require("ufo").openAllFolds)
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
