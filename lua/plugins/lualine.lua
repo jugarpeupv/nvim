@@ -3,6 +3,8 @@ return {
   "nvim-lualine/lualine.nvim",
   -- event = "VeryLazy",
   -- event = { "BufReadPost" },
+
+  ft = { "DiffviewFiles" },
   event = { "TermOpen", "BufReadPre", "BufNewFile" },
   config = function()
     local colors = {
