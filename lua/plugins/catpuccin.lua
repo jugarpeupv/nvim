@@ -159,6 +159,8 @@ return {
             illuminatedCurWord = { bg = "#394b70" },
             illuminatedWord = { bg = "#394b70" },
             -- Folded = { bg = "#1f2335", fg = "#737aa2" },
+            Folded = { bg = "#292e42", fg = "#737aa2" },
+            -- Folded = { bg = "#292e42" },
             LspInlayHint = { bg = "#0F2745", fg = "#737aa2" },
             NvimTreeBookmark = { fg = "#f2cdcd" },
             HlSearchNear = { fg = "#181826", bg = "#F38BA8" },

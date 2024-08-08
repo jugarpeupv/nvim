@@ -44,14 +44,7 @@ opt.diffopt = { "iwhiteall", "internal", "filler", "closeoff", "hiddenoff", "alg
 opt.pumblend = 0
 opt.pumheight = 10
 vim.cmd([[set fillchars+=diff:╱]])
-vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
--- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
--- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
--- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
-vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
-
 vim.cmd([[set breakindent]])
-
 -- ListChars
 vim.cmd([[set showbreak=↪\]])
 
@@ -102,4 +95,15 @@ opt.listchars:append("trail: ")
 
 vim.cmd([[let g:TerminusInsertCursorShape=1]])
 
+
+
+vim.o.foldcolumn = '0' -- '0' is not bad
+vim.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = false
 -- vim.wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
+-- vim.opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
+-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- vim.o.foldmethod = "expr"
+vim.o.foldmethod = "indent"

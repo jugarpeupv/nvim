@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("BufRead", {
   group = vim.api.nvim_create_augroup("CmpSourceCargo", { clear = true }),
   pattern = "Cargo.toml",
   callback = function()
-    cmp.setup.buffer({ sources = { { name = "crates" } } })
+    require("cmp").setup.buffer({ sources = { { name = "crates" } } })
   end,
 })
 
@@ -276,8 +276,29 @@ vim.api.nvim_create_autocmd('CursorMoved', {
 --   end,
 -- })
 
-vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
 -- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
-vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
+
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
+-- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  callback = function()
+    if require("nvim-treesitter.parsers").has_parser() then
+      vim.opt.foldmethod = "expr"
+      -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+      -- vim.o.foldtext = "v:lua.vim.treesitter.foldtext()"
+      -- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      -- vim.wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
+      vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    else
+      vim.opt.foldmethod = "indent"
+    end
+  end,
+})

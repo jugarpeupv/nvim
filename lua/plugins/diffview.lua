@@ -1,10 +1,10 @@
 return {
   {
     "sindrets/diffview.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     -- cmd = { "DiffviewOpen" },
     -- event = { "BufReadPost", "BufNewFile" },
-    -- keys = { { "<leader>gd", mode = "n" } },
+    keys = { { "<leader>gd", mode = "n" } },
     config = function()
       -- vim.cmd([[hi StatusLine guifg=#cdd6f5 guibg=#292e42]])
       -- Lua

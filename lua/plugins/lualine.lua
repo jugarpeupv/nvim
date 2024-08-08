@@ -3,7 +3,7 @@ return {
   "nvim-lualine/lualine.nvim",
   -- event = "VeryLazy",
   -- event = { "BufReadPost" },
-  event = { "TermOpen", "BufReadPost" },
+  event = { "TermOpen", "BufReadPre", "BufNewFile" },
   config = function()
     local colors = {
       blue = "#9CDCFE",

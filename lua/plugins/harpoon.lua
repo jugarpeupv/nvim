@@ -67,7 +67,7 @@ return {
         },
       })
 
-      harpoon:extend(require("harpoon.extensions").builtins.command_on_nav('UfoEnableFold'))
+      -- harpoon:extend(require("harpoon.extensions").builtins.command_on_nav('UfoEnableFold'))
 
       harpoon:extend({
         UI_CREATE = function(cx)
