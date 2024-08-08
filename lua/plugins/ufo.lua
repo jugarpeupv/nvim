@@ -19,7 +19,8 @@ return {
       -- vim.cmd([[set foldexpr=nvim_treesitter#foldexpr()]])
       -- vim.cmd([[set nofoldenable]])
 
-      vim.o.foldcolumn = '1' -- '0' is not bad
+      -- vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.o.foldcolumn = '0' -- '0' is not bad
       vim.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true

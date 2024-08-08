@@ -289,7 +289,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = "User FilePost",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       -- import gitsigns plugin safely
       local setup, gitsigns = pcall(require, "gitsigns")
