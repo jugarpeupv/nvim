@@ -244,34 +244,40 @@ vim.api.nvim_create_autocmd('CursorMoved', {
 
 
 
--- yanking registers
-local prev0, prev9
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = vim.api.nvim_create_augroup("yank_history", {}),
-  desc = "Store previous yanks in latter half of numbered registers (VimEnter hooks)",
-  pattern = "*",
-  callback = function()
-    prev0 = vim.fn.getreginfo("0")
-    prev9 = vim.fn.getreginfo("9")
-  end
-})
+-- -- yanking registers
+-- local prev0, prev9
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   group = vim.api.nvim_create_augroup("yank_history", {}),
+--   desc = "Store previous yanks in latter half of numbered registers (VimEnter hooks)",
+--   pattern = "*",
+--   callback = function()
+--     prev0 = vim.fn.getreginfo("0")
+--     prev9 = vim.fn.getreginfo("9")
+--   end
+-- })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = "yank_history",
-  desc = "Store previous yanks in latter half of numbered registers",
-  pattern = "*",
-  callback = function()
-    if vim.v.event.regname ~= "" then return end
-    vim.fn.setreg("6", vim.fn.getreginfo("7"))
-    vim.fn.setreg("7", vim.fn.getreginfo("8"))
-    vim.fn.setreg("8", vim.fn.getreginfo("9"))
-    if vim.v.event.operator == "y" then
-      prev0.isunnamed = false
-      vim.fn.setreg("9", prev0)
-      prev9 = vim.fn.getreginfo("9")
-      prev0 = vim.fn.getreginfo("0")
-    else
-      vim.fn.setreg("9", prev9)
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+--   group = "yank_history",
+--   desc = "Store previous yanks in latter half of numbered registers",
+--   pattern = "*",
+--   callback = function()
+--     if vim.v.event.regname ~= "" then return end
+--     vim.fn.setreg("6", vim.fn.getreginfo("7"))
+--     vim.fn.setreg("7", vim.fn.getreginfo("8"))
+--     vim.fn.setreg("8", vim.fn.getreginfo("9"))
+--     if vim.v.event.operator == "y" then
+--       prev0.isunnamed = false
+--       vim.fn.setreg("9", prev0)
+--       prev9 = vim.fn.getreginfo("9")
+--       prev0 = vim.fn.getreginfo("0")
+--     else
+--       vim.fn.setreg("9", prev9)
+--     end
+--   end,
+-- })
+
+vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
+-- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
+vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])

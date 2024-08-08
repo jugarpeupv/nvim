@@ -1,4 +1,4 @@
--- return {}
+-- -- return {}
 return {
   "andymass/vim-matchup",
   -- event = { "CursorMoved" },
@@ -7,7 +7,7 @@ return {
   event = {"BufReadPost", "BufNewFile"},
   -- keys = { "%", mode = "n" },
   config = function()
-    vim.cmd[[let g:loaded_matchit = 1]]
+    -- vim.cmd[[let g:loaded_matchit = 1]]
     vim.g.matchup_matchparen_offscreen = { method = "status" }
   end,
 }

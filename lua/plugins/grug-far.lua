@@ -1,3 +1,4 @@
+-- return {}
 return {
   -- keys = { '<leader>ff' },
   cmd = { "GrugFar" },

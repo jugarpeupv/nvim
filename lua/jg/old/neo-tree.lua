@@ -323,5 +323,9 @@ return {}
 --     })
 
 --     -- vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+
+  -- vim.cmd([[highlight NeoTreeRootName gui=none]])
+  --   vim.cmd([[highlight NeoTreeFileStatsHeader guifg=#3b4261]])
+  -- vim.cmd([[highlight NeoTreeFileStats guifg=#3b4261]])
 --   end,
 -- }

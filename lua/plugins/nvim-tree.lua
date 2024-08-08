@@ -2,23 +2,13 @@
 return {
   {
     "antosha417/nvim-lsp-file-operations",
-    -- event = "VeryLazy",
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
-    -- dependencies = {
-    --   "nvim-lua/plenary.nvim",
-    --   "nvim-tree/nvim-tree.lua",
-    -- },
     config = function()
       require("lsp-file-operations").setup()
     end,
   },
   {
     "nvim-tree/nvim-tree.lua",
-    -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
-    -- keys = { "<leader>d" },
-    -- cmd = { 'NvimTreeFindFile' },
-    -- event = "VeryLazy",
-    -- event = "BufWinEnter",
     priority = 500,
     config = function()
       local apinvimtree = require("nvim-tree.api")
@@ -523,6 +513,16 @@ return {
       }) -- END_DEFAULT_OPTS
 
       vim.cmd([[hi NvimTreeFolderIcon guifg=#89B4FA]])
+      vim.cmd([[hi NvimTreeRootFolder gui=none]])
+      vim.cmd([[highlight NvimTreeGitDirty guifg=#F9E2AF]])
+      vim.cmd([[highlight NvimTreeGitStaged guifg=#8ee2cf]])
+      vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F5C2E7]])
+      -- vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F38BA8]])
+      vim.cmd([[highlight NvimTreeModifiedFile gui=none guifg=#737aa2]])
+      -- vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#EFF1F5]]
+      vim.cmd([[highlight NvimTreeGitNew guifg=#89ddff]])
+      vim.cmd([[highlight NvimTreeCursorLine guibg=#3b4261]])
+      vim.cmd([[highlight NvimTreeStatusLineNC guibg=none]])
     end,
   },
 }

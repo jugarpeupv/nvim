@@ -20,12 +20,16 @@ keymap("n", "<M-l>", ":NvimTreeFindFile<cr>", opts)
 -- vim.keymap.set("n", "<Leader>jj", ":resize -5<CR>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +3<CR>", opts)
-keymap("n", "<C-Down>", ":resize -3<CR>", opts)
--- keymap("n", "<S-Left>", ":vertical resize -5<CR>", opts)
--- keymap("n", "<S-Right>", ":vertical resize +5<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
+-- keymap("n", "<C-Up>", ":resize +3<CR>", opts)
+-- keymap("n", "<C-Down>", ":resize -3<CR>", opts)
+-- keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
+-- keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
+
+keymap("n", "<S-D-Up>", ":resize +3<CR>", opts)
+keymap("n", "<S-D-Down>", ":resize -3<CR>", opts)
+keymap("n", "<S-D-Left>", ":vertical resize -5<CR>", opts)
+keymap("n", "<S-D-Right>", ":vertical resize +5<CR>", opts)
+
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -154,7 +158,7 @@ keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
 
 -- keymap("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
+-- keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
 keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
 
 -- Ctrls + shit modifiers
@@ -551,8 +555,6 @@ vim.keymap.set("n", "<leader>ta", require("jg.custom.telescope").curr_buf, {})
 -- vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
 -- keymap("n", '<leader>va', "<cmd>lua require('jenkinsfile_linter').validate()<cr>", opts)
 
--- Winshift.nvim
-vim.api.nvim_set_keymap("n", "<Leader>sh", "<cmd>WinShift<cr>", opts)
 
 -- vim.api.nvim_set_keymap("n", "<Leader>no", "<cmd> lua require('neotest').output.open({enter = true})<cr>", opts)
 
