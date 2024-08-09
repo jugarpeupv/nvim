@@ -177,7 +177,7 @@ return {
             CursorLine = { bg = "#3b4261" },
             NvimTreeGitStagedIcon = { fg = "#8ee2cf" },
             -- MatchupVirtualText = { fg = "#6C7086" }
-            MatchupVirtualText = { fg = "#6C7086" }
+            MatchupVirtualText = { fg = "#6C7086" },
             -- LineNR = { guifg = "#3b4261" },
           }
         end,
@@ -185,6 +185,7 @@ return {
 
       -- setup must be called before loading
       vim.cmd.colorscheme("catppuccin")
+      vim.cmd([[hi gitcommitOverflow gui=italic]])
 
       vim.cmd([[highlight LineNR guifg=#3b4261]])
       vim.cmd([[highlight CursorLineNR guifg=#737aa2]])

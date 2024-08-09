@@ -4,7 +4,14 @@ return {
     -- event = "VeryLazy",
     -- cmd = { "DiffviewOpen" },
     -- event = { "BufReadPost", "BufNewFile" },
-    keys = { { "<leader>gd", mode = "n" } },
+    keys = {
+      { "<leader>gd", mode = "n" },
+      { "<leader>gv", mode = { "n", "v" } },
+      { "<leader>cc", mode = "n" },
+      { "<leader>ll", mode = "n" },
+      { "<leader>l5", mode = "n" },
+      { "<leader>l0", mode = "n" },
+    },
     config = function()
       -- vim.cmd([[hi StatusLine guifg=#cdd6f5 guibg=#292e42]])
       -- Lua
@@ -276,6 +283,17 @@ return {
         },
       })
 
+      -- Diffview
+      local keymap = vim.api.nvim_set_keymap
+      local opts = { noremap = true, silent = true }
+      keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", {})
+      keymap("n", "<Leader>cc", "<cmd>DiffviewClose<cr>", {})
+      keymap("v", "<Leader>gv", "<cmd>'<,'>DiffviewFileHistory<cr>", opts)
+      keymap("n", "<Leader>gv", "<cmd>DiffviewFileHistory %<cr>", opts)
+      -- Diffview
+      vim.keymap.set("n", "<leader>ll", "<CMD>DiffviewFileHistory --range=HEAD<CR>")
+      vim.keymap.set("n", "<leader>l5", "<CMD>DiffviewFileHistory --range=HEAD~50..HEAD<CR>")
+      vim.keymap.set("n", "<leader>l0", "<CMD>DiffviewFileHistory --range=HEAD~10..HEAD<CR>")
     end,
   },
 }

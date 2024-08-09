@@ -270,10 +270,6 @@ keymap("n", "<Leader>gs", "<cmd>lua require('telescope.builtin').git_stash()<cr>
 keymap("n", "<Leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>", opts)
 keymap("n", "<leader>gt", "<cmd>GTags<CR>", opts)
 
--- Diffview
-keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", opts)
-keymap("n", "<Leader>cc", "<cmd>DiffviewClose<cr>", opts)
-
 -- Sniprun
 keymap("n", "<Leader>sr", "<cmd>%SnipRun<cr>", opts)
 
@@ -304,8 +300,6 @@ vim.cmd(
 -- Vim Fugitive
 -- keymap("n", "<Leader>gu", ":diffget<cr>", opts)
 -- keymap("n", "<Leader>gs", ":diffput<cr>", opts)
-keymap("v", "<Leader>gv", "<cmd>'<,'>DiffviewFileHistory<cr>", opts)
-keymap("n", "<Leader>gv", "<cmd>DiffviewFileHistory %<cr>", opts)
 keymap("n", "<Leader>gP", "<cmd>Git! push<cr>", opts)
 keymap("n", "<Leader>gf", "<cmd>Git! fetch --all -v<cr>", opts)
 keymap("n", "<Leader>gp", "<cmd>Git! pull<cr>", opts)
@@ -435,11 +429,6 @@ vim.keymap.set("n", "<leader>mc", "<CMD>PeekClose<CR>")
 -- vim.keymap.set('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
 -- -- vim.keymap.set('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 -- vim.keymap.set('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-
--- Diffview
-vim.keymap.set("n", "<leader>ll", "<CMD>DiffviewFileHistory --range=HEAD<CR>")
-vim.keymap.set("n", "<leader>l5", "<CMD>DiffviewFileHistory --range=HEAD~50..HEAD<CR>")
-vim.keymap.set("n", "<leader>l0", "<CMD>DiffviewFileHistory --range=HEAD~10..HEAD<CR>")
 
 vim.cmd([[tnoremap <C-n> <C-\><C-n>]])
 
