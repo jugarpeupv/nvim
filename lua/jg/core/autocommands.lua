@@ -185,21 +185,23 @@ vim.api.nvim_create_autocmd('filetype', {
   end
 })
 
-vim.api.nvim_create_autocmd('filetype', {
-  pattern = 'yml',
-  group = vim.api.nvim_create_augroup("YmlSyntaxOff", { clear = true }),
-  callback = function()
-    vim.cmd("set syntax=OFF")
-  end,
-})
+-- vim.api.nvim_create_autocmd('filetype', {
+--   pattern = 'yml',
+--   group = vim.api.nvim_create_augroup("YmlSyntaxOff2", { clear = true }),
+--   callback = function()
+--     print('pasando por aquí yml')
+--     vim.cmd("set syntax=OFF")
+--   end,
+-- })
 
-vim.api.nvim_create_autocmd('filetype', {
-  pattern = 'yaml',
-  group = vim.api.nvim_create_augroup("YamlSyntaxOff", { clear = true }),
-  callback = function()
-    vim.cmd("set syntax=OFF")
-  end,
-})
+-- vim.api.nvim_create_autocmd('filetype', {
+--   pattern = 'yaml',
+--   group = vim.api.nvim_create_augroup("YamlSyntaxOff424", { clear = true }),
+--   callback = function()
+--     print('pasando por aquí yaml')
+--     vim.cmd("set syntax=OFF")
+--   end,
+-- })
 
 -- vim.api.nvim_create_autocmd('BufRead', {
 --   pattern = '*.json',

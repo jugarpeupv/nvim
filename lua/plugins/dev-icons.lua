@@ -1,4 +1,43 @@
 return {
+  -- {
+  --   "rachartier/tiny-devicons-auto-colors.nvim",
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons"
+  --   },
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require('tiny-devicons-auto-colors').setup()
+  --   end
+  -- },
+  -- {
+  --   "dgox16/devicon-colorscheme.nvim",
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   config = function()
+  --     require("devicon-colorscheme").setup({
+  --       colors = {
+  --         blue = "#89b4fa",
+  --         cyan = "#94e2d5",
+  --         green = "#a6e3a1",
+  --         magenta = "#f5c2e7",
+  --         orange = "#eba0ac",
+  --         purple = "#cba6f7",
+  --         red = "#f38ba8",
+  --         white = "#9399b2",
+  --         yellow = "#f9e2af",
+  --         bright_blue = "#89b4fa",
+  --         bright_cyan = "#94e2d5",
+  --         bright_green = "#a6e3a1",
+  --         bright_magenta = "#f5c2e7",
+  --         bright_orange = "#eba0ac",
+  --         bright_purple = "#cba6f7",
+  --         bright_red = "#f38ba8",
+  --         bright_yellow = "#f9e2af",
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "nvim-tree/nvim-web-devicons",
     priority = 800,
@@ -114,14 +153,16 @@ return {
             -- icon = "󰈤",
             -- icon = "🀄️",
             -- icon = "",
-            icon = "🀀",
+            -- icon = "🀀",
             -- icon = "",
             -- icon = "",
-            -- icon = "",
+            icon = "",
             -- icon = "",
             -- icon = "📄",
+            -- icon = "",
             -- color = "#73daca",
             -- color = "grey",
+            color = "#7C7F93",
             name = "DefaultIcon",
           },
         },

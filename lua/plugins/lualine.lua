@@ -119,6 +119,15 @@ return {
       -- color = { fg = colors.cyan }
     }
 
+    -- local function branch_custom()
+    --   local res, match = vim.fn.FugitiveGitDir():gsub(".*worktrees/", "")
+    --   if match == 1 then
+    --     return res
+    --   else
+    --     return ""
+    --   end
+    -- end
+
     local diff = {
       "diff",
       colored = true, -- Displays a colored diff status if set to true
@@ -179,7 +188,6 @@ return {
       },
       sections = {
         lualine_a = {
-          -- branch,
           { "mode", separator = { left = "", right = "" } },
           filename,
           -- diagnostics
@@ -190,7 +198,7 @@ return {
           -- { 'mode', separator = { left = '', right = '' } },
           -- { "mode", separator = { left = "", right = "" } },
         },
-        lualine_b = {},
+        lualine_b = { branch },
         lualine_c = {},
         lualine_x = { dirname, "filetype" },
         -- lualine_x = {},

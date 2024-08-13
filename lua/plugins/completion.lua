@@ -24,6 +24,7 @@ return {
       },
       -- cmp sources plugins
       {
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
@@ -151,8 +152,10 @@ return {
             --   return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
             -- end,
           },
+          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp:marksman" },
           { name = "marksman" },
+          { name = "buffer" },
           { name = "luasnip" }, -- snippets
           { name = "path" }, -- file system paths
           -- { name = "buffer", keyword_length = 5, max_item_count = 5 },
@@ -221,6 +224,7 @@ return {
               luasnip = "[LuaSnip]",
               nvim_lua = "[Lua]",
               latex_symbols = "[Latex]",
+              ["vim-dadbod-completion"] = "[DB]",
             },
             -- before = function(entry, vim_item)
             --   vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
@@ -266,6 +270,21 @@ return {
       --     },
       --   }),
       -- })
+
+      local autocomplete_group = vim.api.nvim_create_augroup("vimrc_autocompletion", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "sql", "mysql", "plsql" },
+        callback = function()
+          cmp.setup.buffer({
+            sources = {
+              { name = "nvim_lsp" },
+              { name = "vim-dadbod-completion" },
+              { name = "buffer" },
+            },
+          })
+        end,
+        group = autocomplete_group,
+      })
     end,
   },
 }

@@ -25,11 +25,15 @@ keymap("n", "<M-l>", ":NvimTreeFindFile<cr>", opts)
 -- keymap("n", "<C-Left>", ":vertical resize -5<CR>", opts)
 -- keymap("n", "<C-Right>", ":vertical resize +5<CR>", opts)
 
-keymap("n", "<S-D-Up>", ":resize +3<CR>", opts)
-keymap("n", "<S-D-Down>", ":resize -3<CR>", opts)
-keymap("n", "<S-D-Left>", ":vertical resize -5<CR>", opts)
-keymap("n", "<S-D-Right>", ":vertical resize +5<CR>", opts)
+vim.keymap.set({ "n" }, "<S-D-Up>", ":resize +3<CR>", opts)
+vim.keymap.set({ "n" }, "<S-D-Down>", ":resize -3<CR>", opts)
+vim.keymap.set({ "n" }, "<S-D-Left>", ":vertical resize -5<CR>", opts)
+vim.keymap.set({ "n" }, "<S-D-Right>", ":vertical resize +5<CR>", opts)
 
+vim.keymap.set({ "t" }, "<S-D-Up>", "<C-\\><C-n><CMD>resize +3<CR>", opts)
+vim.keymap.set({ "t" }, "<S-D-Down>", "<C-\\><C-n><CMD>resize -3<CR>", opts)
+vim.keymap.set({ "t" }, "<S-D-Left>", "<C-\\><C-n><CMD>vertical resize -5<CR>", opts)
+vim.keymap.set({ "t" }, "<S-D-Right>", "<C-\\><C-n><CMD>vertical resize +5<CR>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -159,7 +163,7 @@ keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
 -- keymap("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<M-x>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 -- keymap("n", "<M-x>", "<cmd>Lspsaga code_action<CR>", opts)
-keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
+-- keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
 
 -- Ctrls + shit modifiers
 
@@ -183,6 +187,7 @@ keymap("n", "<BS>", "<C-^>", opts)
 -- keymap("n", "<BS>", "^", opts)
 keymap("o", "<BS>", "^", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
+keymap("t", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("n", "<Leader>q", "<cmd>BDelete this<CR>", opts)
 keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
 keymap(
@@ -316,7 +321,7 @@ keymap("n", "<Leader>gl", "<cmd>G log<cr>", opts)
 -- vim.api.nvim_set_keymap("n", "<Leader>tl", "<cmd>ToggleLine<cr>", opts)
 
 -- Hop
-vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>lua require'hop'.hint_words()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>ww", "<cmd>lua require'hop'.hint_words()<cr>", opts)
 
 -- JsonPath
 keymap("n", "<leader>cp", "<cmd>JsonPath<CR>", opts)
@@ -471,8 +476,6 @@ vim.cmd[[:tnoremap <C-o> <C-\><C-N><C-o>]]
 -- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 -- vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
--- keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
-keymap("n", "<Leader>oa", "<cmd>Dirbuf<cr>", opts)
 -- keymap("n", "<Leader>pi", "<cmd>PasteImg<cr>", opts)
 
 vim.keymap.set("n", "cc", "<Plug>(git-conflict-ours)")

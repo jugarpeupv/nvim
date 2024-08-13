@@ -10,7 +10,10 @@ return {
     -- event = "User FilePost",
     -- event = { "LspAttach" },
     event = { "BufReadPre", "BufNewFile" },
+    -- cmd = { "LspInfo" },
     dependencies = {
+      { "hrsh7th/nvim-cmp" },
+      { "nanotee/sqls.nvim" },
       {
         "yioneko/nvim-vtsls",
         -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
@@ -219,6 +222,54 @@ return {
 
       -- configure css server
       lspconfig["cssls"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+
+      -- lspconfig.sqlls.setup({
+      --   capabilities = capabilities,
+      --   on_attach = on_attach,
+      --   filetypes = { 'sql' },
+      --   root_dir = function(_)
+      --     return vim.loop.cwd()
+      --   end,
+      -- })
+
+      lspconfig.sqls.setup({
+        capabilities = capabilities,
+
+        on_attach = function(client, bufnr)
+          require("sqls").on_attach(client, bufnr)
+          require("jg.custom.lsp-utils").attach_lsp_config(client, bufnr)
+        end,
+        -- settings = {
+        --   sqls = {
+        --     connections = {
+        --       {
+        --         alias = "auth",
+        --         driver = "mysql",
+        --         -- mysql://root@localhost/auth
+        --         -- dataSourceName = 'mysql://root@localhost/auth',
+        --         -- dataSourceName = 'mysql://root@tcp(127.0.0.1:3306)/auth',
+        --         -- dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+        --         proto = "tcp",
+        --         user = "root",
+        --         passwd = "",
+        --         host = "127.0.0.1",
+        --         port = "3306",
+        --         dbName = "auth",
+        --       },
+        --     },
+        --   },
+        -- },
+        -- on_attach = on_attach,
+        filetypes = { "sql", "mysql", "plsql" },
+        root_dir = function(_)
+          return vim.loop.cwd()
+        end,
+      })
+
+      lspconfig.pyright.setup({
         capabilities = capabilities,
         on_attach = on_attach,
       })

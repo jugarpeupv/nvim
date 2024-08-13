@@ -22,6 +22,11 @@ M.attach_lsp_config = function(client, bufnr)
   -- keymap.set("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
   keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- show  diagnostics for line
   keymap.set("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+
+  keymap.set("n", "<M-.>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+
+  -- keymap("n", "<M-.>", "<cmd>Lspsaga code_action<CR>", opts)
+
   -- keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
   keymap.set("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
   keymap.set("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer

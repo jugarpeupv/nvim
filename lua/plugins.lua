@@ -38,18 +38,6 @@ return {
       vim.keymap.set("n", "<leader>va", require("jenkinsfile_linter").validate, {})
     end,
   },
-  {
-    "mbbill/undotree",
-    -- cmd = { 'UndotreeShow', 'UndotreeToggle' },
-    -- event = "VeryLazy",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      -- vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
-      vim.g.undotree_WindowLayout = 3
-      vim.keymap.set("n", "<leader>ux", vim.cmd.UndotreeToggle)
-      vim.keymap.set("n", "<leader>ud", vim.cmd.UndotreeShow)
-    end,
-  },
   { "neoclide/jsonc.vim", ft = { "json" } },
   {
     "saecki/crates.nvim",

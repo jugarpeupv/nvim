@@ -117,6 +117,7 @@ return {
             custom_bg = "NONE",
           },
           nvimtree = true,
+          dadbod_ui = true,
           treesitter = true,
           neogit = true,
           semantic_tokens = true,
@@ -178,6 +179,7 @@ return {
             NvimTreeGitStagedIcon = { fg = "#8ee2cf" },
             -- MatchupVirtualText = { fg = "#6C7086" }
             MatchupVirtualText = { fg = "#6C7086" },
+            GitSignsCurrentLineBlame =  { fg= "black" }
             -- LineNR = { guifg = "#3b4261" },
           }
         end,
@@ -192,6 +194,8 @@ return {
 
       vim.cmd([[highlight IndentBlanklineChar guifg=#3b4251]])
       vim.cmd([[highlight IndentBlanklineContextChar guifg=#737aa2]])
+
+      vim.api.nvim_set_hl(0, "@lsp.typemod.method.defaultLibrary.typescript", { link = "Function" })
 
       -- vim.cmd([[@ibl           xxx cleared]])
       vim.cmd([[highlight @ibl.indent.char.1  guifg=#3b4251]])

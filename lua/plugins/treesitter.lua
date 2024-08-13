@@ -36,6 +36,10 @@ return {
         highlight = {
           enable = true,
           disable = function(lang, bufnr) -- Disable in large .json files like in package-lock.json
+            -- if lang == "yaml" or lang == "yml" then
+            --   return true
+            -- end
+
             return lang == "json" and vim.api.nvim_buf_line_count(bufnr) > 10000
           end,
           additional_vim_regex_highlighting = true,
@@ -75,6 +79,7 @@ return {
           "yaml",
           "html",
           "css",
+          -- "sql",
           "markdown",
           "markdown_inline",
           -- "svelte",

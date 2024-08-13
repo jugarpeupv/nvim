@@ -70,7 +70,10 @@ opt.splitright = true     -- split vertical window to the right
 opt.splitbelow = true     -- split horizontal window to the bottom
 
 opt.iskeyword:append("-") -- consider string-string as whole word
+
+-- global statusline
 opt.laststatus = 3
+
 -- opt.winbar ="%=%m %f"
 
 -- vim.cmd[[set diffopt+=linematch:60]]
