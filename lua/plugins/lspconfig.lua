@@ -350,6 +350,12 @@ return {
       capabilities_json_ls.textDocument.completion.completionItem.snippetSupport = true
 
       lspconfig["eslint"].setup({
+        root_dir = function(filename, bufnr)
+          if string.find(filename, "node_modules/") then
+            return nil
+          end
+          return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
+        end,
         -- root_dir = function(filename)
         --   if string.find(filename, "node_modules/") then
         --     return nil

@@ -9,6 +9,7 @@ return {
   },
   {
     "nvim-tree/nvim-tree.lua",
+    -- lazy = true,
     priority = 500,
     config = function()
       local api_nvimtree = require("nvim-tree.api")

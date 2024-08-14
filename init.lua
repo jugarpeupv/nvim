@@ -25,6 +25,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- require("lazy").setup({{ import = "plugins" } })
 require('lazy').setup('plugins', {
+  change_detection = { notify = false },
   ui = {
     backdrop = 100,
     icons = {

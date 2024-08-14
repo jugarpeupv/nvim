@@ -178,7 +178,7 @@ return {
             CursorLine = { bg = "#3b4261" },
             NvimTreeGitStagedIcon = { fg = "#8ee2cf" },
             -- MatchupVirtualText = { fg = "#6C7086" }
-            MatchupVirtualText = { fg = "#6C7086" },
+            MatchupVirtualText = { fg = "#747ebd" },
             GitSignsCurrentLineBlame =  { fg= "black" }
             -- LineNR = { guifg = "#3b4261" },
           }

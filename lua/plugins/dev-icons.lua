@@ -40,6 +40,7 @@ return {
   -- },
   {
     "nvim-tree/nvim-web-devicons",
+    -- lazy = true,
     priority = 800,
     config = function()
       local present, devicons = pcall(require, "nvim-web-devicons")
