@@ -9,11 +9,14 @@ return {
     -- event = "VeryLazy",
     -- event = "User FilePost",
     -- event = { "LspAttach" },
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     -- cmd = { "LspInfo" },
     dependencies = {
       { "hrsh7th/nvim-cmp" },
-      { "nanotee/sqls.nvim" },
+      { "williamboman/mason.nvim" },
+      { "williamboman/mason-lspconfig.nvim" },
+      { "jayp0521/mason-null-ls.nvim" },
+      -- { "nanotee/sqls.nvim" },
       {
         "yioneko/nvim-vtsls",
         -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
@@ -24,7 +27,7 @@ return {
         end,
       },
     },
-    -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     "neovim/nvim-lspconfig",
     config = function()
       -- import lspconfig plugin safely
@@ -131,7 +134,7 @@ return {
         severity_sort = true,
         float = {
           focusable = true,
-          style = "minimal",
+          -- style = "minimal",
           border = "rounded",
           source = "always",
           header = "",
@@ -140,6 +143,29 @@ return {
       }
 
       vim.diagnostic.config(config)
+
+
+      -- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=#394b70]])
+      local border = {
+        { "╭", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╮", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "╯", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╰", "FloatBorder" },
+        { "│", "FloatBorder" },
+      }
+
+      -- To instead override globally
+      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        opts = opts or {}
+        opts.border = opts.border or border
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+      end
+
+      -- ################### SERVER CONFIGURATIONS
 
       -- configure html server
       lspconfig["html"].setup({
@@ -235,39 +261,39 @@ return {
       --   end,
       -- })
 
-      lspconfig.sqls.setup({
-        capabilities = capabilities,
+      -- lspconfig.sqls.setup({
+      --   capabilities = capabilities,
 
-        on_attach = function(client, bufnr)
-          require("sqls").on_attach(client, bufnr)
-          require("jg.custom.lsp-utils").attach_lsp_config(client, bufnr)
-        end,
-        -- settings = {
-        --   sqls = {
-        --     connections = {
-        --       {
-        --         alias = "auth",
-        --         driver = "mysql",
-        --         -- mysql://root@localhost/auth
-        --         -- dataSourceName = 'mysql://root@localhost/auth',
-        --         -- dataSourceName = 'mysql://root@tcp(127.0.0.1:3306)/auth',
-        --         -- dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
-        --         proto = "tcp",
-        --         user = "root",
-        --         passwd = "",
-        --         host = "127.0.0.1",
-        --         port = "3306",
-        --         dbName = "auth",
-        --       },
-        --     },
-        --   },
-        -- },
-        -- on_attach = on_attach,
-        filetypes = { "sql", "mysql", "plsql" },
-        root_dir = function(_)
-          return vim.loop.cwd()
-        end,
-      })
+      --   on_attach = function(client, bufnr)
+      --     require("sqls").on_attach(client, bufnr)
+      --     require("jg.custom.lsp-utils").attach_lsp_config(client, bufnr)
+      --   end,
+      --   -- settings = {
+      --   --   sqls = {
+      --   --     connections = {
+      --   --       {
+      --   --         alias = "auth",
+      --   --         driver = "mysql",
+      --   --         -- mysql://root@localhost/auth
+      --   --         -- dataSourceName = 'mysql://root@localhost/auth',
+      --   --         -- dataSourceName = 'mysql://root@tcp(127.0.0.1:3306)/auth',
+      --   --         -- dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+      --   --         proto = "tcp",
+      --   --         user = "root",
+      --   --         passwd = "",
+      --   --         host = "127.0.0.1",
+      --   --         port = "3306",
+      --   --         dbName = "auth",
+      --   --       },
+      --   --     },
+      --   --   },
+      --   -- },
+      --   -- on_attach = on_attach,
+      --   filetypes = { "sql", "mysql", "plsql" },
+      --   root_dir = function(_)
+      --     return vim.loop.cwd()
+      --   end,
+      -- })
 
       lspconfig.pyright.setup({
         capabilities = capabilities,
@@ -354,7 +380,8 @@ return {
           if string.find(filename, "node_modules/") then
             return nil
           end
-          return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
+          -- return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
+          return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename)
         end,
         -- root_dir = function(filename)
         --   if string.find(filename, "node_modules/") then
@@ -432,11 +459,18 @@ return {
         capabilities = capabilities,
         settings = {
           yaml = {
-            schemas = {
-              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+            schemaStore = {
+              enable = false,
+              url = "",
             },
-            -- schemas = require('schemastore').yaml.schemas(),
+            -- schemas = require("schemastore").yaml.schemas(),
           },
+          -- yaml = {
+          --   schemas = {
+          --     ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          --   },
+          --   -- schemas = require('schemastore').yaml.schemas(),
+          -- },
         },
       })
 

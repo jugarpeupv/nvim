@@ -83,6 +83,7 @@
     ],
     "workspace.checkThirdParty": "Disable",
     "diagnostics.disable": [
-        "undefined-field"
+        "undefined-field",
+        "missing-fields"
     ]
 }

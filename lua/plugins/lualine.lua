@@ -168,7 +168,7 @@ return {
         disabled_filetypes = {
           -- statusline = { "alpha", "dashboard", "NvimTree", "Outline", "Diffview", "diffview" },
           -- 'NvimTree',
-          statusline = { "alpha", "dashboard", "Outline", "Diffview", "diffview", "intro", "" },
+          statusline = { "alpha", "dashboard", "Outline", "Diffview", "diffview", "intro", "NvimTree" },
           winbar = {
             "help",
             "startify",
@@ -236,9 +236,9 @@ return {
       },
       tabline = {},
       -- winbar = {
-      --   lualine_a = {},
+      --   lualine_a = { branch },
       --   lualine_b = {},
-      --   lualine_c = { 'filename' },
+      --   lualine_c = { filename },
       --   lualine_x = {},
       --   lualine_y = {},
       --   lualine_z = {}

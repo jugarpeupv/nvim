@@ -8,6 +8,7 @@ return {
       { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
     },
+    keys = { "<leader>db" },
     cmd = {
       "DBUI",
       "DBUIToggle",
@@ -26,8 +27,11 @@ return {
         --     return vim.fn.system('get-prod-url')
         --   end
         -- },
-        { name = "dev-auth", url = "mysql://root@localhost/auth" },
+        { name = "mysql-dev", url = "mysql://root@localhost" },
       }
+    end,
+    config = function()
+      vim.keymap.set("n", "<leader>db", "<cmd>DBUI<CR>", { silent = true })
     end,
   },
 }

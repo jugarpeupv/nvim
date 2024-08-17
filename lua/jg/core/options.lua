@@ -43,10 +43,15 @@ opt.formatoptions = opt.formatoptions - "c" - "r" - "o"
 opt.diffopt = { "iwhiteall", "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "followwrap" }
 opt.pumblend = 0
 opt.pumheight = 10
-vim.cmd([[set fillchars+=diff:╱]])
-vim.cmd([[set breakindent]])
+
+opt.fillchars = opt.fillchars + "diff:╱"
+opt.breakindent = true
+opt.showbreak = "↪\\"
+
+-- vim.cmd([[set fillchars+=diff:╱]])
+-- vim.cmd([[set breakindent]])
 -- ListChars
-vim.cmd([[set showbreak=↪\]])
+-- vim.cmd([[set showbreak=↪\]])
 
 -- vim.o.ls = 0
 -- vim.o.ch = 0
@@ -72,7 +77,8 @@ opt.splitbelow = true     -- split horizontal window to the bottom
 opt.iskeyword:append("-") -- consider string-string as whole word
 
 -- global statusline
-opt.laststatus = 3
+-- opt.laststatus = 3
+opt.laststatus = 0
 
 -- opt.winbar ="%=%m %f"
 
@@ -84,8 +90,11 @@ opt.winblend = 0
 -- vim.cmd([[let &t_Cs = "\e[4:3m]"]])
 -- vim.cmd([[let &t_Ce = "\e[4:0m]"]])
 
-vim.cmd([[set noshowmode]])
-vim.cmd([[let g:markdown_folding=1]])
+
+opt.showmode = false
+vim.g.markdown_folding = 1
+-- vim.cmd([[set noshowmode]])
+-- vim.cmd([[let g:markdown_folding=1]])
 -- vim.cmd[[set shada+=r/mnt/exdisk]]
 
 opt.list = true
@@ -96,7 +105,8 @@ opt.listchars:append("trail: ")
 -- vim.cmd[[set statusline+=%#Container#%{g:currentContainer}]]
 -- vim.cmd([[hi Container guifg=#BADA55 guibg=Black]])
 
-vim.cmd([[let g:TerminusInsertCursorShape=1]])
+-- vim.cmd([[let g:TerminusInsertCursorShape=1]])
+vim.g.TerminusInsertCursorShape = 1
 
 
 

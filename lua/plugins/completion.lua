@@ -159,6 +159,7 @@ return {
           { name = "buffer" },
           { name = "luasnip" }, -- snippets
           { name = "path" }, -- file system paths
+          { name = "crates" },
           -- { name = "buffer", keyword_length = 5, max_item_count = 5 },
           -- { name = "buffer" },
           -- { name = 'markdown-link' },
@@ -226,6 +227,7 @@ return {
               nvim_lua = "[Lua]",
               latex_symbols = "[Latex]",
               ["vim-dadbod-completion"] = "[DB]",
+              crates = "[Crates]",
             },
             -- before = function(entry, vim_item)
             --   vim_item = require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)

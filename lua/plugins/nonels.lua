@@ -17,9 +17,9 @@ return {
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.black,
       -- null_ls.builtins.formatting.sql,
-      null_ls.builtins.diagnostics.sqlfluff.with({
-        extra_args = { "--dialect", "mysql" }, -- change to your dialect
-      }),
+      -- null_ls.builtins.diagnostics.sqlfluff.with({
+      --   extra_args = { "--dialect", "mysql" }, -- change to your dialect
+      -- }),
       -- null_ls.builtins.formatting.sqlfmt
       -- null_ls.builtins.formatting.prettierd.with({
       --   condition = function(utils)

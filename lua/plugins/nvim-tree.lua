@@ -10,6 +10,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     -- lazy = true,
+    -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
     priority = 500,
     config = function()
       local api_nvimtree = require("nvim-tree.api")
@@ -18,6 +19,7 @@ return {
       api_nvimtree.events.subscribe(api_nvimtree.events.Event.TreeOpen, function()
         vim.wo.statusline = " "
         vim.cmd("hi! NvimTreeStatusLine guifg=none guibg=none")
+        vim.opt.laststatus = 3
         -- vim.cmd("hi! NvimTreeStatusLineNC guifg=none guibg=none")
       end)
 
@@ -218,8 +220,10 @@ return {
         -- BEGIN_DEFAULT_OPTS
         auto_reload_on_write = true,
         disable_netrw = true,
+        -- disable_netrw = false,
         hijack_cursor = true,
         hijack_netrw = true,
+        -- hijack_netrw = false,
         hijack_unnamed_buffer_when_opening = true,
         sort_by = "name",
         sync_root_with_cwd = true,
