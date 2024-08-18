@@ -175,11 +175,13 @@ return {
   {
     cmd = { "TSPlaygroundToggle" },
     "nvim-treesitter/playground",
+    after = "nvim-treesitter",
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    affects = "nvim-treesitter",
     -- event = "VeryLazy",
     config = function()
       require("treesitter-context").setup({
@@ -266,7 +268,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     -- event = "VeryLazy",
-    after = "nvim-treesitter",
+    after = "nvim-treesitter/nvim-treesitter",
     -- dependencies = "nvim-treesitter/nvim-treesitter",
   },
 }

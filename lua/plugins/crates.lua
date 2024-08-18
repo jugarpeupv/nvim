@@ -7,8 +7,8 @@ return {
         completion = {
           cmp = {
             enabled = true,
-            max_results = 5,
-            min_chars = 2 -- The minimum number of charaters to type before completions begin appearing
+            -- max_results = 5,
+            -- min_chars = 2 -- The minimum number of charaters to type before completions begin appearing
           },
         },
         lsp = {

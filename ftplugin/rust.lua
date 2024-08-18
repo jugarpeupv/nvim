@@ -8,3 +8,11 @@
 --   end,
 --   { silent = true, buffer = bufnr }
 -- )
+
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "rs",
+--   callback = function()
+--     vim.cmd([[set commentstring=//\ %s]])
+--   end,
+-- })

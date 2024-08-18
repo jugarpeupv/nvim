@@ -4,14 +4,15 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("ts_context_commentstring").setup({
-        enable_autocmd = false,
-      })
-    end,
+    after = { "nvim-treesitter/nvim-treesitter", "nvim-treesitter" },
+    opts = { enable = true, enable_autocmd = false, config = { http = "# %s" } },
+    -- config = function()
+    --   require("ts_context_commentstring").setup({
+    --     enable_autocmd = true,
+    --   })
+    -- end,
   },
 }
-
 
 -- return {
 --   {
