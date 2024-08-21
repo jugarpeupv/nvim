@@ -366,9 +366,6 @@ vim.keymap.set("n", "<leader>cl", function()
   require("telescope").extensions.neoclip.default()
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>bb", vim.cmd.BufTermEnter)
-vim.keymap.set("n", "<leader>bn", vim.cmd.BufTermNext)
-
 vim.keymap.set("n", "<leader>ti", function()
   local image = require("image")
   if image.is_enabled() then
@@ -382,7 +379,7 @@ end, opts)
 vim.keymap.set({ "n" }, "<leader><leader>", [["0yy]]) -- copy to 0 register
 vim.keymap.set({ "x" }, "<leader><leader>", [["0y]]) -- copy to 0 register
 
-vim.keymap.set({ "n" }, "<leader>bm", ":Bufferize messages<cmd>" , { silent = true }) -- paste from 0 register
+vim.keymap.set({ "n" }, "<leader>bm", ":Bufferize messages<cr>" , { silent = true }) -- paste from 0 register
 
 local function show_documentation()
   local filetype = vim.bo.filetype

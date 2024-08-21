@@ -125,6 +125,11 @@ return {
             color = "#F9E2AF",
             name = "mjs1",
           },
+          pdf = {
+            icon = "",
+            name = "pdf1",
+            color = "#F38BA8",
+          },
           txt = {
             icon = "󰈚",
             name = "txtname",
@@ -185,6 +190,7 @@ return {
 
           ["tmux.conf"] = { icon = "", color = "#9CDCFE", name = "tmuxconf1" },
           ["docker-compose.yml"] = { icon = "󰡨", color = "#9CDCFE", name = "DockerComposeYml" },
+          ["docker-compose.yaml"] = { icon = "󰡨", color = "#9CDCFE", name = "DockerComposeYml2" },
           [".dockerignore"] = { icon = "", color = "#9CDCFE", name = "DockerfileIgnore" },
           ["Dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile2" },
           ["dockerfile"] = { icon = "", color = "#9CDCFE", name = "Dockerfile5" },

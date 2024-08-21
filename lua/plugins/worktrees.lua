@@ -1,8 +1,8 @@
 -- return {}
 return {
   -- "ThePrimeagen/git-worktree.nvim",
-  -- 'polarmutex/git-worktree.nvim',
-  "nooproblem/git-worktree.nvim",
+  "polarmutex/git-worktree.nvim",
+  -- "nooproblem/git-worktree.nvim",
   version = "^2",
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = { "<leader>wt", "<leader>wc" },
@@ -18,7 +18,7 @@ return {
     vim.keymap.set(
       { "n" },
       "<leader>wt",
-      ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",
+      ":lua require('telescope').extensions.git_worktree.git_worktree()<cr>",
       { noremap = true, silent = true, expr = false }
     )
     vim.keymap.set(
@@ -28,58 +28,63 @@ return {
       { noremap = true, silent = true, expr = false }
     )
 
-    -- local Worktree = require("git-worktree")
+    local Hooks = require("git-worktree.hooks")
 
-    -- -- op = Operations.Switch, Operations.Create, Operations.Delete
-    -- -- metadata = table of useful values (structure dependent on op)
-    -- --      Switch
-    -- --          path = path you switched to
-    -- --          prev_path = previous worktree path
-    -- --      Create
-    -- --          path = path where worktree created
-    -- --          branch = branch name
-    -- --          upstream = upstream remote name
-    -- --      Delete
-    -- --          path = path where worktree deleted
+    local api_nvimtree = require("nvim-tree.api")
 
-    -- Worktree.on_tree_change(function(op, metadata)
-    --   if op == Worktree.Operations.Switch then
-    --     print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
-    --   end
-    -- end)
+    Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
+      local prev_node_modules_path = prev_path .. "/node_modules"
+      local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
 
-    -- local Worktree = require("git-worktree")
+      if prev_node_modules_exists then
+        os.rename(prev_node_modules_path, path .. "/node_modules")
+        api_nvimtree.tree.reload()
+      end
+    end)
 
-    -- Then I have the files that are ignored by git in a folder in my bare repo root (makes more sense to me, I will have different environment variables for different repos).
-    -- And then the /{,.} makes the copy all + copy all hidden just one command.
+    Hooks.register(Hooks.type.CREATE, function(path, branch)
 
-    -- Worktree.on_tree_change(function(op, metadata)
-    --   local Path = require("plenary.path")
-    --   if op == Worktree.Operations.Create then
-    --     -- If we're dealing with create, the path is relative to the worktree and not absolute
-    --     -- so we need to convert it to an absolute path.
-    --     local path = metadata.path
-    --     if not Path:new(path):is_absolute() then
-    --       path = Path:new():absolute()
-    --       if path:sub(- #"/") == "/" then
-    --         path = string.sub(path, 1, string.len(path) - 1)
-    --       end
-    --     end
-        
-    --     -- local branch = branchname(metadata.path)
-    --     local worktree_path = path .. "/" .. metadata.path .. "/"
-    --     print("worktree path: " .. worktree_path)
-    --     local gitignored_path = path .. "/node_modules"
-    --     print("git ignored path: " .. gitignored_path)
+      local relative_path = path;
+      print("[Create]: relative path: " .. relative_path)
+      print("[Create]: branch: " .. branch)
 
-    --     -- worktree path: /Users/jgarcia/tmp/poc/mar2-front-pruebas/main/pruebas/
-    --     --   git ignored path: /Users/jgarcia/tmp/poc/mar2-front-pruebas/main/node_modules
-    --     --   link gitignored: ln -s /Users/jgarcia/tmp/poc/mar2-front-pruebas/main/node_modules/{*,.*} /Users/jgarcia/tmp/poc/mar2-front-pruebas/main/pruebas/
+      local Path = require("plenary.path")
 
-    --     local link_gitignored = "ln -s " .. gitignored_path .. "/{*,.*} " .. worktree_path
-    --     print("link gitignored: " .. link_gitignored)
-    --     os.execute(link_gitignored)
-    --   end
-    -- end)
+      local original_path = ''
+      if not Path:new(path):is_absolute() then
+        original_path = Path:new():absolute()
+        if original_path:sub(- #"/") == "/" then
+          original_path = string.sub(original_path, 1, string.len(original_path) - 1)
+        end
+      end
+
+
+      print("[Create]: original path: " .. original_path)
+      local prev_node_modules_path = original_path .. "/node_modules"
+
+      print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
+
+      local worktree_path = original_path .. "/" .. relative_path
+
+      print("[Create]: worktree path: " .. worktree_path)
+      local destination_path = worktree_path .. "/node_modules"
+      print("[Create]: destination path: " .. destination_path)
+
+      local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
+      if prev_node_modules_exists then
+        os.rename(prev_node_modules_path, destination_path)
+        api_nvimtree.tree.reload()
+      end
+
+
+
+      -- local prev_node_modules_path = prev_path .. "/node_modules"
+      -- local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
+      --
+      -- if prev_node_modules_exists then
+      --   os.rename(prev_node_modules_path, path .. "/node_modules")
+      -- end
+    end)
+
   end,
 }

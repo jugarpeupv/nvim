@@ -381,7 +381,8 @@ return {
             return nil
           end
           -- return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
-          return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename)
+          local root_dir = require("lspconfig.server_configurations.eslint").default_config.root_dir(filename)
+          return root_dir
         end,
         -- root_dir = function(filename)
         --   if string.find(filename, "node_modules/") then
@@ -463,7 +464,7 @@ return {
               enable = false,
               url = "",
             },
-            -- schemas = require("schemastore").yaml.schemas(),
+            schemas = require("schemastore").yaml.schemas(),
           },
           -- yaml = {
           --   schemas = {

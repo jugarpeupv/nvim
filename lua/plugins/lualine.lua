@@ -114,19 +114,21 @@ return {
       color = { bg = colors.black },
     }
 
+    local lualine_component = require("lualine.components.branch.git_branch")
+
     local branch = {
       "branch",
-      -- color = { fg = colors.cyan }
-    }
+      color = function(section)
+        local active_bufnr = vim.fn.bufnr("%")
+        local branch = lualine_component.get_branch(active_bufnr)
+        local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
-    -- local function branch_custom()
-    --   local res, match = vim.fn.FugitiveGitDir():gsub(".*worktrees/", "")
-    --   if match == 1 then
-    --     return res
-    --   else
-    --     return ""
-    --   end
-    -- end
+        if dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" then
+          return { fg = "#F38BA8" }
+        end
+        return { fg = colors.alternate_black }
+      end,
+    }
 
     local diff = {
       "diff",

@@ -2,7 +2,7 @@
 -- vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.maplocalleader = " "
-vim.loader.enable()
+-- vim.loader.enable()
 
 -- Example for configuring Neovim to load user-installed installed Lua rocks:
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
@@ -39,36 +39,46 @@ require('lazy').setup('plugins', {
   performance = {
     rtp = {
       disabled_plugins = {
-        -- "2html_plugin",
-        -- "tohtml",
-        -- "getscript",
-        -- "getscriptPlugin",
-        -- "gzip",
-        -- "logipat",
-        -- "netrw",
-        -- "netrwPlugin",
-        -- "netrwSettings",
-        -- "netrwFileHandlers",
-        -- "matchit",
-        -- "tar",
-        -- "tarPlugin",
-        -- "rrhelper",
-        -- "spellfile_plugin",
-        -- "vimball",
-        -- "vimballPlugin",
-        -- "zip",
-        -- "zipPlugin",
-        -- "tutor",
-        -- "rplugin",
-        -- "syntax",
-        -- "synmenu",
-        -- "optwin",
-        -- "compiler",
-        -- "bugreport",
-        -- "ftplugin",
+        "2html_plugin",
+        "tohtml",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "matchit",
+        "tar",
+        "tarPlugin",
+        "rrhelper",
+        "spellfile_plugin",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "tutor",
+        "rplugin",
+        "syntax",
+        "synmenu",
+        "optwin",
+        "compiler",
+        "bugreport",
+        "ftplugin",
       },
     },
   },
 })
 require("jg.core.autocommands")
 require("jg.core.keymaps")
+vim.g.git_worktree_log_level = 1
+
+vim.g.git_worktree = {
+  change_directory_command = 'cd',
+  update_on_change = true,
+  update_on_change_command = 'e .',
+  clearjumps_on_change = true,
+  confirm_telescope_deletions = true,
+  autopush = false,
+}

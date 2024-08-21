@@ -40,6 +40,7 @@ return {
           "lua_ls",
           "angularls",
           "cssmodules_ls",
+          "eslint"
         },
         -- auto-install configured servers (with lspconfig)
         automatic_installation = true, -- not the same as ensure_installed
