@@ -1,9 +1,21 @@
 -- return {}
 return {
+  -- {
+  --   "tzachar/local-highlight.nvim",
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   config = function()
+  --     require("local-highlight").setup({
+  --       file_types = { 'rs', 'rust', 'python', 'typescript', 'javascript' },
+  --       hlgroup = "Search",
+  --       -- cw_hlgroup = "Error",
+  --     })
+  --   end,
+  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    dependencies = { 'nvim-treesitter/nvim-treesitter-refactor' },
     build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
@@ -16,6 +28,14 @@ return {
 
       -- configure treesitter
       treesitter.setup({
+        refactor = {
+          highlight_definitions = {
+            enable = true,
+            -- Set to false if you have an `updatetime` of ~100.
+            clear_on_cursor_move = true,
+          },
+        },
+
         -- enable syntax highlighting
         -- refactor = {
         -- 	navigation = { enable = false },
@@ -125,7 +145,7 @@ return {
         },
         matchup = {
           enable = true,
-          disable_virtual_text = false
+          disable_virtual_text = false,
         },
         textobjects = {
           select = {

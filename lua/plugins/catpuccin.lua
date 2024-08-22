@@ -179,8 +179,8 @@ return {
             NvimTreeGitStagedIcon = { fg = "#8ee2cf" },
             -- MatchupVirtualText = { fg = "#6C7086" }
             MatchupVirtualText = { fg = "#747ebd" },
-            GitSignsCurrentLineBlame =  { fg= "black" },
-            FloatBorder = { fg = "#394b70" }
+            GitSignsCurrentLineBlame = { fg = "black" },
+            FloatBorder = { fg = "#394b70" },
             -- LineNR = { guifg = "#3b4261" },
           }
         end,
@@ -452,6 +452,23 @@ return {
       --   },
       -- }
       --
+
+      vim.g.terminal_color_0 = "#a3a7bc"
+      vim.g.terminal_color_1 = "#F38BA8"
+      vim.g.terminal_color_2 = "#94E2D5"
+      vim.g.terminal_color_3 = "#F9E2AF"
+      vim.g.terminal_color_4 = "#B4BEFE"
+      vim.g.terminal_color_5 = "#CA9EE6"
+      vim.g.terminal_color_6 = "#89DCEB"
+      vim.g.terminal_color_7 = "#a3a7bc"
+      vim.g.terminal_color_8 = "#a3a7bc"
+      vim.g.terminal_color_9 = "#F38BA8"
+      vim.g.terminal_color_10 = "#94E2D5"
+      vim.g.terminal_color_11 = "#F9E2AF"
+      vim.g.terminal_color_12 = "#89DCEB"
+      vim.g.terminal_color_13 = "#F2CDCD"
+      vim.g.terminal_color_14 = "#89DCEB"
+      vim.g.terminal_color_15 = "#a3a7bc"
 
       vim.cmd([[
 let g:fzf_colors =

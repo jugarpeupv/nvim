@@ -2,6 +2,7 @@
 return {
   -- { "jayp0521/mason-null-ls.nvim", event = "VeryLazy" },
   -- { "williamboman/mason-lspconfig.nvim", event = "VeryLazy" },
+  -- { "zapling/mason-conform.nvim", after = "stevearc/conform.nvim" },
   { "jayp0521/mason-null-ls.nvim",       cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" } },
   { "williamboman/mason-lspconfig.nvim", cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" } },
   {

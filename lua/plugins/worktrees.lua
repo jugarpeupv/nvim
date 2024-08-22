@@ -3,7 +3,8 @@ return {
   -- "ThePrimeagen/git-worktree.nvim",
   "polarmutex/git-worktree.nvim",
   -- "nooproblem/git-worktree.nvim",
-  version = "^2",
+  -- version = "^2",
+  branch = "main",
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = { "<leader>wt", "<leader>wc" },
   config = function()
@@ -36,7 +37,7 @@ return {
       local prev_node_modules_path = prev_path .. "/node_modules"
       local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
 
-      if prev_node_modules_exists then
+      if prev_node_modules_exists ~= 0 then
         os.rename(prev_node_modules_path, path .. "/node_modules")
         api_nvimtree.tree.reload()
       end
@@ -45,8 +46,8 @@ return {
     Hooks.register(Hooks.type.CREATE, function(path, branch)
 
       local relative_path = path;
-      print("[Create]: relative path: " .. relative_path)
-      print("[Create]: branch: " .. branch)
+      -- print("[Create]: relative path: " .. relative_path)
+      -- print("[Create]: branch: " .. branch)
 
       local Path = require("plenary.path")
 
@@ -59,19 +60,19 @@ return {
       end
 
 
-      print("[Create]: original path: " .. original_path)
+      -- print("[Create]: original path: " .. original_path)
       local prev_node_modules_path = original_path .. "/node_modules"
 
-      print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
+      -- print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
 
       local worktree_path = original_path .. "/" .. relative_path
 
-      print("[Create]: worktree path: " .. worktree_path)
+      -- print("[Create]: worktree path: " .. worktree_path)
       local destination_path = worktree_path .. "/node_modules"
-      print("[Create]: destination path: " .. destination_path)
+      -- print("[Create]: destination path: " .. destination_path)
 
       local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
-      if prev_node_modules_exists then
+      if prev_node_modules_exists ~= 0 then
         os.rename(prev_node_modules_path, destination_path)
         api_nvimtree.tree.reload()
       end

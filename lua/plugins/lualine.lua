@@ -55,6 +55,15 @@ return {
 
     local dirnameFormatFn = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      local cwd = vim.fn.getcwd()
+      local parent_bare_lualine_path = cwd .. "/../.bare"
+      local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
+      local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+
+      if exists_bare_dir ~= 0 then
+        return "  " .. parent_dir .. " "
+      end
+
       return "  " .. dir_name .. " "
     end
 
@@ -119,11 +128,15 @@ return {
     local branch = {
       "branch",
       color = function(section)
+        local cwd = vim.fn.getcwd()
+        local parent_bare_lualine_path = cwd .. "/../.bare"
+        local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
+
         local active_bufnr = vim.fn.bufnr("%")
         local branch = lualine_component.get_branch(active_bufnr)
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
-        if dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" then
+        if dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" and exists_bare_dir == 1 then
           return { fg = "#F38BA8" }
         end
         return { fg = colors.alternate_black }

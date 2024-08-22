@@ -62,6 +62,19 @@ return {
       local harpoon = require("harpoon")
 
       harpoon.setup({
+        settings = {
+          save_on_toggle = false,
+          sync_on_ui_close = false,
+          key = function()
+            local parent_path = vim.loop.cwd() .. "/../"
+            local exists_bare_dir = vim.fn.isdirectory(parent_path .. ".bare")
+            local parent_dir = vim.fn.fnamemodify(vim.fn.getcwd() .. "/..", ":p")
+            if exists_bare_dir ~= 0 then
+              return parent_dir
+            end
+            return vim.loop.cwd()
+          end,
+        },
         menu = {
           width = vim.api.nvim_win_get_width(0) - 48,
         },
