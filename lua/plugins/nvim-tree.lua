@@ -2,9 +2,28 @@
 return {
   {
     "antosha417/nvim-lsp-file-operations",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
     config = function()
       require("lsp-file-operations").setup()
+      local lspconfig = require 'lspconfig'
+
+      -- Set global defaults for all servers
+      lspconfig.util.default_config = vim.tbl_extend(
+        'force',
+        lspconfig.util.default_config,
+        {
+          capabilities = vim.tbl_deep_extend(
+            "force",
+            vim.lsp.protocol.make_client_capabilities(),
+            -- returns configured operations if setup() was already called
+            -- or default operations if not
+            require('lsp-file-operations').default_capabilities()
+          )
+        }
+      )
     end,
   },
   {
@@ -207,7 +226,7 @@ return {
       end
 
       local HEIGHT_RATIO = 0.8 -- You can change this
-      local WIDTH_RATIO = 0.5 -- You can change this too
+      local WIDTH_RATIO = 0.5  -- You can change this too
 
       -- setup with all defaults
       nvim_tree.setup({

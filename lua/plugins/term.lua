@@ -21,10 +21,10 @@ return {
     opts = {
       -- border = "none",
       dimensions = {
-        height = 0.4, -- Height of the terminal window
-        width = 0.95, -- Width of the terminal window
+        height = 0.35, -- Height of the terminal window
+        width = 0.98, -- Width of the terminal window
         x = 0.3,  -- X axis of the terminal window
-        y = 0.9,  -- Y axis of the terminal window
+        y = 1,  -- Y axis of the terminal window
       },
     },
   },
