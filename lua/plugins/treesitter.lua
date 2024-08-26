@@ -15,7 +15,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-    dependencies = { 'nvim-treesitter/nvim-treesitter-refactor' },
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter-refactor' },
     build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
@@ -28,13 +28,13 @@ return {
 
       -- configure treesitter
       treesitter.setup({
-        refactor = {
-          highlight_definitions = {
-            enable = true,
-            -- Set to false if you have an `updatetime` of ~100.
-            clear_on_cursor_move = true,
-          },
-        },
+        -- refactor = {
+        --   highlight_definitions = {
+        --     enable = true,
+        --     -- Set to false if you have an `updatetime` of ~100.
+        --     clear_on_cursor_move = true,
+        --   },
+        -- },
 
         -- enable syntax highlighting
         -- refactor = {

@@ -121,4 +121,4 @@ vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldmethod = "expr"
 -- vim.o.foldmethod = "indent"
 
-opt.updatetime = 200
+-- opt.updatetime = 200

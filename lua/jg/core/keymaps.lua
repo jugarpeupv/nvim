@@ -317,8 +317,8 @@ vim.keymap.set("n", "<leader>ls", "<CMD>Lab code stop<CR>")
 
 
 -- Ctrlsf.nvim
-vim.keymap.set("n", "<leader>sf", "<Plug>CtrlSFCwordPath")
-vim.keymap.set("n", "<leader>so", "<CMD>CtrlSFToggle<CR>")
+vim.keymap.set("n", "<leader>Sf", "<Plug>CtrlSFCwordPath")
+vim.keymap.set("n", "<leader>So", "<CMD>CtrlSFToggle<CR>")
 
 vim.cmd([[nmap <Leader>tn :tabnew %<CR>]])
 vim.cmd([[nmap <Leader>tc :tabclose<CR>]])
@@ -395,3 +395,7 @@ local function show_documentation()
 end
 
 vim.keymap.set("n", "K", show_documentation, { silent = true })
+
+vim.keymap.set("n", "<space>fb", function()
+  require("telescope").extensions.file_browser.file_browser()
+end)

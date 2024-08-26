@@ -27,7 +27,7 @@ return {
         end,
       },
     },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+    -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     "neovim/nvim-lspconfig",
     config = function()
       -- import lspconfig plugin safely
@@ -51,6 +51,41 @@ return {
       -- end
 
       local root_pattern = require("lspconfig.util").root_pattern
+
+      local signs_diag = {
+        { name = "DiagnosticSignError", text = "" },
+        { name = "DiagnosticSignWarn", text = "" },
+        -- { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignHint", text = "󰠠" },
+        -- { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignInfo", text = "" },
+      }
+
+      local config = {
+        virtual_text = false,
+        virtual_lines = false,
+        -- virtual_text = { spacing = 4, prefix = "●" },
+        -- virtual_text = { spacing = 4, prefix = "" },
+        -- virtual_text = { spacing = 4, prefix = " " },
+
+        signs = {
+          active = signs_diag,
+        },
+        update_in_insert = true,
+        -- update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+        float = {
+          focusable = true,
+          -- style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      }
+
+      vim.diagnostic.config(config)
 
       local calculate_angularls_root_dir = function()
         local function read_file(file_path)
@@ -109,41 +144,6 @@ return {
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
-
-      local signs_diag = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        -- { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignHint", text = "󰠠" },
-        -- { name = "DiagnosticSignInfo", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
-      }
-
-      local config = {
-        virtual_text = false,
-        -- virtual_text = { spacing = 4, prefix = "●" },
-        -- virtual_text = { spacing = 4, prefix = "" },
-        -- virtual_text = { spacing = 4, prefix = " " },
-
-        signs = {
-          active = signs_diag,
-        },
-        update_in_insert = true,
-        -- update_in_insert = false,
-        underline = true,
-        severity_sort = true,
-        float = {
-          focusable = true,
-          -- style = "minimal",
-          border = "rounded",
-          source = "always",
-          header = "",
-          prefix = "",
-        },
-      }
-
-      vim.diagnostic.config(config)
-
 
       -- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=#394b70]])
       local border = {
@@ -596,7 +596,6 @@ return {
         on_attach = on_attach,
       })
 
-
       require("lspconfig").lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
@@ -635,6 +634,17 @@ return {
           end
           return true
         end,
+      })
+
+      -- Set global defaults for all servers
+      lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+        capabilities = vim.tbl_deep_extend(
+          "force",
+          vim.lsp.protocol.make_client_capabilities(),
+          -- returns configured operations if setup() was already called
+          -- or default operations if not
+          require("lsp-file-operations").default_capabilities()
+        ),
       })
     end,
   },

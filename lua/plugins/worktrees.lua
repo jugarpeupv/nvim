@@ -6,7 +6,20 @@ return {
   -- version = "^2",
   branch = "main",
   dependencies = { "nvim-lua/plenary.nvim" },
-  keys = { "<leader>wt", "<leader>wc" },
+  keys = {
+    {
+      "<leader>wt",
+      mode = { "n" },
+      ":lua require('telescope').extensions.git_worktree.git_worktree()<cr>",
+      { noremap = true, silent = true, expr = false }
+    },
+    {
+      "<leader>wt",
+      mode = { "n" },
+      ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
+      { noremap = true, silent = true, expr = false },
+    },
+  },
   config = function()
     -- require("git-worktree").setup({
     --   -- change_directory_command = "cd", -- default: "cd",
@@ -29,63 +42,64 @@ return {
       { noremap = true, silent = true, expr = false }
     )
 
-    local Hooks = require("git-worktree.hooks")
+    local cwd = vim.fn.getcwd()
+    local parent_bare_lualine_path = cwd .. "/../.bare"
+    local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
 
-    local api_nvimtree = require("nvim-tree.api")
+    if exists_bare_dir ~= 0 then
+      local Hooks = require("git-worktree.hooks")
 
-    Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
-      local prev_node_modules_path = prev_path .. "/node_modules"
-      local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
+      local api_nvimtree = require("nvim-tree.api")
 
-      if prev_node_modules_exists ~= 0 then
-        os.rename(prev_node_modules_path, path .. "/node_modules")
-        api_nvimtree.tree.reload()
-      end
-    end)
+      Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
+        local prev_node_modules_path = prev_path .. "/node_modules"
+        local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
 
-    Hooks.register(Hooks.type.CREATE, function(path, branch)
-
-      local relative_path = path;
-      -- print("[Create]: relative path: " .. relative_path)
-      -- print("[Create]: branch: " .. branch)
-
-      local Path = require("plenary.path")
-
-      local original_path = ''
-      if not Path:new(path):is_absolute() then
-        original_path = Path:new():absolute()
-        if original_path:sub(- #"/") == "/" then
-          original_path = string.sub(original_path, 1, string.len(original_path) - 1)
+        if prev_node_modules_exists ~= 0 then
+          os.rename(prev_node_modules_path, path .. "/node_modules")
+          api_nvimtree.tree.reload()
         end
-      end
+      end)
 
+      Hooks.register(Hooks.type.CREATE, function(path, branch)
+        local relative_path = path
+        -- print("[Create]: relative path: " .. relative_path)
+        -- print("[Create]: branch: " .. branch)
 
-      -- print("[Create]: original path: " .. original_path)
-      local prev_node_modules_path = original_path .. "/node_modules"
+        local Path = require("plenary.path")
 
-      -- print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
+        local original_path = ""
+        if not Path:new(path):is_absolute() then
+          original_path = Path:new():absolute()
+          if original_path:sub(- #"/") == "/" then
+            original_path = string.sub(original_path, 1, string.len(original_path) - 1)
+          end
+        end
 
-      local worktree_path = original_path .. "/" .. relative_path
+        -- print("[Create]: original path: " .. original_path)
+        local prev_node_modules_path = original_path .. "/node_modules"
 
-      -- print("[Create]: worktree path: " .. worktree_path)
-      local destination_path = worktree_path .. "/node_modules"
-      -- print("[Create]: destination path: " .. destination_path)
+        -- print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
 
-      local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
-      if prev_node_modules_exists ~= 0 then
-        os.rename(prev_node_modules_path, destination_path)
-        api_nvimtree.tree.reload()
-      end
+        local worktree_path = original_path .. "/" .. relative_path
 
+        -- print("[Create]: worktree path: " .. worktree_path)
+        local destination_path = worktree_path .. "/node_modules"
+        -- print("[Create]: destination path: " .. destination_path)
 
+        local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
+        if prev_node_modules_exists ~= 0 then
+          os.rename(prev_node_modules_path, destination_path)
+          api_nvimtree.tree.reload()
+        end
 
-      -- local prev_node_modules_path = prev_path .. "/node_modules"
-      -- local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
-      --
-      -- if prev_node_modules_exists then
-      --   os.rename(prev_node_modules_path, path .. "/node_modules")
-      -- end
-    end)
-
+        -- local prev_node_modules_path = prev_path .. "/node_modules"
+        -- local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
+        --
+        -- if prev_node_modules_exists then
+        --   os.rename(prev_node_modules_path, path .. "/node_modules")
+        -- end
+      end)
+    end
   end,
 }
