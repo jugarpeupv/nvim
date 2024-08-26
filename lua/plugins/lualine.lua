@@ -57,11 +57,11 @@ return {
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       -- local parent_bare_lualine_path = cwd .. "/../.bare"
       local cwd = vim.fn.getcwd()
-      local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+      local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p:h")
 
       local is_bare_result = vim.system({ "git", "rev-parse", "--is-bare-repository" }, { cwd = parent_dir }, function() end):wait()
       local is_bare = false
-      if is_bare_result.stdout == "true\n" then
+      if is_bare_result.stdout == "true\n" or string.find(is_bare_result.stdout, "true") then
         is_bare = true
       end
 
@@ -137,12 +137,10 @@ return {
       color = function(section)
         local cwd = vim.fn.getcwd()
         -- local parent_bare_lualine_path = cwd .. "/../.bare"
-
-        local cwd = vim.fn.getcwd()
-        local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+        local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p:h")
         local is_bare_result = vim.system({ "git", "rev-parse", "--is-bare-repository" }, { cwd = parent_dir }, function() end):wait()
         local is_bare = false
-        if is_bare_result.stdout == "true\n" then
+        if is_bare_result.stdout == "true\n" or string.find(is_bare_result.stdout, "true") then
           is_bare = true
         end
 
@@ -152,7 +150,7 @@ return {
         local branch = lualine_component.get_branch(active_bufnr)
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
-        if dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" and is_bare then
+        if string.len(branch) >= 1 and dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" and is_bare then
           return { fg = "#F38BA8" }
         end
         return { fg = colors.alternate_black }
