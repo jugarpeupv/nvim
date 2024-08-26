@@ -17,6 +17,11 @@ vim.keymap.set({ "t" }, "<S-D-Down>", "<C-\\><C-n><CMD>resize -3<CR>", opts)
 vim.keymap.set({ "t" }, "<S-D-Left>", "<C-\\><C-n><CMD>vertical resize -5<CR>", opts)
 vim.keymap.set({ "t" }, "<S-D-Right>", "<C-\\><C-n><CMD>vertical resize +5<CR>", opts)
 
+vim.keymap.set({ "n" }, "<Tab>", ":tabnext<cr>", opts)
+vim.keymap.set({ "n" }, "<S-Tab>", ":tabprev<cr>", opts)
+vim.keymap.set({ "t" }, "<Tab>", "<C-\\><C-n><CMD>tabnext<cr>", opts)
+vim.keymap.set({ "t" }, "<S-Tab>", "<C-\\><C-n><CMD>tabprev<cr>", opts)
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -54,6 +59,14 @@ keymap(
   "<cmd> lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
   opts
 )
+
+keymap(
+  "t",
+  "<Leader>.",
+  "<C-\\><C-n><CMD>lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
+  opts
+)
+
 keymap("n", "<Leader>ce", "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
 keymap("n", "<Leader>po", "<cmd>PeekOpen<cr>", opts)
 keymap("n", "<Leader>pc", "<cmd>PeekClose<cr>", opts)
@@ -137,7 +150,8 @@ end)
 keymap(
   "n",
   "<Leader>ss",
-  "<cmd>lua require('telescope.builtin').live_grep({ search_dirs={'%:p'}, vimgrep_arguments='rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings'})<cr>",
+  -- "<cmd>lua require('telescope.builtin').live_grep({ search_dirs={'%:p'}, vimgrep_arguments='rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings'})<cr>",
+  "<cmd>Telescope live_grep search_dirs={'%:p'} vimgrep_arguments=rg,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--fixed-strings<cr>",
   opts
 )
 
@@ -200,7 +214,6 @@ keymap("n", "<leader>cw", ":e ++ff=dos<CR> | :set ff=unix<CR>", opts)
 
 -- Vifm
 keymap("n", "<leader>vi", "<cmd>Vifm .<cr>", opts)
-
 
 -- DAP
 -- vim.keymap.set('n', '<leader>ee', function() require "dap".toggle_breakpoint() end)
@@ -279,11 +292,10 @@ vim.keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle<cr>", { silent = 
 vim.keymap.set("n", "<leader>md", "<CMD>PeekOpen<CR>")
 vim.keymap.set("n", "<leader>mc", "<CMD>PeekClose<CR>")
 
-
 vim.cmd([[tnoremap <C-n> <C-\><C-n>]])
 
 vim.keymap.set("n", "<leader>th", "<cmd>sp|term<cr>i", { silent = true, noremap = true })
-
+vim.keymap.set("n", "<leader>tn", "<cmd>tab term<cr>i", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>tv", "<cmd>vsp|term<cr>i", { silent = true, noremap = true })
 
 vim.cmd([[:tnoremap <C-Up> <C-\><C-N>:resize +5<cr>]])
@@ -291,7 +303,7 @@ vim.cmd([[:tnoremap <C-Down> <C-\><C-N>:resize -5<cr>]])
 vim.cmd([[:tnoremap <C-Left> <C-\><C-N>:vertical resize -5<cr>]])
 vim.cmd([[:tnoremap <C-Right> <C-\><C-N>:vertical resize +5<cr>]])
 
-vim.cmd[[:tnoremap <C-o> <C-\><C-N><C-o>]]
+vim.cmd([[:tnoremap <C-o> <C-\><C-N><C-o>]])
 
 vim.keymap.set("n", "cc", "<Plug>(git-conflict-ours)")
 vim.keymap.set("n", "ci", "<Plug>(git-conflict-theirs)")
@@ -315,12 +327,11 @@ end)
 vim.keymap.set("n", "<leader>la", "<CMD>Lab code run<CR>")
 vim.keymap.set("n", "<leader>ls", "<CMD>Lab code stop<CR>")
 
-
 -- Ctrlsf.nvim
 vim.keymap.set("n", "<leader>Sf", "<Plug>CtrlSFCwordPath")
 vim.keymap.set("n", "<leader>So", "<CMD>CtrlSFToggle<CR>")
 
-vim.cmd([[nmap <Leader>tn :tabnew %<CR>]])
+vim.cmd([[nmap <Leader>tN :tabnew %<CR>]])
 vim.cmd([[nmap <Leader>tc :tabclose<CR>]])
 
 vim.keymap.set("n", "<leader>ta", require("jg.custom.telescope").curr_buf, {})
@@ -376,10 +387,10 @@ vim.keymap.set("n", "<leader>ti", function()
 end, opts)
 
 -- using 0 register
-vim.keymap.set({ "n" }, "<leader><leader>", [["0yy]]) -- copy to 0 register
-vim.keymap.set({ "x" }, "<leader><leader>", [["0y]]) -- copy to 0 register
+vim.keymap.set({ "n" }, "<leader><leader>", [["0yy]])                               -- copy to 0 register
+vim.keymap.set({ "x" }, "<leader><leader>", [["0y]])                                -- copy to 0 register
 
-vim.keymap.set({ "n" }, "<leader>bm", ":Bufferize messages<cr>" , { silent = true }) -- paste from 0 register
+vim.keymap.set({ "n" }, "<leader>bm", ":Bufferize messages<cr>", { silent = true }) -- paste from 0 register
 
 local function show_documentation()
   local filetype = vim.bo.filetype

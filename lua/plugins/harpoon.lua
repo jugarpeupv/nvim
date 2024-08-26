@@ -66,10 +66,19 @@ return {
           save_on_toggle = false,
           sync_on_ui_close = false,
           key = function()
-            local parent_path = vim.loop.cwd() .. "/../"
-            local exists_bare_dir = vim.fn.isdirectory(parent_path .. ".bare")
-            local parent_dir = vim.fn.fnamemodify(vim.fn.getcwd() .. "/..", ":p")
-            if exists_bare_dir ~= 0 then
+            -- local parent_path = vim.loop.cwd() .. "/../"
+            -- local exists_bare_dir = vim.fn.isdirectory(parent_path .. ".bare")
+
+            local cwd = vim.fn.getcwd()
+            local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+
+            local is_bare_result = vim.system({ "git", "rev-parse", "--is-bare-repository" }, { cwd = parent_dir }, function() end):wait()
+            local is_bare = false
+            if is_bare_result.stdout == "true\n" then
+              is_bare = true
+            end
+
+            if is_bare then
               return parent_dir
             end
             return vim.loop.cwd()

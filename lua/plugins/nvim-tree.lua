@@ -132,7 +132,7 @@ return {
         vim.keymap.set("n", "<CR>", api_nvimtree.node.open.edit, opts("Open"))
         -- vim.keymap.set('n', '<CR>', toggle_replace, opts('Open: In Place'))
         -- vim.keymap.set('n', '<CR>', api.node.open.replace_tree_buffer, opts('Open: In Place'))
-        vim.keymap.set("n", "<Tab>", api_nvimtree.node.open.preview, opts("Open Preview"))
+        -- vim.keymap.set("n", "<Tab>", api_nvimtree.node.open.preview, opts("Open Preview"))
         vim.keymap.set("n", ">", api_nvimtree.node.navigate.sibling.next, opts("Next Sibling"))
         vim.keymap.set("n", "<", api_nvimtree.node.navigate.sibling.prev, opts("Previous Sibling"))
         vim.keymap.set("n", ".", api_nvimtree.node.run.cmd, opts("Run Command"))

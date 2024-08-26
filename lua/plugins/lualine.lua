@@ -55,12 +55,19 @@ return {
 
     local dirnameFormatFn = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      -- local parent_bare_lualine_path = cwd .. "/../.bare"
       local cwd = vim.fn.getcwd()
-      local parent_bare_lualine_path = cwd .. "/../.bare"
-      local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
       local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
 
-      if exists_bare_dir ~= 0 then
+      local is_bare_result = vim.system({ "git", "rev-parse", "--is-bare-repository" }, { cwd = parent_dir }, function() end):wait()
+      local is_bare = false
+      if is_bare_result.stdout == "true\n" then
+        is_bare = true
+      end
+
+      -- local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
+
+      if is_bare then
         return "  " .. parent_dir .. " "
       end
 
@@ -129,14 +136,23 @@ return {
       "branch",
       color = function(section)
         local cwd = vim.fn.getcwd()
-        local parent_bare_lualine_path = cwd .. "/../.bare"
-        local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
+        -- local parent_bare_lualine_path = cwd .. "/../.bare"
+
+        local cwd = vim.fn.getcwd()
+        local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+        local is_bare_result = vim.system({ "git", "rev-parse", "--is-bare-repository" }, { cwd = parent_dir }, function() end):wait()
+        local is_bare = false
+        if is_bare_result.stdout == "true\n" then
+          is_bare = true
+        end
+
+        -- local exists_bare_dir = vim.fn.isdirectory(parent_bare_lualine_path)
 
         local active_bufnr = vim.fn.bufnr("%")
         local branch = lualine_component.get_branch(active_bufnr)
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
-        if dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" and exists_bare_dir == 1 then
+        if dir_name ~= branch and vim.bo.filetype ~= "TelescopePrompt" and is_bare then
           return { fg = "#F38BA8" }
         end
         return { fg = colors.alternate_black }
