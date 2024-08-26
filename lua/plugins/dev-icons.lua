@@ -1,3 +1,4 @@
+-- return {}
 return {
   -- {
   --   "rachartier/tiny-devicons-auto-colors.nvim",

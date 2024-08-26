@@ -12,6 +12,26 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     -- cmd = { "LspInfo" },
     dependencies = {
+      {
+        "someone-stole-my-name/yaml-companion.nvim",
+        ft = { "yaml", "yml" },
+        dependencies = {
+          { "neovim/nvim-lspconfig" },
+          { "nvim-lua/plenary.nvim" },
+          { "nvim-telescope/telescope.nvim" },
+        },
+      },
+      {
+        "antosha417/nvim-lsp-file-operations",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvim-tree/nvim-tree.lua",
+        },
+        -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
+        config = function()
+          require("lsp-file-operations").setup()
+        end,
+      },
       { "hrsh7th/nvim-cmp" },
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
@@ -458,21 +478,21 @@ return {
       require("lspconfig").yamlls.setup({
         on_attach = on_attach,
         capabilities = capabilities,
-        settings = {
-          yaml = {
-            schemaStore = {
-              enable = false,
-              url = "",
-            },
-            schemas = require("schemastore").yaml.schemas(),
-          },
-          -- yaml = {
-          --   schemas = {
-          --     ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-          --   },
-          --   -- schemas = require('schemastore').yaml.schemas(),
-          -- },
-        },
+        -- settings = {
+        --   yaml = {
+        --     schemaStore = {
+        --       enable = false,
+        --       url = "",
+        --     },
+        --     schemas = require("schemastore").yaml.schemas(),
+        --   },
+        --   -- yaml = {
+        --   --   schemas = {
+        --   --     ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        --   --   },
+        --   --   -- schemas = require('schemastore').yaml.schemas(),
+        --   -- },
+        -- },
       })
 
       lspconfig["jsonls"].setup({

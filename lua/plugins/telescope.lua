@@ -3,11 +3,11 @@
 -- return { "griwes/telescope.nvim", branch = "group-by" }
 --
 return {
-  {
-    "nvim-telescope/telescope-file-browser.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    cmd = "Telescope",
-  },
+  -- {
+  --   "nvim-telescope/telescope-file-browser.nvim",
+  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  --   cmd = "Telescope",
+  -- },
   {
     "dhruvmanila/browser-bookmarks.nvim",
     version = "*",
@@ -39,38 +39,38 @@ return {
     tag = "0.1.8",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     -- cmd = "Telescope",
-    keys = {
-      {
-        "<leader>sf",
-        function()
-          local telescope = require("telescope")
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            cwd = telescope_buffer_dir(),
-            path = "%:p:h",
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-            layout_config = {
-              width = 0.90,
-              height = 0.90,
-              prompt_position = "top",
-            },
-          })
-        end,
-      },
-    },
-    -- event = "VeryLazy",
+    -- keys = {
+    --   {
+    --     "<leader>sf",
+    --     function()
+    --       local telescope = require("telescope")
+    --       local function telescope_buffer_dir()
+    --         return vim.fn.expand("%:p:h")
+    --       end
+    --
+    --       telescope.extensions.file_browser.file_browser({
+    --         cwd = telescope_buffer_dir(),
+    --         path = "%:p:h",
+    --         respect_gitignore = false,
+    --         hidden = true,
+    --         grouped = true,
+    --         previewer = false,
+    --         initial_mode = "insert",
+    --         layout_config = {
+    --           width = 0.90,
+    --           height = 0.90,
+    --           prompt_position = "top",
+    --         },
+    --       })
+    --     end,
+    --   },
+    -- },
+    event = "VeryLazy",
     config = function()
       local open_with_trouble = require("trouble.sources.telescope").open
       -- local egrep_actions = require("telescope._extensions.egrepify.actions")
 
-      local fb_actions = require "telescope".extensions.file_browser.actions
+      -- local fb_actions = require "telescope".extensions.file_browser.actions
 
       local status_ok, telescope = pcall(require, "telescope")
       if not status_ok then
@@ -257,34 +257,34 @@ return {
           },
         },
         extensions = {
-          file_browser = {
-            theme = "dropdown",
-            cwd_to_path = true,
-            -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
-            mappings = {
-              ["i"] = {
-                ["-"] = fb_actions.goto_parent_dir,
-              },
-              ["n"] = {
-                -- your custom normal mode mappings
-                ["-"] = fb_actions.goto_parent_dir,
-                ["<C-u>"] = function(prompt_bufnr)
-                  for i = 1, 10 do
-                    actions.move_selection_previous(prompt_bufnr)
-                  end
-                end,
-
-                ["<C-d>"] = function(prompt_bufnr)
-                  for i = 1, 10 do
-                    actions.move_selection_next(prompt_bufnr)
-                  end
-                end,
-                ["<PageUp>"] = actions.preview_scrolling_up,
-                ["<PageDown>"] = actions.preview_scrolling_down,
-              },
-            },
-          },
+          -- file_browser = {
+          --   theme = "dropdown",
+          --   cwd_to_path = true,
+          --   -- disables netrw and use telescope-file-browser in its place
+          --   hijack_netrw = true,
+          --   mappings = {
+          --     ["i"] = {
+          --       ["-"] = fb_actions.goto_parent_dir,
+          --     },
+          --     ["n"] = {
+          --       -- your custom normal mode mappings
+          --       ["-"] = fb_actions.goto_parent_dir,
+          --       ["<C-u>"] = function(prompt_bufnr)
+          --         for i = 1, 10 do
+          --           actions.move_selection_previous(prompt_bufnr)
+          --         end
+          --       end,
+          --
+          --       ["<C-d>"] = function(prompt_bufnr)
+          --         for i = 1, 10 do
+          --           actions.move_selection_next(prompt_bufnr)
+          --         end
+          --       end,
+          --       ["<PageUp>"] = actions.preview_scrolling_up,
+          --       ["<PageDown>"] = actions.preview_scrolling_down,
+          --     },
+          --   },
+          -- },
 
           -- Your extension configuration goes here:
           -- extension_name = {
@@ -482,7 +482,7 @@ return {
       telescope.load_extension("bookmarks")
       telescope.load_extension("git_worktree")
       telescope.load_extension("yaml_schema")
-      telescope.load_extension("file_browser")
+      -- telescope.load_extension("file_browser")
       -- telescope.load_extension('media_files')
       -- telescope.load_extension("egrepify")
       -- telescope.load_extension('node_modules')

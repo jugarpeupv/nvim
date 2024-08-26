@@ -152,7 +152,7 @@ return {
         },
         custom_highlights = function()
           return {
-            StatusLine = { fg = "#cdd6f5", bg = "#292e42" },
+            StatusLine = { fg = "#737aa2", bg = "#292e42" },
             MatchParen = { bg = "#394b70", fg = "none" },
             IlluminatedWordText = { bg = "#394b70" },
             IlluminatedWordRead = { bg = "#394b70" },
@@ -188,7 +188,9 @@ return {
 
       -- setup must be called before loading
       vim.cmd.colorscheme("catppuccin")
-      vim.cmd([[hi gitcommitOverflow gui=italic]])
+      vim.cmd([[hi gitcommitOverflow gui=none]])
+      vim.cmd([[hi gitcommitSummary gui=none]])
+      vim.cmd([[hi @markup.heading.gitcommit gui=none]])
 
       vim.cmd([[highlight LineNR guifg=#3b4261]])
       vim.cmd([[highlight CursorLineNR guifg=#737aa2]])
