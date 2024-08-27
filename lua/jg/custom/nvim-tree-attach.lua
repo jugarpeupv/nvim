@@ -1,5 +1,5 @@
 local api = require("nvim-tree.api")
-local utils = require("nvim-tree.utils")
+-- local utils = require("nvim-tree.utils")
 local current_popup = nil
 
 local M = {}
@@ -21,13 +21,13 @@ local function get_formatted_lines(node)
   local created_at = " created:  " .. os.date("%x %X", stats.birthtime.sec)
   local modified_at = " modified: " .. os.date("%x %X", stats.mtime.sec)
   local accessed_at = " accessed: " .. os.date("%x %X", stats.atime.sec)
-  local size = " size:     " .. utils.format_bytes(stats.size)
+  -- local size = " size:     " .. utils.format_bytes(stats.size)
   local permissions = " permis:   " .. file_permissions
 
   return {
     fpath,
     permissions,
-    size,
+    -- size,
     accessed_at,
     modified_at,
     created_at

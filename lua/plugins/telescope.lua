@@ -482,7 +482,7 @@ return {
       telescope.load_extension("ui-select")
       telescope.load_extension("bookmarks")
       telescope.load_extension("git_worktree")
-      -- telescope.load_extension("yaml_schema")
+      telescope.load_extension("yaml_schema")
       -- telescope.load_extension("file_browser")
       -- telescope.load_extension('media_files')
       -- telescope.load_extension("egrepify")

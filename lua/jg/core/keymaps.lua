@@ -83,7 +83,7 @@ keymap("n", "<Leader>d", "<Nop>", opts)
 -- keymap("n", "<Leader>d", ":NvimTreeFindFile<cr>", opts)
 keymap("n", "<M-k>", ":NvimTreeFindFile<cr>", opts)
 keymap("n", "<M-u>", "<cmd> lua require('trouble').next({skip_groups = true, jump = true})<cr>", opts)
-keymap("n", "<M-o>", "<cmd> lua require('trouble').prev({skip_groups = true, jump = true})<cr>", opts)
+keymap("n", "<M-y>", "<cmd> lua require('trouble').prev({skip_groups = true, jump = true})<cr>", opts)
 
 keymap("n", "<M-e>", "<cmd>cnext<cr>", opts)
 keymap("n", "<M-l>", "<cmd>cprev<cr>", opts)
