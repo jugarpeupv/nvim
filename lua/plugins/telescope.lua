@@ -38,6 +38,7 @@ return {
     -- branch = "0.1.x",
     tag = "0.1.8",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = { "Telescope" },
     -- cmd = "Telescope",
     -- keys = {
     --   {
@@ -65,7 +66,7 @@ return {
     --     end,
     --   },
     -- },
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     config = function()
       local open_with_trouble = require("trouble.sources.telescope").open
       -- local egrep_actions = require("telescope._extensions.egrepify.actions")
@@ -481,7 +482,7 @@ return {
       telescope.load_extension("ui-select")
       telescope.load_extension("bookmarks")
       telescope.load_extension("git_worktree")
-      telescope.load_extension("yaml_schema")
+      -- telescope.load_extension("yaml_schema")
       -- telescope.load_extension("file_browser")
       -- telescope.load_extension('media_files')
       -- telescope.load_extension("egrepify")

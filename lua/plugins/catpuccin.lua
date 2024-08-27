@@ -455,6 +455,18 @@ return {
       -- }
       --
 
+      vim.cmd([[hi NvimTreeFolderIcon guifg=#89B4FA]])
+      vim.cmd([[hi NvimTreeRootFolder gui=none]])
+      vim.cmd([[highlight NvimTreeGitDirty guifg=#F9E2AF]])
+      vim.cmd([[highlight NvimTreeGitStaged guifg=#8ee2cf]])
+      vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F5C2E7]])
+      -- vim.cmd([[highlight NvimTreeExecFile gui=none guifg=#F38BA8]])
+      vim.cmd([[highlight NvimTreeModifiedFile gui=none guifg=#737aa2]])
+      -- vim.cmd [[highlight NvimTreeModifiedFile gui=none guifg=#EFF1F5]]
+      vim.cmd([[highlight NvimTreeGitNew guifg=#89ddff]])
+      vim.cmd([[highlight NvimTreeCursorLine guibg=#3b4261]])
+      vim.cmd([[highlight NvimTreeStatusLineNC guibg=none]])
+
       vim.g.terminal_color_0 = "#a3a7bc"
       vim.g.terminal_color_1 = "#F38BA8"
       vim.g.terminal_color_2 = "#94E2D5"

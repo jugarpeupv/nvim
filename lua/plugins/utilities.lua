@@ -68,7 +68,8 @@ return {
   },
   {
     "b0o/schemastore.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
   },
   {
     "LunarVim/bigfile.nvim",
@@ -77,7 +78,7 @@ return {
     config = function()
       -- default config
       require("bigfile").setup({
-        filesize = 2, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+        filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
         -- pattern = function(bufnr, filesize_mib)
         --   -- you can't use `nvim_buf_line_count` because this runs on BufReadPre
         --   local file_contents = vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr))

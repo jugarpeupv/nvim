@@ -59,8 +59,11 @@ return {
             -- if lang == "yaml" or lang == "yml" then
             --   return true
             -- end
+            if lang == "javascript" and vim.api.nvim_buf_line_count(bufnr) > 500 then
+              return true
+            end
 
-            return lang == "json" and vim.api.nvim_buf_line_count(bufnr) > 10000
+            return lang == "json" and vim.api.nvim_buf_line_count(bufnr) > 1000
           end,
           additional_vim_regex_highlighting = true,
         },

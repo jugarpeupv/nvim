@@ -5,9 +5,9 @@ vim.g.maplocalleader = " "
 -- vim.loader.enable()
 
 -- Example for configuring Neovim to load user-installed installed Lua rocks:
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
-vim.loader.enable()
+-- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
+-- package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
+-- vim.loader.enable()
 
 require("jg.core.options")
 
@@ -23,6 +23,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
 -- require("lazy").setup({{ import = "plugins" } })
 require('lazy').setup('plugins', {
   change_detection = { notify = false },
@@ -35,7 +36,6 @@ require('lazy').setup('plugins', {
       not_loaded = "",
     },
   },
-
   performance = {
     rtp = {
       disabled_plugins = {

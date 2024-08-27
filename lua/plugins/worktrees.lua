@@ -41,6 +41,7 @@ return {
         os.rename(prev_node_modules_path, path .. "/node_modules")
         api_nvimtree.tree.reload()
       end
+      require("jg.custom.term-utils").terminal_send_cmd("cd " .. path)
     end)
 
     Hooks.register(Hooks.type.CREATE, function(path, branch)
