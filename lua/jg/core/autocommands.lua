@@ -117,3 +117,5 @@ end
 vim.cmd([[ augroup JsonToJsonc
     autocmd! FileType json set filetype=jsonc
 augroup END ]])
+
+vim.cmd[[autocmd BufEnter term://* startinsert]]

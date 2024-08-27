@@ -6,14 +6,14 @@ return {
     cmd = { "FTerm" },
     keys = {
       {
-        "<leader>bb",
-        mode = { "n", "t" },
+        "<M-o>",
+        mode = { "n" },
         function()
           require("FTerm").toggle()
         end,
       },
       {
-        "<leader>bb",
+        "<M-o>",
         mode = { "t" },
         '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
       },

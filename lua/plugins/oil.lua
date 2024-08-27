@@ -6,7 +6,12 @@ return {
     -- cmd = { "DirBuf" },
     -- priority = 10000,
     config = function()
-
+      require("dirbuf").setup({
+        hash_padding = 2,
+        show_hidden = true,
+        sort_order = "directories_first",
+        write_cmd = "DirbufSync",
+      })
       -- keymap("n", "<Leader>oa", "<cmd>Oil<cr>", opts)
       vim.keymap.set("n", "<Leader>op", "<cmd>Dirbuf<cr>", {})
     end,
@@ -216,5 +221,5 @@ return {
 
       vim.keymap.set("n", "<Leader>oa", "<cmd>Oil<cr>", {})
     end,
-  }
+  },
 }

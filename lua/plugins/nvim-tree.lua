@@ -9,12 +9,6 @@ return {
       local api_nvimtree = require("nvim-tree.api")
       local nvim_tree_jg_utils = require("jg.custom.nvim-tree-utils")
 
-      api_nvimtree.events.subscribe(api_nvimtree.events.Event.TreeOpen, function()
-        vim.wo.statusline = " "
-        vim.cmd("hi! NvimTreeStatusLine guifg=none guibg=none")
-        vim.opt.laststatus = 3
-        -- vim.cmd("hi! NvimTreeStatusLineNC guifg=none guibg=none")
-      end)
 
       local status_ok, nvim_tree = pcall(require, "nvim-tree")
       if not status_ok then
@@ -215,7 +209,7 @@ return {
         disable_netrw = true,
         -- disable_netrw = false,
         hijack_cursor = true,
-        hijack_netrw = true,
+        hijack_netrw = false,
         -- hijack_netrw = false,
         hijack_unnamed_buffer_when_opening = true,
         sort_by = "name",

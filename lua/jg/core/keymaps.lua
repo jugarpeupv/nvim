@@ -60,12 +60,6 @@ keymap(
   opts
 )
 
-keymap(
-  "t",
-  "<Leader>.",
-  "<C-\\><C-n><CMD>lua require('telescope.builtin').find_files({ prompt_title = '< VimRC >', cwd = '~/.config/nvim',hidden = false })<cr>",
-  opts
-)
 
 keymap("n", "<Leader>ce", "<cmd>lua require('telescope.builtin').colorscheme()<cr>", opts)
 keymap("n", "<Leader>po", "<cmd>PeekOpen<cr>", opts)
@@ -98,7 +92,7 @@ keymap("n", "<M-l>", "<cmd>cprev<cr>", opts)
 keymap("n", "<BS>", "<C-^>", opts)
 keymap("o", "<BS>", "^", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
-keymap("t", "<Leader>q", "<cmd>q!<CR>", opts)
+-- keymap("t", "<Leader>q", "<cmd>q!<CR>", opts)
 keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
 keymap(
   "n",
