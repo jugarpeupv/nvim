@@ -2,6 +2,7 @@ return {
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
+    commit = "e76cb03",
     -- event = "VeryLazy",
     keys = {
       -- { "<leader>A", function() require("harpoon"):list():append() end, desc = "harpoon file", },
