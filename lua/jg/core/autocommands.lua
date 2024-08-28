@@ -119,3 +119,9 @@ vim.cmd([[ augroup JsonToJsonc
 augroup END ]])
 
 vim.cmd[[autocmd BufEnter term://* startinsert]]
+
+vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
+-- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
+vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
