@@ -60,13 +60,4 @@ M.write_bps = function(path, bps)
   end
 end
 
-M.is_bare = function(path)
-  local is_bare_result = vim.system({ "git", "rev-parse", "--is-bare-repository" }, { cwd = path }):wait()
-  local is_bare = false
-  if is_bare_result.stdout ~= nil and string.len(is_bare_result.stdout) > 1 and string.find(is_bare_result.stdout, "true") then
-    is_bare = true
-  end
-  return is_bare
-end
-
 return M

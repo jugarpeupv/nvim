@@ -128,17 +128,39 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
   pattern = "*",
   group = vim.api.nvim_create_augroup("testingmyenv", { clear = true }),
   callback = function()
-    local cwd = vim.loop.cwd()
-    local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+    local wt_utils = require("jg.custom.worktree-utils")
     local file_utils = require("jg.custom.file-utils")
-    local is_bare = file_utils.is_bare(parent_dir)
 
-    if is_bare then
-      local branch = vim.fn.fnamemodify(cwd or '', ":t")
-      local mytable = {
-        [parent_dir] = branch,
+    -- current directory is root worktree
+    local cwd = vim.loop.cwd()
+    local is_path_root = wt_utils.directory_exists(cwd .. "/.git/worktrees")
+    if is_path_root then
+      local default_branch = "main"
+      wt_utils.update_git_head(cwd, default_branch)
+      local default_table = {
+        [cwd] = default_branch,
       }
-      file_utils.write_bps(file_utils.get_bps_path(parent_dir), mytable)
+      file_utils.write_bps(file_utils.get_bps_path(cwd), default_table)
+      return
+    end
+
+    -- current directory is inside a worktree
+    local is_path_wt = wt_utils.file_exists(cwd .. "/.git")
+    if is_path_wt then
+      local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
+      local has_worktrees = wt_utils.has_worktrees(parent_dir)
+
+      if has_worktrees then
+        local wt_folder = vim.fn.fnamemodify(cwd or "", ":t")
+        if wt_folder == "" or wt_folder == nil then
+          return
+        end
+        wt_utils.update_git_head(parent_dir, wt_folder)
+        local mytable = {
+          [parent_dir] = wt_folder,
+        }
+        file_utils.write_bps(file_utils.get_bps_path(parent_dir), mytable)
+      end
     end
 
   end,
@@ -147,23 +169,20 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 vim.api.nvim_create_autocmd("VimEnter", {
   group = vim.api.nvim_create_augroup("worktree-strate-enter", { clear = true }),
   callback = function()
-    local file_utils = require("jg.custom.file-utils")
+    local wt_utils = require("jg.custom.worktree-utils")
     local cwd = vim.loop.cwd()
-    local key = vim.fn.fnamemodify(cwd, ":p")
 
-    local is_bare = file_utils.is_bare(cwd)
-    print("is_bare: " .. vim.inspect(is_bare))
-    if is_bare then
-      print("key: " .. key)
+    local has_worktrees = wt_utils.has_worktrees(cwd)
+    if has_worktrees then
       local file_utils = require("jg.custom.file-utils")
+      local key = vim.fn.fnamemodify(cwd or "", ":p")
       local data = file_utils.load_bps(file_utils.get_bps_path(key))
-      print("data: " .. vim.inspect(data))
+      if next(data) == nil or data[key] == nil then
+        return
+      end
       local branch = data[key]
-      print("branch: " .. branch)
       local worktree_dir = key .. branch
-      print("worktree_dir: " .. worktree_dir)
       local api = require("nvim-tree.api")
-      -- vim.api.nvim_set_current_dir(worktree_dir)
       api.tree.change_root(worktree_dir)
     end
   end,
