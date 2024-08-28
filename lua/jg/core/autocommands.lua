@@ -117,3 +117,9 @@ end
 vim.cmd([[ augroup JsonToJsonc
     autocmd! FileType json set filetype=jsonc
 augroup END ]])
+
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
+-- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
+-- vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
