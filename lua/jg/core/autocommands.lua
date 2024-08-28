@@ -118,8 +118,40 @@ vim.cmd([[ augroup JsonToJsonc
     autocmd! FileType json set filetype=jsonc
 augroup END ]])
 
--- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
+vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'set wrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'set nocursorline' | endif]])
 -- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
+
+
+vim.api.nvim_create_autocmd("VimLeave", {
+  group = vim.api.nvim_create_augroup("worktree-strate-leave", { clear = true }),
+  callback = function()
+    -- local is_bare = vim.fn.system("git rev-parse --is-bare-repository")
+    -- print("is_bare: ", is_bare)
+    --
+    local file_utils = require("jg.custom.file-utils")
+
+    local mytable = {
+      ["/Users/jgarcia/work/mar/mar-cli"] = "/Users/jgarcia/work/mar/mar-cli/develop",
+    }
+    file_utils.write_bps(file_utils.get_bps_path(), mytable)
+  end,
+})
+
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = vim.api.nvim_create_augroup("worktree-strate-enter", { clear = true }),
+  callback = function()
+    local is_bare = vim.fn.system("git rev-parse --is-bare-repository")
+    print("is_bare: ", is_bare)
+
+    -- local file_utils = require("jg.custom.file-utils")
+    --
+    -- local mytable = {
+    --   ["/Users/jgarcia/work/mar/mar-cli"] = "/Users/jgarcia/work/mar/mar-cli/develop",
+    -- }
+    -- file_utils.write_bps(file_utils.get_bps_path(), mytable)
+  end,
+})

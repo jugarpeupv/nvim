@@ -6,12 +6,20 @@ return {
   --   lazy = false, -- This plugin is already lazy
   -- },
   {
+    "neovim/nvim-lspconfig",
     -- event = "VeryLazy",
     -- event = "User FilePost",
     -- event = { "LspAttach" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     event = { "BufReadPost", "BufNewFile" },
     -- cmd = { "LspInfo" },
     dependencies = {
+      {
+        "antosha417/nvim-lsp-file-operations",
+        config = function()
+          require("lsp-file-operations").setup()
+        end,
+      },
       { "hrsh7th/nvim-cmp" },
       { "williamboman/mason.nvim" },
       { "williamboman/mason-lspconfig.nvim" },
@@ -27,8 +35,6 @@ return {
         end,
       },
     },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-    "neovim/nvim-lspconfig",
     config = function()
       -- import lspconfig plugin safely
       local on_attach = require("jg.custom.lsp-utils").attach_lsp_config
@@ -143,7 +149,6 @@ return {
       }
 
       vim.diagnostic.config(config)
-
 
       -- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=#394b70]])
       local border = {
@@ -596,7 +601,6 @@ return {
         on_attach = on_attach,
       })
 
-
       require("lspconfig").lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
@@ -638,19 +642,15 @@ return {
       })
 
       -- Set global defaults for all servers
-      lspconfig.util.default_config = vim.tbl_extend(
-        'force',
-        lspconfig.util.default_config,
-        {
-          capabilities = vim.tbl_deep_extend(
-            "force",
-            vim.lsp.protocol.make_client_capabilities(),
-            -- returns configured operations if setup() was already called
-            -- or default operations if not
-            require('lsp-file-operations').default_capabilities()
-          )
-        }
-      )
+      lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+        capabilities = vim.tbl_deep_extend(
+          "force",
+          vim.lsp.protocol.make_client_capabilities(),
+          -- returns configured operations if setup() was already called
+          -- or default operations if not
+          require("lsp-file-operations").default_capabilities()
+        ),
+      })
     end,
   },
 }

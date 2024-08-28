@@ -128,17 +128,27 @@ return {
           DiffviewFileHistory = {},
         },
         hooks = {
-          -- diff_buf_read = function(bufnr)
-          --   print('bufnr', bufnr)
-          --   print('bufname', vim.api.nvim_buf_get_name(bufnr))
-          --   vim.treesitter.stop(bufnr)
-          --   local max_filesize = 900 * 1024 -- 100 KB
-          --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-          --   if ok and stats and stats.size > max_filesize then
-          --     print('pasando por aqui')
-          --     vim.cmd("set syntax=OFF")
-          --     vim.treesitter.stop(bufnr)
+          -- diff_buf_win_enter = function(bufnr, winid, ctx)
+          --   -- print("bufnr: ", bufnr)
+          --   -- print("ctx: ", vim.inspect(ctx))
+          --   -- print("winid: ", winid)
+          --   if winid == 1004 or ctx.symbol == 'b' then
+          --     vim.api.nvim_buf_set_option('wrap', true, { buf = bufnr})
           --   end
+          -- end,
+          -- diff_buf_read = function(bufnr, win)
+          --   print("win: ", vim.inspect(win))
+          --   -- print('bufnr', bufnr)
+          --   -- print('bufname', vim.api.nvim_buf_get_name(bufnr))
+          --   -- vim.treesitter.stop(bufnr)
+          --   -- local max_filesize = 900 * 1024 -- 100 KB
+          --   -- local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+          --   -- if ok and stats and stats.size > max_filesize then
+          --   --   print('pasando por aqui')
+          --   --   vim.cmd("set syntax=OFF")
+          --   --   vim.treesitter.stop(bufnr)
+          --   -- end
+          --   -- vim.api.nvim_buf_set_option('wrap', true, { buf = bufnr})
           -- end,
           ---@param view StandardView
           view_opened = function(view)
@@ -169,7 +179,6 @@ return {
               })
             end
             vim.cmd("hi DiffviewDiffAddAsDelete guifg=none")
-
             view.emitter:on("post_layout", post_layout)
             post_layout()
           end,

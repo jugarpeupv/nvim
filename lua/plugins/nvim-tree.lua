@@ -4,14 +4,6 @@ return {
     "nvim-tree/nvim-tree.lua",
     -- lazy = true,
     -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
-    dependencies = {
-      {
-        "antosha417/nvim-lsp-file-operations",
-        config = function()
-          require("lsp-file-operations").setup()
-        end,
-      },
-    },
 
     priority = 500,
     config = function()
