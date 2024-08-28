@@ -2,6 +2,8 @@ return {
   {
     "sindrets/diffview.nvim",
     -- event = "VeryLazy",
+    -- commit = "f17af394a81da3793ee877fe29dc9dbe4cc2fc44",
+    commit = "7e5a85c186027cab1e825d018f07c350177077fc",
     -- cmd = { "DiffviewOpen" },
     -- event = { "BufReadPost", "BufNewFile" },
     keys = {

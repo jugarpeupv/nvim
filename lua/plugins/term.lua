@@ -1,33 +1,52 @@
--- return {}
-
 return {
   {
-    "numToStr/FTerm.nvim",
-    cmd = { "FTerm" },
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    cmd = { "ToggleTerm" },
     keys = {
       {
         "<M-o>",
         mode = { "n" },
-        function()
-          require("FTerm").toggle()
-        end,
+        "<cmd>ToggleTerm<CR>",
       },
       {
         "<M-o>",
         mode = { "t" },
-        '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
+        "<C-\\><C-n><cmd>ToggleTerm<CR>",
       },
     },
     opts = {
-      -- border = "none",
-      dimensions = {
-        height = 0.35, -- Height of the terminal window
-        width = 0.98, -- Width of the terminal window
-        x = 0.3,  -- X axis of the terminal window
-        y = 1,  -- Y axis of the terminal window
-      },
+      open_mapping = [[<M-o>]],
+      hide_numbers = false,
     },
   },
+  -- {
+  --   "numToStr/FTerm.nvim",
+  --   cmd = { "FTerm" },
+  --   keys = {
+  --     {
+  --       "<M-o>",
+  --       mode = { "n" },
+  --       function()
+  --         require("FTerm").toggle()
+  --       end,
+  --     },
+  --     {
+  --       "<M-o>",
+  --       mode = { "t" },
+  --       '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
+  --     },
+  --   },
+  --   opts = {
+  --     -- border = "none",
+  --     dimensions = {
+  --       height = 0.35, -- Height of the terminal window
+  --       width = 0.98, -- Width of the terminal window
+  --       x = 0.3,   -- X axis of the terminal window
+  --       y = 1,     -- Y axis of the terminal window
+  --     },
+  --   },
+  -- },
   -- Lazy
   -- {
   --   '2kabhishek/termim.nvim',

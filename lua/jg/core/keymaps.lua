@@ -17,10 +17,10 @@ vim.keymap.set({ "t" }, "<S-D-Down>", "<C-\\><C-n><CMD>resize -3<CR>", opts)
 vim.keymap.set({ "t" }, "<S-D-Left>", "<C-\\><C-n><CMD>vertical resize -5<CR>", opts)
 vim.keymap.set({ "t" }, "<S-D-Right>", "<C-\\><C-n><CMD>vertical resize +5<CR>", opts)
 
-vim.keymap.set({ "n" }, "<Tab>", ":tabnext<cr>", opts)
-vim.keymap.set({ "n" }, "<S-Tab>", ":tabprev<cr>", opts)
-vim.keymap.set({ "t" }, "<Tab>", "<C-\\><C-n><CMD>tabnext<cr>", opts)
-vim.keymap.set({ "t" }, "<S-Tab>", "<C-\\><C-n><CMD>tabprev<cr>", opts)
+-- vim.keymap.set({ "n" }, "<Tab>", ":tabnext<cr>", opts)
+-- vim.keymap.set({ "n" }, "<S-Tab>", ":tabprev<cr>", opts)
+-- vim.keymap.set({ "t" }, "<Tab>", "<C-\\><C-n><CMD>tabnext<cr>", opts)
+-- vim.keymap.set({ "t" }, "<S-Tab>", "<C-\\><C-n><CMD>tabprev<cr>", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -90,6 +90,7 @@ keymap("n", "<M-l>", "<cmd>cprev<cr>", opts)
 
 -- Utilities
 keymap("n", "<BS>", "<C-^>", opts)
+vim.cmd([[tnoremap <C-n> <C-\><C-n>]])
 keymap("o", "<BS>", "^", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
 -- keymap("t", "<Leader>q", "<cmd>q!<CR>", opts)
@@ -287,7 +288,6 @@ vim.keymap.set("n", "<leader>ts", "<cmd>Trouble symbols toggle<cr>", { silent = 
 vim.keymap.set("n", "<leader>md", "<CMD>PeekOpen<CR>")
 vim.keymap.set("n", "<leader>mc", "<CMD>PeekClose<CR>")
 
-vim.cmd([[tnoremap <C-n> <C-\><C-n>]])
 
 vim.keymap.set("n", "<leader>th", "<cmd>sp|term<cr>i", { silent = true, noremap = true })
 vim.keymap.set("n", "<leader>tn", "<cmd>tab term<cr>i", { silent = true, noremap = true })
