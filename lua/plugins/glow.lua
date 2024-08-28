@@ -12,6 +12,6 @@ return {
         end,
       },
     },
-    opts = { border = "none", width = 100, height = 100, width_ratio = 0.9, height_ratio = 0.9 },
+    opts = { border = "single", width = 100, height = 100, width_ratio = 1, height_ratio = 1 },
   },
 }

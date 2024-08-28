@@ -286,8 +286,8 @@ return {
       -- Diffview
       local keymap = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
-      keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", {})
-      keymap("n", "<Leader>cc", "<cmd>DiffviewClose<cr>", {})
+      keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", opts)
+      keymap("n", "<Leader>cc", "<cmd>DiffviewClose<cr>", opts)
       keymap("v", "<Leader>gv", "<cmd>'<,'>DiffviewFileHistory<cr>", opts)
       keymap("n", "<Leader>gv", "<cmd>DiffviewFileHistory %<cr>", opts)
       -- Diffview

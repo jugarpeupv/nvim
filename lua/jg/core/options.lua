@@ -116,9 +116,13 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = false
 -- vim.wo.foldtext = 'v:lua.vim.treesitter.foldtext()'
 -- vim.opt.foldtext = 'v:lua.vim.treesitter.foldtext()'
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.o.fillchars = 'fold: '
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = ''
 -- vim.o.foldtext = "v:lua.vim.treesitter.foldtext()"
-vim.o.foldmethod = "expr"
+-- vim.o.foldmethod = "expr"
 -- vim.o.foldmethod = "indent"
 
-opt.updatetime = 200
+-- opt.updatetime = 200
