@@ -124,34 +124,49 @@ vim.cmd([[autocmd OptionSet * if &diff | execute 'set nowrap' | endif]])
 -- vim.cmd([[autocmd OptionSet * if !&diff | execute 'set cursorline' | endif]])
 -- vim.cmd([[autocmd OptionSet * if &diff | execute 'TSContextDisable' | endif]])
 
-
-vim.api.nvim_create_autocmd("VimLeave", {
-  group = vim.api.nvim_create_augroup("worktree-strate-leave", { clear = true }),
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  pattern = "*",
+  group = vim.api.nvim_create_augroup("testingmyenv", { clear = true }),
   callback = function()
-    -- local is_bare = vim.fn.system("git rev-parse --is-bare-repository")
-    -- print("is_bare: ", is_bare)
-    --
+    local cwd = vim.loop.cwd()
+    local parent_dir = vim.fn.fnamemodify(cwd .. "/..", ":p")
     local file_utils = require("jg.custom.file-utils")
+    local is_bare = file_utils.is_bare(parent_dir)
 
-    local mytable = {
-      ["/Users/jgarcia/work/mar/mar-cli"] = "/Users/jgarcia/work/mar/mar-cli/develop",
-    }
-    file_utils.write_bps(file_utils.get_bps_path(), mytable)
+    if is_bare then
+      local branch = vim.fn.fnamemodify(cwd or '', ":t")
+      local mytable = {
+        [parent_dir] = branch,
+      }
+      file_utils.write_bps(file_utils.get_bps_path(parent_dir), mytable)
+    end
+
   end,
 })
-
 
 vim.api.nvim_create_autocmd("VimEnter", {
   group = vim.api.nvim_create_augroup("worktree-strate-enter", { clear = true }),
   callback = function()
-    local is_bare = vim.fn.system("git rev-parse --is-bare-repository")
-    print("is_bare: ", is_bare)
+    local file_utils = require("jg.custom.file-utils")
+    local cwd = vim.loop.cwd()
+    local key = vim.fn.fnamemodify(cwd, ":p")
 
-    -- local file_utils = require("jg.custom.file-utils")
-    --
-    -- local mytable = {
-    --   ["/Users/jgarcia/work/mar/mar-cli"] = "/Users/jgarcia/work/mar/mar-cli/develop",
-    -- }
-    -- file_utils.write_bps(file_utils.get_bps_path(), mytable)
+    local is_bare = file_utils.is_bare(cwd)
+    print("is_bare: " .. vim.inspect(is_bare))
+    if is_bare then
+      print("key: " .. key)
+      local file_utils = require("jg.custom.file-utils")
+      local data = file_utils.load_bps(file_utils.get_bps_path(key))
+      print("data: " .. vim.inspect(data))
+      local branch = data[key]
+      print("branch: " .. branch)
+      local worktree_dir = key .. branch
+      print("worktree_dir: " .. worktree_dir)
+      local api = require("nvim-tree.api")
+      -- vim.api.nvim_set_current_dir(worktree_dir)
+      api.tree.change_root(worktree_dir)
+    end
   end,
 })
+
+-- vim.cmd([[autocmd VimLeave * :!echo Hello; sleep 4]])
