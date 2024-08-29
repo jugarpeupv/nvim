@@ -84,8 +84,9 @@ keymap("n", "<M-l>", "<cmd>cprev<cr>", opts)
 -- Utilities
 keymap("n", "<BS>", "<C-^>", opts)
 keymap("o", "<BS>", "^", opts)
+keymap("n", "<Leader><BS>", "<cmd>qa!<CR>", opts)
 keymap("n", "<Leader>q", "<cmd>q!<CR>", opts)
-keymap("t", "<Leader>q", "<cmd>q!<CR>", opts)
+-- keymap("t", "<Leader>q", "<cmd>q!<CR>", opts)
 keymap("n", "<Leader>nn", "<cmd>nohlsearch<CR>", opts)
 keymap(
   "n",

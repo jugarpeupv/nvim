@@ -122,12 +122,13 @@ return {
         --
         -- BEGIN_DEFAULT_ON_ATTACH
         vim.keymap.set("n", "<C-c>", api_nvimtree.tree.change_root_to_node, opts("CD"))
+        vim.keymap.set("n", "<BS>", api_nvimtree.tree.change_root_to_node, opts("CD"))
         -- vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
         vim.keymap.set("n", "<C-r>", api_nvimtree.fs.rename_sub, opts("Rename: Omit Filename"))
         vim.keymap.set("n", "<C-t>", api_nvimtree.node.open.tab, opts("Open: New Tab"))
         vim.keymap.set("n", "<C-v>", api_nvimtree.node.open.vertical, opts("Open: Vertical Split"))
         vim.keymap.set("n", "<C-x>", api_nvimtree.node.open.horizontal, opts("Open: Horizontal Split"))
-        vim.keymap.set("n", "<BS>", api_nvimtree.node.navigate.parent_close, opts("Close Directory"))
+        -- vim.keymap.set("n", "<BS>", api_nvimtree.node.navigate.parent_close, opts("Close Directory"))
         vim.keymap.set("n", "h", api_nvimtree.node.navigate.parent_close, opts("Close Directory"))
         vim.keymap.set("n", "l", api_nvimtree.node.open.edit, opts("Open"))
         vim.keymap.set("n", "<CR>", api_nvimtree.node.open.edit, opts("Open"))

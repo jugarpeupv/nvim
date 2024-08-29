@@ -18,7 +18,7 @@ return {
       },
     },
     version = "*",
-    opts = { hide_numbers = false, open_mapping = [[<M-o>]] },
+    opts = { hide_numbers = false, open_mapping = [[<M-o>]], start_in_insert = true, persist_mode = false },
   },
   -- {
   --   "numToStr/FTerm.nvim",

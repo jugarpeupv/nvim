@@ -222,6 +222,8 @@ return {
           ["nx.json"] = { icon = "󰰔", color = "#9CDCFE", name = "nxjson" },
           [".nxignore"] = { icon = "󰰔", color = "#7C7F93", name = "nxignore" },
           [".eslintignore"] = { icon = "󰱺", color = "#7C7F93", name = "eslintignore" },
+          ["eslint.config.js"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintconfigjs" },
+          ["eslint.config.ts"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintconfigts" },
           [".eslintrc.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
           [".eslintrc.base.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintrcjson" },
           [".eslint-report.json"] = { icon = "󰱺", color = "#9CDCFE", name = "eslintreportjson" },
