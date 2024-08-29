@@ -6,28 +6,16 @@ return {
   --   lazy = false, -- This plugin is already lazy
   -- },
   {
+    "neovim/nvim-lspconfig",
     -- event = "VeryLazy",
     -- event = "User FilePost",
     -- event = { "LspAttach" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     event = { "BufReadPost", "BufNewFile" },
     -- cmd = { "LspInfo" },
     dependencies = {
       {
-        "someone-stole-my-name/yaml-companion.nvim",
-        ft = { "yaml", "yml" },
-        dependencies = {
-          { "neovim/nvim-lspconfig" },
-          { "nvim-lua/plenary.nvim" },
-          { "nvim-telescope/telescope.nvim" },
-        },
-      },
-      {
         "antosha417/nvim-lsp-file-operations",
-        dependencies = {
-          "nvim-lua/plenary.nvim",
-          "nvim-tree/nvim-tree.lua",
-        },
-        -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
         config = function()
           require("lsp-file-operations").setup()
         end,
@@ -47,8 +35,6 @@ return {
         end,
       },
     },
-    -- cmd = { "LspInfo", "LspInstall", "LspUninstall" },
-    "neovim/nvim-lspconfig",
     config = function()
       -- import lspconfig plugin safely
       local on_attach = require("jg.custom.lsp-utils").attach_lsp_config
@@ -164,6 +150,40 @@ return {
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
+
+      local signs_diag = {
+        { name = "DiagnosticSignError", text = "" },
+        { name = "DiagnosticSignWarn", text = "" },
+        -- { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignHint", text = "󰠠" },
+        -- { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignInfo", text = "" },
+      }
+
+      local config = {
+        virtual_text = false,
+        -- virtual_text = { spacing = 4, prefix = "●" },
+        -- virtual_text = { spacing = 4, prefix = "" },
+        -- virtual_text = { spacing = 4, prefix = " " },
+
+        signs = {
+          active = signs_diag,
+        },
+        update_in_insert = true,
+        -- update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+        float = {
+          focusable = true,
+          -- style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      }
+
+      vim.diagnostic.config(config)
 
       -- vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=#394b70]])
       local border = {

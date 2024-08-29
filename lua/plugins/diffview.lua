@@ -2,18 +2,16 @@ return {
   {
     "sindrets/diffview.nvim",
     -- event = "VeryLazy",
-    -- commit = "f17af394a81da3793ee877fe29dc9dbe4cc2fc44",
-    commit = "7e5a85c186027cab1e825d018f07c350177077fc",
-    -- cmd = { "DiffviewOpen" },
+    cmd = { "DiffviewOpen" },
     -- event = { "BufReadPost", "BufNewFile" },
-    keys = {
-      { "<leader>gd", mode = "n" },
-      { "<leader>gv", mode = { "n", "v" } },
-      { "<leader>cc", mode = "n" },
-      { "<leader>ll", mode = "n" },
-      { "<leader>l5", mode = "n" },
-      { "<leader>l0", mode = "n" },
-    },
+    -- keys = {
+    --   { "<leader>gd", mode = "n" },
+    --   { "<leader>gv", mode = { "n", "v" } },
+    --   { "<leader>cc", mode = "n" },
+    --   { "<leader>ll", mode = "n" },
+    --   { "<leader>l5", mode = "n" },
+    --   { "<leader>l0", mode = "n" },
+    -- },
     config = function()
       -- vim.cmd([[hi StatusLine guifg=#cdd6f5 guibg=#292e42]])
       -- Lua
@@ -130,17 +128,27 @@ return {
           DiffviewFileHistory = {},
         },
         hooks = {
-          -- diff_buf_read = function(bufnr)
-          --   print('bufnr', bufnr)
-          --   print('bufname', vim.api.nvim_buf_get_name(bufnr))
-          --   vim.treesitter.stop(bufnr)
-          --   local max_filesize = 900 * 1024 -- 100 KB
-          --   local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-          --   if ok and stats and stats.size > max_filesize then
-          --     print('pasando por aqui')
-          --     vim.cmd("set syntax=OFF")
-          --     vim.treesitter.stop(bufnr)
+          -- diff_buf_win_enter = function(bufnr, winid, ctx)
+          --   -- print("bufnr: ", bufnr)
+          --   -- print("ctx: ", vim.inspect(ctx))
+          --   -- print("winid: ", winid)
+          --   if winid == 1004 or ctx.symbol == 'b' then
+          --     vim.api.nvim_buf_set_option('wrap', true, { buf = bufnr})
           --   end
+          -- end,
+          -- diff_buf_read = function(bufnr, win)
+          --   print("win: ", vim.inspect(win))
+          --   -- print('bufnr', bufnr)
+          --   -- print('bufname', vim.api.nvim_buf_get_name(bufnr))
+          --   -- vim.treesitter.stop(bufnr)
+          --   -- local max_filesize = 900 * 1024 -- 100 KB
+          --   -- local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+          --   -- if ok and stats and stats.size > max_filesize then
+          --   --   print('pasando por aqui')
+          --   --   vim.cmd("set syntax=OFF")
+          --   --   vim.treesitter.stop(bufnr)
+          --   -- end
+          --   -- vim.api.nvim_buf_set_option('wrap', true, { buf = bufnr})
           -- end,
           ---@param view StandardView
           view_opened = function(view)
@@ -171,7 +179,6 @@ return {
               })
             end
             vim.cmd("hi DiffviewDiffAddAsDelete guifg=none")
-
             view.emitter:on("post_layout", post_layout)
             post_layout()
           end,
@@ -288,8 +295,8 @@ return {
       -- Diffview
       local keymap = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
-      keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", {})
-      keymap("n", "<Leader>cc", "<cmd>DiffviewClose<cr>", {})
+      keymap("n", "<Leader>gd", "<cmd>DiffviewOpen<cr>", opts)
+      keymap("n", "<Leader>cc", "<cmd>DiffviewClose<cr>", opts)
       keymap("v", "<Leader>gv", "<cmd>'<,'>DiffviewFileHistory<cr>", opts)
       keymap("n", "<Leader>gv", "<cmd>DiffviewFileHistory %<cr>", opts)
       -- Diffview

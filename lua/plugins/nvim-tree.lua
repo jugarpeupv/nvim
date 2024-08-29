@@ -1,6 +1,12 @@
 -- return {}
 return {
   {
+    "nvim-tree/nvim-tree.lua",
+    -- lazy = true,
+    -- cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
+
+    priority = 500,
+    config = function()
       local api_nvimtree = require("nvim-tree.api")
       local nvim_tree_jg_utils = require("jg.custom.nvim-tree-utils")
 

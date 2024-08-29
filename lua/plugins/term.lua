@@ -1,12 +1,12 @@
 return {
   {
     "akinsho/toggleterm.nvim",
-    version = "*",
     cmd = { "ToggleTerm" },
     keys = {
+
       {
         "<M-o>",
-        mode = { "n" },
+        mode = { "n", "t" },
         "<cmd>ToggleTerm<CR>",
       },
       {
@@ -15,24 +15,22 @@ return {
         "<C-\\><C-n><cmd>ToggleTerm<CR>",
       },
     },
-    opts = {
-      open_mapping = [[<M-o>]],
-      hide_numbers = false,
-    },
+    version = "*",
+    opts = { hide_numbers = false, open_mapping = [[<M-o>]] },
   },
   -- {
   --   "numToStr/FTerm.nvim",
   --   cmd = { "FTerm" },
   --   keys = {
   --     {
-  --       "<M-o>",
-  --       mode = { "n" },
+  --       "<leader>bb",
+  --       mode = { "n", "t" },
   --       function()
   --         require("FTerm").toggle()
   --       end,
   --     },
   --     {
-  --       "<M-o>",
+  --       "<leader>bb",
   --       mode = { "t" },
   --       '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>',
   --     },

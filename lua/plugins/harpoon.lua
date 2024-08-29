@@ -64,8 +64,8 @@ return {
 
       harpoon.setup({
         settings = {
-          save_on_toggle = false,
-          sync_on_ui_close = false,
+          save_on_toggle = true,
+          sync_on_ui_close = true,
           key = function()
             -- local parent_path = vim.loop.cwd() .. "/../"
             -- local exists_bare_dir = vim.fn.isdirectory(parent_path .. ".bare")

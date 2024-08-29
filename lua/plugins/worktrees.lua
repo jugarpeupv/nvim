@@ -41,7 +41,8 @@ return {
         os.rename(prev_node_modules_path, path .. "/node_modules")
         api_nvimtree.tree.reload()
       end
-      require("jg.custom.term-utils").terminal_send_cmd("cd " .. path)
+
+      -- TODO: Change .git/HEAD to the new branch
     end)
 
     Hooks.register(Hooks.type.CREATE, function(path, branch)
@@ -59,15 +60,10 @@ return {
           original_path = string.sub(original_path, 1, string.len(original_path) - 1)
         end
       end
-
-
       -- print("[Create]: original path: " .. original_path)
       local prev_node_modules_path = original_path .. "/node_modules"
-
       -- print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
-
       local worktree_path = original_path .. "/" .. relative_path
-
       -- print("[Create]: worktree path: " .. worktree_path)
       local destination_path = worktree_path .. "/node_modules"
       -- print("[Create]: destination path: " .. destination_path)
@@ -78,14 +74,14 @@ return {
         api_nvimtree.tree.reload()
       end
 
-
-
       -- local prev_node_modules_path = prev_path .. "/node_modules"
       -- local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
       --
       -- if prev_node_modules_exists then
       --   os.rename(prev_node_modules_path, path .. "/node_modules")
       -- end
+
+      -- TODO: Change .git/HEAD to the new branch
     end)
 
   end,
