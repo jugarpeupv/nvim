@@ -52,7 +52,7 @@ end
 M.get_wt_info = function(path_to_wt)
   local wt_info = {}
 
-  local git_file_path = path_to_wt or vim.loop.cwd .. "/.git"
+  local git_file_path = (path_to_wt or vim.loop.cwd) .. "/.git"
   local git_file_exists = M.file_exists(git_file_path)
 
   if git_file_exists then

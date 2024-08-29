@@ -72,13 +72,3 @@ require('lazy').setup('plugins', {
 })
 require("jg.core.autocommands")
 require("jg.core.keymaps")
-vim.g.git_worktree_log_level = 1
-
-vim.g.git_worktree = {
-  change_directory_command = 'cd',
-  update_on_change = true,
-  update_on_change_command = 'e .',
-  clearjumps_on_change = true,
-  confirm_telescope_deletions = true,
-  autopush = false,
-}

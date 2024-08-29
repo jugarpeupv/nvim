@@ -8,13 +8,16 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = { "<leader>wt", "<leader>wc" },
   config = function()
-    -- require("git-worktree").setup({
-    --   -- change_directory_command = "cd", -- default: "cd",
-    --   -- update_on_change = true,      -- default: true,
-    --   -- -- update_on_change_command = <str> -- default: "e .",
-    --   -- clearjumps_on_change = true,  -- default: true,
-    --   -- autopush = false,             -- default: false,
-    -- })
+    vim.g.git_worktree_log_level = 1
+
+    vim.g.git_worktree = {
+      change_directory_command = "cd",
+      update_on_change = true,
+      update_on_change_command = "e .",
+      clearjumps_on_change = true,
+      confirm_telescope_deletions = true,
+      autopush = false,
+    }
 
     vim.keymap.set(
       { "n" },
@@ -42,47 +45,34 @@ return {
         api_nvimtree.tree.reload()
       end
 
-      -- TODO: Change .git/HEAD to the new branch
+      -- update .git/HEAD to the new branch so when you open a new terminal on root parent it shows the corrent branch
+      local wt_utils = require("jg.custom.worktree-utils")
+      local wt_switch_info = wt_utils.get_wt_info(path)
+      if wt_switch_info == nil then
+        return
+      end
+      wt_utils.update_git_head(wt_switch_info.wt_root_dir, wt_switch_info.wt_head)
     end)
 
     Hooks.register(Hooks.type.CREATE, function(path, branch)
-
-      local relative_path = path;
-      -- print("[Create]: relative path: " .. relative_path)
-      -- print("[Create]: branch: " .. branch)
-
+      local relative_path = path
       local Path = require("plenary.path")
-
-      local original_path = ''
+      local original_path = ""
       if not Path:new(path):is_absolute() then
         original_path = Path:new():absolute()
         if original_path:sub(- #"/") == "/" then
           original_path = string.sub(original_path, 1, string.len(original_path) - 1)
         end
       end
-      -- print("[Create]: original path: " .. original_path)
       local prev_node_modules_path = original_path .. "/node_modules"
-      -- print("[Create]: prev_node_modules_path: " .. prev_node_modules_path)
       local worktree_path = original_path .. "/" .. relative_path
-      -- print("[Create]: worktree path: " .. worktree_path)
       local destination_path = worktree_path .. "/node_modules"
-      -- print("[Create]: destination path: " .. destination_path)
 
       local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
       if prev_node_modules_exists ~= 0 then
         os.rename(prev_node_modules_path, destination_path)
         api_nvimtree.tree.reload()
       end
-
-      -- local prev_node_modules_path = prev_path .. "/node_modules"
-      -- local prev_node_modules_exists = vim.fn.isdirectory(prev_node_modules_path)
-      --
-      -- if prev_node_modules_exists then
-      --   os.rename(prev_node_modules_path, path .. "/node_modules")
-      -- end
-
-      -- TODO: Change .git/HEAD to the new branch
     end)
-
   end,
 }
