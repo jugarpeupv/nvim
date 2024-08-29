@@ -104,6 +104,44 @@ return {
           api_nvimtree.tree.reload()
         end
 
+        local lib = require("nvim-tree.lib")
+        -- add custom key mapping to search in directory with grug-far
+        vim.keymap.set("n", "S", function()
+          local node = lib.get_node_at_cursor()
+          local grugFar = require("grug-far")
+          if node then
+            -- get directory of current file if it's a file
+            local path
+            if node.type == "directory" then
+              -- Keep the full path for directories
+              path = node.absolute_path
+            else
+              -- Get the directory of the file
+              path = vim.fn.fnamemodify(node.absolute_path, ":h")
+            end
+
+            -- escape all spaces in the path with "\ "
+            path = path:gsub(" ", "\\ ")
+
+            local prefills = {
+              paths = path,
+            }
+
+            -- instance check
+            if not grugFar.has_instance("tree") then
+              grugFar.open({
+                instanceName = "tree",
+                prefills = prefills,
+                staticTitle = "Find and Replace from Tree",
+              })
+            else
+              grugFar.open_instance("tree")
+              -- updating the prefills without clearing the search and other fields
+              grugFar.update_instance_prefills("tree", prefills, false)
+            end
+          end
+        end, opts("Search in directory"))
+
         vim.keymap.set("n", "p", api_nvimtree.fs.paste, opts("Paste"))
         vim.keymap.set("n", "<down>", mark_move_j, opts("Toggle Bookmark Down"))
         vim.keymap.set("n", "<up>", mark_move_k, opts("Toggle Bookmark Up"))
@@ -170,7 +208,7 @@ return {
         vim.keymap.set("n", "r", api_nvimtree.fs.rename, opts("Rename"))
         vim.keymap.set("n", "R", api_nvimtree.tree.reload, opts("Refresh"))
         vim.keymap.set("n", "s", api_nvimtree.node.run.system, opts("Run System"))
-        vim.keymap.set("n", "S", api_nvimtree.tree.search_node, opts("Search"))
+        vim.keymap.set("n", "z", api_nvimtree.tree.search_node, opts("Search"))
         vim.keymap.set("n", "U", api_nvimtree.tree.toggle_custom_filter, opts("Toggle Hidden"))
         vim.keymap.set("n", "W", api_nvimtree.tree.collapse_all, opts("Collapse"))
         vim.keymap.set("n", "x", api_nvimtree.fs.cut, opts("Cut"))

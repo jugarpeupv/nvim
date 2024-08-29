@@ -1,10 +1,11 @@
 -- return {}
 return {
-  -- keys = { '<leader>ff' },
+  keys = { { "<leader>fg", "<cmd>GrugFar<cr>" } },
   cmd = { "GrugFar" },
-  'MagicDuck/grug-far.nvim',
+  "MagicDuck/grug-far.nvim",
   config = function()
-    require('grug-far').setup({
+    require("grug-far").setup({
+      startInInsertMode = false
     })
-  end
+  end,
 }
