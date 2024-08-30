@@ -46,8 +46,20 @@ return {
     end
 
     bb.setup({
-      attach_navic = false,
-      show_navic = false,
+      attach_navic = function()
+        local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+        if filetype == "json" then
+          return true
+        end
+        return false
+      end,
+      show_navic = function()
+        local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+        if filetype == "json" then
+          return true
+        end
+        return false
+      end,
       -- attach_navic = true,
       -- show_navic = true,
       show_modified = true,
